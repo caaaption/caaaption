@@ -8,7 +8,7 @@ clean:
 
 build: build-caption build-previews
 
-PLATFORM_IOS = iOS Simulator,name=iPhone 14 Pro,OS=16.3
+PLATFORM_IOS = iOS Simulator,name=iPhone 13 Pro,OS=16.2
 
 build-caption:
 	@xcodebuild build \
