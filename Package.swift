@@ -29,7 +29,8 @@ package.targets.append(contentsOf: [
     "MainTabFeature"
   ]),
   .target(name: "MainTabFeature", dependencies: [
-    "FeedFeature"
+    "FeedFeature",
+    "UploadFeature"
   ]),
   .target(name: "ContentFeature", dependencies: [
     "SwiftUIHelpers",
