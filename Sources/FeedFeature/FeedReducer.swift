@@ -1,21 +1,22 @@
 import SwiftUI
+import ContentFeature
 import ComposableArchitecture
 
 public struct FeedReducer: ReducerProtocol {
   public init() {}
   public struct State: Equatable {
-    public var post = PostReducer.State()
+    public var content = ContentReducer.State()
     
     public init() {}
   }
   
   public enum Action: Equatable {
-    case post(PostReducer.Action)
+    case content(ContentReducer.Action)
   }
   
   public var body: some ReducerProtocol<State, Action> {
-    Scope(state: \.post, action: /Action.post) {
-      PostReducer()
+    Scope(state: \.content, action: /Action.content) {
+      ContentReducer()
     }
   }
 }
