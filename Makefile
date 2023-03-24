@@ -8,7 +8,7 @@ clean:
 
 build: build-caption build-previews
 
-PLATFORM_IOS = iOS Simulator,name=iPhone 14 Pro,OS=16.2
+PLATFORM_IOS = iOS Simulator,name=iPhone 13 Pro,OS=16.2
 
 build-caption:
 	@xcodebuild build \
@@ -24,5 +24,13 @@ build-previews:
 	@xcodebuild -list -workspace ./Caption.xcworkspace
 	@xcodebuild build \
 		-workspace Caption.xcworkspace \
-		-scheme "OnboardPreview (Staging project)" \
+		-scheme "DesignSystemPreview" \
+		-destination platform="$(PLATFORM_IOS)"
+	@xcodebuild build \
+		-workspace Caption.xcworkspace \
+		-scheme "OnboardPreview" \
+		-destination platform="$(PLATFORM_IOS)"
+	@xcodebuild build \
+		-workspace Caption.xcworkspace \
+		-scheme "UploadPreview" \
 		-destination platform="$(PLATFORM_IOS)"
