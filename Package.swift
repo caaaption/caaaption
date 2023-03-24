@@ -18,12 +18,16 @@ var package = Package(
 /// Features
 package.products.append(contentsOf: [
   .library(name: "AppFeature", targets: ["AppFeature"]),
+  .library(name: "MainTabFeature", targets: ["MainTabFeature"]),
   .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
   .library(name: "FeedFeature", targets: ["FeedFeature"]),
   .library(name: "UploadFeature", targets: ["UploadFeature"])
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
+    "MainTabFeature"
+  ]),
+  .target(name: "MainTabFeature", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
   ]),
   .target(name: "OnboardFeature", dependencies: [
