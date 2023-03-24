@@ -1,0 +1,25 @@
+name: Format
+
+on:
+  push:
+    branches:
+      - main
+      
+concurrency:
+  group: format-${{ github.ref }}
+  cancel-in-progress: true
+  
+jobs:
+  format:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: brew tap pointfreeco/formulae
+      - run: brew install Formulae/swift-format@5.7
+      - run: swift format --ignore-unparsable-files --in-place --recursive ./Package.swift ./Sources
+      - continue-on-error: true
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          git commit -am "auto swift format"
+          git push
