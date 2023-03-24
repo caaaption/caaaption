@@ -97,5 +97,8 @@ package.products.append(contentsOf: [
 ])
 package.targets.append(contentsOf: [
   .target(name: "SwiftUIHelpers"),
-  .target(name: "ColorHex")
+  .target(name: "ColorHex"),
+  .testTarget(name: "ColorHexTests", dependencies: [
+    "ColorHex"
+  ])
 ])
