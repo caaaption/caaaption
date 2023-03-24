@@ -1,16 +1,24 @@
 import SwiftUI
+import MainTabFeature
 import ComposableArchitecture
 
 public struct AppReducer: ReducerProtocol {
   public init() {}
+  
   public struct State: Equatable {
     public init() {}
+    
+    public var tab = MainTabReducer.State()
   }
   public enum Action: Equatable {
     case appDelegate(AppDelegateReducer.Action)
+    case tab(MainTabReducer.Action)
   }
   
   public var body: some ReducerProtocol<State, Action> {
+    Scope(state: \.tab, action: /Action.tab) {
+      MainTabReducer()
+    }
     Reduce { state, action in
       switch action {
       default:
@@ -28,8 +36,6 @@ public struct AppView: View {
   }
   
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      Text("AppView")
-    }
+    MainTabView(store: self.store.scope(state: \.tab, action: AppReducer.Action.tab))
   }
 }
