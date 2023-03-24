@@ -59,15 +59,11 @@ package.targets.append(contentsOf: [
 // Client
 
 package.products.append(contentsOf: [
-  .library(name: "FeedbackGeneratorClient", targets: ["FeedbackGeneratorClient"]),
   .library(name: "FirebaseClientLive", targets: ["FirebaseClientLive"]),
   .library(name: "PhoneNumberClient", targets: ["PhoneNumberClient"]),
   .library(name: "PhotoLibraryClientLive", targets: ["PhotoLibraryClientLive"])
 ])
 package.targets.append(contentsOf: [
-  .target(name: "FeedbackGeneratorClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
-  ]),
   .target(name: "FirebaseClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     .product(name: "XCTestDynamicOverlay", package: "xctest-dynamic-overlay"),
