@@ -11,7 +11,6 @@ var package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.51.0"),
-    .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "0.8.4"),
     .package(url: "https://github.com/marmelroy/PhoneNumberKit", from: "3.4.0"),
   ]
 )
@@ -65,16 +64,14 @@ package.products.append(contentsOf: [
 ])
 package.targets.append(contentsOf: [
   .target(name: "FirebaseClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    .product(name: "XCTestDynamicOverlay", package: "xctest-dynamic-overlay"),
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
   ]),
   .target(name: "FirebaseClientLive", dependencies: [
     "FirebaseClient",
   ]),
   .target(name: "PhoneNumberClient", dependencies: [
     "PhoneNumberKit",
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    .product(name: "XCTestDynamicOverlay", package: "xctest-dynamic-overlay"),
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
   ]),
   .target(name: "PhotoLibraryClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
