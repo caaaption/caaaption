@@ -19,6 +19,7 @@ var package = Package(
 package.products.append(contentsOf: [
   .library(name: "AppFeature", targets: ["AppFeature"]),
   .library(name: "MainTabFeature", targets: ["MainTabFeature"]),
+  .library(name: "ContentFeature", targets: ["ContentFeature"]),
   .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
   .library(name: "FeedFeature", targets: ["FeedFeature"]),
   .library(name: "UploadFeature", targets: ["UploadFeature"])
@@ -28,6 +29,10 @@ package.targets.append(contentsOf: [
     "MainTabFeature"
   ]),
   .target(name: "MainTabFeature", dependencies: [
+    "FeedFeature"
+  ]),
+  .target(name: "ContentFeature", dependencies: [
+    "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
   ]),
   .target(name: "OnboardFeature", dependencies: [
@@ -37,8 +42,7 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
   ]),
   .target(name: "FeedFeature", dependencies: [
-    "DesignSystem",
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+    "ContentFeature",
   ]),
   .target(name: "UploadFeature", dependencies: [
     "ColorHex",

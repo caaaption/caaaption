@@ -1,4 +1,5 @@
 import SwiftUI
+import ContentFeature
 import ComposableArchitecture
 
 public struct FeedView: View {
@@ -9,9 +10,6 @@ public struct FeedView: View {
   }
   
   public var body: some View {
-    List {
-      PostView(store: store.scope(state: \.post, action: FeedReducer.Action.post))
-    }
-    .listStyle(.plain)
+    ContentView(store: store.scope(state: \.content, action: FeedReducer.Action.content))
   }
 }

@@ -1,10 +1,12 @@
 import SwiftUI
+import FeedFeature
 import ComposableArchitecture
 
 public struct MainTabReducer: ReducerProtocol {
   public init() {}
   
   public struct State: Equatable {
+    public var feed = FeedReducer.State()
     public enum Tab: Equatable {
       case feed
       case mypage
@@ -15,6 +17,7 @@ public struct MainTabReducer: ReducerProtocol {
   }
   
   public enum Action: Equatable {
+    case feed(FeedReducer.Action)
     case actionFeed
     case actionUpload
     case actionMypage
@@ -22,6 +25,9 @@ public struct MainTabReducer: ReducerProtocol {
   
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
     switch action {
+    case .feed:
+      return EffectTask.none
+      
     case .actionFeed:
       state.tab = .feed
       return EffectTask.none
@@ -48,12 +54,11 @@ public struct MainTabView: View {
   public var body: some View {
     WithViewStore(store) { viewStore in
       ZStack(alignment: .bottom) {
-        Group { () -> Text in
-          switch viewStore.tab {
-          case MainTabReducer.State.Tab.feed:
-            return Text("Feed")
-          case MainTabReducer.State.Tab.mypage:
-            return Text("MyPage")
+        Group {
+          if viewStore.tab == MainTabReducer.State.Tab.feed {
+            FeedView(store: store.scope(state: \.feed, action: MainTabReducer.Action.feed))
+          } else {
+            Text("MyPage")
           }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -64,7 +69,7 @@ public struct MainTabView: View {
           actionMypage: { viewStore.send(.actionMypage) }
         )
       }
-      .edgesIgnoringSafeArea(.all)
+      .edgesIgnoringSafeArea(.bottom)
     }
   }
 }
