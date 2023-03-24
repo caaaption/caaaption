@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7098EEC29CD47BC00F232EC /* PhotoLibraryClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B7098EEB29CD47BC00F232EC /* PhotoLibraryClientLive */; };
 		B7414E1D29B5A46C005E04D1 /* CaptionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7414E1C29B5A46C005E04D1 /* CaptionApp.swift */; };
 		B7414E2129B5A46D005E04D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7414E2029B5A46D005E04D1 /* Assets.xcassets */; };
 		B7414E2429B5A46D005E04D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7414E2329B5A46D005E04D1 /* Preview Assets.xcassets */; };
@@ -50,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7098EEC29CD47BC00F232EC /* PhotoLibraryClientLive in Frameworks */,
 				B7414E6829B5A754005E04D1 /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -210,6 +212,7 @@
 			name = Caption;
 			packageProductDependencies = (
 				B7414E6729B5A754005E04D1 /* AppFeature */,
+				B7098EEB29CD47BC00F232EC /* PhotoLibraryClientLive */,
 			);
 			productName = Caption;
 			productReference = B7414E1A29B5A46C005E04D1 /* Caption.app */;
@@ -521,6 +524,7 @@
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo Libraryにアクセスします";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -551,6 +555,7 @@
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo Libraryにアクセスします";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -803,6 +808,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B7098EEB29CD47BC00F232EC /* PhotoLibraryClientLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PhotoLibraryClientLive;
+		};
 		B7414E6529B5A674005E04D1 /* OnboardFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = OnboardFeature;

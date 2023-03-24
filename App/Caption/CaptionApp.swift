@@ -1,11 +1,14 @@
 import SwiftUI
 import AppFeature
+import PhotoLibraryClientLive
 import ComposableArchitecture
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
   let store = Store(
     initialState: AppReducer.State(),
-    reducer: AppReducer().transformDependency(\.self, transform: { a in })
+    reducer: AppReducer().transformDependency(\.self) {
+      $0.photoLibraryClient = .liveValue
+    }
   )
   
   var viewStore: ViewStore<Void, AppReducer.Action> {

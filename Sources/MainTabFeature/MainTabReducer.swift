@@ -1,5 +1,6 @@
 import SwiftUI
 import FeedFeature
+import UploadFeature
 import ComposableArchitecture
 
 public struct MainTabReducer: ReducerProtocol {
@@ -7,80 +8,53 @@ public struct MainTabReducer: ReducerProtocol {
   
   public struct State: Equatable {
     public var feed = FeedReducer.State()
+    public var upload = UploadReducer.State()
+    public var tab = Tab.feed
+    public var isSheetPresented = false
+    
+    public init() {}
+    
     public enum Tab: Equatable {
       case feed
       case mypage
     }
-    public var tab = Tab.feed
-    
-    public init() {}
   }
   
   public enum Action: Equatable {
     case feed(FeedReducer.Action)
+    case upload(UploadReducer.Action)
     case actionFeed
-    case actionUpload
     case actionMypage
+    case setSheet(isPresented: Bool)
   }
   
-  public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
-    switch action {
-    case .feed:
-      return EffectTask.none
-      
-    case .actionFeed:
-      state.tab = .feed
-      return EffectTask.none
-      
-    case .actionUpload:
-      return EffectTask.none
-      
-    case .actionMypage:
-      state.tab = .mypage
-      return EffectTask.none
+  public var body: some ReducerProtocol<State, Action> {
+    Scope(state: \.feed, action: /Action.feed) {
+      FeedReducer()
     }
-  }
-}
-
-public struct MainTabView: View {
-  let store: StoreOf<MainTabReducer>
-  
-  public init(
-    store: StoreOf<MainTabReducer>
-  ) {
-    self.store = store
-  }
-  
-  public var body: some View {
-    WithViewStore(store) { viewStore in
-      ZStack(alignment: .bottom) {
-        Group {
-          if viewStore.tab == MainTabReducer.State.Tab.feed {
-            FeedView(store: store.scope(state: \.feed, action: MainTabReducer.Action.feed))
-          } else {
-            Text("MyPage")
-          }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    Scope(state: \.upload, action: /Action.upload) {
+      UploadReducer()
+    }
+    Reduce { state, action in
+      switch action {
+      case .feed:
+        return EffectTask.none
         
-        TabBarView(
-          actionFeed: { viewStore.send(.actionFeed) },
-          actionUpload: { viewStore.send(.actionUpload) },
-          actionMypage: { viewStore.send(.actionMypage) }
-        )
+      case .upload:
+        return EffectTask.none
+        
+      case .actionFeed:
+        state.tab = .feed
+        return EffectTask.none
+        
+      case .actionMypage:
+        state.tab = .mypage
+        return EffectTask.none
+        
+      case let .setSheet(isPresented):
+        state.isSheetPresented = isPresented
+        return EffectTask.none
       }
-      .edgesIgnoringSafeArea(.bottom)
     }
-  }
-}
-
-struct MainTabViewPreview: PreviewProvider {
-  static var previews: some View {
-    MainTabView(
-      store: .init(
-        initialState: MainTabReducer.State(),
-        reducer: MainTabReducer()
-      )
-    )
   }
 }
