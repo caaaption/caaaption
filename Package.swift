@@ -12,6 +12,7 @@ var package = Package(
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.51.0"),
     .package(url: "https://github.com/marmelroy/PhoneNumberKit", from: "3.4.0"),
+    .package(url: "https://github.com/JWAutumn/ACarousel", from: "0.2.0"),
   ]
 )
 
@@ -43,6 +44,7 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
   ]),
   .target(name: "FeedFeature", dependencies: [
+    "ACarousel",
     "ContentFeature",
   ]),
   .target(name: "UploadFeature", dependencies: [
