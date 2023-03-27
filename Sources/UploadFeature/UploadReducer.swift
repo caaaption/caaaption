@@ -56,47 +56,32 @@ public struct UploadView: View {
   
   public var body: some View {
     WithViewStore(store) { viewStore in
-      ZStack {
-        Color(0x6DF63D)
-          .edgesIgnoringSafeArea(.all)
-        
-        ScrollView {
-          VStack {
-            Spacer().frame(height: 8)
-            
-            Color(uiColor: .systemGray6)
-              .frame(width: 31, height: 4)
-              .cornerRadius(2)
-            
-            Spacer().frame(height: 42)
-            
-            ScrollView(.horizontal) {
-              LazyHStack {
-                ForEachStore(store.scope(state: \.rows, action: UploadReducer.Action.row(id:action:))) { rowStore in
-                  AssetPhotoView(store: rowStore)
-                }
+      ScrollView {
+        VStack {
+          Spacer().frame(height: 42)
+          
+          ScrollView(.horizontal) {
+            LazyHStack {
+              ForEachStore(store.scope(state: \.rows, action: UploadReducer.Action.row(id:action:))) { rowStore in
+                AssetPhotoView(store: rowStore)
               }
             }
-            .frame(height: 256)
-            
-            Spacer().frame(height: 32)
-            
-            TextField(
-              "What did you buy?",
-              text: viewStore.binding(
-                get: \.caption,
-                send: UploadReducer.Action.changedCaption
-              )
-            )
-            .font(.title3)
-            .bold()
-            .multilineTextAlignment(.center)
           }
+          .frame(height: 256)
+          
+          Spacer().frame(height: 32)
+          
+          TextField(
+            "What did you buy?",
+            text: viewStore.binding(
+              get: \.caption,
+              send: UploadReducer.Action.changedCaption
+            )
+          )
+          .font(.title3)
+          .bold()
+          .multilineTextAlignment(.center)
         }
-        .frame(maxHeight: .infinity)
-        .background()
-        .cornerRadius(36, corners: [.topLeft, .topRight])
-        .edgesIgnoringSafeArea(.bottom)
       }
       .task { await viewStore.send(.task).finish() }
     }
