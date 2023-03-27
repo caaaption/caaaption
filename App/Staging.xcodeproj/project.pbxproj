@@ -44,6 +44,7 @@
 		B7E05AB929CB7C57009BEF22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7E05ABC29CB7C57009BEF22 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B7E6C7B229CCFACC007E0B64 /* UploadPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UploadPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7EA675029D1B7850008AF9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +116,7 @@
 		B7414E1B29B5A46C005E04D1 /* Caption */ = {
 			isa = PBXGroup;
 			children = (
+				B7EA675029D1B7850008AF9A /* Info.plist */,
 				B7414E1C29B5A46C005E04D1 /* CaptionApp.swift */,
 				B7414E2029B5A46D005E04D1 /* Assets.xcassets */,
 				B7414E2229B5A46D005E04D1 /* Preview Content */,
@@ -524,6 +526,7 @@
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Caption/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo Libraryにアクセスします";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -555,6 +558,7 @@
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Caption/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Photo Libraryにアクセスします";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
