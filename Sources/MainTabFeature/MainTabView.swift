@@ -1,6 +1,7 @@
 import SwiftUI
 import FeedFeature
 import UploadFeature
+import ProfileFeature
 import ComposableArchitecture
 
 public struct MainTabView: View {
@@ -17,9 +18,19 @@ public struct MainTabView: View {
       ZStack(alignment: .bottom) {
         Group {
           if viewStore.tab == MainTabReducer.State.Tab.feed {
-            FeedView(store: store.scope(state: \.feed, action: MainTabReducer.Action.feed))
+            FeedView(
+              store: store.scope(
+                state: \.feed,
+                action: MainTabReducer.Action.feed
+              )
+            )
           } else {
-            Text("MyPage")
+            ProfileView(
+              store: store.scope(
+                state: \.profile,
+                action: MainTabReducer.Action.profile
+              )
+            )
           }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

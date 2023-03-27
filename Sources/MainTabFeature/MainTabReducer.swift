@@ -1,6 +1,7 @@
 import SwiftUI
 import FeedFeature
 import UploadFeature
+import ProfileFeature
 import ComposableArchitecture
 
 public struct MainTabReducer: ReducerProtocol {
@@ -9,6 +10,8 @@ public struct MainTabReducer: ReducerProtocol {
   public struct State: Equatable {
     public var feed = FeedReducer.State()
     public var upload = UploadReducer.State()
+    public var profile = ProfileReducer.State()
+    
     public var tab = Tab.feed
     public var isSheetPresented = false
     
@@ -23,6 +26,7 @@ public struct MainTabReducer: ReducerProtocol {
   public enum Action: Equatable {
     case feed(FeedReducer.Action)
     case upload(UploadReducer.Action)
+    case profile(ProfileReducer.Action)
     case actionFeed
     case actionMypage
     case setSheet(isPresented: Bool)
@@ -35,12 +39,12 @@ public struct MainTabReducer: ReducerProtocol {
     Scope(state: \.upload, action: /Action.upload) {
       UploadReducer()
     }
+    Scope(state: \.profile, action: /Action.profile) {
+      ProfileReducer()
+    }
     Reduce { state, action in
       switch action {
-      case .feed:
-        return EffectTask.none
-        
-      case .upload:
+      case .feed, .upload, .profile:
         return EffectTask.none
         
       case .actionFeed:
