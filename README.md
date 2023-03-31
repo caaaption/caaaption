@@ -1,4 +1,4 @@
-# Caaaption
+# caaaption
 
 <div align='left'>
     <img src="https://github.com/tomokisun/caaaption-ios/actions/workflows/ci.yml/badge.svg">
