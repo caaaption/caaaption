@@ -42,3 +42,16 @@ build-previews:
 		-workspace Caption.xcworkspace \
 		-scheme "UploadPreview" \
 		-destination platform="$(PLATFORM_IOS)"
+
+format:
+	@swift format \
+		--ignore-unparsable-files \
+		--in-place \
+		--recursive \
+		./App/ \
+		./Package.swift \
+		./Sources/
+
+# swift run -c release swiftformat ../Sources ../Tests ../App --indent 2
+format:
+	@swift run -c release swiftformat ./

@@ -1,0 +1,8 @@
+# file options
+
+--exclude Package.swift
+
+# format options
+
+--unusedArguments false
+--indent 2
