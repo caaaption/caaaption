@@ -6,8 +6,7 @@ on:
       - main
 
 jobs:
-  format:
-    name: swift-format
+  swift-format:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v3
