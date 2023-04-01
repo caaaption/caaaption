@@ -4,25 +4,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "BuildTools",
-    products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "BuildTools",
-            targets: ["BuildTools"]),
-    ],
-    dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
-        .target(
-            name: "BuildTools",
-            dependencies: []),
-        .testTarget(
-            name: "BuildToolsTests",
-            dependencies: ["BuildTools"]),
-    ]
+  name: "BuildTools",
+  platforms: [.macOS(.v10_13)],
+  dependencies: [
+    .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.51.4")
+  ],
+  targets: [.target(name: "BuildTools", path: "")]
 )
