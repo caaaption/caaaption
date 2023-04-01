@@ -1,5 +1,5 @@
 open:
-	open Caption.xcworkspace
+	open caaaption.xcworkspace
 
 clean:
 	rm -rf ./.swiftpm
@@ -8,38 +8,38 @@ clean:
 
 test: test-color-hex
 
-build: build-caption build-previews
+build: build-caaaption build-previews
 
 PLATFORM_IOS = iOS Simulator,name=iPhone 13 Pro,OS=16.2
 
 test-color-hex:
 	@xcodebuild test \
-		-workspace Caption.xcworkspace \
+		-workspace caaaption.xcworkspace \
 		-scheme "ColorHexTests" \
 		-destination platform="$(PLATFORM_IOS)"
 
-build-caption:
+build-caaaption:
 	@xcodebuild build \
-		-workspace Caption.xcworkspace \
-		-scheme "Caption (Staging project)" \
+		-workspace caaaption.xcworkspace \
+		-scheme "App (Staging project)" \
 		-destination platform="$(PLATFORM_IOS)"
 	@xcodebuild build \
-		-workspace Caption.xcworkspace \
-		-scheme "Caption (Production project)" \
+		-workspace caaaption.xcworkspace \
+		-scheme "App (Production project)" \
 		-destination platform="$(PLATFORM_IOS)"
 
 build-previews:
-	@xcodebuild -list -workspace ./Caption.xcworkspace
+	@xcodebuild -list -workspace ./caaaption.xcworkspace
 	@xcodebuild build \
-		-workspace Caption.xcworkspace \
+		-workspace caaaption.xcworkspace \
 		-scheme "DesignSystemPreview" \
 		-destination platform="$(PLATFORM_IOS)"
 	@xcodebuild build \
-		-workspace Caption.xcworkspace \
+		-workspace caaaption.xcworkspace \
 		-scheme "OnboardPreview" \
 		-destination platform="$(PLATFORM_IOS)"
 	@xcodebuild build \
-		-workspace Caption.xcworkspace \
+		-workspace caaaption.xcworkspace \
 		-scheme "UploadPreview" \
 		-destination platform="$(PLATFORM_IOS)"
 

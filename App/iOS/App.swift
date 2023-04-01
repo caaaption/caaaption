@@ -64,7 +64,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 @main
-struct CaptionApp: App {
+struct CaaaptionApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
   
   var body: some Scene {

@@ -4,7 +4,7 @@
 import PackageDescription
 
 var package = Package(
-  name: "Caption",
+  name: "caaaption",
   defaultLocalization: "en",
   platforms: [
     .iOS(.v16),

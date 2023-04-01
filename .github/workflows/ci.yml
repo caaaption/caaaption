@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v3
-    - run: make build-caption
+    - run: make build-caaaption
 
   build-previews:
     runs-on: macOS-latest
