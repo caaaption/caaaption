@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-caaaption:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v3
