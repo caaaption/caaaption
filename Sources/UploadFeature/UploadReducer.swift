@@ -8,12 +8,13 @@ import ComposableArchitecture
 public struct UploadReducer: ReducerProtocol {
   public init() {}
   public struct State: Equatable {
-    public var caption = ""
+    @BindingState public var caption = ""
     public var rows: IdentifiedArrayOf<AssetPhotoReducer.State> = []
     public init() {}
   }
   
-  public enum Action: Equatable {
+  public enum Action: BindableAction, Equatable {
+    case binding(BindingAction<State>)
     case task
     case changedCaption(String)
     
@@ -23,8 +24,12 @@ public struct UploadReducer: ReducerProtocol {
   @Dependency(\.photoLibraryClient) var photoLibraryClient
   
   public var body: some ReducerProtocol<State, Action> {
+    BindingReducer()
     Reduce { state, action in
       switch action {
+      case .binding:
+        return EffectTask.none
+
       case .task:
         let assets = photoLibraryClient.fetchAssets()
         state.rows = IdentifiedArray(
@@ -72,10 +77,7 @@ public struct UploadView: View {
           
           TextField(
             "What did you buy?",
-            text: viewStore.binding(
-              get: \.caption,
-              send: UploadReducer.Action.changedCaption
-            )
+            text: viewStore.binding(\.$caption)
           )
           .font(.title3)
           .bold()
