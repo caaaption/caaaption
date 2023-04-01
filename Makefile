@@ -44,14 +44,5 @@ build-previews:
 		-destination platform="$(PLATFORM_IOS)"
 
 format:
-	@swift format \
-		--ignore-unparsable-files \
-		--in-place \
-		--recursive \
-		./App/ \
-		./Package.swift \
-		./Sources/
-
-# swift run -c release swiftformat ../Sources ../Tests ../App --indent 2
-format:
-	@swift run -c release swiftformat ./
+	@swift build -c release --package-path ./BuildTools --product swiftformat
+	./BuildTools/.build/release/swiftformat ./

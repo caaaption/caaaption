@@ -4,5 +4,5 @@
 
 # format options
 
---unusedArguments false
+--stripunusedargs closure-only
 --indent 2
