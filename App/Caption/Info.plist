@@ -4,5 +4,11 @@
 <dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>フォトライブラリに写真を追加します</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>フォトライブラリの写真にアクセスします</string>
+	<key>NSCameraUsageDescription</key>
+	<string>カメラを使用します</string>
 </dict>
 </plist>

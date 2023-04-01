@@ -30,7 +30,6 @@ public struct UploadReducer: ReducerProtocol {
         state.rows = IdentifiedArray(
           uniqueElements: assets.map { AssetPhotoReducer.State(asset: $0) }
         )
-        
         return EffectTask.none
         
       case let .changedCaption(caption):
@@ -61,7 +60,7 @@ public struct UploadView: View {
           Spacer().frame(height: 42)
           
           ScrollView(.horizontal) {
-            LazyHStack {
+            LazyHStack(spacing: 56) {
               ForEachStore(store.scope(state: \.rows, action: UploadReducer.Action.row(id:action:))) { rowStore in
                 AssetPhotoView(store: rowStore)
               }
