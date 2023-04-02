@@ -79,7 +79,8 @@ package.products.append(contentsOf: [
   .library(name: "AVFoundationClient", targets: ["AVFoundationClient"]),
   .library(name: "FirebaseClientLive", targets: ["FirebaseClientLive"]),
   .library(name: "PhoneNumberClient", targets: ["PhoneNumberClient"]),
-  .library(name: "PhotoLibraryClientLive", targets: ["PhotoLibraryClientLive"])
+  .library(name: "PhotoLibraryClientLive", targets: ["PhotoLibraryClientLive"]),
+  .library(name: "UserNotificationClient", targets: ["UserNotificationClient"])
 ])
 package.targets.append(contentsOf: [
   .target(name: "AVFoundationClient", dependencies: [
@@ -101,6 +102,7 @@ package.targets.append(contentsOf: [
   .target(name: "PhotoLibraryClientLive", dependencies: [
     "PhotoLibraryClient"
   ]),
+  .target(name: "UserNotificationClient"),
 ])
 
 // Helpers
