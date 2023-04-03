@@ -1,0 +1,8 @@
+# file options
+
+--exclude Package.swift
+
+# format options
+
+--stripunusedargs closure-only
+--indent 2

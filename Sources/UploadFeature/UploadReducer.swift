@@ -8,12 +8,13 @@ import ComposableArchitecture
 public struct UploadReducer: ReducerProtocol {
   public init() {}
   public struct State: Equatable {
-    public var caption = ""
+    @BindingState public var caption = ""
     public var rows: IdentifiedArrayOf<AssetPhotoReducer.State> = []
     public init() {}
   }
   
-  public enum Action: Equatable {
+  public enum Action: BindableAction, Equatable {
+    case binding(BindingAction<State>)
     case task
     case changedCaption(String)
     
@@ -23,14 +24,17 @@ public struct UploadReducer: ReducerProtocol {
   @Dependency(\.photoLibraryClient) var photoLibraryClient
   
   public var body: some ReducerProtocol<State, Action> {
+    BindingReducer()
     Reduce { state, action in
       switch action {
+      case .binding:
+        return EffectTask.none
+
       case .task:
         let assets = photoLibraryClient.fetchAssets()
         state.rows = IdentifiedArray(
           uniqueElements: assets.map { AssetPhotoReducer.State(asset: $0) }
         )
-        
         return EffectTask.none
         
       case let .changedCaption(caption):
@@ -61,7 +65,7 @@ public struct UploadView: View {
           Spacer().frame(height: 42)
           
           ScrollView(.horizontal) {
-            LazyHStack {
+            LazyHStack(spacing: 56) {
               ForEachStore(store.scope(state: \.rows, action: UploadReducer.Action.row(id:action:))) { rowStore in
                 AssetPhotoView(store: rowStore)
               }
@@ -73,10 +77,7 @@ public struct UploadView: View {
           
           TextField(
             "What did you buy?",
-            text: viewStore.binding(
-              get: \.caption,
-              send: UploadReducer.Action.changedCaption
-            )
+            text: viewStore.binding(\.$caption)
           )
           .font(.title3)
           .bold()

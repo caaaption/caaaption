@@ -7,20 +7,20 @@ public struct OnboardReducer: ReducerProtocol {
   public struct State: Equatable {
     public var countryCode = CountryCodeReducer.State()
     
-    public var displayName = ""
-    public var username = ""
+    @BindingState public var displayName = ""
+    @BindingState public var username = ""
     
     public init() {}
   }
   
-  public enum Action: Equatable {
+  public enum Action: BindableAction, Equatable {
     case countryCode(CountryCodeReducer.Action)
     
-    case changedDisplayName(String)
-    case changedUsername(String)
+    case binding(BindingAction<State>)
   }
   
   public var body: some ReducerProtocol<State, Action> {
+    BindingReducer()
     Scope(state: \.countryCode, action: /Action.countryCode) {
       CountryCodeReducer()
     }
@@ -29,12 +29,7 @@ public struct OnboardReducer: ReducerProtocol {
       case .countryCode:
         return EffectTask.none
         
-      case let .changedDisplayName(displayName):
-        state.displayName = displayName
-        return EffectTask.none
-      
-      case let .changedUsername(username):
-        state.username = username
+      case .binding:
         return EffectTask.none
       }
     }

@@ -4,7 +4,7 @@
 import PackageDescription
 
 var package = Package(
-  name: "Caption",
+  name: "caaaption",
   defaultLocalization: "en",
   platforms: [
     .iOS(.v16),
@@ -53,6 +53,7 @@ package.targets.append(contentsOf: [
     "ColorHex",
     "SwiftUIHelpers",
     "PhotoLibraryClient",
+    "AVFoundationClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
   ]),
   .target(name: "ProfileFeature", dependencies: [
@@ -75,11 +76,16 @@ package.targets.append(contentsOf: [
 // Client
 
 package.products.append(contentsOf: [
+  .library(name: "AVFoundationClient", targets: ["AVFoundationClient"]),
   .library(name: "FirebaseClientLive", targets: ["FirebaseClientLive"]),
   .library(name: "PhoneNumberClient", targets: ["PhoneNumberClient"]),
-  .library(name: "PhotoLibraryClientLive", targets: ["PhotoLibraryClientLive"])
+  .library(name: "PhotoLibraryClientLive", targets: ["PhotoLibraryClientLive"]),
+  .library(name: "UserNotificationClient", targets: ["UserNotificationClient"])
 ])
 package.targets.append(contentsOf: [
+  .target(name: "AVFoundationClient", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+  ]),
   .target(name: "FirebaseClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
   ]),
@@ -96,6 +102,7 @@ package.targets.append(contentsOf: [
   .target(name: "PhotoLibraryClientLive", dependencies: [
     "PhotoLibraryClient"
   ]),
+  .target(name: "UserNotificationClient"),
 ])
 
 // Helpers

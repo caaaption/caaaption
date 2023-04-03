@@ -24,10 +24,7 @@ public struct SettingDisplayNameView: View {
         .foregroundColor(.secondary)
       SizedBox(height: 20)
       TextField(
-        text: viewStore.binding(
-          get: \.displayName,
-          send: OnboardReducer.Action.changedDisplayName
-        ),
+        text: viewStore.binding(\.$displayName),
         label: { Text("display name").bold() }
       )
       .autocapitalization(.none)
