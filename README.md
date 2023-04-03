@@ -3,8 +3,8 @@
 <img src='./App/iOS/Assets.xcassets/AppIcon.appiconset/icon_pink4-1024.png' width='300'>
 
 <div align='left'>
-    <img src='https://github.com/caaaption/caaaption-ios/actions/workflows/ci.yml/badge.svg'>
-    <img src='https://github.com/tomokisun/caaaption-ios/actions/workflows/format.yml/badge.svg'>
+    <img src='https://github.com/caaaption/caaaption/actions/workflows/ci.yml/badge.svg'>
+    <img src='https://github.com/tomokisun/caaaption/actions/workflows/format.yml/badge.svg'>
     <img src='https://img.shields.io/badge/language-Swift-orange.svg'>
     <img src='https://img.shields.io/badge/platform-iOS%20-green.svg'>
 </div>
@@ -28,8 +28,8 @@ This repo contains both the client code for running the entire [caaaption](https
 
 1. Grab the code:
     ```sh
-    git clone https://github.com/caaaption/caaaption-ios
-    cd caaaption-ios
+    git clone https://github.com/caaaption/caaaption
+    cd caaaption
     ```
 2. Open the Xcode project `caaaption.xcworkspace`
 3. To run the client locally. select the `App (Staging project)` target in Xcode and run (`⌘R`).
