@@ -5,6 +5,9 @@
 <div align='left'>
     <img src='https://github.com/caaaption/caaaption/actions/workflows/ci.yml/badge.svg'>
     <img src='https://github.com/tomokisun/caaaption/actions/workflows/format.yml/badge.svg'>
+    <a href="https://twitter.com/caaaption">
+      <img src="https://img.shields.io/twitter/follow/caaaption?label=caaaption&style=flat&logo=twitter&color=1DA1F2" alt="caaaption twitter">
+    </a>
     <img src='https://img.shields.io/badge/language-Swift-orange.svg'>
     <img src='https://img.shields.io/badge/platform-iOS%20-green.svg'>
 </div>
