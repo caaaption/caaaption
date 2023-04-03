@@ -44,6 +44,8 @@ This repo contains both the client code for running the entire [caaaption](https
 - [Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture)
 - [PhoneNumberKit](https://github.com/marmelroy/PhoneNumberKit)
 - [ACarousel](https://github.com/JWAutumn/ACarousel)
+- [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
+- [XCTemplateInstaller](https://github.com/noppefoxwolf/XCTemplateInstaller)
 
 # License
 
