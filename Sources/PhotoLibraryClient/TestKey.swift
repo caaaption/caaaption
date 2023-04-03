@@ -1,9 +1,9 @@
-import Photos
 import Dependencies
+import Photos
 import XCTestDynamicOverlay
 
-extension DependencyValues {
-  public var photoLibraryClient: PhotoLibraryClient {
+public extension DependencyValues {
+  var photoLibraryClient: PhotoLibraryClient {
     get { self[PhotoLibraryClient.self] }
     set { self[PhotoLibraryClient.self] = newValue }
   }
@@ -11,15 +11,15 @@ extension DependencyValues {
 
 extension PhotoLibraryClient: TestDependencyKey {
   public static let previewValue = Self.noop
-  
+
   public static let testValue = Self(
     fetchAssets: XCTUnimplemented("\(Self.self).fetchAssets"),
     requestImage: XCTUnimplemented("\(Self.self).requestImage")
   )
 }
 
-extension PhotoLibraryClient {
-  public static let noop = Self(
+public extension PhotoLibraryClient {
+  static let noop = Self(
     fetchAssets: { [] },
     requestImage: { _, _ in try await Task.never() }
   )

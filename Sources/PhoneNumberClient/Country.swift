@@ -6,7 +6,7 @@ public struct Country: Equatable, Hashable {
   public let flag: String
   public let name: String
   public let prefix: String
-  
+
   public init?(for countryCode: String, with phoneNumberKit: PhoneNumberKit) {
     let flagBase = UnicodeScalar("🇦").value - UnicodeScalar("A").value
     guard
@@ -15,8 +15,8 @@ public struct Country: Equatable, Hashable {
     else {
       return nil
     }
-    
-    self.code = countryCode
+
+    code = countryCode
     self.name = name
     self.prefix = "+" + prefix
     var _flag = ""
@@ -25,7 +25,7 @@ public struct Country: Equatable, Hashable {
         _flag.append(String(describing: scaler))
       }
     }
-    self.flag = _flag
+    flag = _flag
     if flag.count != 1 { // Failed to initialize a flag ... use an empty string
       return nil
     }

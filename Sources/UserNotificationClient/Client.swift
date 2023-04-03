@@ -8,14 +8,14 @@ public struct UserNotificationClient {
   public var removeDeliveredNotificationsWithIdentifiers: @Sendable ([String]) async -> Void
   public var removePendingNotificationRequestsWithIdentifiers: @Sendable ([String]) async -> Void
   public var requestAuthorization: @Sendable (UNAuthorizationOptions) async throws -> Bool
-  
+
   public enum DelegateEvent: Equatable {
     case didReceiveResponse(Notification.Response, completionHandler: @Sendable () -> Void)
     case openSettingsForNotification(Notification?)
     case willPresentNotification(
       Notification, completionHandler: @Sendable (UNNotificationPresentationOptions) -> Void
     )
-    
+
     public static func == (lhs: Self, rhs: Self) -> Bool {
       switch (lhs, rhs) {
       case let (.didReceiveResponse(lhs, _), .didReceiveResponse(rhs, _)):
@@ -29,11 +29,11 @@ public struct UserNotificationClient {
       }
     }
   }
-  
+
   public struct Notification: Equatable {
     public var date: Date
     public var request: UNNotificationRequest
-    
+
     public init(
       date: Date,
       request: UNNotificationRequest
@@ -41,18 +41,18 @@ public struct UserNotificationClient {
       self.date = date
       self.request = request
     }
-    
+
     public struct Response: Equatable {
       public var notification: Notification
-      
+
       public init(notification: Notification) {
         self.notification = notification
       }
     }
-    
+
     public struct Settings: Equatable {
       public var authorizationStatus: UNAuthorizationStatus
-      
+
       public init(authorizationStatus: UNAuthorizationStatus) {
         self.authorizationStatus = authorizationStatus
       }

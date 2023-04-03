@@ -1,6 +1,6 @@
-import SwiftUI
-import DesignSystem
 import ComposableArchitecture
+import DesignSystem
+import SwiftUI
 
 public struct LaunchView: View {
   let store: StoreOf<OnboardReducer>
@@ -8,9 +8,9 @@ public struct LaunchView: View {
 
   public init(store: StoreOf<OnboardReducer>) {
     self.store = store
-    self.viewStore = ViewStore(self.store)
+    viewStore = ViewStore(self.store)
   }
-  
+
   @State var isSheetPresented = false
   @State var selection: PresentationDetent = .large
 

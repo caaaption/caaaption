@@ -1,9 +1,9 @@
+import ColorHex
+import ComposableArchitecture
+import PhotoLibraryClient
 import Photos
 import SwiftUI
-import ColorHex
 import SwiftUIHelpers
-import PhotoLibraryClient
-import ComposableArchitecture
 
 public struct UploadReducer: ReducerProtocol {
   public init() {}
@@ -12,17 +12,17 @@ public struct UploadReducer: ReducerProtocol {
     public var rows: IdentifiedArrayOf<AssetPhotoReducer.State> = []
     public init() {}
   }
-  
+
   public enum Action: BindableAction, Equatable {
     case binding(BindingAction<State>)
     case task
     case changedCaption(String)
-    
+
     case row(id: AssetPhotoReducer.State.ID, action: AssetPhotoReducer.Action)
   }
-  
+
   @Dependency(\.photoLibraryClient) var photoLibraryClient
-  
+
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()
     Reduce { state, action in
@@ -36,11 +36,11 @@ public struct UploadReducer: ReducerProtocol {
           uniqueElements: assets.map { AssetPhotoReducer.State(asset: $0) }
         )
         return EffectTask.none
-        
+
       case let .changedCaption(caption):
         state.caption = caption
         return EffectTask.none
-        
+
       case .row:
         return EffectTask.none
       }
@@ -53,17 +53,17 @@ public struct UploadReducer: ReducerProtocol {
 
 public struct UploadView: View {
   let store: StoreOf<UploadReducer>
-  
+
   public init(store: StoreOf<UploadReducer>) {
     self.store = store
   }
-  
+
   public var body: some View {
     WithViewStore(store) { viewStore in
       ScrollView {
         VStack {
           Spacer().frame(height: 42)
-          
+
           ScrollView(.horizontal) {
             LazyHStack(spacing: 56) {
               ForEachStore(store.scope(state: \.rows, action: UploadReducer.Action.row(id:action:))) { rowStore in
@@ -72,9 +72,9 @@ public struct UploadView: View {
             }
           }
           .frame(height: 256)
-          
+
           Spacer().frame(height: 32)
-          
+
           TextField(
             "What did you buy?",
             text: viewStore.binding(\.$caption)

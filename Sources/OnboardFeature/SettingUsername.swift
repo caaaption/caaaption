@@ -1,14 +1,14 @@
-import SwiftUI
-import DesignSystem
 import ComposableArchitecture
+import DesignSystem
+import SwiftUI
 
 public struct SettingUsernameView: View {
   let store: StoreOf<OnboardReducer>
-  
+
   public init(store: StoreOf<OnboardReducer>) {
     self.store = store
   }
-  
+
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(alignment: .leading, spacing: 20) {
@@ -20,7 +20,7 @@ public struct SettingUsernameView: View {
           .bold()
           .font(.headline)
           .foregroundColor(.secondary)
-        
+
         TextField(
           text: viewStore.binding(\.$username),
           label: { Text("username").bold() }

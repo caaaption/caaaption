@@ -1,9 +1,9 @@
-import Foundation
 import Dependencies
+import Foundation
 import XCTestDynamicOverlay
 
-extension DependencyValues {
-  public var firebaseClient: FirebaseClient {
+public extension DependencyValues {
+  var firebaseClient: FirebaseClient {
     get { self[FirebaseClient.self] }
     set { self[FirebaseClient.self] = newValue }
   }
@@ -11,14 +11,14 @@ extension DependencyValues {
 
 extension FirebaseClient: TestDependencyKey {
   public static let previewValue = Self.noop
-  
+
   public static let testValue = Self(
     fetchGlobalsConfig: XCTUnimplemented("\(Self.self).fetchGlobasConfig")
   )
 }
 
-extension FirebaseClient {
-  public static let noop = Self(
+public extension FirebaseClient {
+  static let noop = Self(
     fetchGlobalsConfig: { try await Task.never() }
   )
 }

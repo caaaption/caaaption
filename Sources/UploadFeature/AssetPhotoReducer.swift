@@ -1,28 +1,29 @@
+import ComposableArchitecture
+import PhotoLibraryClient
 import Photos
 import SwiftUI
-import PhotoLibraryClient
-import ComposableArchitecture
 
 public struct AssetPhotoReducer: ReducerProtocol {
   public struct State: Equatable, Identifiable {
     public var id: String {
       asset.localIdentifier
     }
+
     var asset: PHAsset
     var image: UIImage?
-    
+
     init(asset: PHAsset) {
       self.asset = asset
     }
   }
-  
+
   public enum Action: Equatable {
     case onAppear
     case imageResponse(TaskResult<UIImage>)
   }
-  
+
   @Dependency(\.photoLibraryClient) var photoLibraryClient
-  
+
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
     switch action {
     case .onAppear:
@@ -44,18 +45,18 @@ public struct AssetPhotoReducer: ReducerProtocol {
 
 struct AssetPhotoView: View {
   let store: StoreOf<AssetPhotoReducer>
-  
+
   struct ViewState: Equatable {
     let image: UIImage?
     init(state: AssetPhotoReducer.State) {
-      self.image = state.image
+      image = state.image
     }
   }
-  
+
   init(store: StoreOf<AssetPhotoReducer>) {
     self.store = store
   }
-  
+
   var body: some View {
     WithViewStore(self.store.scope(state: ViewState.init)) { viewStore in
       if let image = viewStore.image {

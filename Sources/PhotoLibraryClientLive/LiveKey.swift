@@ -1,11 +1,11 @@
-import UIKit
-import Photos
 import Dependencies
 import PhotoLibraryClient
+import Photos
+import UIKit
 
 extension PhotoLibraryClient: DependencyKey {
   public static let liveValue = Self.live()
-  
+
   public static func live() -> Self {
     func fetchAssets() -> [PHAsset] {
       let options = PHFetchOptions()

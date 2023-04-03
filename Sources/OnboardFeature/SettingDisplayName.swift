@@ -1,6 +1,6 @@
-import SwiftUI
-import DesignSystem
 import ComposableArchitecture
+import DesignSystem
+import SwiftUI
 
 public struct SettingDisplayNameView: View {
   let store: StoreOf<OnboardReducer>
@@ -8,9 +8,9 @@ public struct SettingDisplayNameView: View {
 
   public init(store: StoreOf<OnboardReducer>) {
     self.store = store
-    self.viewStore = ViewStore(self.store)
+    viewStore = ViewStore(self.store)
   }
-  
+
   public var body: some View {
     VStack(alignment: .leading) {
       SizedBox(height: 20)
@@ -31,7 +31,7 @@ public struct SettingDisplayNameView: View {
       .font(.title)
       .bold()
       Spacer()
-      
+
       NavigationLink(
         destination: {
           SettingUsernameView(store: store)

@@ -1,6 +1,6 @@
-import XCTest
-import SwiftUI
 @testable import ColorHex
+import SwiftUI
+import XCTest
 
 class ColorHexTests: XCTestCase {
   func test_black() {
@@ -9,7 +9,7 @@ class ColorHexTests: XCTestCase {
       Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 1.0)
     )
   }
-  
+
   func test_white() {
     XCTAssertEqual(
       Color(0xFFFFFF),

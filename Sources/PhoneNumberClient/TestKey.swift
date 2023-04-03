@@ -1,12 +1,12 @@
-import Foundation
 import Dependencies
+import Foundation
 import PhoneNumberKit
 import XCTestDynamicOverlay
 
-extension DependencyValues {
-  public var phoneNumberClient: PhoneNumberClient {
+public extension DependencyValues {
+  var phoneNumberClient: PhoneNumberClient {
     get { self[PhoneNumberClient.self] }
-    set { self[PhoneNumberClient.self] = newValue}
+    set { self[PhoneNumberClient.self] = newValue }
   }
 }
 

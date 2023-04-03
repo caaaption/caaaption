@@ -6,14 +6,15 @@ public struct AvatarView: View {
     case medium = 36
     case large = 56
   }
+
   let size: Size
   let avatarUrlString: String
-  
+
   public init(size: Size, avatarUrlString: String) {
     self.size = size
     self.avatarUrlString = avatarUrlString
   }
-  
+
   public var body: some View {
     ProgressAsyncImage(
       imageUrlString: avatarUrlString,

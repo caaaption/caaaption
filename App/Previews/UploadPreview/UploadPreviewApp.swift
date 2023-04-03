@@ -1,7 +1,7 @@
+import ComposableArchitecture
+import PhotoLibraryClientLive
 import SwiftUI
 import UploadFeature
-import PhotoLibraryClientLive
-import ComposableArchitecture
 
 @main
 struct UploadPreviewApp: App {

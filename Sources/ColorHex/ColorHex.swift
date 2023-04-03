@@ -1,8 +1,8 @@
 import SwiftUI
 
 @available(macOS 10.15, *)
-extension Color {
-  public init(_ hex: UInt, opacity: Double = 1.0) {
+public extension Color {
+  init(_ hex: UInt, opacity: Double = 1.0) {
     self.init(
       .sRGB,
       red: Double((hex >> 16) & 0xFF) / 255,

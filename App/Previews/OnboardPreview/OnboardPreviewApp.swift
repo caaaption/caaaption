@@ -1,6 +1,6 @@
-import SwiftUI
-import OnboardFeature
 import ComposableArchitecture
+import OnboardFeature
+import SwiftUI
 
 @main
 struct OnboardPreviewApp: App {

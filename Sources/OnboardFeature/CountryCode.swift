@@ -1,16 +1,16 @@
+import ComposableArchitecture
 import SwiftUI
 import SwiftUIHelpers
-import ComposableArchitecture
 
 public struct CountryCodeView: View {
   let store: StoreOf<CountryCodeReducer>
   @ObservedObject var viewStore: ViewStoreOf<CountryCodeReducer>
-  
+
   public init(store: StoreOf<CountryCodeReducer>) {
     self.store = store
-    self.viewStore = ViewStore(self.store)
+    viewStore = ViewStore(self.store)
   }
-  
+
   public var body: some View {
     List {
       ForEach(viewStore.sections.keys.sorted(), id: \.self) { key in

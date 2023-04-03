@@ -1,5 +1,5 @@
-import FirebaseClient
 import Dependencies
+import FirebaseClient
 
 extension FirebaseClient: DependencyKey {
   public static let liveValue = Self(

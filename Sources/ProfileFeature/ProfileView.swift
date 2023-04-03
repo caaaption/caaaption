@@ -1,14 +1,14 @@
+import ComposableArchitecture
 import SwiftUI
 import SwiftUIHelpers
-import ComposableArchitecture
 
 public struct ProfileView: View {
   let store: StoreOf<ProfileReducer>
-  
+
   public init(store: StoreOf<ProfileReducer>) {
     self.store = store
   }
-  
+
   public var body: some View {
     ScrollView {
       Spacer().frame(height: 50)
@@ -17,9 +17,9 @@ public struct ProfileView: View {
           Text("tomokisun")
             .font(.largeTitle)
             .bold()
-          
+
           Spacer().frame(height: 4)
-          
+
           Text("@tomokisun")
             .font(.caption)
             .bold()
@@ -27,9 +27,9 @@ public struct ProfileView: View {
             .padding(.horizontal, 12)
             .background(Color(uiColor: .systemGray6))
             .cornerRadius(6)
-          
+
           Spacer().frame(height: 8)
-          
+
           Text("Active 19m ago")
             .font(.caption2)
             .fontWeight(.medium)

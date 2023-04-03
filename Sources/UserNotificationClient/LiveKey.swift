@@ -28,27 +28,27 @@ extension UserNotificationClient: DependencyKey {
   )
 }
 
-extension UserNotificationClient.Notification {
-  public init(rawValue: UNNotification) {
-    self.date = rawValue.date
-    self.request = rawValue.request
+public extension UserNotificationClient.Notification {
+  init(rawValue: UNNotification) {
+    date = rawValue.date
+    request = rawValue.request
   }
 }
 
-extension UserNotificationClient.Notification.Response {
-  public init(rawValue: UNNotificationResponse) {
-    self.notification = .init(rawValue: rawValue.notification)
+public extension UserNotificationClient.Notification.Response {
+  init(rawValue: UNNotificationResponse) {
+    notification = .init(rawValue: rawValue.notification)
   }
 }
 
-extension UserNotificationClient.Notification.Settings {
-  public init(rawValue: UNNotificationSettings) {
-    self.authorizationStatus = rawValue.authorizationStatus
+public extension UserNotificationClient.Notification.Settings {
+  init(rawValue: UNNotificationSettings) {
+    authorizationStatus = rawValue.authorizationStatus
   }
 }
 
-extension UserNotificationClient {
-  fileprivate class Delegate: NSObject, UNUserNotificationCenterDelegate {
+private extension UserNotificationClient {
+  class Delegate: NSObject, UNUserNotificationCenterDelegate {
     let continuation: AsyncStream<UserNotificationClient.DelegateEvent>.Continuation
 
     init(continuation: AsyncStream<UserNotificationClient.DelegateEvent>.Continuation) {
@@ -60,7 +60,7 @@ extension UserNotificationClient {
       didReceive response: UNNotificationResponse,
       withCompletionHandler completionHandler: @escaping () -> Void
     ) {
-      self.continuation.yield(
+      continuation.yield(
         .didReceiveResponse(.init(rawValue: response)) { completionHandler() }
       )
     }
@@ -69,7 +69,7 @@ extension UserNotificationClient {
       _ center: UNUserNotificationCenter,
       openSettingsFor notification: UNNotification?
     ) {
-      self.continuation.yield(
+      continuation.yield(
         .openSettingsForNotification(notification.map(Notification.init(rawValue:)))
       )
     }
@@ -78,9 +78,9 @@ extension UserNotificationClient {
       _ center: UNUserNotificationCenter,
       willPresent notification: UNNotification,
       withCompletionHandler completionHandler:
-        @escaping (UNNotificationPresentationOptions) -> Void
+      @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-      self.continuation.yield(
+      continuation.yield(
         .willPresentNotification(.init(rawValue: notification)) { completionHandler($0) }
       )
     }

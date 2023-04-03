@@ -4,7 +4,7 @@ public struct TabBarView: View {
   let actionFeed: () -> Void
   let actionUpload: () -> Void
   let actionMypage: () -> Void
-  
+
   public init(
     actionFeed: @escaping () -> Void,
     actionUpload: @escaping () -> Void,
@@ -14,12 +14,12 @@ public struct TabBarView: View {
     self.actionUpload = actionUpload
     self.actionMypage = actionMypage
   }
-  
+
   public var body: some View {
     VStack {
       Color(uiColor: .separator)
         .frame(height: 0.3)
-      
+
       HStack(spacing: 12) {
         Button(action: actionFeed) {
           Color.green
@@ -27,14 +27,14 @@ public struct TabBarView: View {
             .cornerRadius(6)
             .frame(width: 56, height: 48)
         }
-        
+
         Button(action: actionUpload) {
           Color.green
             .cornerRadius(6)
             .frame(height: 48)
             .frame(maxWidth: .infinity)
         }
-        
+
         Button(action: actionMypage) {
           Color(uiColor: .systemGray6)
             .cornerRadius(6)

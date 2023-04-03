@@ -5,11 +5,11 @@ public struct StatusLabel: View {
     case available(LocalizedStringKey)
     case unavailable(LocalizedStringKey)
   }
-  
+
   let localizedKey: LocalizedStringKey
   let foregroundColor: Color
   let backgroundColor: Color
-  
+
   public init(
     status: Status
   ) {
@@ -24,7 +24,7 @@ public struct StatusLabel: View {
       backgroundColor = Color.red.opacity(0.2)
     }
   }
-  
+
   public var body: some View {
     Text(localizedKey)
       .font(.headline)

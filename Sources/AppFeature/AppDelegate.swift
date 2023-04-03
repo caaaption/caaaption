@@ -1,5 +1,5 @@
-import Foundation
 import ComposableArchitecture
+import Foundation
 
 public struct AppDelegateReducer: ReducerProtocol {
   public struct State: Equatable {}
@@ -7,9 +7,9 @@ public struct AppDelegateReducer: ReducerProtocol {
     case didFinishLaunching
     case didRegisterForRemoteNotifications(TaskResult<Data>)
   }
-  
+
   public init() {}
-  
+
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
     switch action {
     case .didFinishLaunching:

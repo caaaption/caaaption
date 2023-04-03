@@ -5,7 +5,7 @@ public struct ProgressAsyncImage: View {
   let width: CGFloat?
   let height: CGFloat?
   let radius: CGFloat
-  
+
   public init(
     imageUrlString: String,
     width: CGFloat? = nil,
@@ -17,7 +17,7 @@ public struct ProgressAsyncImage: View {
     self.height = height
     self.radius = radius
   }
-  
+
   public var body: some View {
     AsyncImage(
       url: URL(string: imageUrlString),
