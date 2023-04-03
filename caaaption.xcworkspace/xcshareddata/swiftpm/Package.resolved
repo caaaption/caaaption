@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser",
+      "state" : {
+        "revision" : "fee6933f37fde9a5e12a1e4aeaa93fe60116ff2a",
+        "version" : "1.2.2"
+      }
+    },
+    {
       "identity" : "swift-case-paths",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-case-paths",
@@ -106,6 +115,15 @@
       "state" : {
         "revision" : "47dd574b900ba5ba679f56ea00d4d282fc7305a6",
         "version" : "0.7.1"
+      }
+    },
+    {
+      "identity" : "xctemplateinstaller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/noppefoxwolf/XCTemplateInstaller",
+      "state" : {
+        "revision" : "065be4cb80507779848633d7ca0bae44b151ce94",
+        "version" : "1.0.6"
       }
     },
     {

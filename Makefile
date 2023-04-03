@@ -46,3 +46,7 @@ build-previews:
 format:
 	@swift build -c release --package-path ./BuildTools --product swiftformat
 	./BuildTools/.build/release/swiftformat ./
+
+install-template:
+	@swift build -c release --package-path ./BuildTools --product XCTemplateInstaller
+	./BuildTools/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/TCA.xctemplate
