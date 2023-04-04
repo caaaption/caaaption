@@ -1,0 +1,23 @@
+name: Daily
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 15 * * *'
+
+jobs:
+  version:
+    name: Auto update version
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: |
+        NEW_VERSION=$(date '+%y').$(date '+%m').$(date '+%d')
+        CURRENT_VERSION=$(defaults read $(pwd)/App/iOS/Info CFBundleShortVersionString)
+        sed -i '' "s/$CURRENT_VERSION/$NEW_VERSION/g" App/iOS/Info.plist
+    - continue-on-error: true
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          git commit -am "Auto update CFBundleShortVersionString"
+          git push
