@@ -24,18 +24,18 @@
 	<integer>1</integer>
 	<key>Nodes</key>
     <array>
-        <string>___FILEBASENAME___.swift</string>
+        <string>___FILEBASENAME___Reducer.swift</string>
     </array>
     <key>Definitions</key>
     <dict>
-        <key>___FILEBASENAME___/___FILEBASENAME___.swift</key>
+        <key>___FILEBASENAME___Reducer/___FILEBASENAME___Reducer.swift</key>
         <dict>
             <key>Group</key>
             <array>
-                <string>___FILEBASENAME___</string>
+                <string>___FILEBASENAME___Reducer</string>
             </array>
             <key>Path</key>
-            <key>___FILEBASENAME___.swift</key>
+            <key>___FILEBASENAME___Reducer.swift</key>
         </dict>
     </dict>
 	<key>Options</key>
@@ -64,6 +64,6 @@
 		</dict>
 	</array>
 	<key>Template Author</key>
-	<string>noppefoxwolf</string>
+	<string>caaaption</string>
 </dict>
 </plist>
