@@ -80,7 +80,8 @@ package.products.append(contentsOf: [
   .library(name: "FirebaseClientLive", targets: ["FirebaseClientLive"]),
   .library(name: "PhoneNumberClient", targets: ["PhoneNumberClient"]),
   .library(name: "PhotoLibraryClientLive", targets: ["PhotoLibraryClientLive"]),
-  .library(name: "UserNotificationClient", targets: ["UserNotificationClient"])
+  .library(name: "UserNotificationClient", targets: ["UserNotificationClient"]),
+  .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AVFoundationClient", dependencies: [
@@ -103,6 +104,9 @@ package.targets.append(contentsOf: [
     "PhotoLibraryClient"
   ]),
   .target(name: "UserNotificationClient"),
+  .target(name: "UIApplicationClient", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
 ])
 
 // Helpers
