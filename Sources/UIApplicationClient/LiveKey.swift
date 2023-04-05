@@ -1,5 +1,5 @@
-import UIKit
 import Dependencies
+import UIKit
 
 @available(iOSApplicationExtension, unavailable)
 extension UIApplicationClient: DependencyKey {

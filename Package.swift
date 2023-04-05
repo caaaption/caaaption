@@ -24,26 +24,26 @@ package.products.append(contentsOf: [
   .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
   .library(name: "FeedFeature", targets: ["FeedFeature"]),
   .library(name: "UploadFeature", targets: ["UploadFeature"]),
-  .library(name: "ProfileFeature", targets: ["ProfileFeature"])
+  .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
-    "MainTabFeature"
+    "MainTabFeature",
   ]),
   .target(name: "MainTabFeature", dependencies: [
     "FeedFeature",
     "UploadFeature",
-    "ProfileFeature"
+    "ProfileFeature",
   ]),
   .target(name: "ContentFeature", dependencies: [
     "SwiftUIHelpers",
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "OnboardFeature", dependencies: [
     "DesignSystem",
     "SwiftUIHelpers",
     "PhoneNumberClient",
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "FeedFeature", dependencies: [
     "ACarousel",
@@ -54,19 +54,19 @@ package.targets.append(contentsOf: [
     "SwiftUIHelpers",
     "PhotoLibraryClient",
     "AVFoundationClient",
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "ProfileFeature", dependencies: [
     "SwiftUIHelpers",
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
-  ])
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
 ])
 
 // UI
 
 package.products.append(contentsOf: [
   .library(name: "DesignSystem", targets: ["DesignSystem"]),
-  .library(name: "Styleguide", targets: ["Styleguide"])
+  .library(name: "Styleguide", targets: ["Styleguide"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "DesignSystem"),
@@ -85,23 +85,23 @@ package.products.append(contentsOf: [
 ])
 package.targets.append(contentsOf: [
   .target(name: "AVFoundationClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "FirebaseClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "FirebaseClientLive", dependencies: [
     "FirebaseClient",
   ]),
   .target(name: "PhoneNumberClient", dependencies: [
     "PhoneNumberKit",
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "PhotoLibraryClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "PhotoLibraryClientLive", dependencies: [
-    "PhotoLibraryClient"
+    "PhotoLibraryClient",
   ]),
   .target(name: "UserNotificationClient"),
   .target(name: "UIApplicationClient", dependencies: [
@@ -118,6 +118,6 @@ package.targets.append(contentsOf: [
   .target(name: "SwiftUIHelpers"),
   .target(name: "ColorHex"),
   .testTarget(name: "ColorHexTests", dependencies: [
-    "ColorHex"
-  ])
+    "ColorHex",
+  ]),
 ])

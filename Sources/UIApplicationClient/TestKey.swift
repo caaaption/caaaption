@@ -1,8 +1,8 @@
 import Dependencies
 import XCTestDynamicOverlay
 
-extension DependencyValues {
-  public var applicationClient: UIApplicationClient {
+public extension DependencyValues {
+  var applicationClient: UIApplicationClient {
     get { self[UIApplicationClient.self] }
     set { self[UIApplicationClient.self] = newValue }
   }
@@ -27,8 +27,8 @@ extension UIApplicationClient: TestDependencyKey {
   )
 }
 
-extension UIApplicationClient {
-  public static let noop = Self(
+public extension UIApplicationClient {
+  static let noop = Self(
     alternateIconName: { nil },
     alternateIconNameAsync: { nil },
     open: { _, _ in false },
