@@ -1,6 +1,7 @@
 # file options
 
---exclude Package.swift XCTemplates
+--exclude ./Package.swift
+--exclude ./XCTemplates
 
 # format options
 
