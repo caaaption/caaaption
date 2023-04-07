@@ -23,7 +23,6 @@ public struct FeedView: View {
   }
 }
 
-
 struct FeedViewPreviews: PreviewProvider {
   static var previews: some View {
     FeedView(

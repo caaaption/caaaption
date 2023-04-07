@@ -5,10 +5,15 @@ public struct ContentReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
+    @BindingState public var offset = CGPoint.zero
     public init() {}
   }
 
-  public enum Action: Equatable {}
+  public enum Action: BindableAction, Equatable {
+    case binding(BindingAction<State>)
+  }
 
-  public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {}
+  public var body: some ReducerProtocol<State, Action> {
+    BindingReducer()
+  }
 }

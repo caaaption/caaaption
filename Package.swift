@@ -37,6 +37,7 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "ContentFeature", dependencies: [
     "SwiftUIHelpers",
+    "OffsetObservingScrollView",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "OnboardFeature", dependencies: [
@@ -67,10 +68,12 @@ package.targets.append(contentsOf: [
 package.products.append(contentsOf: [
   .library(name: "DesignSystem", targets: ["DesignSystem"]),
   .library(name: "Styleguide", targets: ["Styleguide"]),
+  .library(name: "OffsetObservingScrollView", targets: ["OffsetObservingScrollView"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "DesignSystem"),
   .target(name: "Styleguide"),
+  .target(name: "OffsetObservingScrollView"),
 ])
 
 // Client

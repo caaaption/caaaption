@@ -1,3 +1,4 @@
+import OffsetObservingScrollView
 import ComposableArchitecture
 import SwiftUI
 import SwiftUIHelpers
@@ -12,8 +13,11 @@ public struct ContentView: View {
   }
 
   public var body: some View {
-    WithViewStore(store) { _ in
-      ScrollView(.vertical, showsIndicators: false) {
+    WithViewStore(store) { viewStore in
+      OffsetObservingScrollView(
+        showsIndicators: false,
+        offset: viewStore.binding(\.$offset)
+      ) {
         VStack(alignment: .leading) {
           Color.red
             .frame(height: 400)
