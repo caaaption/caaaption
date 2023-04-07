@@ -1,11 +1,11 @@
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
 struct VerificationCodeView: View {
   let store: StoreOf<OnboardReducer>
-  
+
   @Environment(\.dismiss) private var dismiss
-  
+
   var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       OnboardWrap(
@@ -28,14 +28,14 @@ struct VerificationCodeView: View {
                   .frame(width: 48, height: 48)
                   .cornerRadius(6)
               }
-              
+
               Text("you can ask for a new\ncode in 29 seconds :)")
                 .foregroundColor(.systemGray2)
                 .font(.caption)
                 .fontWeight(.medium)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity)
-              
+
               NavigationLink(
                 destination: {
                   DisplayNameView(store: store)

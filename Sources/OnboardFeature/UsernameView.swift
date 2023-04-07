@@ -1,13 +1,13 @@
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
 struct UsernameView: View {
   let store: StoreOf<OnboardReducer>
-  
+
   init(store: StoreOf<OnboardReducer>) {
     self.store = store
   }
-  
+
   var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       OnboardWrap(
@@ -24,7 +24,7 @@ struct UsernameView: View {
         footer: {
           HStack {
             Spacer()
-            
+
             NavigationLink(
               destination: {
                 ConnectToWalletView(store: store)

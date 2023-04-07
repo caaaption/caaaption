@@ -6,12 +6,12 @@ public struct OnboardReducer: ReducerProtocol {
 
   public struct State: Equatable {
     public var countryCode = CountryCodeReducer.State()
-    
+
     @BindingState public var phoneNumber = ""
     @BindingState public var verificationCode = ""
     @BindingState public var displayName = ""
     @BindingState public var username = ""
-    
+
     public init() {}
   }
 

@@ -1,14 +1,14 @@
+import ComposableArchitecture
 import SwiftUI
 import SwiftUIHelpers
-import ComposableArchitecture
 
 public struct DisplayNameView: View {
   let store: StoreOf<OnboardReducer>
-  
+
   public init(store: StoreOf<OnboardReducer>) {
     self.store = store
   }
-  
+
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       OnboardWrap(

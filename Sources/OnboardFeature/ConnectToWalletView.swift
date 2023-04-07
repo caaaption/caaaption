@@ -1,17 +1,15 @@
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
 struct ConnectToWalletView: View {
   let store: StoreOf<OnboardReducer>
-  
+
   var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       OnboardWrap(
         title: "can you connect me with crypto wallet?",
         description: "if you connect,  I can even post your purchases that you paid for with crypto currency",
-        content: {
-          
-        },
+        content: {},
         footer: {
           NavigationLink(
             destination: {
