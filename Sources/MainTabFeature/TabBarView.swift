@@ -45,6 +45,7 @@ public struct TabBarView: View {
       .padding(.top, 16)
       .padding(.bottom, 40)
     }
+    .background(.ultraThinMaterial)
   }
 }
 

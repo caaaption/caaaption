@@ -19,5 +19,17 @@ public struct FeedView: View {
     ) { _ in
       ContentView(store: store.scope(state: \.content, action: FeedReducer.Action.content))
     }
+    .edgesIgnoringSafeArea(.all)
+  }
+}
+
+struct FeedViewPreviews: PreviewProvider {
+  static var previews: some View {
+    FeedView(
+      store: .init(
+        initialState: FeedReducer.State(),
+        reducer: FeedReducer()
+      )
+    )
   }
 }

@@ -1,3 +1,4 @@
+import OffsetObservingScrollView
 import ComposableArchitecture
 import SwiftUI
 import SwiftUIHelpers
@@ -12,12 +13,16 @@ public struct ContentView: View {
   }
 
   public var body: some View {
-    WithViewStore(store) { _ in
-      ScrollView(.vertical) {
-        LazyVStack {
+    WithViewStore(store) { viewStore in
+      OffsetObservingScrollView(
+        showsIndicators: false,
+        offset: viewStore.binding(\.$offset)
+      ) {
+        VStack(alignment: .leading) {
           Color.red
             .frame(height: 400)
             .cornerRadius(22)
+            .padding(.top, 60)
 
           Spacer().frame(height: 32)
 
@@ -37,9 +42,24 @@ public struct ContentView: View {
 
           Spacer().frame(height: 12)
 
-          Text("First Yakiniku restaurant in the back of Center Street with Jinkun, thank you.🥰")
+          Text("I bought it because it's freemint at ZORA, but it's probably not very pretty.")
             .font(.title3)
             .bold()
+          
+          Spacer().frame(height: 12)
+          
+          Text("🌎 ZORA")
+            .frame(width: 96, height: 36)
+            .background(Color.systemGray6)
+            .cornerRadius(24)
+          
+          Spacer().frame(height: 32)
+          
+          AboutDigitalCollectiveView()
+          
+          Color.blue
+            .frame(height: 2000)
+            .frame(maxWidth: .infinity)
         }
       }
       .frame(width: 312)
