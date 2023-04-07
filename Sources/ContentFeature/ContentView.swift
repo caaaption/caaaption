@@ -14,7 +14,7 @@ public struct ContentView: View {
   public var body: some View {
     WithViewStore(store) { _ in
       ScrollView(.vertical, showsIndicators: false) {
-        LazyVStack(alignment: .leading) {
+        VStack(alignment: .leading) {
           Color.red
             .frame(height: 400)
             .cornerRadius(22)
