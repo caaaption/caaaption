@@ -4,7 +4,7 @@ public struct PositionObservingView<Content: View>: View {
   var coordinateSpace: CoordinateSpace
   @Binding var position: CGPoint
   @ViewBuilder var content: () -> Content
-  
+
   public var body: some View {
     content()
       .background(
@@ -24,8 +24,7 @@ public struct PositionObservingView<Content: View>: View {
 private extension PositionObservingView {
   struct PreferenceKey: SwiftUI.PreferenceKey {
     static var defaultValue: CGPoint { .zero }
-    
-    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {
-    }
+
+    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {}
   }
 }

@@ -1,5 +1,5 @@
-import OffsetObservingScrollView
 import ComposableArchitecture
+import OffsetObservingScrollView
 import SwiftUI
 import SwiftUIHelpers
 
@@ -45,18 +45,18 @@ public struct ContentView: View {
           Text("I bought it because it's freemint at ZORA, but it's probably not very pretty.")
             .font(.title3)
             .bold()
-          
+
           Spacer().frame(height: 12)
-          
+
           Text("🌎 ZORA")
             .frame(width: 96, height: 36)
             .background(Color.systemGray6)
             .cornerRadius(24)
-          
+
           Spacer().frame(height: 32)
-          
+
           AboutDigitalCollectiveView()
-          
+
           Color.blue
             .frame(height: 2000)
             .frame(maxWidth: .infinity)
