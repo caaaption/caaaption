@@ -6,7 +6,7 @@ import SwiftUI
 struct OnboardPreviewApp: App {
   var body: some Scene {
     WindowGroup {
-      LaunchView(
+      OnboardView(
         store: .init(
           initialState: OnboardReducer.State(),
           reducer: OnboardReducer()
