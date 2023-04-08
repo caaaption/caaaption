@@ -49,4 +49,5 @@ format:
 
 install-template:
 	@swift build -c release --package-path ./BuildTools --product XCTemplateInstaller
-	./BuildTools/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/TCA.xctemplate
+	./BuildTools/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/Reducer.xctemplate
+	./BuildTools/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/View.xctemplate
