@@ -1,6 +1,6 @@
+import CollectionFeature
 import ComposableArchitecture
 import SwiftUI
-import CollectionFeature
 import SwiftUIHelpers
 
 public struct ProfileView: View {
@@ -11,13 +11,13 @@ public struct ProfileView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       ScrollView {
         VStack {
           HeaderView(store: store.scope(state: \.header, action: ProfileReducer.Action.header))
-          
+
           Spacer().frame(height: 120)
-          
+
           NavigationLink(
             destination: {
               CollectionView(

@@ -7,16 +7,16 @@ public struct CollectionView: View {
     GridItem(.flexible(), spacing: 20),
     GridItem(.flexible(), spacing: 20),
   ]
-  
+
   public init(store: StoreOf<CollectionReducer>) {
     self.store = store
   }
-  
+
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       ScrollView {
         LazyVGrid(columns: columns, spacing: 20) {
-          ForEach(0..<100) { id in
+          ForEach(0 ..< 100) { _ in
             Rectangle()
               .foregroundColor(.red)
               .background(Color.red)
