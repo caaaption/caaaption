@@ -6,13 +6,13 @@ import UploadFeature
 
 public struct MainTabView: View {
   let store: StoreOf<MainTabReducer>
-
+  
   public init(
     store: StoreOf<MainTabReducer>
   ) {
     self.store = store
   }
-
+  
   public var body: some View {
     WithViewStore(store) { viewStore in
       ZStack(alignment: .bottom) {
@@ -34,23 +34,31 @@ public struct MainTabView: View {
           }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-
+        
         TabBarView(
           actionFeed: { viewStore.send(.actionFeed) },
-          actionUpload: { viewStore.send(.setSheet(isPresented: true)) },
+          actionUpload: { viewStore.send(.binding(.set(\.$contentTypeModalPresented, true))) },
           actionMypage: { viewStore.send(.actionMypage) }
         )
       }
       .edgesIgnoringSafeArea(.bottom)
-      .sheet(
-        isPresented: viewStore.binding(
-          get: \.isSheetPresented,
-          send: MainTabReducer.Action.setSheet(isPresented:)
-        ),
-        content: {
-          UploadView(store: store.scope(state: \.upload, action: MainTabReducer.Action.upload))
-        }
-      )
+      .sheet(isPresented: viewStore.binding(\.$uploadPresented)) {
+        UploadView(
+          store: store.scope(
+            state: \.upload,
+            action: MainTabReducer.Action.upload
+          )
+        )
+      }
+      .sheet(isPresented: viewStore.binding(\.$contentTypeModalPresented)) {
+        ContentTypeModalView(
+          store: store.scope(
+            state: \.contentTypeModal,
+            action: MainTabReducer.Action.contentTypeModal
+          )
+        )
+        .presentationDetents([.medium])
+      }
     }
   }
 }
