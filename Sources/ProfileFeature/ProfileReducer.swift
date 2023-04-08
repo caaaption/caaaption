@@ -4,10 +4,17 @@ public struct ProfileReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
+    public var header = HeaderReducer.State()
     public init() {}
   }
 
-  public enum Action: Equatable {}
+  public enum Action: Equatable {
+    case header(HeaderReducer.Action)
+  }
 
-  public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {}
+  public var body: some ReducerProtocol<State, Action> {
+    Scope(state: \.header, action: /Action.header) {
+      HeaderReducer()
+    }
+  }
 }

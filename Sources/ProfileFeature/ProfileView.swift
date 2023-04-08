@@ -10,38 +10,14 @@ public struct ProfileView: View {
   }
 
   public var body: some View {
-    ScrollView {
-      Spacer().frame(height: 50)
-      HStack {
-        VStack(alignment: .leading) {
-          Text("tomokisun")
-            .font(.largeTitle)
-            .bold()
-
-          Spacer().frame(height: 4)
-
-          Text("@tomokisun")
-            .font(.caption)
-            .bold()
-            .padding(.vertical, 8)
-            .padding(.horizontal, 12)
-            .background(Color(uiColor: .systemGray6))
-            .cornerRadius(6)
-
-          Spacer().frame(height: 8)
-
-          Text("Active 19m ago")
-            .font(.caption2)
-            .fontWeight(.medium)
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      ScrollView {
+        VStack {
+          HeaderView(store: store.scope(state: \.header, action: ProfileReducer.Action.header))
         }
-        .frame(height: 96)
-        Spacer()
-        Color.red
-          .frame(width: 96, height: 96)
-          .cornerRadius(22)
       }
+      .edgesIgnoringSafeArea(.all)
     }
-    .padding(.horizontal, 20)
   }
 }
 
