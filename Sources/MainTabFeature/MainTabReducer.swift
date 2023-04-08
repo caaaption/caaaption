@@ -10,12 +10,12 @@ public struct MainTabReducer: ReducerProtocol {
   public struct State: Equatable {
     public var feed = FeedReducer.State()
     public var profile = ProfileReducer.State()
-    
+
     public var upload = UploadReducer.State()
     public var contentTypeModal = ContentTypeModalReducer.State()
 
     public var tab = Tab.feed
-    
+
     @BindingState public var contentTypeModalPresented = false
     @BindingState public var uploadPresented = false
 
@@ -30,13 +30,13 @@ public struct MainTabReducer: ReducerProtocol {
   public enum Action: BindableAction, Equatable {
     case feed(FeedReducer.Action)
     case profile(ProfileReducer.Action)
-    
+
     case upload(UploadReducer.Action)
     case contentTypeModal(ContentTypeModalReducer.Action)
-    
+
     case actionFeed
     case actionMypage
-    
+
     case binding(BindingAction<State>)
   }
 
@@ -63,7 +63,7 @@ public struct MainTabReducer: ReducerProtocol {
         }
       case .feed, .profile, .upload, .contentTypeModal, .binding:
         return EffectTask.none
-        
+
       case .actionFeed:
         state.tab = .feed
         return EffectTask.none

@@ -6,13 +6,13 @@ import UploadFeature
 
 public struct MainTabView: View {
   let store: StoreOf<MainTabReducer>
-  
+
   public init(
     store: StoreOf<MainTabReducer>
   ) {
     self.store = store
   }
-  
+
   public var body: some View {
     WithViewStore(store) { viewStore in
       ZStack(alignment: .bottom) {
@@ -34,7 +34,7 @@ public struct MainTabView: View {
           }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        
+
         TabBarView(
           actionFeed: { viewStore.send(.actionFeed) },
           actionUpload: { viewStore.send(.binding(.set(\.$contentTypeModalPresented, true))) },

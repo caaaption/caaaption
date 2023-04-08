@@ -18,10 +18,10 @@ public struct ContentTypeModalReducer: ReducerProtocol {
       switch action {
       case .cameraTapped:
         return EffectTask.none
-        
+
       case .photoLibraryTapped:
         return EffectTask.none
-        
+
       case .digitalCollectiveTapped:
         return EffectTask.none
       }

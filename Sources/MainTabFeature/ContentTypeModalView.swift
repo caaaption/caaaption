@@ -1,5 +1,5 @@
-import SwiftUI
 import ComposableArchitecture
+import SwiftUI
 
 public struct ContentTypeModalView: View {
   let store: StoreOf<ContentTypeModalReducer>
@@ -16,17 +16,17 @@ public struct ContentTypeModalView: View {
           .frame(maxWidth: .infinity)
           .background(Color.systemGray6)
           .cornerRadius(6)
-        
+
         Button("🖼️ photo album", action: { viewStore.send(.photoLibraryTapped) })
           .frame(height: 48)
           .frame(maxWidth: .infinity)
           .background(Color.systemGray6)
           .cornerRadius(6)
-        
+
         Button(action: { viewStore.send(.digitalCollectiveTapped) }) {
           VStack(alignment: .center, spacing: 8) {
             Text("⛓️ digital collectibles")
-            
+
             Text("sometimes referred to as non-fungible tokens (NFTs), are unique digital items that use blockchain technology to provide a record of collectible ownership.")
               .foregroundColor(.systemGray2)
           }
