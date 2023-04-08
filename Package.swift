@@ -25,6 +25,7 @@ package.products.append(contentsOf: [
   .library(name: "FeedFeature", targets: ["FeedFeature"]),
   .library(name: "UploadFeature", targets: ["UploadFeature"]),
   .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
+  .library(name: "CollectionFeature", targets: ["CollectionFeature"])
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -59,8 +60,11 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "ProfileFeature", dependencies: [
     "SwiftUIHelpers",
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    "CollectionFeature"
   ]),
+  .target(name: "CollectionFeature", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ])
 ])
 
 // UI

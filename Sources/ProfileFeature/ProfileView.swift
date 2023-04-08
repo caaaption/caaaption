@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import SwiftUI
+import CollectionFeature
 import SwiftUIHelpers
 
 public struct ProfileView: View {
@@ -14,6 +15,22 @@ public struct ProfileView: View {
       ScrollView {
         VStack {
           HeaderView(store: store.scope(state: \.header, action: ProfileReducer.Action.header))
+          
+          Spacer().frame(height: 120)
+          
+          NavigationLink(
+            destination: {
+              CollectionView(
+                store: store.scope(
+                  state: \.collection,
+                  action: ProfileReducer.Action.collection
+                )
+              )
+            },
+            label: {
+              Text("Collections")
+            }
+          )
         }
       }
       .edgesIgnoringSafeArea(.all)
