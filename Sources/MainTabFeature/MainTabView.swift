@@ -25,12 +25,14 @@ public struct MainTabView: View {
               )
             )
           } else {
-            ProfileView(
-              store: store.scope(
-                state: \.profile,
-                action: MainTabReducer.Action.profile
+            NavigationStack {
+              ProfileView(
+                store: store.scope(
+                  state: \.profile,
+                  action: MainTabReducer.Action.profile
+                )
               )
-            )
+            }
           }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

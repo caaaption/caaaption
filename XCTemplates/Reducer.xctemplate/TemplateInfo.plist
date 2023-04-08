@@ -24,18 +24,18 @@
 	<integer>1</integer>
 	<key>Nodes</key>
     <array>
-        <string>___FILEBASENAME___Reducer.swift</string>
+        <string>___FILEBASENAME___.swift</string>
     </array>
     <key>Definitions</key>
     <dict>
-        <key>___FILEBASENAME___Reducer/___FILEBASENAME___Reducer.swift</key>
+        <key>___FILEBASENAME___/___FILEBASENAME___.swift</key>
         <dict>
             <key>Group</key>
             <array>
-                <string>___FILEBASENAME___Reducer</string>
+                <string>___FILEBASENAME___</string>
             </array>
             <key>Path</key>
-            <key>___FILEBASENAME___Reducer.swift</key>
+            <key>___FILEBASENAME___.swift</key>
         </dict>
     </dict>
 	<key>Options</key>
