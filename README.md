@@ -49,4 +49,5 @@ This repo contains both the client code for running the entire [caaaption](https
 
 # License
 
-TBD
+For more information see our full [license](./LICENSE).
+
