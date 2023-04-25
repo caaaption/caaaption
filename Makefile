@@ -10,38 +10,36 @@ test: test-color-hex
 
 build: build-caaaption build-previews
 
-PLATFORM_IOS = iOS Simulator,name=iPhone 13 Pro,OS=16.2
-
 test-color-hex:
 	@xcodebuild test \
 		-workspace caaaption.xcworkspace \
 		-scheme "ColorHexTests" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
 
 build-caaaption:
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "App (Staging project)" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "App (Production project)" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
 
 build-previews:
 	@xcodebuild -list -workspace ./caaaption.xcworkspace
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "DesignSystemPreview" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "OnboardPreview" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "UploadPreview" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
 
 format:
 	@swift build -c release --package-path ./BuildTools --product swiftformat
