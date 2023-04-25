@@ -17,31 +17,37 @@ test-color-hex:
 		-workspace caaaption.xcworkspace \
 		-scheme "ColorHexTests" \
 		-destination platform="$(PLATFORM_IOS)"
+		-clonedSourcePackagesDirPath SourcePackages
 
 build-caaaption:
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "App (Staging project)" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
+		-clonedSourcePackagesDirPath SourcePackages
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "App (Production project)" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
+		-clonedSourcePackagesDirPath SourcePackages
 
 build-previews:
 	@xcodebuild -list -workspace ./caaaption.xcworkspace
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "DesignSystemPreview" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
+		-clonedSourcePackagesDirPath SourcePackages
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "OnboardPreview" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
+		-clonedSourcePackagesDirPath SourcePackages
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "UploadPreview" \
-		-destination platform="$(PLATFORM_IOS)"
+		-sdk iphonesimulator
+		-clonedSourcePackagesDirPath SourcePackages
 
 format:
 	@swift build -c release --package-path ./BuildTools --product swiftformat
