@@ -1,11 +1,11 @@
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 public struct ArtWidget: Widget {
   let kind: String = "ArtWidget"
-  
+
   public init() {}
-  
+
   public var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: Provider()) { entry in
       WidgetView(entry: entry)
@@ -14,4 +14,3 @@ public struct ArtWidget: Widget {
     .description("Displays the NFT selected in the application.")
   }
 }
-
