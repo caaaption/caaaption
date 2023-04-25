@@ -128,3 +128,12 @@ package.targets.append(contentsOf: [
     "ColorHex",
   ]),
 ])
+
+// Widgets
+
+package.products.append(contentsOf: [
+  .library(name: "ArtWidgetFeature", targets: ["ArtWidgetFeature"]),
+])
+package.targets.append(contentsOf: [
+  .target(name: "ArtWidgetFeature"),
+])
