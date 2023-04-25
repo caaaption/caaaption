@@ -14,7 +14,6 @@
 		B7430F9729F8893F00BD2D0D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7430F9629F8893F00BD2D0D /* WidgetKit.framework */; };
 		B7430F9929F8893F00BD2D0D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7430F9829F8893F00BD2D0D /* SwiftUI.framework */; };
 		B7430F9C29F8893F00BD2D0D /* ArtWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430F9B29F8893F00BD2D0D /* ArtWidgetBundle.swift */; };
-		B7430F9E29F8893F00BD2D0D /* ArtWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430F9D29F8893F00BD2D0D /* ArtWidget.swift */; };
 		B7430FA029F8894000BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7430F9F29F8894000BD2D0D /* Assets.xcassets */; };
 		B7430FA429F8894000BD2D0D /* ArtWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7430F9529F8893F00BD2D0D /* ArtWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B7430FAA29F88CC700BD2D0D /* ArtWidgetFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7430FA929F88CC700BD2D0D /* ArtWidgetFeature */; };
@@ -67,7 +66,6 @@
 		B7430F9629F8893F00BD2D0D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B7430F9829F8893F00BD2D0D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B7430F9B29F8893F00BD2D0D /* ArtWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtWidgetBundle.swift; sourceTree = "<group>"; };
-		B7430F9D29F8893F00BD2D0D /* ArtWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtWidget.swift; sourceTree = "<group>"; };
 		B7430F9F29F8894000BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7430FA129F8894000BD2D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7431A0529D8E8BA00580C1A /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				B7430F9B29F8893F00BD2D0D /* ArtWidgetBundle.swift */,
-				B7430F9D29F8893F00BD2D0D /* ArtWidget.swift */,
 				B7430F9F29F8894000BD2D0D /* Assets.xcassets */,
 				B7430FA129F8894000BD2D0D /* Info.plist */,
 			);
@@ -485,7 +482,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7430F9C29F8893F00BD2D0D /* ArtWidgetBundle.swift in Sources */,
-				B7430F9E29F8893F00BD2D0D /* ArtWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

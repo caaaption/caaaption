@@ -1,7 +1,7 @@
 import WidgetKit
 import SwiftUI
 
-public struct ArtWidgetEntry: TimelineEntry {
+public struct Entry: TimelineEntry {
   public let date: Date
   public let url: String
   
@@ -19,19 +19,5 @@ public struct ArtWidgetEntry: TimelineEntry {
       return UIImage()
     }
     return image
-  }
-}
-
-public struct ArtWidgetView: View {
-  public var entry: ArtWidgetEntry
-  
-  public init(entry: ArtWidgetEntry) {
-    self.entry = entry
-  }
-  
-  public var body: some View {
-    Image(uiImage: entry.image())
-      .resizable()
-                  .aspectRatio(contentMode: .fill)
   }
 }
