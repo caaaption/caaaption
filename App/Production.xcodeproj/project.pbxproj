@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7430FB329F88E9300BD2D0D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7430FB229F88E9300BD2D0D /* WidgetKit.framework */; };
+		B7430FB529F88E9300BD2D0D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7430FB429F88E9300BD2D0D /* SwiftUI.framework */; };
+		B7430FC029F88E9400BD2D0D /* ArtWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7430FB129F88E9300BD2D0D /* ArtWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B7430FC629F88F1E00BD2D0D /* ArtWidgetFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7430FC529F88F1E00BD2D0D /* ArtWidgetFeature */; };
+		B7430FD329F8942C00BD2D0D /* ArtWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430FD029F8942C00BD2D0D /* ArtWidgetBundle.swift */; };
+		B7430FD429F8942C00BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7430FD129F8942C00BD2D0D /* Assets.xcassets */; };
 		B7431A3529D8E8F700580C1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7431A3029D8E8F700580C1A /* Assets.xcassets */; };
 		B7431A3629D8E8F700580C1A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7431A3129D8E8F700580C1A /* App.swift */; };
 		B7431A3729D8E8F700580C1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7431A3329D8E8F700580C1A /* Preview Assets.xcassets */; };
@@ -14,7 +20,37 @@
 		B7431A3C29D8E9D000580C1A /* PhotoLibraryClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B7431A3B29D8E9D000580C1A /* PhotoLibraryClientLive */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B7430FBE29F88E9400BD2D0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B712F5CD29B595FD00B433F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7430FB029F88E9300BD2D0D;
+			remoteInfo = ArtWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B7430FC129F88E9400BD2D0D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B7430FC029F88E9400BD2D0D /* ArtWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B7430FB129F88E9300BD2D0D /* ArtWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ArtWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7430FB229F88E9300BD2D0D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B7430FB429F88E9300BD2D0D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B7430FD029F8942C00BD2D0D /* ArtWidgetBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtWidgetBundle.swift; sourceTree = "<group>"; };
+		B7430FD129F8942C00BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B7430FD229F8942C00BD2D0D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7431A2129D8E8ED00580C1A /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7431A3029D8E8F700580C1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7431A3129D8E8F700580C1A /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -23,6 +59,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B7430FAE29F88E9300BD2D0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7430FB529F88E9300BD2D0D /* SwiftUI.framework in Frameworks */,
+				B7430FC629F88F1E00BD2D0D /* ArtWidgetFeature in Frameworks */,
+				B7430FB329F88E9300BD2D0D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B7431A1E29D8E8ED00580C1A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				B7431A2F29D8E8F700580C1A /* iOS */,
+				B7430FCE29F8942C00BD2D0D /* Widgets */,
 				B712F5D629B595FD00B433F8 /* Products */,
 				B712F62429B5972400B433F8 /* Frameworks */,
 			);
@@ -48,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				B7431A2129D8E8ED00580C1A /* App.app */,
+				B7430FB129F88E9300BD2D0D /* ArtWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,8 +103,28 @@
 		B712F62429B5972400B433F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7430FB229F88E9300BD2D0D /* WidgetKit.framework */,
+				B7430FB429F88E9300BD2D0D /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7430FCE29F8942C00BD2D0D /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				B7430FCF29F8942C00BD2D0D /* ArtWidget */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		B7430FCF29F8942C00BD2D0D /* ArtWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B7430FD029F8942C00BD2D0D /* ArtWidgetBundle.swift */,
+				B7430FD129F8942C00BD2D0D /* Assets.xcassets */,
+				B7430FD229F8942C00BD2D0D /* Info.plist */,
+			);
+			path = ArtWidget;
 			sourceTree = "<group>";
 		};
 		B7431A2F29D8E8F700580C1A /* iOS */ = {
@@ -81,6 +149,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B7430FB029F88E9300BD2D0D /* ArtWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7430FC429F88E9400BD2D0D /* Build configuration list for PBXNativeTarget "ArtWidgetExtension" */;
+			buildPhases = (
+				B7430FAD29F88E9300BD2D0D /* Sources */,
+				B7430FAE29F88E9300BD2D0D /* Frameworks */,
+				B7430FAF29F88E9300BD2D0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArtWidgetExtension;
+			packageProductDependencies = (
+				B7430FC529F88F1E00BD2D0D /* ArtWidgetFeature */,
+			);
+			productName = ArtWidgetExtension;
+			productReference = B7430FB129F88E9300BD2D0D /* ArtWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B7431A2029D8E8ED00580C1A /* App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7431A2C29D8E8EE00580C1A /* Build configuration list for PBXNativeTarget "App" */;
@@ -88,10 +176,12 @@
 				B7431A1D29D8E8ED00580C1A /* Sources */,
 				B7431A1E29D8E8ED00580C1A /* Frameworks */,
 				B7431A1F29D8E8ED00580C1A /* Resources */,
+				B7430FC129F88E9400BD2D0D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B7430FBF29F88E9400BD2D0D /* PBXTargetDependency */,
 			);
 			name = App;
 			packageProductDependencies = (
@@ -112,6 +202,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					B7430FB029F88E9300BD2D0D = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					B7431A2029D8E8ED00580C1A = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -132,11 +225,20 @@
 			projectRoot = "";
 			targets = (
 				B7431A2029D8E8ED00580C1A /* App */,
+				B7430FB029F88E9300BD2D0D /* ArtWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B7430FAF29F88E9300BD2D0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7430FD429F8942C00BD2D0D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B7431A1F29D8E8ED00580C1A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +251,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B7430FAD29F88E9300BD2D0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7430FD329F8942C00BD2D0D /* ArtWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B7431A1D29D8E8ED00580C1A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,6 +268,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B7430FBF29F88E9400BD2D0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7430FB029F88E9300BD2D0D /* ArtWidgetExtension */;
+			targetProxy = B7430FBE29F88E9400BD2D0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B712F5E129B595FE00B433F8 /* Debug */ = {
@@ -274,9 +392,66 @@
 			};
 			name = Release;
 		};
+		B7430FC229F88E9400BD2D0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV9FQ3YF56;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/ArtWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ArtWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.caaaption.app.ArtWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B7430FC329F88E9400BD2D0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV9FQ3YF56;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/ArtWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ArtWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.caaaption.app.ArtWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B7431A2D29D8E8EE00580C1A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -310,6 +485,7 @@
 		B7431A2E29D8E8EE00580C1A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -352,6 +528,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B7430FC429F88E9400BD2D0D /* Build configuration list for PBXNativeTarget "ArtWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7430FC229F88E9400BD2D0D /* Debug */,
+				B7430FC329F88E9400BD2D0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B7431A2C29D8E8EE00580C1A /* Build configuration list for PBXNativeTarget "App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -364,6 +549,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B7430FC529F88F1E00BD2D0D /* ArtWidgetFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ArtWidgetFeature;
+		};
 		B7431A3929D8E9D000580C1A /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
