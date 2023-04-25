@@ -13,7 +13,6 @@
 		B7430FC629F88F1E00BD2D0D /* ArtWidgetFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7430FC529F88F1E00BD2D0D /* ArtWidgetFeature */; };
 		B7430FC929F88F9200BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7430FC829F88F9200BD2D0D /* Assets.xcassets */; };
 		B7430FCC29F88FB400BD2D0D /* ArtWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430FCA29F88FB400BD2D0D /* ArtWidgetBundle.swift */; };
-		B7430FCD29F88FB400BD2D0D /* ArtWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430FCB29F88FB400BD2D0D /* ArtWidget.swift */; };
 		B7431A3529D8E8F700580C1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7431A3029D8E8F700580C1A /* Assets.xcassets */; };
 		B7431A3629D8E8F700580C1A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7431A3129D8E8F700580C1A /* App.swift */; };
 		B7431A3729D8E8F700580C1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7431A3329D8E8F700580C1A /* Preview Assets.xcassets */; };
@@ -257,7 +256,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7430FCC29F88FB400BD2D0D /* ArtWidgetBundle.swift in Sources */,
-				B7430FCD29F88FB400BD2D0D /* ArtWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
