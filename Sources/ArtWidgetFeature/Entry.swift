@@ -1,10 +1,10 @@
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 public struct Entry: TimelineEntry {
   public let date: Date
   public let url: String
-  
+
   public init(date: Date, url: String) {
     self.date = date
     self.url = url
@@ -12,7 +12,7 @@ public struct Entry: TimelineEntry {
 
   func image() -> UIImage {
     guard
-      let imageUrl = URL(string: self.url),
+      let imageUrl = URL(string: url),
       let data = try? Data(contentsOf: imageUrl),
       let image = UIImage(data: data)
     else {

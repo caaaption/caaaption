@@ -1,6 +1,6 @@
-import WidgetKit
-import SwiftUI
 import ArtWidgetFeature
+import SwiftUI
+import WidgetKit
 
 @main
 struct ArtWidgetBundle: WidgetBundle {

@@ -1,13 +1,13 @@
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 public struct WidgetView: View {
   public var entry: Entry
-  
+
   public init(entry: Entry) {
     self.entry = entry
   }
-  
+
   public var body: some View {
     Image(uiImage: entry.image())
       .resizable()
