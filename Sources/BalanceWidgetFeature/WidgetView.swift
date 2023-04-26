@@ -3,11 +3,11 @@ import WidgetKit
 
 public struct WidgetView: View {
   public var entry: Entry
-  
+
   public init(entry: Entry) {
     self.entry = entry
   }
-  
+
   public var body: some View {
     VStack(spacing: 12) {
       Text("Balance")

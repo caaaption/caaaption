@@ -1,6 +1,6 @@
-import WidgetKit
-import SwiftUI
 import BalanceWidgetFeature
+import SwiftUI
+import WidgetKit
 
 @main
 struct BalanceWidgetBundle: WidgetBundle {
