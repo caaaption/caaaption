@@ -13,6 +13,11 @@
 		B7430FC629F88F1E00BD2D0D /* ArtWidgetFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7430FC529F88F1E00BD2D0D /* ArtWidgetFeature */; };
 		B7430FD329F8942C00BD2D0D /* ArtWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430FD029F8942C00BD2D0D /* ArtWidgetBundle.swift */; };
 		B7430FD429F8942C00BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7430FD129F8942C00BD2D0D /* Assets.xcassets */; };
+		B7430FF129F8AD7B00BD2D0D /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7430FF029F8AD7B00BD2D0D /* Intents.framework */; };
+		B7430FF829F8AD7B00BD2D0D /* BalanceWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7430FEF29F8AD7B00BD2D0D /* BalanceWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B743100129F8ADB200BD2D0D /* BalanceWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430FFD29F8ADB200BD2D0D /* BalanceWidgetBundle.swift */; };
+		B743100229F8ADB200BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7430FFE29F8ADB200BD2D0D /* Assets.xcassets */; };
+		B743100329F8ADB200BD2D0D /* BalanceWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430FFF29F8ADB200BD2D0D /* BalanceWidget.swift */; };
 		B7431A3529D8E8F700580C1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7431A3029D8E8F700580C1A /* Assets.xcassets */; };
 		B7431A3629D8E8F700580C1A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7431A3129D8E8F700580C1A /* App.swift */; };
 		B7431A3729D8E8F700580C1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7431A3329D8E8F700580C1A /* Preview Assets.xcassets */; };
@@ -28,6 +33,13 @@
 			remoteGlobalIDString = B7430FB029F88E9300BD2D0D;
 			remoteInfo = ArtWidgetExtension;
 		};
+		B7430FF629F8AD7B00BD2D0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B712F5CD29B595FD00B433F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7430FEE29F8AD7B00BD2D0D;
+			remoteInfo = BalanceWidget;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +50,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				B7430FC029F88E9400BD2D0D /* ArtWidgetExtension.appex in Embed Foundation Extensions */,
+				B7430FF829F8AD7B00BD2D0D /* BalanceWidget.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +64,12 @@
 		B7430FD029F8942C00BD2D0D /* ArtWidgetBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtWidgetBundle.swift; sourceTree = "<group>"; };
 		B7430FD129F8942C00BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7430FD229F8942C00BD2D0D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7430FEF29F8AD7B00BD2D0D /* BalanceWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BalanceWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7430FF029F8AD7B00BD2D0D /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		B7430FFD29F8ADB200BD2D0D /* BalanceWidgetBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceWidgetBundle.swift; sourceTree = "<group>"; };
+		B7430FFE29F8ADB200BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B7430FFF29F8ADB200BD2D0D /* BalanceWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceWidget.swift; sourceTree = "<group>"; };
+		B743100029F8ADB200BD2D0D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7431A2129D8E8ED00580C1A /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7431A3029D8E8F700580C1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7431A3129D8E8F700580C1A /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -66,6 +85,14 @@
 				B7430FB529F88E9300BD2D0D /* SwiftUI.framework in Frameworks */,
 				B7430FC629F88F1E00BD2D0D /* ArtWidgetFeature in Frameworks */,
 				B7430FB329F88E9300BD2D0D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7430FEC29F8AD7B00BD2D0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7430FF129F8AD7B00BD2D0D /* Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +123,7 @@
 			children = (
 				B7431A2129D8E8ED00580C1A /* App.app */,
 				B7430FB129F88E9300BD2D0D /* ArtWidgetExtension.appex */,
+				B7430FEF29F8AD7B00BD2D0D /* BalanceWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -105,6 +133,7 @@
 			children = (
 				B7430FB229F88E9300BD2D0D /* WidgetKit.framework */,
 				B7430FB429F88E9300BD2D0D /* SwiftUI.framework */,
+				B7430FF029F8AD7B00BD2D0D /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -113,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				B7430FCF29F8942C00BD2D0D /* ArtWidget */,
+				B7430FFC29F8ADB200BD2D0D /* BalanceWidget */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -125,6 +155,17 @@
 				B7430FD229F8942C00BD2D0D /* Info.plist */,
 			);
 			path = ArtWidget;
+			sourceTree = "<group>";
+		};
+		B7430FFC29F8ADB200BD2D0D /* BalanceWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B7430FFD29F8ADB200BD2D0D /* BalanceWidgetBundle.swift */,
+				B7430FFF29F8ADB200BD2D0D /* BalanceWidget.swift */,
+				B7430FFE29F8ADB200BD2D0D /* Assets.xcassets */,
+				B743100029F8ADB200BD2D0D /* Info.plist */,
+			);
+			path = BalanceWidget;
 			sourceTree = "<group>";
 		};
 		B7431A2F29D8E8F700580C1A /* iOS */ = {
@@ -169,6 +210,23 @@
 			productReference = B7430FB129F88E9300BD2D0D /* ArtWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		B7430FEE29F8AD7B00BD2D0D /* BalanceWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7430FFB29F8AD7B00BD2D0D /* Build configuration list for PBXNativeTarget "BalanceWidget" */;
+			buildPhases = (
+				B7430FEB29F8AD7B00BD2D0D /* Sources */,
+				B7430FEC29F8AD7B00BD2D0D /* Frameworks */,
+				B7430FED29F8AD7B00BD2D0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BalanceWidget;
+			productName = BalanceWidget;
+			productReference = B7430FEF29F8AD7B00BD2D0D /* BalanceWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B7431A2029D8E8ED00580C1A /* App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7431A2C29D8E8EE00580C1A /* Build configuration list for PBXNativeTarget "App" */;
@@ -182,6 +240,7 @@
 			);
 			dependencies = (
 				B7430FBF29F88E9400BD2D0D /* PBXTargetDependency */,
+				B7430FF729F8AD7B00BD2D0D /* PBXTargetDependency */,
 			);
 			name = App;
 			packageProductDependencies = (
@@ -205,6 +264,9 @@
 					B7430FB029F88E9300BD2D0D = {
 						CreatedOnToolsVersion = 14.3;
 					};
+					B7430FEE29F8AD7B00BD2D0D = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					B7431A2029D8E8ED00580C1A = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -226,6 +288,7 @@
 			targets = (
 				B7431A2029D8E8ED00580C1A /* App */,
 				B7430FB029F88E9300BD2D0D /* ArtWidgetExtension */,
+				B7430FEE29F8AD7B00BD2D0D /* BalanceWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -236,6 +299,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7430FD429F8942C00BD2D0D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7430FED29F8AD7B00BD2D0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B743100229F8ADB200BD2D0D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +330,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B7430FEB29F8AD7B00BD2D0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B743100329F8ADB200BD2D0D /* BalanceWidget.swift in Sources */,
+				B743100129F8ADB200BD2D0D /* BalanceWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B7431A1D29D8E8ED00580C1A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,6 +354,11 @@
 			isa = PBXTargetDependency;
 			target = B7430FB029F88E9300BD2D0D /* ArtWidgetExtension */;
 			targetProxy = B7430FBE29F88E9400BD2D0D /* PBXContainerItemProxy */;
+		};
+		B7430FF729F8AD7B00BD2D0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7430FEE29F8AD7B00BD2D0D /* BalanceWidget */;
+			targetProxy = B7430FF629F8AD7B00BD2D0D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -450,6 +535,58 @@
 			};
 			name = Release;
 		};
+		B7430FF929F8AD7B00BD2D0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV9FQ3YF56;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/BalanceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BalanceWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.caaaption.app.balance-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B7430FFA29F8AD7B00BD2D0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV9FQ3YF56;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/BalanceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BalanceWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.caaaption.app.balance-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B7431A2D29D8E8EE00580C1A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -535,6 +672,15 @@
 			buildConfigurations = (
 				B7430FC229F88E9400BD2D0D /* Debug */,
 				B7430FC329F88E9400BD2D0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7430FFB29F8AD7B00BD2D0D /* Build configuration list for PBXNativeTarget "BalanceWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7430FF929F8AD7B00BD2D0D /* Debug */,
+				B7430FFA29F8AD7B00BD2D0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
