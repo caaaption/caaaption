@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetHelpers
 import WidgetKit
 
 public struct BalanceWidgetView: View {
@@ -9,20 +10,34 @@ public struct BalanceWidgetView: View {
   }
 
   public var body: some View {
-    VStack(spacing: 12) {
+    VStack(spacing: 8) {
+      Spacer()
       Text("Balance")
-        .font(.headline)
-      Text(entry.balance.description.prefix(6) + "ETH")
-        .font(.title2)
+        .font(Font.headline)
+      
+      Text("\(entry.balance.description) ETH")
+        .font(Font.title2)
         .bold()
-        .foregroundColor(.blue)
+        .foregroundColor(Color.blue)
+      
+      Spacer()
+      
+      HStack(spacing: 0) {
+        Text("Updated at ")
+        Text(entry.date, format: Date.RelativeFormatStyle.relative(presentation: .named))
+      }
+      .foregroundColor(Color.secondary)
+      .font(Font.caption)
     }
+    .frame(maxWidth: CGFloat.infinity, maxHeight: CGFloat.infinity)
+    .padding()
   }
 }
 
 struct BalanceWidgetViewPreviews: PreviewProvider {
   static var previews: some View {
-    BalanceWidgetView(entry: Entry(date: Date(), balance: 1.0))
-      .previewContext(WidgetPreviewContext(family: .systemSmall))
+    WidgetPreview([.systemSmall]) {
+      BalanceWidgetView(entry: Entry(date: Date(), balance: 1.0))
+    }
   }
 }
