@@ -1,7 +1,7 @@
 import SwiftUI
 import WidgetKit
 
-public struct WidgetView: View {
+public struct BalanceWidgetView: View {
   public var entry: Entry
   
   public init(entry: Entry) {
@@ -20,9 +20,9 @@ public struct WidgetView: View {
   }
 }
 
-struct WidgetViewPreviews: PreviewProvider {
+struct BalanceWidgetViewPreviews: PreviewProvider {
   static var previews: some View {
-    WidgetView(entry: Entry(date: Date(), balance: 1.0))
+    BalanceWidgetView(entry: Entry(date: Date(), balance: 1.0))
       .previewContext(WidgetPreviewContext(family: .systemSmall))
   }
 }

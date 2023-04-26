@@ -8,7 +8,7 @@ public struct BalanceWidget: Widget {
 
   public var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: Provider()) { entry in
-      WidgetView(entry: entry)
+      BalanceWidgetView(entry: entry)
     }
     .configurationDisplayName("Check your balance")
     .description("Displays wallet balance.")
