@@ -133,7 +133,9 @@ package.targets.append(contentsOf: [
 
 package.products.append(contentsOf: [
   .library(name: "ArtWidgetFeature", targets: ["ArtWidgetFeature"]),
+  .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "ArtWidgetFeature"),
+  .target(name: "BalanceWidgetFeature"),
 ])
