@@ -1,6 +1,6 @@
 import SwiftUI
-import WidgetKit
 import WidgetHelpers
+import WidgetKit
 
 public struct ArtWidgetView: View {
   public var entry: Entry

@@ -14,14 +14,14 @@ public struct BalanceWidgetView: View {
       Spacer()
       Text("Balance")
         .font(Font.headline)
-      
+
       Text("\(entry.balance.description) ETH")
         .font(Font.title2)
         .bold()
         .foregroundColor(Color.blue)
-      
+
       Spacer()
-      
+
       HStack(spacing: 0) {
         Text("Updated at ")
         Text(entry.date, format: Date.RelativeFormatStyle.relative(presentation: .named))

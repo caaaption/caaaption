@@ -4,9 +4,9 @@ public enum PreviewWidgetFamily: Int, CaseIterable, Identifiable {
   case systemSmall
   case systemMedium
   case systemLarge
-  
+
   public var id: Int { rawValue }
-  
+
   public var size: CGSize {
     switch self {
     case .systemSmall:
