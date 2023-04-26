@@ -1,16 +1,10 @@
-//
-//  BalanceWidgetBundle.swift
-//  BalanceWidget
-//
-//  Created by tomokisun on 2023/04/26.
-//
-
 import WidgetKit
 import SwiftUI
+import BalanceWidgetFeature
 
 @main
 struct BalanceWidgetBundle: WidgetBundle {
-    var body: some Widget {
-        BalanceWidget()
-    }
+  var body: some Widget {
+    BalanceWidget()
+  }
 }

@@ -20,9 +20,9 @@
 		B7430FDB29F8AD1F00BD2D0D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7430F9629F8893F00BD2D0D /* WidgetKit.framework */; };
 		B7430FDC29F8AD1F00BD2D0D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7430F9829F8893F00BD2D0D /* SwiftUI.framework */; };
 		B7430FDF29F8AD1F00BD2D0D /* BalanceWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430FDE29F8AD1F00BD2D0D /* BalanceWidgetBundle.swift */; };
-		B7430FE129F8AD1F00BD2D0D /* BalanceWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7430FE029F8AD1F00BD2D0D /* BalanceWidget.swift */; };
 		B7430FE329F8AD2000BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7430FE229F8AD2000BD2D0D /* Assets.xcassets */; };
 		B7430FE729F8AD2000BD2D0D /* BalanceWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7430FDA29F8AD1F00BD2D0D /* BalanceWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B743100629F8AFDE00BD2D0D /* BalanceWidgetFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B743100529F8AFDE00BD2D0D /* BalanceWidgetFeature */; };
 		B7431A1929D8E8D700580C1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7431A1429D8E8D700580C1A /* Assets.xcassets */; };
 		B7431A1A29D8E8D700580C1A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7431A1529D8E8D700580C1A /* App.swift */; };
 		B7431A1B29D8E8D700580C1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7431A1729D8E8D700580C1A /* Preview Assets.xcassets */; };
@@ -84,7 +84,6 @@
 		B7430FA129F8894000BD2D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7430FDA29F8AD1F00BD2D0D /* BalanceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BalanceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7430FDE29F8AD1F00BD2D0D /* BalanceWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceWidgetBundle.swift; sourceTree = "<group>"; };
-		B7430FE029F8AD1F00BD2D0D /* BalanceWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceWidget.swift; sourceTree = "<group>"; };
 		B7430FE229F8AD2000BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7430FE429F8AD2000BD2D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7431A0529D8E8BA00580C1A /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7430FDC29F8AD1F00BD2D0D /* SwiftUI.framework in Frameworks */,
+				B743100629F8AFDE00BD2D0D /* BalanceWidgetFeature in Frameworks */,
 				B7430FDB29F8AD1F00BD2D0D /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				B7430FDE29F8AD1F00BD2D0D /* BalanceWidgetBundle.swift */,
-				B7430FE029F8AD1F00BD2D0D /* BalanceWidget.swift */,
 				B7430FE229F8AD2000BD2D0D /* Assets.xcassets */,
 				B7430FE429F8AD2000BD2D0D /* Info.plist */,
 			);
@@ -361,6 +360,9 @@
 			dependencies = (
 			);
 			name = BalanceWidgetExtension;
+			packageProductDependencies = (
+				B743100529F8AFDE00BD2D0D /* BalanceWidgetFeature */,
+			);
 			productName = BalanceWidgetExtension;
 			productReference = B7430FDA29F8AD1F00BD2D0D /* BalanceWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -560,7 +562,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7430FE129F8AD1F00BD2D0D /* BalanceWidget.swift in Sources */,
 				B7430FDF29F8AD1F00BD2D0D /* BalanceWidgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1157,6 +1158,10 @@
 		B7430FA929F88CC700BD2D0D /* ArtWidgetFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ArtWidgetFeature;
+		};
+		B743100529F8AFDE00BD2D0D /* BalanceWidgetFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BalanceWidgetFeature;
 		};
 		B7431A3D29D8E9E300580C1A /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
