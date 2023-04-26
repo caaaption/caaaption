@@ -132,10 +132,16 @@ package.targets.append(contentsOf: [
 // Widgets
 
 package.products.append(contentsOf: [
+  .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
   .library(name: "ArtWidgetFeature", targets: ["ArtWidgetFeature"]),
   .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
-  .target(name: "ArtWidgetFeature"),
-  .target(name: "BalanceWidgetFeature"),
+  .target(name: "WidgetHelpers"),
+  .target(name: "ArtWidgetFeature", dependencies: [
+    "WidgetHelpers",
+  ]),
+  .target(name: "BalanceWidgetFeature", dependencies: [
+    "WidgetHelpers",
+  ]),
 ])
