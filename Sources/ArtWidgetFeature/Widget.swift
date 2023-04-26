@@ -8,7 +8,7 @@ public struct ArtWidget: Widget {
 
   public var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: Provider()) { entry in
-      WidgetView(entry: entry)
+      ArtWidgetView(entry: entry)
     }
     .configurationDisplayName("NFT Widget")
     .description("Displays the NFT selected in the application.")

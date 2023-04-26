@@ -1,7 +1,7 @@
 import SwiftUI
 import WidgetKit
 
-public struct WidgetView: View {
+public struct ArtWidgetView: View {
   public var entry: Entry
 
   public init(entry: Entry) {
@@ -15,9 +15,9 @@ public struct WidgetView: View {
   }
 }
 
-struct WidgetViewPreviews: PreviewProvider {
+struct ArtWidgetViewPreviews: PreviewProvider {
   static var previews: some View {
-    WidgetView(entry: Entry(date: Date(), url: imageUrl))
+    ArtWidgetView(entry: Entry(date: Date(), url: imageUrl))
       .previewContext(WidgetPreviewContext(family: .systemSmall))
   }
 }
