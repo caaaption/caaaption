@@ -10,7 +10,8 @@
   },
   "output" : {
     "testMocks" : {
-      "none" : {
+      "absolute" : {
+        "path": "./Sources/SnapshotModelMock"
       }
     },
     "schemaTypes" : {

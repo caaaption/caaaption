@@ -89,10 +89,15 @@ package.targets.append(contentsOf: [
 // Model
 package.products.append(contentsOf: [
   .library(name: "SnapshotModel", targets: ["SnapshotModel"]),
+  .library(name: "SnapshotModelMock", targets: ["SnapshotModelMock"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "SnapshotModel", dependencies: [
     .product(name: "ApolloAPI", package: "apollo-ios"),
+  ]),
+  .target(name: "SnapshotModelMock", dependencies: [
+    "SnapshotModel",
+    .product(name: "ApolloTestSupport", package: "apollo-ios"),
   ]),
 ])
 
@@ -151,6 +156,7 @@ package.targets.append(contentsOf: [
     "ColorHex",
   ]),
   .target(name: "ApolloHelpers", dependencies: [
+    .product(name: "Apollo", package: "apollo-ios"),
     .product(name: "ApolloAPI", package: "apollo-ios"),
   ]),
 ])
@@ -173,5 +179,7 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "VotingStatusWidgetFeature", dependencies: [
     "WidgetHelpers",
+    "SnapshotClient",
+    "SnapshotModelMock",
   ]),
 ])

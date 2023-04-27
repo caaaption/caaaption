@@ -1,5 +1,4 @@
 import SwiftUI
-import WidgetHelpers
 import WidgetKit
 
 public struct VotingStatusWidgetView: View {
@@ -8,44 +7,53 @@ public struct VotingStatusWidgetView: View {
   public init(entry: Entry) {
     self.entry = entry
   }
+  
+  func percentages(scores: [Double?]?) -> [Double] {
+    guard let scores = scores else { return [] }
+    let values = scores.map { $0 ?? 0.0 }
+    let total = values.reduce(0, +)
+    let percentages = values.map { $0 / total }
+    return percentages
+  }
+  
+  func roundConvertToPercentage(_ value: Double) -> String {
+    let rounded = (value * 100).rounded()
+    return String(format: "%.0f%%", rounded)
+  }
 
   public var body: some View {
-    VStack(alignment: .leading, spacing: 8) {
-      Text("MEMBERSHIP MECHANIC UPGRADE")
-        .bold()
+    switch entry.proposal {
+    case .none:
+      ProgressView()
+    case let .some(proposal):
+      VStack(alignment: .leading, spacing: 8) {
+        Text(proposal.title)
+          .bold()
 
-      Divider()
+        VStack(alignment: .leading, spacing: 2) {
+          ForEach(proposal.choices.indices) { index in
+            VStack(alignment: .leading, spacing: 0) {
+              Text(
+                "\(proposal.choices[index] ?? "") \(roundConvertToPercentage(percentages(scores: proposal.scores)[index]))"
+              )
+              .foregroundColor(.green)
+              .bold()
 
-      VStack(alignment: .leading, spacing: 2) {
-        VStack(alignment: .leading, spacing: 0) {
-          Text("FOR - APPROVE CHANGE 72%")
-            .foregroundColor(.green)
-            .bold()
-
-          ProgressBar(progress: 0.72, primaryColor: .green)
+              ProgressBar(
+                progress: percentages(scores: proposal.scores)[index],
+                primaryColor: .green
+              )
+            }
+          }
         }
-
-        VStack(alignment: .leading, spacing: 0) {
-          Text("AGAINST - DO NOT APPROVE CHANGE 27%")
-
-          ProgressBar(progress: 0.27, primaryColor: .gray)
-        }
-
-        VStack(alignment: .leading, spacing: 0) {
-          Text("ABSTAIN 1%")
-
-          ProgressBar(progress: 0.01, primaryColor: .gray)
-        }
-      }
-      .font(.caption)
-
-      Divider()
-
-      updatedAt
-        .foregroundColor(.secondary)
         .font(.caption)
+
+        updatedAt
+          .foregroundColor(.secondary)
+          .font(.caption)
+      }
+      .padding(.all, 12)
     }
-    .padding(.all, 12)
   }
 
   var updatedAt: some View {
@@ -56,12 +64,24 @@ public struct VotingStatusWidgetView: View {
   }
 }
 
+#if DEBUG
+import SnapshotModel
+import ApolloTestSupport
+import WidgetHelpers
+import SnapshotModelMock
+
 struct VotingStatusWidgetViewPreviews: PreviewProvider {
   static var previews: some View {
     WidgetPreview([.systemMedium]) {
       VotingStatusWidgetView(
-        entry: Entry(date: Date())
+        entry: Entry(
+          date: Date(),
+          proposal: SnapshotModel.ProposalQuery.Data.Proposal.from(
+            Mock<Proposal>()
+          )
+        )
       )
     }
   }
 }
+#endif
