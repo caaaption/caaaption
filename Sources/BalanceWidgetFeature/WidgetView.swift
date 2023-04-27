@@ -22,10 +22,7 @@ public struct BalanceWidgetView: View {
 
       Spacer()
 
-      HStack(spacing: 0) {
-        Text("Updated at ")
-        Text(entry.date, format: Date.RelativeFormatStyle.relative(presentation: .named))
-      }
+      Text("Updated at 20:00")
       .foregroundColor(Color.secondary)
       .font(Font.caption)
     }
