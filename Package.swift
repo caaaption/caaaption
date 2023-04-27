@@ -32,7 +32,7 @@ package.products.append(contentsOf: [
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
-    "MainTabFeature",
+    "WidgetSearchFeature",
   ]),
   .target(name: "MainTabFeature", dependencies: [
     "FeedFeature",
@@ -69,6 +69,7 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "WidgetSearchFeature", dependencies: [
+    "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])

@@ -1,5 +1,5 @@
 import ComposableArchitecture
-import MainTabFeature
+import WidgetSearchFeature
 import SwiftUI
 
 public struct AppReducer: ReducerProtocol {
@@ -8,23 +8,17 @@ public struct AppReducer: ReducerProtocol {
   public struct State: Equatable {
     public init() {}
 
-    public var tab = MainTabReducer.State()
+    public var search = WidgetSearchReducer.State()
   }
 
   public enum Action: Equatable {
     case appDelegate(AppDelegateReducer.Action)
-    case tab(MainTabReducer.Action)
+    case search(WidgetSearchReducer.Action)
   }
 
   public var body: some ReducerProtocol<State, Action> {
-    Scope(state: \.tab, action: /Action.tab) {
-      MainTabReducer()
-    }
-    Reduce { _, action in
-      switch action {
-      default:
-        return EffectTask.none
-      }
+    Scope(state: \.search, action: /Action.search) {
+      WidgetSearchReducer()
     }
   }
 }
@@ -37,6 +31,8 @@ public struct AppView: View {
   }
 
   public var body: some View {
-    MainTabView(store: self.store.scope(state: \.tab, action: AppReducer.Action.tab))
+    NavigationStack {
+      WidgetSearchView(store: store.scope(state: \.search, action: AppReducer.Action.search))
+    }
   }
 }
