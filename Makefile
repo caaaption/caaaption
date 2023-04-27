@@ -57,3 +57,9 @@ install-template:
 	@swift build -c release --package-path ./BuildTools --product XCTemplateInstaller
 	./BuildTools/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/Reducer.xctemplate
 	./BuildTools/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/View.xctemplate
+
+apollo-cli-install:
+	@swift package --allow-writing-to-package-directory apollo-cli-install
+
+apollo-generate:
+	./apollo-ios-cli generate
