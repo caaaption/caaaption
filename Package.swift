@@ -13,6 +13,7 @@ var package = Package(
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.51.0"),
     .package(url: "https://github.com/marmelroy/PhoneNumberKit", from: "3.4.0"),
     .package(url: "https://github.com/JWAutumn/ACarousel", from: "0.2.0"),
+    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.1.2"),
   ]
 )
 
@@ -120,6 +121,7 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "SnapshotClient", dependencies: [
+    .product(name: "Apollo", package: "apollo-ios"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
