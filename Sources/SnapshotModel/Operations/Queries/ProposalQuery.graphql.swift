@@ -82,4 +82,5 @@ public extension SnapshotModel {
       }
     }
   }
+
 }
