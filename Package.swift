@@ -16,7 +16,7 @@ var package = Package(
   ]
 )
 
-/// Features
+// Features
 package.products.append(contentsOf: [
   .library(name: "AppFeature", targets: ["AppFeature"]),
   .library(name: "MainTabFeature", targets: ["MainTabFeature"]),
@@ -25,7 +25,8 @@ package.products.append(contentsOf: [
   .library(name: "FeedFeature", targets: ["FeedFeature"]),
   .library(name: "UploadFeature", targets: ["UploadFeature"]),
   .library(name: "ProfileFeature", targets: ["ProfileFeature"]),
-  .library(name: "CollectionFeature", targets: ["CollectionFeature"])
+  .library(name: "CollectionFeature", targets: ["CollectionFeature"]),
+  .library(name: "WidgetSearchFeature", targets: ["WidgetSearchFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -64,7 +65,10 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "CollectionFeature", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ])
+  ]),
+  .target(name: "WidgetSearchFeature", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
 ])
 
 // UI
