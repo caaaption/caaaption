@@ -3,9 +3,9 @@ import WidgetKit
 
 public struct VotingStatusWidget: Widget {
   public let kind: String = "VotingStatusWidget"
-  
+
   public init() {}
-  
+
   public var body: some WidgetConfiguration {
     StaticConfiguration(kind: kind, provider: Provider()) { entry in
       VotingStatusWidgetView(entry: entry)

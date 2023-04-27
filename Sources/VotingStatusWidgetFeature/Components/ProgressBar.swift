@@ -3,12 +3,12 @@ import SwiftUI
 struct ProgressBar: View {
   let progress: Double
   let primaryColor: Color
-  
+
   var body: some View {
     GeometryReader { proxy in
       ZStack(alignment: .leading) {
         Color.black
-        
+
         primaryColor
           .cornerRadius(3)
           .frame(width: proxy.size.width * min(progress, 1.0))
