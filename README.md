@@ -46,6 +46,7 @@ This repo contains both the client code for running the entire [caaaption](https
 - [ACarousel](https://github.com/JWAutumn/ACarousel)
 - [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
 - [XCTemplateInstaller](https://github.com/noppefoxwolf/XCTemplateInstaller)
+- [apollo-ios](https://github.com/apollographql/apollo-ios)
 
 # License
 
