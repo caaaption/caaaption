@@ -8,6 +8,7 @@ var package = Package(
   defaultLocalization: "en",
   platforms: [
     .iOS(.v16),
+    .macOS(.v13),
   ],
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.51.0"),
@@ -85,6 +86,16 @@ package.targets.append(contentsOf: [
   .target(name: "OffsetObservingScrollView"),
 ])
 
+// Model
+package.products.append(contentsOf: [
+  .library(name: "SnapshotGraphQLModel", targets: ["SnapshotGraphQLModel"]),
+])
+package.targets.append(contentsOf: [
+  .target(name: "SnapshotGraphQLModel", dependencies: [
+    .product(name: "ApolloAPI", package: "apollo-ios"),
+  ]),
+])
+
 // Client
 
 package.products.append(contentsOf: [
@@ -121,7 +132,7 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "SnapshotClient", dependencies: [
-    .product(name: "Apollo", package: "apollo-ios"),
+    "SnapshotGraphQLModel",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
