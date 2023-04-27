@@ -93,6 +93,7 @@ package.products.append(contentsOf: [
   .library(name: "PhotoLibraryClientLive", targets: ["PhotoLibraryClientLive"]),
   .library(name: "UserNotificationClient", targets: ["UserNotificationClient"]),
   .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
+  .library(name: "SnapshotClient", targets: ["SnapshotClient"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AVFoundationClient", dependencies: [
@@ -116,6 +117,9 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "UserNotificationClient"),
   .target(name: "UIApplicationClient", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "SnapshotClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
