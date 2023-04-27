@@ -1,10 +1,10 @@
-import WidgetKit
-import SnapshotClient
 import Dependencies
+import SnapshotClient
+import WidgetKit
 
 struct Provider: TimelineProvider {
   @Dependency(\.snapshotClient) var snapshotClient
-  
+
   func placeholder(in context: Context) -> Entry {
     Entry(date: Date(), proposal: nil)
   }

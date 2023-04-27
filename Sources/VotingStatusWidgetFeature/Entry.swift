@@ -1,6 +1,6 @@
-import WidgetKit
 import Apollo
 import SnapshotModel
+import WidgetKit
 
 public struct Entry: TimelineEntry {
   public let date: Date

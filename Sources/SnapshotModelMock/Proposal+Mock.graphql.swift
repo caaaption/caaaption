@@ -7,7 +7,7 @@ import SnapshotModel
 public class Proposal: MockObject {
   public static let objectType: Object = SnapshotModel.Objects.Proposal
   public static let _mockFields = MockFields()
-  public typealias MockValueCollectionType = Array<Mock<Proposal>>
+  public typealias MockValueCollectionType = [Mock<Proposal>]
 
   public struct MockFields {
     @Field<[String?]>("choices") public var choices

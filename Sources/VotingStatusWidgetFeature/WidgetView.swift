@@ -7,7 +7,7 @@ public struct VotingStatusWidgetView: View {
   public init(entry: Entry) {
     self.entry = entry
   }
-  
+
   func percentages(scores: [Double?]?) -> [Double] {
     guard let scores = scores else { return [] }
     let values = scores.map { $0 ?? 0.0 }
@@ -15,7 +15,7 @@ public struct VotingStatusWidgetView: View {
     let percentages = values.map { $0 / total }
     return percentages
   }
-  
+
   func roundConvertToPercentage(_ value: Double) -> String {
     let rounded = (value * 100).rounded()
     return String(format: "%.0f%%", rounded)
@@ -65,23 +65,23 @@ public struct VotingStatusWidgetView: View {
 }
 
 #if DEBUG
-import SnapshotModel
-import ApolloTestSupport
-import WidgetHelpers
-import SnapshotModelMock
+  import ApolloTestSupport
+  import SnapshotModel
+  import SnapshotModelMock
+  import WidgetHelpers
 
-struct VotingStatusWidgetViewPreviews: PreviewProvider {
-  static var previews: some View {
-    WidgetPreview([.systemMedium]) {
-      VotingStatusWidgetView(
-        entry: Entry(
-          date: Date(),
-          proposal: SnapshotModel.ProposalQuery.Data.Proposal.from(
-            Mock<Proposal>()
+  struct VotingStatusWidgetViewPreviews: PreviewProvider {
+    static var previews: some View {
+      WidgetPreview([.systemMedium]) {
+        VotingStatusWidgetView(
+          entry: Entry(
+            date: Date(),
+            proposal: SnapshotModel.ProposalQuery.Data.Proposal.from(
+              Mock<Proposal>()
+            )
           )
         )
-      )
+      }
     }
   }
-}
 #endif
