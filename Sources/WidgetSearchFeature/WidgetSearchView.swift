@@ -1,6 +1,5 @@
 import ComposableArchitecture
 import SwiftUI
-import SwiftUIHelpers
 
 public struct WidgetSearchView: View {
   let store: StoreOf<WidgetSearchReducer>
@@ -51,6 +50,9 @@ public struct WidgetSearchView: View {
   }
 }
 
+#if DEBUG
+import SwiftUIHelpers
+
 struct WidgetSearchViewPreviews: PreviewProvider {
   static var previews: some View {
     Preview {
@@ -65,3 +67,4 @@ struct WidgetSearchViewPreviews: PreviewProvider {
     }
   }
 }
+#endif
