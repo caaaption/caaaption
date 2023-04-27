@@ -8,11 +8,13 @@ var package = Package(
   defaultLocalization: "en",
   platforms: [
     .iOS(.v16),
+    .macOS(.v13),
   ],
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.51.0"),
     .package(url: "https://github.com/marmelroy/PhoneNumberKit", from: "3.4.0"),
     .package(url: "https://github.com/JWAutumn/ACarousel", from: "0.2.0"),
+    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.1.2"),
   ]
 )
 
@@ -84,6 +86,16 @@ package.targets.append(contentsOf: [
   .target(name: "OffsetObservingScrollView"),
 ])
 
+// Model
+package.products.append(contentsOf: [
+  .library(name: "SnapshotModel", targets: ["SnapshotModel"]),
+])
+package.targets.append(contentsOf: [
+  .target(name: "SnapshotModel", dependencies: [
+    .product(name: "ApolloAPI", package: "apollo-ios"),
+  ]),
+])
+
 // Client
 
 package.products.append(contentsOf: [
@@ -93,6 +105,7 @@ package.products.append(contentsOf: [
   .library(name: "PhotoLibraryClientLive", targets: ["PhotoLibraryClientLive"]),
   .library(name: "UserNotificationClient", targets: ["UserNotificationClient"]),
   .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
+  .library(name: "SnapshotClient", targets: ["SnapshotClient"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AVFoundationClient", dependencies: [
@@ -118,18 +131,27 @@ package.targets.append(contentsOf: [
   .target(name: "UIApplicationClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
+  .target(name: "SnapshotClient", dependencies: [
+    "ApolloHelpers",
+    "SnapshotModel",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
 ])
 
 // Helpers
 
 package.products.append(contentsOf: [
   .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
+  .library(name: "ApolloHelpers", targets: ["ApolloHelpers"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "SwiftUIHelpers"),
   .target(name: "ColorHex"),
   .testTarget(name: "ColorHexTests", dependencies: [
     "ColorHex",
+  ]),
+  .target(name: "ApolloHelpers", dependencies: [
+    .product(name: "ApolloAPI", package: "apollo-ios"),
   ]),
 ])
 

@@ -1,0 +1,29 @@
+{
+  "schemaNamespace" : "SnapshotModel",
+  "input" : {
+    "operationSearchPaths" : [
+      "**/*.graphql"
+    ],
+    "schemaSearchPaths" : [
+      "**/*.graphqls"
+    ]
+  },
+  "output" : {
+    "testMocks" : {
+      "none" : {
+      }
+    },
+    "schemaTypes" : {
+      "path" : "./Sources/SnapshotModel",
+      "moduleType" : {
+        "embeddedInTarget" : {
+          "name" : "SnapshotModel"
+        }
+      }
+    },
+    "operations" : {
+      "inSchemaModule" : {
+      }
+    }
+  }
+}

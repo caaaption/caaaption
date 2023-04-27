@@ -1,0 +1,12 @@
+query Proposal($id: String!) {
+  proposal(
+    id: $id,
+  ) {
+    title
+    choices
+    scores
+    space {
+      name
+    }
+  }
+}
