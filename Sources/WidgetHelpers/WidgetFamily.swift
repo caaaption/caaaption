@@ -1,8 +1,8 @@
-import WidgetKit
 import Foundation
+import WidgetKit
 
-extension WidgetFamily {
-  public var size: CGSize {
+public extension WidgetFamily {
+  var size: CGSize {
     switch self {
     case .systemSmall:
       return CGSize(width: 158, height: 158)
