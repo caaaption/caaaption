@@ -4,16 +4,16 @@
 import ApolloAPI
 
 public protocol SnapshotModel_SelectionSet: ApolloAPI.SelectionSet & ApolloAPI.RootSelectionSet
-where Schema == SnapshotModel.SchemaMetadata {}
+  where Schema == SnapshotModel.SchemaMetadata {}
 
 public protocol SnapshotModel_InlineFragment: ApolloAPI.SelectionSet & ApolloAPI.InlineFragment
-where Schema == SnapshotModel.SchemaMetadata {}
+  where Schema == SnapshotModel.SchemaMetadata {}
 
 public protocol SnapshotModel_MutableSelectionSet: ApolloAPI.MutableRootSelectionSet
-where Schema == SnapshotModel.SchemaMetadata {}
+  where Schema == SnapshotModel.SchemaMetadata {}
 
 public protocol SnapshotModel_MutableInlineFragment: ApolloAPI.MutableSelectionSet & ApolloAPI.InlineFragment
-where Schema == SnapshotModel.SchemaMetadata {}
+  where Schema == SnapshotModel.SchemaMetadata {}
 
 public extension SnapshotModel {
   typealias ID = String
@@ -42,5 +42,4 @@ public extension SnapshotModel {
   enum Objects {}
   enum Interfaces {}
   enum Unions {}
-
 }

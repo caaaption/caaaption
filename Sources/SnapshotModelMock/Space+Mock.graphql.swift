@@ -7,7 +7,7 @@ import SnapshotModel
 public class Space: MockObject {
   public static let objectType: Object = SnapshotModel.Objects.Space
   public static let _mockFields = MockFields()
-  public typealias MockValueCollectionType = Array<Mock<Space>>
+  public typealias MockValueCollectionType = [Mock<Space>]
 
   public struct MockFields {
     @Field<String>("name") public var name

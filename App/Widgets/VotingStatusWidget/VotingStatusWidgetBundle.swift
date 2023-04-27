@@ -1,8 +1,8 @@
+import Dependencies
+import SnapshotClient
 import SwiftUI
 import VotingStatusWidgetFeature
 import WidgetKit
-import SnapshotClient
-import Dependencies
 
 @main
 struct VotingStatusWidgetBundle: WidgetBundle {
