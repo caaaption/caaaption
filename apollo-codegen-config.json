@@ -1,5 +1,5 @@
 {
-  "schemaNamespace" : "SnapshotGraphQLModel",
+  "schemaNamespace" : "SnapshotModel",
   "input" : {
     "operationSearchPaths" : [
       "**/*.graphql"
@@ -14,10 +14,10 @@
       }
     },
     "schemaTypes" : {
-      "path" : "./Sources/SnapshotGraphQLModel",
+      "path" : "./Sources/SnapshotModel",
       "moduleType" : {
         "embeddedInTarget" : {
-          "name" : "SnapshotGraphQLModel"
+          "name" : "SnapshotModel"
         }
       }
     },

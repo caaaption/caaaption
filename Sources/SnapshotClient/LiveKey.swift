@@ -1,8 +1,9 @@
 import Dependencies
 import Apollo
 import ApolloAPI
-import SnapshotGraphQLModel
+import SnapshotModel
 import Foundation
+import ApolloHelpers
 
 extension SnapshotClient: DependencyKey {
   public static let liveValue = Self.live()
@@ -28,8 +29,8 @@ actor SnapshotClientActor {
   
   func proposal(
     id: String
-  ) async throws -> GraphQLResult<SnapshotGraphQLModel.ProposalQuery.Data> {
-    let query = SnapshotGraphQLModel.ProposalQuery(id: id)
+  ) async throws -> GraphQLResult<SnapshotModel.ProposalQuery.Data> {
+    let query = SnapshotModel.ProposalQuery(id: id)
     return try await apolloClient.fetch(query: query)
   }
 }

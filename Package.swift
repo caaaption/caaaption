@@ -88,10 +88,10 @@ package.targets.append(contentsOf: [
 
 // Model
 package.products.append(contentsOf: [
-  .library(name: "SnapshotGraphQLModel", targets: ["SnapshotGraphQLModel"]),
+  .library(name: "SnapshotModel", targets: ["SnapshotModel"]),
 ])
 package.targets.append(contentsOf: [
-  .target(name: "SnapshotGraphQLModel", dependencies: [
+  .target(name: "SnapshotModel", dependencies: [
     .product(name: "ApolloAPI", package: "apollo-ios"),
   ]),
 ])
@@ -132,7 +132,8 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "SnapshotClient", dependencies: [
-    "SnapshotGraphQLModel",
+    "ApolloHelpers",
+    "SnapshotModel",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
@@ -141,12 +142,16 @@ package.targets.append(contentsOf: [
 
 package.products.append(contentsOf: [
   .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
+  .library(name: "ApolloHelpers", targets: ["ApolloHelpers"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "SwiftUIHelpers"),
   .target(name: "ColorHex"),
   .testTarget(name: "ColorHexTests", dependencies: [
     "ColorHex",
+  ]),
+  .target(name: "ApolloHelpers", dependencies: [
+    .product(name: "ApolloAPI", package: "apollo-ios"),
   ]),
 ])
 
