@@ -161,6 +161,7 @@ package.products.append(contentsOf: [
   .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
   .library(name: "ArtWidgetFeature", targets: ["ArtWidgetFeature"]),
   .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
+  .library(name: "VotingStatusWidgetFeature", targets: ["VotingStatusWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "WidgetHelpers"),
@@ -168,6 +169,9 @@ package.targets.append(contentsOf: [
     "WidgetHelpers",
   ]),
   .target(name: "BalanceWidgetFeature", dependencies: [
+    "WidgetHelpers",
+  ]),
+  .target(name: "VotingStatusWidgetFeature", dependencies: [
     "WidgetHelpers",
   ]),
 ])

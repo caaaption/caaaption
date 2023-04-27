@@ -10,7 +10,7 @@ public struct BalanceWidget: Widget {
     StaticConfiguration(kind: kind, provider: Provider()) { entry in
       BalanceWidgetView(entry: entry)
     }
-    .configurationDisplayName("Check your balance")
+    .configurationDisplayName("Balance Widget")
     .description("Displays wallet balance.")
     .supportedFamilies([.systemSmall])
   }
