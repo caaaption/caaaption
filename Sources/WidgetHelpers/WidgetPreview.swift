@@ -1,11 +1,12 @@
 import SwiftUI
+import WidgetKit
 
 public struct WidgetPreview<Content: View>: View {
-  let families: [PreviewWidgetFamily]
+  let families: [WidgetFamily]
   let content: Content
 
   public init(
-    _ families: [PreviewWidgetFamily] = PreviewWidgetFamily.allCases,
+    _ families: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge],
     @ViewBuilder _ content: () -> Content
   ) {
     self.families = families
