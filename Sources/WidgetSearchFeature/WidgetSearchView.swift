@@ -1,33 +1,33 @@
 import ComposableArchitecture
-import SwiftUIHelpers
 import SwiftUI
+import SwiftUIHelpers
 
 public struct WidgetSearchView: View {
   let store: StoreOf<WidgetSearchReducer>
-  
+
   public init(store: StoreOf<WidgetSearchReducer>) {
     self.store = store
   }
-  
+
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
-        ForEach(0..<10) { _ in
+        ForEach(0 ..< 10) { _ in
           VStack(spacing: 12) {
             HStack(spacing: 12) {
               Color.red
                 .frame(width: 62, height: 62)
                 .cornerRadius(12)
-              
+
               VStack(alignment: .leading, spacing: 0) {
                 Text("Check your balance")
                   .bold()
                 Text("QuickNode")
                   .foregroundColor(.secondary)
               }
-              
+
               Spacer()
-              
+
               Button("Install", action: {})
                 .foregroundColor(.blue)
                 .bold()
