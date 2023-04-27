@@ -1,12 +1,7 @@
+import WidgetKit
 import Foundation
 
-public enum PreviewWidgetFamily: Int, CaseIterable, Identifiable {
-  case systemSmall
-  case systemMedium
-  case systemLarge
-
-  public var id: Int { rawValue }
-
+extension WidgetFamily {
   public var size: CGSize {
     switch self {
     case .systemSmall:
@@ -15,6 +10,12 @@ public enum PreviewWidgetFamily: Int, CaseIterable, Identifiable {
       return CGSize(width: 338, height: 158)
     case .systemLarge:
       return CGSize(width: 338, height: 338)
+    default:
+      return CGSize.zero
     }
   }
+}
+
+extension WidgetFamily: Identifiable {
+  public var id: Int { rawValue }
 }
