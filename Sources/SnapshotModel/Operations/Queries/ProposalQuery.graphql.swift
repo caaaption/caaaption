@@ -3,7 +3,7 @@
 
 @_exported import ApolloAPI
 
-public extension SnapshotGraphQLModel {
+public extension SnapshotModel {
   class ProposalQuery: GraphQLQuery {
     public static let operationName: String = "Proposal"
     public static let document: ApolloAPI.DocumentType = .notPersisted(
@@ -32,11 +32,11 @@ public extension SnapshotGraphQLModel {
 
     public var __variables: Variables? { ["id": id] }
 
-    public struct Data: SnapshotGraphQLModel.SelectionSet {
+    public struct Data: SnapshotModel.SelectionSet {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { SnapshotGraphQLModel.Objects.Query }
+      public static var __parentType: ApolloAPI.ParentType { SnapshotModel.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("proposal", Proposal?.self, arguments: ["id": .variable("id")]),
       ] }
@@ -46,11 +46,11 @@ public extension SnapshotGraphQLModel {
       /// Proposal
       ///
       /// Parent Type: `Proposal`
-      public struct Proposal: SnapshotGraphQLModel.SelectionSet {
+      public struct Proposal: SnapshotModel.SelectionSet {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { SnapshotGraphQLModel.Objects.Proposal }
+        public static var __parentType: ApolloAPI.ParentType { SnapshotModel.Objects.Proposal }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("title", String.self),
@@ -67,11 +67,11 @@ public extension SnapshotGraphQLModel {
         /// Proposal.Space
         ///
         /// Parent Type: `Space`
-        public struct Space: SnapshotGraphQLModel.SelectionSet {
+        public struct Space: SnapshotModel.SelectionSet {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { SnapshotGraphQLModel.Objects.Space }
+          public static var __parentType: ApolloAPI.ParentType { SnapshotModel.Objects.Space }
           public static var __selections: [ApolloAPI.Selection] { [
             .field("__typename", String.self),
             .field("name", String?.self),

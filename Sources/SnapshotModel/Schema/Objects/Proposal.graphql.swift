@@ -3,9 +3,9 @@
 
 import ApolloAPI
 
-public extension SnapshotGraphQLModel.Objects {
-  static let Query = Object(
-    typename: "Query",
+public extension SnapshotModel.Objects {
+  static let Proposal = Object(
+    typename: "Proposal",
     implementedInterfaces: []
   )
 }

@@ -3,7 +3,7 @@
 
 import ApolloAPI
 
-public extension SnapshotGraphQLModel.Objects {
+public extension SnapshotModel.Objects {
   static let Space = Object(
     typename: "Space",
     implementedInterfaces: []
