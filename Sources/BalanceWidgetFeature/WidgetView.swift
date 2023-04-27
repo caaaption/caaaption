@@ -22,12 +22,19 @@ public struct BalanceWidgetView: View {
 
       Spacer()
 
-      Text("Updated at 20:00")
+      updatedAt
       .foregroundColor(Color.secondary)
       .font(Font.caption)
     }
     .frame(maxWidth: CGFloat.infinity, maxHeight: CGFloat.infinity)
     .padding()
+  }
+  
+  var updatedAt: some View {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    let dateString = dateFormatter.string(from: entry.date)
+    return Text("Updated at \(dateString)")
   }
 }
 

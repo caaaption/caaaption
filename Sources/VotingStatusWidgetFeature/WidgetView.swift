@@ -41,11 +41,18 @@ public struct VotingStatusWidgetView: View {
       
       Divider()
       
-      Text("Updated at 20:00")
+      updatedAt
         .foregroundColor(.secondary)
         .font(.caption)
     }
     .padding(.all, 12)
+  }
+  
+  var updatedAt: some View {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    let dateString = dateFormatter.string(from: entry.date)
+    return Text("Updated at \(dateString)")
   }
 }
 
