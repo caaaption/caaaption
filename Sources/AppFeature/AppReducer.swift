@@ -1,6 +1,6 @@
 import ComposableArchitecture
-import WidgetSearchFeature
 import SwiftUI
+import WidgetSearchFeature
 
 public struct AppReducer: ReducerProtocol {
   public init() {}

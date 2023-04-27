@@ -51,20 +51,20 @@ public struct WidgetSearchView: View {
 }
 
 #if DEBUG
-import SwiftUIHelpers
+  import SwiftUIHelpers
 
-struct WidgetSearchViewPreviews: PreviewProvider {
-  static var previews: some View {
-    Preview {
-      NavigationStack {
-        WidgetSearchView(
-          store: .init(
-            initialState: WidgetSearchReducer.State(),
-            reducer: WidgetSearchReducer()
+  struct WidgetSearchViewPreviews: PreviewProvider {
+    static var previews: some View {
+      Preview {
+        NavigationStack {
+          WidgetSearchView(
+            store: .init(
+              initialState: WidgetSearchReducer.State(),
+              reducer: WidgetSearchReducer()
+            )
           )
-        )
+        }
       }
     }
   }
-}
 #endif
