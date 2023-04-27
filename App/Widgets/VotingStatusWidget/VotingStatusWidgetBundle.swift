@@ -1,16 +1,10 @@
-//
-//  VotingStatusWidgetBundle.swift
-//  VotingStatusWidget
-//
-//  Created by tomokisun on 2023/04/28.
-//
-
 import WidgetKit
 import SwiftUI
+import VotingStatusWidgetFeature
 
 @main
 struct VotingStatusWidgetBundle: WidgetBundle {
-    var body: some Widget {
-        VotingStatusWidget()
-    }
+  var body: some Widget {
+    VotingStatusWidget()
+  }
 }

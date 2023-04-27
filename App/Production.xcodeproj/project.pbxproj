@@ -66,7 +66,6 @@
 		B7430FF029F8AD7B00BD2D0D /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		B7430FFD29F8ADB200BD2D0D /* BalanceWidgetBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceWidgetBundle.swift; sourceTree = "<group>"; };
 		B7430FFE29F8ADB200BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B7430FFF29F8ADB200BD2D0D /* BalanceWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceWidget.swift; sourceTree = "<group>"; };
 		B743100029F8ADB200BD2D0D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B743100B29F8AFF600BD2D0D /* BalanceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BalanceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7431A2129D8E8ED00580C1A /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				B7430FFD29F8ADB200BD2D0D /* BalanceWidgetBundle.swift */,
-				B7430FFF29F8ADB200BD2D0D /* BalanceWidget.swift */,
 				B7430FFE29F8ADB200BD2D0D /* Assets.xcassets */,
 				B743100029F8ADB200BD2D0D /* Info.plist */,
 			);
