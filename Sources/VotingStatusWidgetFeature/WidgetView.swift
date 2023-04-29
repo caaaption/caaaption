@@ -63,25 +63,3 @@ public struct VotingStatusWidgetView: View {
     return Text("Updated at \(dateString)")
   }
 }
-
-#if DEBUG
-  import ApolloTestSupport
-  import SnapshotModel
-  import SnapshotModelMock
-  import WidgetHelpers
-
-  struct VotingStatusWidgetViewPreviews: PreviewProvider {
-    static var previews: some View {
-      WidgetPreview([.systemMedium]) {
-        VotingStatusWidgetView(
-          entry: Entry(
-            date: Date(),
-            proposal: SnapshotModel.ProposalQuery.Data.Proposal.from(
-              Mock<Proposal>()
-            )
-          )
-        )
-      }
-    }
-  }
-#endif
