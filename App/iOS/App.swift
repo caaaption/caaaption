@@ -1,6 +1,5 @@
 import AppFeature
 import ComposableArchitecture
-import PhotoLibraryClientLive
 import SwiftUI
 import UIKit
 
@@ -20,9 +19,7 @@ final class SceneDelegate: NSObject, UIWindowSceneDelegate {
 final class AppDelegate: NSObject, UIApplicationDelegate {
   let store = Store(
     initialState: AppReducer.State(),
-    reducer: AppReducer().transformDependency(\.self) {
-      $0.photoLibraryClient = .liveValue
-    }
+    reducer: AppReducer().transformDependency(\.self) { _ in }
   )
 
   var viewStore: ViewStore<Void, AppReducer.Action> {

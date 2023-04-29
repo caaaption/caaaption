@@ -29,7 +29,6 @@
 		B7431A1A29D8E8D700580C1A /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7431A1529D8E8D700580C1A /* App.swift */; };
 		B7431A1B29D8E8D700580C1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7431A1729D8E8D700580C1A /* Preview Assets.xcassets */; };
 		B7431A3E29D8E9E300580C1A /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7431A3D29D8E9E300580C1A /* AppFeature */; };
-		B7431A4029D8E9E300580C1A /* PhotoLibraryClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B7431A3F29D8E9E300580C1A /* PhotoLibraryClientLive */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,7 +128,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7431A4029D8E9E300580C1A /* PhotoLibraryClientLive in Frameworks */,
 				B7431A3E29D8E9E300580C1A /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,7 +306,6 @@
 			name = App;
 			packageProductDependencies = (
 				B7431A3D29D8E9E300580C1A /* AppFeature */,
-				B7431A3F29D8E9E300580C1A /* PhotoLibraryClientLive */,
 			);
 			productName = App;
 			productReference = B7431A0529D8E8BA00580C1A /* App.app */;
@@ -867,10 +864,6 @@
 		B7431A3D29D8E9E300580C1A /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
-		};
-		B7431A3F29D8E9E300580C1A /* PhotoLibraryClientLive */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PhotoLibraryClientLive;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
