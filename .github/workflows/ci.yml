@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-caaaption:
+  build:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v3
@@ -16,18 +16,7 @@ jobs:
         path: SourcePackages
         key: ${{ runner.os }}-spm-${{ hashFiles('caaaption.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
         restore-keys: ${{ runner.os }}-spm-
-    - run: make build-caaaption
-
-  build-previews:
-    runs-on: macOS-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/cache@v3
-      with:
-        path: SourcePackages
-        key: ${{ runner.os }}-spm-${{ hashFiles('caaaption.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
-        restore-keys: ${{ runner.os }}-spm-
-    - run: make build-previews
+    - run: make build
 
 #   test:
 #     runs-on: macOS-latest
