@@ -2,7 +2,7 @@ import Dependencies
 import XCTestDynamicOverlay
 
 extension DependencyValues {
-  public var gitHubClient: GitHubClient {
+  public var githubClient: GitHubClient {
     get { self[GitHubClient.self] }
     set { self[GitHubClient.self] = newValue }
   }
