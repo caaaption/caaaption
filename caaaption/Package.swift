@@ -88,6 +88,14 @@ package.targets.append(contentsOf: [
   ]),
 ])
 
+// Utilities
+package.products.append(contentsOf: [
+  .library(name: "PlaceholderAsyncImage", targets: ["PlaceholderAsyncImage"]),
+])
+package.targets.append(contentsOf: [
+  .target(name: "PlaceholderAsyncImage"),
+])
+
 // Widgets
 
 package.products.append(contentsOf: [
