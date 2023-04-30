@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B7431A0429D8E8BA00580C1A"
+               BlueprintIdentifier = "B74310B629FEC5F200BD2D0D"
                BuildableName = "App.app"
                BlueprintName = "App"
-               ReferencedContainer = "container:Staging.xcodeproj">
+               ReferencedContainer = "container:Widget Production.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -43,10 +43,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B7431A0429D8E8BA00580C1A"
+            BlueprintIdentifier = "B74310B629FEC5F200BD2D0D"
             BuildableName = "App.app"
             BlueprintName = "App"
-            ReferencedContainer = "container:Staging.xcodeproj">
+            ReferencedContainer = "container:Widget Production.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -60,10 +60,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B7431A0429D8E8BA00580C1A"
+            BlueprintIdentifier = "B74310B629FEC5F200BD2D0D"
             BuildableName = "App.app"
             BlueprintName = "App"
-            ReferencedContainer = "container:Staging.xcodeproj">
+            ReferencedContainer = "container:Widget Production.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

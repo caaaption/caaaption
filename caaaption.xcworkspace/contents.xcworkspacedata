@@ -8,15 +8,12 @@
       location = "group:Makefile">
    </FileRef>
    <FileRef
-      location = "group:App/Production.xcodeproj">
+      location = "group:App/Widget Production.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:App/Staging.xcodeproj">
+      location = "group:App/Widget Staging.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:caaaption">
-   </FileRef>
-   <FileRef
-      location = "group:BuildTools">
    </FileRef>
 </Workspace>

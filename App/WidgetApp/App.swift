@@ -1,20 +1,6 @@
 import AppFeature
 import ComposableArchitecture
 import SwiftUI
-import UIKit
-
-final class SceneDelegate: NSObject, UIWindowSceneDelegate {
-  var window: UIWindow?
-
-  func scene(
-    _ scene: UIScene,
-    willConnectTo session: UISceneSession,
-    options connectionOptions: UIScene.ConnectionOptions
-  ) {
-    window = (scene as? UIWindowScene)?.keyWindow
-    window?.backgroundColor = .green
-  }
-}
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
   let store = Store(
@@ -33,16 +19,6 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     viewStore.send(.appDelegate(.didFinishLaunching))
 
     return true
-  }
-
-  func application(
-    _ application: UIApplication,
-    configurationForConnecting connectingSceneSession: UISceneSession,
-    options: UIScene.ConnectionOptions
-  ) -> UISceneConfiguration {
-    let configuration = UISceneConfiguration(name: nil, sessionRole: connectingSceneSession.role)
-    configuration.delegateClass = SceneDelegate.self
-    return configuration
   }
 
   func application(
