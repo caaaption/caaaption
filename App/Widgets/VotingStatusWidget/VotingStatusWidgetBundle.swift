@@ -10,7 +10,7 @@ struct VotingStatusWidgetBundle: WidgetBundle {
     withDependencies {
       $0.snapshotClient = .liveValue
     } operation: {
-      VotingStatusWidget()
+      VotingStatusWidget.Entrypoint()
     }
   }
 }

@@ -4,16 +4,16 @@ import SwiftUI
 
 public struct BalanceWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
-    let kind: String = "BalanceWidget"
+    let kind = Constant.kind
     public init() {}
     
     public var body: some WidgetConfiguration {
       StaticConfiguration(kind: kind, provider: Provider()) { entry in
         BalanceWidget.Body(entry: entry)
       }
-      .configurationDisplayName("Balance Widget")
-      .description("Displays wallet balance.")
-      .supportedFamilies([.systemSmall])
+      .configurationDisplayName(Constant.displayName)
+      .description(Constant.description)
+      .supportedFamilies(Constant.supportedFamilies)
     }
   }
   

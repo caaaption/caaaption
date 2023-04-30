@@ -136,5 +136,6 @@ package.targets.append(contentsOf: [
   .target(name: "VotingStatusWidgetFeature", dependencies: [
     "WidgetHelpers",
     "SnapshotClient",
+    "WidgetProtocol",
   ]),
 ])
