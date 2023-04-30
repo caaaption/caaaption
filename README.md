@@ -1,6 +1,6 @@
 # caaaption
 
-<img src='./App/iOS/Assets.xcassets/AppIcon.appiconset/icon_pink4-1024.png' width='300'>
+<img src='./App/WidgetApp/Assets.xcassets/AppIcon.appiconset/icon_pink4-1024.png' width='300'>
 
 <div align='left'>
     <img src='https://github.com/caaaption/caaaption/actions/workflows/ci.yml/badge.svg'>
