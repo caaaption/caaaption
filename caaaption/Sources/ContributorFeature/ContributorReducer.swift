@@ -1,27 +1,27 @@
+import ComposableArchitecture
 import Foundation
 import GitHubClient
-import ComposableArchitecture
 import UIApplicationClient
 
 public struct ContributorReducer: ReducerProtocol {
   public init() {}
-  
+
   public struct State: Equatable {
     public var contributors: [GitHubClient.Contributor] = []
-    
+
     public init() {}
   }
-  
+
   public enum Action: Equatable {
     case task
     case refreshable
     case contributorsResponse(TaskResult<[GitHubClient.Contributor]>)
     case tappendContributor(Int)
   }
-  
+
   @Dependency(\.githubClient.contributors) var contributors
   @Dependency(\.applicationClient.open) var openURL
-  
+
   public var body: some ReducerProtocol<State, Action> {
     Reduce { state, action in
       switch action {
@@ -33,21 +33,21 @@ public struct ContributorReducer: ReducerProtocol {
             }
           )
         }
-        
+
       case .refreshable:
         return EffectTask.run { send in
           await send(.task)
         }
-        
+
       case let .contributorsResponse(.success(contributors)):
         state.contributors = contributors
           .sorted(by: { $0.contributions > $1.contributions })
         return EffectTask.none
-        
+
       case .contributorsResponse(.failure):
         state.contributors = []
         return EffectTask.none
-        
+
       case let .tappendContributor(id):
         guard
           let contributor = state.contributors.first(where: { $0.id == id }),

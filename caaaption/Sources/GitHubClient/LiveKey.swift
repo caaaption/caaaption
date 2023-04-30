@@ -1,9 +1,9 @@
-import Foundation
 import ComposableArchitecture
+import Foundation
 
 extension GitHubClient: DependencyKey {
   public static let liveValue = Self.live()
-  
+
   public static func live() -> Self {
     let session = GitHubClientSession()
     return Self(

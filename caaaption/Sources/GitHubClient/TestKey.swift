@@ -1,8 +1,8 @@
 import Dependencies
 import XCTestDynamicOverlay
 
-extension DependencyValues {
-  public var githubClient: GitHubClient {
+public extension DependencyValues {
+  var githubClient: GitHubClient {
     get { self[GitHubClient.self] }
     set { self[GitHubClient.self] = newValue }
   }
@@ -14,8 +14,8 @@ extension GitHubClient: TestDependencyKey {
   )
 }
 
-extension GitHubClient {
-  public static let noop = Self(
+public extension GitHubClient {
+  static let noop = Self(
     contributors: { _, _ in try await Task.never() }
   )
 }

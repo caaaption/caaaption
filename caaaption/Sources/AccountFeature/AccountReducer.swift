@@ -1,7 +1,7 @@
 import ComposableArchitecture
+import ContributorFeature
 import ServerConfig
 import UIApplicationClient
-import ContributorFeature
 
 public struct AccountReducer: ReducerProtocol {
   public init() {}
@@ -23,7 +23,7 @@ public struct AccountReducer: ReducerProtocol {
     Scope(state: \.contributor, action: /Action.contributor) {
       ContributorReducer()
     }
-    Reduce { state, action in
+    Reduce { _, action in
       switch action {
       case .contributor:
         return EffectTask.none

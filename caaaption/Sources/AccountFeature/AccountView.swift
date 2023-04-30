@@ -1,6 +1,6 @@
 import ComposableArchitecture
-import SwiftUI
 import ContributorFeature
+import SwiftUI
 
 public struct AccountView: View {
   let store: StoreOf<AccountReducer>

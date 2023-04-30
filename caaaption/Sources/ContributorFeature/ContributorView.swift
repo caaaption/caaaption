@@ -1,5 +1,5 @@
-import PlaceholderAsyncImage
 import ComposableArchitecture
+import PlaceholderAsyncImage
 import SwiftUI
 
 public struct ContributorView: View {
@@ -21,7 +21,7 @@ public struct ContributorView: View {
             )
             .frame(width: 44, height: 44)
             .clipShape(Circle())
-            
+
             Text(contributor.login)
               .bold()
           }
@@ -36,16 +36,16 @@ public struct ContributorView: View {
 }
 
 #if DEBUG
-import SwiftUIHelpers
+  import SwiftUIHelpers
 
-struct ContributorViewPreviews: PreviewProvider {
-  static var previews: some View {
-    ContributorView(
-      store: .init(
-        initialState: ContributorReducer.State(),
-        reducer: ContributorReducer()
+  struct ContributorViewPreviews: PreviewProvider {
+    static var previews: some View {
+      ContributorView(
+        store: .init(
+          initialState: ContributorReducer.State(),
+          reducer: ContributorReducer()
+        )
       )
-    )
+    }
   }
-}
 #endif
