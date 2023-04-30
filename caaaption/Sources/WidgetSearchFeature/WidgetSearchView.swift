@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import SwiftUI
+import AccountFeature
 
 public struct WidgetSearchView: View {
   let store: StoreOf<WidgetSearchReducer>
@@ -12,27 +13,8 @@ public struct WidgetSearchView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         ForEach(0 ..< 10) { _ in
-          VStack(spacing: 12) {
-            HStack(spacing: 12) {
-              Color.red
-                .frame(width: 62, height: 62)
-                .cornerRadius(12)
-
-              VStack(alignment: .leading, spacing: 0) {
-                Text("Check your balance")
-                  .bold()
-                Text("QuickNode")
-                  .foregroundColor(.secondary)
-              }
-
-              Spacer()
-
-              Button("Install", action: {})
-                .foregroundColor(.blue)
-                .bold()
-            }
-          }
-          .listRowSeparator(.hidden)
+          ListCard()
+            .listRowSeparator(.hidden)
         }
       }
       .listStyle(.plain)
@@ -46,6 +28,23 @@ public struct WidgetSearchView: View {
         ),
         prompt: "Search Widget"
       )
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            viewStore.send(.binding(.set(\.$isPresented, true)))
+          } label: {
+            Color.red
+              .frame(width: 36, height: 36)
+              .clipShape(Circle())
+          }
+
+        }
+      }
+      .sheet(isPresented: viewStore.binding(\.$isPresented)) {
+        NavigationStack {
+          AccountView(store: store.scope(state: \.account, action: WidgetSearchReducer.Action.account))
+        }
+      }
     }
   }
 }

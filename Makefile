@@ -4,7 +4,6 @@ open:
 clean:
 	rm -rf ./.swiftpm
 	rm -rf ./.build
-	xcodebuild clean -alltargets
 
 test: test-color-hex
 
