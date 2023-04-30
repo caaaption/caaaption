@@ -20,18 +20,24 @@ var package = Package(
 package.products.append(contentsOf: [
   .library(name: "AppFeature", targets: ["AppFeature"]),
   .library(name: "WidgetSearchFeature", targets: ["WidgetSearchFeature"]),
+  .library(name: "AccountFeature", targets: ["AccountFeature"])
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
     "WidgetSearchFeature",
   ]),
   .target(name: "WidgetSearchFeature", dependencies: [
+    "AccountFeature",
+  ]),
+  .target(name: "AccountFeature", dependencies: [
+    "ServerConfig",
     "SwiftUIHelpers",
+    "UIApplicationClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
 
-// Model
+// GraphQL
 package.products.append(contentsOf: [
   .library(name: "SnapshotModel", targets: ["SnapshotModel"]),
   .library(name: "SnapshotModelMock", targets: ["SnapshotModelMock"]),
@@ -52,6 +58,7 @@ package.products.append(contentsOf: [
   .library(name: "FirebaseClientLive", targets: ["FirebaseClientLive"]),
   .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
   .library(name: "SnapshotClient", targets: ["SnapshotClient"]),
+  .library(name: "ServerConfig", targets: ["ServerConfig"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "FirebaseClient", dependencies: [
@@ -68,6 +75,7 @@ package.targets.append(contentsOf: [
     "SnapshotModel",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
+  .target(name: "ServerConfig"),
 ])
 
 // Helpers

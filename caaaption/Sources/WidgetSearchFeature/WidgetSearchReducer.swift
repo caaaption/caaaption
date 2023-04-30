@@ -1,14 +1,20 @@
 import ComposableArchitecture
+import AccountFeature
 
 public struct WidgetSearchReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
+    public var account = AccountReducer.State()
+    
     @BindingState public var searchable = ""
+    @BindingState public var isPresented = false
     public init() {}
   }
 
   public enum Action: Equatable, BindableAction {
+    case account(AccountReducer.Action)
+    
     case task
     case refreshable
     case binding(BindingAction<State>)
@@ -19,8 +25,14 @@ public struct WidgetSearchReducer: ReducerProtocol {
 
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()
+    Scope(state: \.account, action: /Action.account) {
+      AccountReducer()
+    }
     Reduce { state, action in
       switch action {
+      case .account:
+        return EffectTask.none
+
       case .task:
         return EffectTask.none
         

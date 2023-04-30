@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import SwiftUI
+import AccountFeature
 
 public struct WidgetSearchView: View {
   let store: StoreOf<WidgetSearchReducer>
@@ -30,13 +31,18 @@ public struct WidgetSearchView: View {
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
-            print("")
+            viewStore.send(.binding(.set(\.$isPresented, true)))
           } label: {
             Color.red
               .frame(width: 36, height: 36)
               .clipShape(Circle())
           }
 
+        }
+      }
+      .sheet(isPresented: viewStore.binding(\.$isPresented)) {
+        NavigationStack {
+          AccountView(store: store.scope(state: \.account, action: WidgetSearchReducer.Action.account))
         }
       }
     }
