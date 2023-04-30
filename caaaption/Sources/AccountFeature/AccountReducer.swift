@@ -1,6 +1,6 @@
 import ComposableArchitecture
-import UIApplicationClient
 import ServerConfig
+import UIApplicationClient
 
 public struct AccountReducer: ReducerProtocol {
   public init() {}
@@ -12,7 +12,7 @@ public struct AccountReducer: ReducerProtocol {
   public enum Action: Equatable {
     case privacyPolicy
   }
-  
+
   @Dependency(\.applicationClient.open) var openURL
 
   public var body: some ReducerProtocol<State, Action> {

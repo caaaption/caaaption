@@ -4,11 +4,11 @@ import SwiftUI
 public struct AccountView: View {
   let store: StoreOf<AccountReducer>
   @Environment(\.presentationMode) @Binding var presentationMode
-  
+
   public init(store: StoreOf<AccountReducer>) {
     self.store = store
   }
-  
+
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
@@ -31,20 +31,20 @@ public struct AccountView: View {
 }
 
 #if DEBUG
-import SwiftUIHelpers
+  import SwiftUIHelpers
 
-struct AccountViewPreviews: PreviewProvider {
-  static var previews: some View {
-    Preview {
-      NavigationStack {
-        AccountView(
-          store: .init(
-            initialState: AccountReducer.State(),
-            reducer: AccountReducer()
+  struct AccountViewPreviews: PreviewProvider {
+    static var previews: some View {
+      Preview {
+        NavigationStack {
+          AccountView(
+            store: .init(
+              initialState: AccountReducer.State(),
+              reducer: AccountReducer()
+            )
           )
-        )
+        }
       }
     }
   }
-}
 #endif

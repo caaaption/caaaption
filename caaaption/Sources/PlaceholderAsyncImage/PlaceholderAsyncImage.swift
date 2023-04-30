@@ -6,7 +6,7 @@ public struct PlaceholderAsyncImage: View {
   let width: CGFloat?
   let height: CGFloat?
   let radius: CGFloat
-  
+
   public init(
     url: URL?,
     scale: CGFloat = 1,
@@ -20,7 +20,7 @@ public struct PlaceholderAsyncImage: View {
     self.height = height
     self.radius = radius
   }
-  
+
   public var body: some View {
     AsyncImage(
       url: url,

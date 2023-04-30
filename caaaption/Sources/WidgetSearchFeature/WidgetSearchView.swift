@@ -1,6 +1,6 @@
+import AccountFeature
 import ComposableArchitecture
 import SwiftUI
-import AccountFeature
 
 public struct WidgetSearchView: View {
   let store: StoreOf<WidgetSearchReducer>
@@ -37,7 +37,6 @@ public struct WidgetSearchView: View {
               .frame(width: 36, height: 36)
               .clipShape(Circle())
           }
-
         }
       }
       .sheet(isPresented: viewStore.binding(\.$isPresented)) {
