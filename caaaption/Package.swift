@@ -20,7 +20,8 @@ var package = Package(
 package.products.append(contentsOf: [
   .library(name: "AppFeature", targets: ["AppFeature"]),
   .library(name: "WidgetSearchFeature", targets: ["WidgetSearchFeature"]),
-  .library(name: "AccountFeature", targets: ["AccountFeature"])
+  .library(name: "AccountFeature", targets: ["AccountFeature"]),
+  .library(name: "ContributorFeature", targets: ["ContributorFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -31,8 +32,13 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "AccountFeature", dependencies: [
     "ServerConfig",
+    "ContributorFeature",
+  ]),
+  .target(name: "ContributorFeature", dependencies: [
+    "GitHubClient",
     "SwiftUIHelpers",
     "UIApplicationClient",
+    "PlaceholderAsyncImage",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
