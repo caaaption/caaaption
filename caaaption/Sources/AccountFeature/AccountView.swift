@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import SwiftUI
+import ContributorFeature
 
 public struct AccountView: View {
   let store: StoreOf<AccountReducer>
@@ -14,6 +15,19 @@ public struct AccountView: View {
       List {
         Section {
           Button("Privacy Policy", action: { viewStore.send(.privacyPolicy) })
+        }
+        Section {
+          NavigationLink(
+            destination: ContributorView(
+              store: store.scope(
+                state: \.contributor,
+                action: AccountReducer.Action.contributor
+              )
+            ),
+            label: {
+              Text("Contributors")
+            }
+          )
         }
       }
       .navigationBarTitleDisplayMode(.inline)
