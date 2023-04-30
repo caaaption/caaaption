@@ -37,4 +37,23 @@ public struct WidgetSearchReducer: ReducerProtocol {
       }
     }
   }
+  
+//  public struct Destinations: ReducerProtocol {
+//    public enum State: Equatable {
+//      public enum Tag: Int {
+//        case settings
+//
+//        var tag: Tag {
+//          return self
+//        }
+//      }
+//    }
+//
+//    public enum Action: Equatable {
+//    }
+//
+//    public var body: some ReducerProtocol<State, Action> {
+//      return EffectTask.none
+//    }
+//  }
 }

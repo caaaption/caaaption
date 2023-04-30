@@ -29,9 +29,14 @@ public struct WidgetSearchView: View {
       )
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
-          Color.red
-            .frame(width: 36, height: 36)
-            .clipShape(Circle())
+          Button {
+            print("")
+          } label: {
+            Color.red
+              .frame(width: 36, height: 36)
+              .clipShape(Circle())
+          }
+
         }
       }
     }
