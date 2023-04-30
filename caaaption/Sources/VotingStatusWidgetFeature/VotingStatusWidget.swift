@@ -12,7 +12,7 @@ public struct VotingStatusWidget: WidgetProtocol {
     
     public var body: some WidgetConfiguration {
       StaticConfiguration(kind: kind, provider: Provider()) { entry in
-        VotingStatusWidget.Body(entry: entry)
+        VotingStatusWidget.WidgetView(entry: entry)
       }
       .configurationDisplayName(Constant.displayName)
       .description(Constant.description)
@@ -78,7 +78,7 @@ public struct VotingStatusWidget: WidgetProtocol {
   }
 
   
-  public struct Body: View {
+  public struct WidgetView: View {
     public var entry: Entry
 
     public init(entry: Entry) {

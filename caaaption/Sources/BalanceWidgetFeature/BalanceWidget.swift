@@ -9,7 +9,7 @@ public struct BalanceWidget: WidgetProtocol {
     
     public var body: some WidgetConfiguration {
       StaticConfiguration(kind: kind, provider: Provider()) { entry in
-        BalanceWidget.Body(entry: entry)
+        BalanceWidget.WidgetView(entry: entry)
       }
       .configurationDisplayName(Constant.displayName)
       .description(Constant.description)
@@ -62,7 +62,7 @@ public struct BalanceWidget: WidgetProtocol {
     }
   }
   
-  public struct Body: View {
+  public struct WidgetView: View {
     let entry: Entry
     
     public init(entry: Entry) {
