@@ -117,18 +117,21 @@ package.targets.append(contentsOf: [
 // Widgets
 
 package.products.append(contentsOf: [
+  .library(name: "WidgetProtocol", targets: ["WidgetProtocol"]),
   .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
   .library(name: "ArtWidgetFeature", targets: ["ArtWidgetFeature"]),
   .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
   .library(name: "VotingStatusWidgetFeature", targets: ["VotingStatusWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
+  .target(name: "WidgetProtocol"),
   .target(name: "WidgetHelpers"),
   .target(name: "ArtWidgetFeature", dependencies: [
     "WidgetHelpers",
   ]),
   .target(name: "BalanceWidgetFeature", dependencies: [
     "WidgetHelpers",
+    "WidgetProtocol",
   ]),
   .target(name: "VotingStatusWidgetFeature", dependencies: [
     "WidgetHelpers",
