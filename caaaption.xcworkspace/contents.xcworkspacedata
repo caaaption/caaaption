@@ -14,9 +14,12 @@
       location = "group:App/Staging.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:caaaption">
+      location = "group:App/Widget Production.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:BuildTools">
+      location = "group:App/Widget Staging.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:caaaption">
    </FileRef>
 </Workspace>
