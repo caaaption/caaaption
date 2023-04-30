@@ -11,7 +11,51 @@
 		B74310CC29FEC61F00BD2D0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74310C829FEC61E00BD2D0D /* Preview Assets.xcassets */; };
 		B74310CD29FEC61F00BD2D0D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74310C929FEC61E00BD2D0D /* App.swift */; };
 		B74310D429FEC65300BD2D0D /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B74310D329FEC65300BD2D0D /* AppFeature */; };
+		B743110829FECA1600BD2D0D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B743110729FECA1600BD2D0D /* WidgetKit.framework */; };
+		B743110A29FECA1600BD2D0D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B743110929FECA1600BD2D0D /* SwiftUI.framework */; };
+		B743111529FECA1600BD2D0D /* BalanceWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B743110629FECA1600BD2D0D /* BalanceWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B743111F29FECA2C00BD2D0D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B743110729FECA1600BD2D0D /* WidgetKit.framework */; };
+		B743112029FECA2C00BD2D0D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B743110929FECA1600BD2D0D /* SwiftUI.framework */; };
+		B743112B29FECA2D00BD2D0D /* VotingStatusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B743111E29FECA2C00BD2D0D /* VotingStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B743113029FECA8000BD2D0D /* BalanceWidgetFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B743112F29FECA8000BD2D0D /* BalanceWidgetFeature */; };
+		B743113229FECA8700BD2D0D /* VotingStatusWidgetFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B743113129FECA8700BD2D0D /* VotingStatusWidgetFeature */; };
+		B743115129FECABD00BD2D0D /* BalanceWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B743114629FECAB800BD2D0D /* BalanceWidgetBundle.swift */; };
+		B743115229FECAC000BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B743114729FECAB800BD2D0D /* Assets.xcassets */; };
+		B743115429FECAC600BD2D0D /* VotingStatusWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B743114A29FECAB800BD2D0D /* VotingStatusWidgetBundle.swift */; };
+		B743115529FECAC900BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B743114B29FECAB800BD2D0D /* Assets.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B743111329FECA1600BD2D0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B743108529FEC51100BD2D0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B743110529FECA1600BD2D0D;
+			remoteInfo = BalanceWidgetExtension;
+		};
+		B743112929FECA2D00BD2D0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B743108529FEC51100BD2D0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B743111D29FECA2C00BD2D0D;
+			remoteInfo = VotingStatusWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B743111929FECA1600BD2D0D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B743111529FECA1600BD2D0D /* BalanceWidgetExtension.appex in Embed Foundation Extensions */,
+				B743112B29FECA2D00BD2D0D /* VotingStatusWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B74310B729FEC5F200BD2D0D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,6 +63,19 @@
 		B74310C829FEC61E00BD2D0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B74310C929FEC61E00BD2D0D /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		B74310CA29FEC61E00BD2D0D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B743110629FECA1600BD2D0D /* BalanceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BalanceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B743110729FECA1600BD2D0D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B743110929FECA1600BD2D0D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B743111E29FECA2C00BD2D0D /* VotingStatusWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = VotingStatusWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B743114629FECAB800BD2D0D /* BalanceWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceWidgetBundle.swift; sourceTree = "<group>"; };
+		B743114729FECAB800BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B743114829FECAB800BD2D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B743114A29FECAB800BD2D0D /* VotingStatusWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingStatusWidgetBundle.swift; sourceTree = "<group>"; };
+		B743114B29FECAB800BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B743114C29FECAB800BD2D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B743114E29FECAB800BD2D0D /* ArtWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtWidgetBundle.swift; sourceTree = "<group>"; };
+		B743114F29FECAB800BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B743115029FECAB800BD2D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +87,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B743110329FECA1600BD2D0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B743110A29FECA1600BD2D0D /* SwiftUI.framework in Frameworks */,
+				B743113029FECA8000BD2D0D /* BalanceWidgetFeature in Frameworks */,
+				B743110829FECA1600BD2D0D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B743111B29FECA2C00BD2D0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B743112029FECA2C00BD2D0D /* SwiftUI.framework in Frameworks */,
+				B743111F29FECA2C00BD2D0D /* WidgetKit.framework in Frameworks */,
+				B743113229FECA8700BD2D0D /* VotingStatusWidgetFeature in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -37,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				B74310C529FEC61E00BD2D0D /* WidgetApp */,
+				B743114429FECAB800BD2D0D /* Widgets */,
 				B743108E29FEC51100BD2D0D /* Products */,
 				B74310D229FEC65300BD2D0D /* Frameworks */,
 			);
@@ -46,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				B74310B729FEC5F200BD2D0D /* App.app */,
+				B743110629FECA1600BD2D0D /* BalanceWidgetExtension.appex */,
+				B743111E29FECA2C00BD2D0D /* VotingStatusWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,8 +152,50 @@
 		B74310D229FEC65300BD2D0D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B743110729FECA1600BD2D0D /* WidgetKit.framework */,
+				B743110929FECA1600BD2D0D /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B743114429FECAB800BD2D0D /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				B743114529FECAB800BD2D0D /* BalanceWidget */,
+				B743114929FECAB800BD2D0D /* VotingStatusWidget */,
+				B743114D29FECAB800BD2D0D /* ArtWidget */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		B743114529FECAB800BD2D0D /* BalanceWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B743114629FECAB800BD2D0D /* BalanceWidgetBundle.swift */,
+				B743114729FECAB800BD2D0D /* Assets.xcassets */,
+				B743114829FECAB800BD2D0D /* Info.plist */,
+			);
+			path = BalanceWidget;
+			sourceTree = "<group>";
+		};
+		B743114929FECAB800BD2D0D /* VotingStatusWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B743114A29FECAB800BD2D0D /* VotingStatusWidgetBundle.swift */,
+				B743114B29FECAB800BD2D0D /* Assets.xcassets */,
+				B743114C29FECAB800BD2D0D /* Info.plist */,
+			);
+			path = VotingStatusWidget;
+			sourceTree = "<group>";
+		};
+		B743114D29FECAB800BD2D0D /* ArtWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B743114E29FECAB800BD2D0D /* ArtWidgetBundle.swift */,
+				B743114F29FECAB800BD2D0D /* Assets.xcassets */,
+				B743115029FECAB800BD2D0D /* Info.plist */,
+			);
+			path = ArtWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,10 +208,13 @@
 				B74310B329FEC5F200BD2D0D /* Sources */,
 				B74310B429FEC5F200BD2D0D /* Frameworks */,
 				B74310B529FEC5F200BD2D0D /* Resources */,
+				B743111929FECA1600BD2D0D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B743111429FECA1600BD2D0D /* PBXTargetDependency */,
+				B743112A29FECA2D00BD2D0D /* PBXTargetDependency */,
 			);
 			name = App;
 			packageProductDependencies = (
@@ -98,6 +223,46 @@
 			productName = App;
 			productReference = B74310B729FEC5F200BD2D0D /* App.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B743110529FECA1600BD2D0D /* BalanceWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B743111629FECA1600BD2D0D /* Build configuration list for PBXNativeTarget "BalanceWidgetExtension" */;
+			buildPhases = (
+				B743110229FECA1600BD2D0D /* Sources */,
+				B743110329FECA1600BD2D0D /* Frameworks */,
+				B743110429FECA1600BD2D0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BalanceWidgetExtension;
+			packageProductDependencies = (
+				B743112F29FECA8000BD2D0D /* BalanceWidgetFeature */,
+			);
+			productName = BalanceWidgetExtension;
+			productReference = B743110629FECA1600BD2D0D /* BalanceWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B743111D29FECA2C00BD2D0D /* VotingStatusWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B743112C29FECA2D00BD2D0D /* Build configuration list for PBXNativeTarget "VotingStatusWidgetExtension" */;
+			buildPhases = (
+				B743111A29FECA2C00BD2D0D /* Sources */,
+				B743111B29FECA2C00BD2D0D /* Frameworks */,
+				B743111C29FECA2C00BD2D0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VotingStatusWidgetExtension;
+			packageProductDependencies = (
+				B743113129FECA8700BD2D0D /* VotingStatusWidgetFeature */,
+			);
+			productName = VotingStatusWidgetExtension;
+			productReference = B743111E29FECA2C00BD2D0D /* VotingStatusWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -110,6 +275,12 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					B74310B629FEC5F200BD2D0D = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					B743110529FECA1600BD2D0D = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					B743111D29FECA2C00BD2D0D = {
 						CreatedOnToolsVersion = 14.3;
 					};
 				};
@@ -128,6 +299,8 @@
 			projectRoot = "";
 			targets = (
 				B74310B629FEC5F200BD2D0D /* App */,
+				B743110529FECA1600BD2D0D /* BalanceWidgetExtension */,
+				B743111D29FECA2C00BD2D0D /* VotingStatusWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -142,6 +315,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B743110429FECA1600BD2D0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B743115229FECAC000BD2D0D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B743111C29FECA2C00BD2D0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B743115529FECAC900BD2D0D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -153,7 +342,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B743110229FECA1600BD2D0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B743115129FECABD00BD2D0D /* BalanceWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B743111A29FECA2C00BD2D0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B743115429FECAC600BD2D0D /* VotingStatusWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B743111429FECA1600BD2D0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B743110529FECA1600BD2D0D /* BalanceWidgetExtension */;
+			targetProxy = B743111329FECA1600BD2D0D /* PBXContainerItemProxy */;
+		};
+		B743112A29FECA2D00BD2D0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B743111D29FECA2C00BD2D0D /* VotingStatusWidgetExtension */;
+			targetProxy = B743112929FECA2D00BD2D0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B743109929FEC51200BD2D0D /* Debug */ = {
@@ -273,6 +491,7 @@
 		B74310C329FEC5F300BD2D0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -305,6 +524,7 @@
 		B74310C429FEC5F300BD2D0D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -334,6 +554,118 @@
 			};
 			name = Release;
 		};
+		B743111729FECA1600BD2D0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV9FQ3YF56;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/BalanceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BalanceWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.caaaption.widget.balance-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B743111829FECA1600BD2D0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV9FQ3YF56;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/BalanceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BalanceWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.caaaption.widget.balance-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B743112D29FECA2D00BD2D0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV9FQ3YF56;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/VotingStatusWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VotingStatusWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.caaaption.widget.voting-status-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B743112E29FECA2D00BD2D0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV9FQ3YF56;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/VotingStatusWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VotingStatusWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.caaaption.widget.voting-status-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -355,12 +687,38 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B743111629FECA1600BD2D0D /* Build configuration list for PBXNativeTarget "BalanceWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B743111729FECA1600BD2D0D /* Debug */,
+				B743111829FECA1600BD2D0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B743112C29FECA2D00BD2D0D /* Build configuration list for PBXNativeTarget "VotingStatusWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B743112D29FECA2D00BD2D0D /* Debug */,
+				B743112E29FECA2D00BD2D0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		B74310D329FEC65300BD2D0D /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
+		};
+		B743112F29FECA8000BD2D0D /* BalanceWidgetFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BalanceWidgetFeature;
+		};
+		B743113129FECA8700BD2D0D /* VotingStatusWidgetFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = VotingStatusWidgetFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
