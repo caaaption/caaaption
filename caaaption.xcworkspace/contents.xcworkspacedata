@@ -8,12 +8,6 @@
       location = "group:Makefile">
    </FileRef>
    <FileRef
-      location = "group:App/Production.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:App/Staging.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:App/Widget Production.xcodeproj">
    </FileRef>
    <FileRef
