@@ -46,6 +46,13 @@ public struct WidgetSearchView: View {
         ),
         prompt: "Search Widget"
       )
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Color.red
+            .frame(width: 36, height: 36)
+            .clipShape(Circle())
+        }
+      }
     }
   }
 }
