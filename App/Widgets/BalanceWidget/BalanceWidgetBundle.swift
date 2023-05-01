@@ -1,10 +1,10 @@
-import BalanceWidgetFeature
+import BalanceWidget
 import SwiftUI
 import WidgetKit
 
 @main
 struct BalanceWidgetBundle: WidgetBundle {
   var body: some Widget {
-    BalanceWidget()
+    BalanceWidget.Entrypoint()
   }
 }

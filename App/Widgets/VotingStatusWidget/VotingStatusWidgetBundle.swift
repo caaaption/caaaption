@@ -1,7 +1,7 @@
 import Dependencies
 import SnapshotClient
 import SwiftUI
-import VotingStatusWidgetFeature
+import VotingStatusWidget
 import WidgetKit
 
 @main
@@ -10,7 +10,7 @@ struct VotingStatusWidgetBundle: WidgetBundle {
     withDependencies {
       $0.snapshotClient = .liveValue
     } operation: {
-      VotingStatusWidget()
+      VotingStatusWidget.Entrypoint()
     }
   }
 }

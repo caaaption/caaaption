@@ -1,4 +1,4 @@
-import ArtWidgetFeature
+import ArtWidget
 import SwiftUI
 import WidgetKit
 

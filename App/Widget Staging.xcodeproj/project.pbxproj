@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B731482929FF3963002C2A57 /* BalanceWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B731482829FF3963002C2A57 /* BalanceWidget */; };
+		B731482B29FF396A002C2A57 /* VotingStatusWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B731482A29FF396A002C2A57 /* VotingStatusWidget */; };
 		B74310AF29FEC5C700BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74310AA29FEC5C700BD2D0D /* Assets.xcassets */; };
 		B74310B029FEC5C700BD2D0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74310AC29FEC5C700BD2D0D /* Preview Assets.xcassets */; };
 		B74310B129FEC5C700BD2D0D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74310AD29FEC5C700BD2D0D /* App.swift */; };
@@ -17,8 +19,6 @@
 		B74310F229FEC9CF00BD2D0D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74310DA29FEC94300BD2D0D /* WidgetKit.framework */; };
 		B74310F329FEC9CF00BD2D0D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B74310DC29FEC94300BD2D0D /* SwiftUI.framework */; };
 		B74310FE29FEC9D000BD2D0D /* VotingStatusWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B74310F129FEC9CF00BD2D0D /* VotingStatusWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B743113429FECA8D00BD2D0D /* BalanceWidgetFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B743113329FECA8D00BD2D0D /* BalanceWidgetFeature */; };
-		B743113629FECA9300BD2D0D /* VotingStatusWidgetFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B743113529FECA9300BD2D0D /* VotingStatusWidgetFeature */; };
 		B743115629FECAD000BD2D0D /* BalanceWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B743113929FECAB100BD2D0D /* BalanceWidgetBundle.swift */; };
 		B743115729FECAD300BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B743113A29FECAB100BD2D0D /* Assets.xcassets */; };
 		B743115829FECAD700BD2D0D /* VotingStatusWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B743113D29FECAB100BD2D0D /* VotingStatusWidgetBundle.swift */; };
@@ -92,7 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B74310DD29FEC94300BD2D0D /* SwiftUI.framework in Frameworks */,
-				B743113429FECA8D00BD2D0D /* BalanceWidgetFeature in Frameworks */,
+				B731482929FF3963002C2A57 /* BalanceWidget in Frameworks */,
 				B74310DB29FEC94300BD2D0D /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,8 +102,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B74310F329FEC9CF00BD2D0D /* SwiftUI.framework in Frameworks */,
+				B731482B29FF396A002C2A57 /* VotingStatusWidget in Frameworks */,
 				B74310F229FEC9CF00BD2D0D /* WidgetKit.framework in Frameworks */,
-				B743113629FECA9300BD2D0D /* VotingStatusWidgetFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +238,7 @@
 			);
 			name = BalanceWidgetExtension;
 			packageProductDependencies = (
-				B743113329FECA8D00BD2D0D /* BalanceWidgetFeature */,
+				B731482829FF3963002C2A57 /* BalanceWidget */,
 			);
 			productName = BalanceWidgetExtension;
 			productReference = B74310D929FEC94300BD2D0D /* BalanceWidgetExtension.appex */;
@@ -258,7 +258,7 @@
 			);
 			name = VotingStatusWidgetExtension;
 			packageProductDependencies = (
-				B743113529FECA9300BD2D0D /* VotingStatusWidgetFeature */,
+				B731482A29FF396A002C2A57 /* VotingStatusWidget */,
 			);
 			productName = VotingStatusWidgetExtension;
 			productReference = B74310F129FEC9CF00BD2D0D /* VotingStatusWidgetExtension.appex */;
@@ -708,17 +708,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B731482829FF3963002C2A57 /* BalanceWidget */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BalanceWidget;
+		};
+		B731482A29FF396A002C2A57 /* VotingStatusWidget */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = VotingStatusWidget;
+		};
 		B74310D029FEC64E00BD2D0D /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
-		};
-		B743113329FECA8D00BD2D0D /* BalanceWidgetFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = BalanceWidgetFeature;
-		};
-		B743113529FECA9300BD2D0D /* VotingStatusWidgetFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = VotingStatusWidgetFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

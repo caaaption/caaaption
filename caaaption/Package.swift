@@ -117,21 +117,25 @@ package.targets.append(contentsOf: [
 // Widgets
 
 package.products.append(contentsOf: [
+  .library(name: "WidgetProtocol", targets: ["WidgetProtocol"]),
   .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
-  .library(name: "ArtWidgetFeature", targets: ["ArtWidgetFeature"]),
-  .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
-  .library(name: "VotingStatusWidgetFeature", targets: ["VotingStatusWidgetFeature"]),
+  .library(name: "ArtWidget", targets: ["ArtWidget"]),
+  .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
+  .library(name: "VotingStatusWidget", targets: ["VotingStatusWidget"]),
 ])
 package.targets.append(contentsOf: [
+  .target(name: "WidgetProtocol"),
   .target(name: "WidgetHelpers"),
-  .target(name: "ArtWidgetFeature", dependencies: [
+  .target(name: "ArtWidget", dependencies: [
     "WidgetHelpers",
   ]),
-  .target(name: "BalanceWidgetFeature", dependencies: [
+  .target(name: "BalanceWidget", dependencies: [
     "WidgetHelpers",
+    "WidgetProtocol",
   ]),
-  .target(name: "VotingStatusWidgetFeature", dependencies: [
+  .target(name: "VotingStatusWidget", dependencies: [
     "WidgetHelpers",
     "SnapshotClient",
+    "WidgetProtocol",
   ]),
 ])
