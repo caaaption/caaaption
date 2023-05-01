@@ -1,12 +1,12 @@
-import WidgetProtocol
-import WidgetKit
 import SwiftUI
+import WidgetKit
+import WidgetProtocol
 
 public struct BalanceWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
     let kind = Constant.kind
     public init() {}
-    
+
     public var body: some WidgetConfiguration {
       StaticConfiguration(kind: kind, provider: Provider()) { entry in
         BalanceWidget.WidgetView(entry: entry)
@@ -16,16 +16,16 @@ public struct BalanceWidget: WidgetProtocol {
       .supportedFamilies(Constant.supportedFamilies)
     }
   }
-  
+
   public enum Constant: WidgetConstant {
     public static var displayName = "Balance Widget"
     public static var description = "Displays wallet balance."
     public static var kind = "BalanceWidget"
     public static var supportedFamilies: [WidgetFamily] = [
-      .systemSmall
+      .systemSmall,
     ]
   }
-  
+
   public struct Entry: TimelineEntry {
     public let date: Date
     public let balance: Double
@@ -35,7 +35,7 @@ public struct BalanceWidget: WidgetProtocol {
       self.balance = balance
     }
   }
-  
+
   public struct Provider: TimelineProvider {
     public func placeholder(
       in context: Context
@@ -61,14 +61,14 @@ public struct BalanceWidget: WidgetProtocol {
       }
     }
   }
-  
+
   public struct WidgetView: View {
     let entry: Entry
-    
+
     public init(entry: Entry) {
       self.entry = entry
     }
-    
+
     public var body: some View {
       VStack(spacing: 8) {
         Spacer()

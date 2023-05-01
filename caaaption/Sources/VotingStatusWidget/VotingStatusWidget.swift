@@ -1,15 +1,15 @@
-import WidgetProtocol
-import WidgetKit
-import SwiftUI
 import Dependencies
-import SnapshotModel
 import SnapshotClient
+import SnapshotModel
+import SwiftUI
+import WidgetKit
+import WidgetProtocol
 
 public struct VotingStatusWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
     let kind = Constant.kind
     public init() {}
-    
+
     public var body: some WidgetConfiguration {
       StaticConfiguration(kind: kind, provider: Provider()) { entry in
         VotingStatusWidget.WidgetView(entry: entry)
@@ -19,7 +19,7 @@ public struct VotingStatusWidget: WidgetProtocol {
       .supportedFamilies(Constant.supportedFamilies)
     }
   }
-  
+
   public enum Constant: WidgetConstant {
     public static var displayName = "Voting Status Widget"
     public static var description = "Displays the voting results for the specified Snapshot."
@@ -30,7 +30,7 @@ public struct VotingStatusWidget: WidgetProtocol {
       .systemLarge,
     ]
   }
-  
+
   public struct Entry: TimelineEntry {
     public let date: Date
     public let proposal: SnapshotModel.ProposalQuery.Data.Proposal?
@@ -40,10 +40,10 @@ public struct VotingStatusWidget: WidgetProtocol {
       self.proposal = proposal
     }
   }
-  
+
   public struct Provider: TimelineProvider {
     @Dependency(\.snapshotClient) var snapshotClient
-    
+
     public func placeholder(
       in context: Context
     ) -> Entry {
@@ -77,7 +77,6 @@ public struct VotingStatusWidget: WidgetProtocol {
     }
   }
 
-  
   public struct WidgetView: View {
     public var entry: Entry
 
@@ -140,5 +139,4 @@ public struct VotingStatusWidget: WidgetProtocol {
       return Text("Updated at \(dateString)")
     }
   }
-
 }
