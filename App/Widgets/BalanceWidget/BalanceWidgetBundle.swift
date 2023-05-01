@@ -1,4 +1,4 @@
-import BalanceWidgetFeature
+import BalanceWidget
 import SwiftUI
 import WidgetKit
 

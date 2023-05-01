@@ -1,7 +1,7 @@
 import Dependencies
 import SnapshotClient
 import SwiftUI
-import VotingStatusWidgetFeature
+import VotingStatusWidget
 import WidgetKit
 
 @main
