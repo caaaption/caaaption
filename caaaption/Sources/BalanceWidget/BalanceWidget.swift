@@ -110,6 +110,10 @@ public struct BalanceWidget: WidgetProtocol {
           .font(Font.title2)
           .bold()
           .foregroundColor(Color.blue)
+        
+        Text(entry.address)
+          .foregroundColor(.secondary)
+          .font(.caption)
 
         Spacer()
 
@@ -129,3 +133,21 @@ public struct BalanceWidget: WidgetProtocol {
     }
   }
 }
+
+#if DEBUG
+import WidgetHelpers
+
+struct WidgetViewPreviews: PreviewProvider {
+  static var previews: some View {
+    WidgetPreview([.systemSmall]) {
+      BalanceWidget.WidgetView(
+        entry: BalanceWidget.Entry(
+          date: Date(),
+          address: "tomokisun.eth",
+          balance: 11.0
+        )
+      )
+    }
+  }
+}
+#endif
