@@ -1,11 +1,14 @@
 import AppFeature
 import ComposableArchitecture
 import SwiftUI
+import QuickNodeClient
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
   let store = Store(
     initialState: AppReducer.State(),
-    reducer: AppReducer().transformDependency(\.self) { _ in }
+    reducer: AppReducer().transformDependency(\.self) {
+      $0.quickNodeClient = .liveValue
+    }
   )
 
   var viewStore: ViewStore<Void, AppReducer.Action> {
