@@ -1,8 +1,11 @@
-//
-//  File.swift
-//  
-//
-//  Created by tomokisun on 2023/05/02.
-//
-
 import Foundation
+
+public struct QuickNodeClient {
+  public var getBalance: @Sendable (String) async throws -> Decimal
+}
+
+extension QuickNodeClient {
+  public struct QuickNodeResponse: Codable {
+    public let result: String
+  }
+}
