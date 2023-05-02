@@ -28,6 +28,14 @@ public struct BalanceWidget: WidgetProtocol {
       .systemSmall,
     ]
   }
+  
+  public struct Input: Codable {
+    public let address: String
+    
+    public init(address: String) {
+      self.address = address
+    }
+  }
 
   public struct Entry: TimelineEntry, Equatable {
     public let date: Date
@@ -38,11 +46,11 @@ public struct BalanceWidget: WidgetProtocol {
       self.balance = balance
     }
   }
-  
-  @Dependency(\.quickNodeClient) var quickNodeClient
-  @Dependency(\.userDefaults) var userDefaults
 
   public struct Provider: TimelineProvider {
+    @Dependency(\.quickNodeClient) var quickNodeClient
+    @Dependency(\.userDefaults) var userDefaults
+    
     public func placeholder(
       in context: Context
     ) -> Entry {
@@ -53,8 +61,20 @@ public struct BalanceWidget: WidgetProtocol {
       in context: Context,
       completion: @escaping (Entry) -> Void
     ) {
-      let entry = Entry(date: Date(), balance: 1.0)
-      completion(entry)
+      guard
+        let input = try? userDefaults.codableForKey(Input.self, forKey: Constant.kind)
+      else {
+        completion(
+          placeholder(in: context)
+        )
+        return
+      }
+      
+      Task {
+        let balance = try await quickNodeClient.getBalance(input.address)
+        let entry = Entry(date: Date(), balance: balance)
+        completion(entry)
+      }
     }
 
     public func getTimeline(

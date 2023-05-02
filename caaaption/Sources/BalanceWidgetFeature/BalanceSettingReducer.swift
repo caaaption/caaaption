@@ -15,6 +15,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
   }
 
   public enum Action: Equatable, BindableAction {
+    case task
     case addWidget
     case responseBalance(TaskResult<Decimal>)
     case binding(BindingAction<State>)
@@ -27,9 +28,20 @@ public struct BalanceSettingReducer: ReducerProtocol {
     BindingReducer()
     Reduce { state, action in
       switch action {
+      case .task:
+        let input = try? userDefaults.codableForKey(BalanceWidget.Input.self, forKey: BalanceWidget.Constant.kind)
+        state.address = input?.address ?? ""
+        
+        return EffectTask.task {
+          .addWidget
+        }
+
       case .addWidget:
         return EffectTask.task { [address = state.address] in
-          await .responseBalance(
+          let input = BalanceWidget.Input(address: address)
+          await userDefaults.setCodable(input, forKey: BalanceWidget.Constant.kind)
+
+          return await .responseBalance(
             TaskResult {
               try await self.quickNodeClient.getBalance(address)
             }

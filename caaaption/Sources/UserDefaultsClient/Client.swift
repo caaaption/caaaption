@@ -11,7 +11,7 @@ public struct UserDefaultsClient {
   public var setDouble: @Sendable (Double, String) async -> Void
   public var setInteger: @Sendable (Int, String) async -> Void
   
-  public func codableForKey<T: Codable>(forKey key: String) throws -> T? {
+  public func codableForKey<T: Codable>(_ type: T.Type, forKey key: String) throws -> T? {
     guard let data = dataForKey(key) else { return nil }
     return try decoder.decode(T.self, from: data)
   }

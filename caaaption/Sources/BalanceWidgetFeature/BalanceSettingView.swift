@@ -39,6 +39,7 @@ public struct BalanceSettingView: View {
           .clipShape(Capsule())
         }
       }
+      .task { await viewStore.send(.task).finish() }
       .padding(.horizontal, 12)
       .navigationTitle("Balance Widget")
     }
