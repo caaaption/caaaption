@@ -75,7 +75,7 @@ public struct BalanceWidget: WidgetProtocol {
         Text("Balance")
           .font(Font.headline)
 
-        Text("\(entry.balance.description) ETH")
+        Text("\(entry.balance.description.prefix(6).lowercased()) ETH")
           .font(Font.title2)
           .bold()
           .foregroundColor(Color.blue)

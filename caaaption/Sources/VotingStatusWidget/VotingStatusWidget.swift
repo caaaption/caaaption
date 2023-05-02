@@ -31,7 +31,7 @@ public struct VotingStatusWidget: WidgetProtocol {
     ]
   }
 
-  public struct Entry: TimelineEntry {
+  public struct Entry: TimelineEntry, Equatable {
     public let date: Date
     public let proposal: SnapshotModel.ProposalQuery.Data.Proposal?
 
