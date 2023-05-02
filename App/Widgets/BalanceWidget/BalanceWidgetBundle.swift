@@ -1,9 +1,9 @@
 import BalanceWidget
-import SwiftUI
-import WidgetKit
 import Dependencies
 import QuickNodeClient
+import SwiftUI
 import UserDefaultsClient
+import WidgetKit
 
 @main
 struct BalanceWidgetBundle: WidgetBundle {

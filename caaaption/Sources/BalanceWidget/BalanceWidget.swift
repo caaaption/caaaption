@@ -1,9 +1,9 @@
-import SwiftUI
-import WidgetKit
-import WidgetProtocol
 import Dependencies
 import QuickNodeClient
+import SwiftUI
 import UserDefaultsClient
+import WidgetKit
+import WidgetProtocol
 
 public struct BalanceWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
@@ -28,10 +28,10 @@ public struct BalanceWidget: WidgetProtocol {
       .systemSmall,
     ]
   }
-  
+
   public struct Input: Codable {
     public let address: String
-    
+
     public init(address: String) {
       self.address = address
     }
@@ -50,7 +50,7 @@ public struct BalanceWidget: WidgetProtocol {
   public struct Provider: TimelineProvider {
     @Dependency(\.quickNodeClient) var quickNodeClient
     @Dependency(\.userDefaults) var userDefaults
-    
+
     public func placeholder(
       in context: Context
     ) -> Entry {
@@ -69,7 +69,7 @@ public struct BalanceWidget: WidgetProtocol {
         )
         return
       }
-      
+
       Task {
         let balance = try await quickNodeClient.getBalance(input.address)
         let entry = Entry(date: Date(), balance: balance)

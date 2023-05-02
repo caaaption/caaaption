@@ -31,7 +31,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
       case .task:
         let input = try? userDefaults.codableForKey(BalanceWidget.Input.self, forKey: BalanceWidget.Constant.kind)
         state.address = input?.address ?? ""
-        
+
         return EffectTask.task {
           .addWidget
         }

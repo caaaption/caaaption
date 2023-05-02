@@ -30,10 +30,10 @@ public struct VotingStatusWidget: WidgetProtocol {
       .systemLarge,
     ]
   }
-  
+
   public struct Input: Codable {
     public let proposalId: String
-    
+
     public init(proposalId: String) {
       self.proposalId = proposalId
     }
