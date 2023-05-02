@@ -16,7 +16,7 @@ public struct UserDefaultsClient {
     return try decoder.decode(T.self, from: data)
   }
   
-  public func setCodable(_ value: Encodable, forKey key: String) async -> Void {
+  public func setCodable(_ value: Codable, forKey key: String) async -> Void {
     let data = try? encoder.encode(value)
     return await setData(data, key)
   }
