@@ -22,6 +22,7 @@ package.products.append(contentsOf: [
   .library(name: "WidgetSearchFeature", targets: ["WidgetSearchFeature"]),
   .library(name: "AccountFeature", targets: ["AccountFeature"]),
   .library(name: "ContributorFeature", targets: ["ContributorFeature"]),
+  .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -41,6 +42,10 @@ package.targets.append(contentsOf: [
     "PlaceholderAsyncImage",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
+  .target(name: "BalanceWidgetFeature", dependencies: [
+    "SwiftUIHelpers",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ])
 ])
 
 // GraphQL
