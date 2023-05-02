@@ -2,6 +2,7 @@ import BalanceWidget
 import ComposableArchitecture
 import Foundation
 import QuickNodeClient
+import UserDefaultsClient
 
 public struct BalanceSettingReducer: ReducerProtocol {
   public init() {}
@@ -20,6 +21,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
   }
 
   @Dependency(\.quickNodeClient) var quickNodeClient
+  @Dependency(\.userDefaults) var userDefaults
 
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()

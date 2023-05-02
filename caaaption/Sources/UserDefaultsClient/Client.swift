@@ -10,4 +10,17 @@ public struct UserDefaultsClient {
   public var setData: @Sendable (Data?, String) async -> Void
   public var setDouble: @Sendable (Double, String) async -> Void
   public var setInteger: @Sendable (Int, String) async -> Void
+  
+  public func codableForKey<T: Codable>(forKey key: String) throws -> T? {
+    guard let data = dataForKey(key) else { return nil }
+    return try decoder.decode(T.self, from: data)
+  }
+  
+  public func setCodable(_ value: Encodable, forKey key: String) async -> Void {
+    let data = try? encoder.encode(value)
+    return await setData(data, key)
+  }
 }
+
+private let decoder = JSONDecoder()
+private let encoder = JSONEncoder()
