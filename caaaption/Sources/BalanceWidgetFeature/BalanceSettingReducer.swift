@@ -1,12 +1,15 @@
 import ComposableArchitecture
 import QuickNodeClient
 import Foundation
+import BalanceWidget
 
 public struct BalanceSettingReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
     @BindingState var address = ""
+    var entry: BalanceWidget.Entry?
+
     public init() {}
   }
 
@@ -32,10 +35,14 @@ public struct BalanceSettingReducer: ReducerProtocol {
         }
         
       case let .responseBalance(.success(balance)):
-        print(balance)
+        state.entry = BalanceWidget.Entry(
+          date: Date(),
+          balance: balance
+        )
         return EffectTask.none
         
       case .responseBalance(.failure):
+        state.entry = nil
         return EffectTask.none
         
       case .binding:

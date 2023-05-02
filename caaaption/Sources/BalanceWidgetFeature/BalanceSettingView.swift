@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import SwiftUI
+import BalanceWidget
 
 public struct BalanceSettingView: View {
   let store: StoreOf<BalanceSettingReducer>
@@ -11,6 +12,12 @@ public struct BalanceSettingView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 12) {
+        Spacer()
+        
+        if let entry = viewStore.entry {
+          BalanceWidget.WidgetView(entry: entry)
+        }
+        
         Spacer()
         
         TextField(
