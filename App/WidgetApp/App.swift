@@ -1,7 +1,7 @@
 import AppFeature
 import ComposableArchitecture
-import SwiftUI
 import QuickNodeClient
+import SwiftUI
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
   let store = Store(
