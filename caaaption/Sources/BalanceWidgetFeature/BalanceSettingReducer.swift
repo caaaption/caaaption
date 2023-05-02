@@ -51,6 +51,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
       case let .responseBalance(.success(balance)):
         state.entry = BalanceWidget.Entry(
           date: Date(),
+          address: state.address,
           balance: balance
         )
         return EffectTask.none

@@ -39,10 +39,15 @@ public struct BalanceWidget: WidgetProtocol {
 
   public struct Entry: TimelineEntry, Equatable {
     public let date: Date
+    public let address: String
     public let balance: Decimal
 
-    public init(date: Date, balance: Decimal) {
+    public init(
+      date: Date,
+      address: String,
+      balance: Decimal) {
       self.date = date
+      self.address = address
       self.balance = balance
     }
   }
@@ -54,7 +59,7 @@ public struct BalanceWidget: WidgetProtocol {
     public func placeholder(
       in context: Context
     ) -> Entry {
-      Entry(date: Date(), balance: 1.0)
+      Entry(date: Date(), address: "placeholder", balance: 11.0)
     }
 
     public func getSnapshot(
@@ -72,7 +77,7 @@ public struct BalanceWidget: WidgetProtocol {
 
       Task {
         let balance = try await quickNodeClient.getBalance(input.address)
-        let entry = Entry(date: Date(), balance: balance)
+        let entry = Entry(date: Date(), address: input.address, balance: balance)
         completion(entry)
       }
     }
