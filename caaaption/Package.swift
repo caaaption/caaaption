@@ -72,6 +72,7 @@ package.products.append(contentsOf: [
   .library(name: "ServerConfig", targets: ["ServerConfig"]),
   .library(name: "GitHubClient", targets: ["GitHubClient"]),
   .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"]),
+  .library(name: "QuickNodeClient", targets: ["QuickNodeClient"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "FirebaseClient", dependencies: [
@@ -93,6 +94,9 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "UserDefaultsClient", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "QuickNodeClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
