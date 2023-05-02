@@ -6,10 +6,10 @@ extension QuickNodeClient: DependencyKey {
 
   static func live() -> Self {
     actor Session {
-      let baseUrl: URL
+      let baseURL: URL
 
-      init(baseUrl: URL) {
-        self.baseUrl = baseUrl
+      init(baseURL: URL) {
+        self.baseURL = baseURL
       }
 
       private func request(urlRequest: URLRequest) async throws -> (Data, URLResponse) {
@@ -17,7 +17,7 @@ extension QuickNodeClient: DependencyKey {
       }
 
       func getBalance(address: String) async throws -> Decimal {
-        var urlRequest = URLRequest(url: baseUrl)
+        var urlRequest = URLRequest(url: baseURL)
         urlRequest.httpMethod = "POST"
         urlRequest.allHTTPHeaderFields = [
           "Content-Type": "application/json",
@@ -37,8 +37,7 @@ extension QuickNodeClient: DependencyKey {
       }
     }
 
-    let url = URL(string: "")!
-    let session = Session(baseUrl: url)
+    let session = Session(baseURL: baseURL)
 
     return Self(
       getBalance: { try await session.getBalance(address: $0) }
