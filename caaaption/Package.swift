@@ -43,7 +43,9 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "BalanceWidgetFeature", dependencies: [
+    "BalanceWidget",
     "SwiftUIHelpers",
+    "QuickNodeClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ])
 ])
