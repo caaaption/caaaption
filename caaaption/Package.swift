@@ -71,6 +71,7 @@ package.products.append(contentsOf: [
   .library(name: "SnapshotClient", targets: ["SnapshotClient"]),
   .library(name: "ServerConfig", targets: ["ServerConfig"]),
   .library(name: "GitHubClient", targets: ["GitHubClient"]),
+  .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "FirebaseClient", dependencies: [
@@ -89,6 +90,9 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "ServerConfig"),
   .target(name: "GitHubClient", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "UserDefaultsClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
