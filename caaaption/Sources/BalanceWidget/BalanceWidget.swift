@@ -26,11 +26,11 @@ public struct BalanceWidget: WidgetProtocol {
     ]
   }
 
-  public struct Entry: TimelineEntry {
+  public struct Entry: TimelineEntry, Equatable {
     public let date: Date
-    public let balance: Double
+    public let balance: Decimal
 
-    public init(date: Date, balance: Double) {
+    public init(date: Date, balance: Decimal) {
       self.date = date
       self.balance = balance
     }

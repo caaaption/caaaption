@@ -22,6 +22,7 @@ package.products.append(contentsOf: [
   .library(name: "WidgetSearchFeature", targets: ["WidgetSearchFeature"]),
   .library(name: "AccountFeature", targets: ["AccountFeature"]),
   .library(name: "ContributorFeature", targets: ["ContributorFeature"]),
+  .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -29,6 +30,7 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "WidgetSearchFeature", dependencies: [
     "AccountFeature",
+    "BalanceWidgetFeature",
   ]),
   .target(name: "AccountFeature", dependencies: [
     "ServerConfig",
@@ -41,6 +43,12 @@ package.targets.append(contentsOf: [
     "PlaceholderAsyncImage",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
+  .target(name: "BalanceWidgetFeature", dependencies: [
+    "BalanceWidget",
+    "SwiftUIHelpers",
+    "QuickNodeClient",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ])
 ])
 
 // GraphQL
@@ -66,6 +74,8 @@ package.products.append(contentsOf: [
   .library(name: "SnapshotClient", targets: ["SnapshotClient"]),
   .library(name: "ServerConfig", targets: ["ServerConfig"]),
   .library(name: "GitHubClient", targets: ["GitHubClient"]),
+  .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"]),
+  .library(name: "QuickNodeClient", targets: ["QuickNodeClient"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "FirebaseClient", dependencies: [
@@ -84,6 +94,12 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "ServerConfig"),
   .target(name: "GitHubClient", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "UserDefaultsClient", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "QuickNodeClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])

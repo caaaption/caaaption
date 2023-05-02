@@ -1,6 +1,17 @@
 import SwiftUI
 
 public struct ListCard: View {
+  let displayName: String
+  let description: String
+  
+  init(
+    displayName: String,
+    description: String
+  ) {
+    self.displayName = displayName
+    self.description = description
+  }
+  
   public var body: some View {
     VStack(spacing: 12) {
       HStack(spacing: 12) {
@@ -9,9 +20,9 @@ public struct ListCard: View {
           .cornerRadius(12)
 
         VStack(alignment: .leading, spacing: 0) {
-          Text("Check your balance")
+          Text(displayName)
             .bold()
-          Text("QuickNode")
+          Text(description)
             .foregroundColor(.secondary)
         }
 
