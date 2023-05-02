@@ -2,8 +2,8 @@ import Dependencies
 import Foundation
 import XCTestDynamicOverlay
 
-extension DependencyValues {
-  public var userDefaults: UserDefaultsClient {
+public extension DependencyValues {
+  var userDefaults: UserDefaultsClient {
     get { self[UserDefaultsClient.self] }
     set { self[UserDefaultsClient.self] = newValue }
   }
@@ -25,8 +25,8 @@ extension UserDefaultsClient: TestDependencyKey {
   )
 }
 
-extension UserDefaultsClient {
-  public static let noop = Self(
+public extension UserDefaultsClient {
+  static let noop = Self(
     boolForKey: { _ in false },
     dataForKey: { _ in nil },
     doubleForKey: { _ in 0 },

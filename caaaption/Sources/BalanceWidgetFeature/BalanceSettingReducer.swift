@@ -1,7 +1,7 @@
-import ComposableArchitecture
-import QuickNodeClient
-import Foundation
 import BalanceWidget
+import ComposableArchitecture
+import Foundation
+import QuickNodeClient
 
 public struct BalanceSettingReducer: ReducerProtocol {
   public init() {}
@@ -18,7 +18,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
     case responseBalance(TaskResult<Decimal>)
     case binding(BindingAction<State>)
   }
-  
+
   @Dependency(\.quickNodeClient) var quickNodeClient
 
   public var body: some ReducerProtocol<State, Action> {
@@ -33,18 +33,18 @@ public struct BalanceSettingReducer: ReducerProtocol {
             }
           )
         }
-        
+
       case let .responseBalance(.success(balance)):
         state.entry = BalanceWidget.Entry(
           date: Date(),
           balance: balance
         )
         return EffectTask.none
-        
+
       case .responseBalance(.failure):
         state.entry = nil
         return EffectTask.none
-        
+
       case .binding:
         return EffectTask.none
       }

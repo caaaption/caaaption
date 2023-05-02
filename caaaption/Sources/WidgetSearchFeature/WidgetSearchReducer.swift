@@ -1,6 +1,6 @@
 import AccountFeature
-import ComposableArchitecture
 import BalanceWidgetFeature
+import ComposableArchitecture
 
 public struct WidgetSearchReducer: ReducerProtocol {
   public init() {}

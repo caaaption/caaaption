@@ -1,27 +1,26 @@
-import Foundation
 import ComposableArchitecture
+import Foundation
 
 extension QuickNodeClient: DependencyKey {
   public static let liveValue = Self.live()
-  
+
   static func live() -> Self {
-    
     actor Session {
       let baseUrl: URL
-      
+
       init(baseUrl: URL) {
         self.baseUrl = baseUrl
       }
-      
+
       private func request(urlRequest: URLRequest) async throws -> (Data, URLResponse) {
         return try await URLSession.shared.data(for: urlRequest)
       }
-      
+
       func getBalance(address: String) async throws -> Decimal {
         var urlRequest = URLRequest(url: baseUrl)
         urlRequest.httpMethod = "POST"
         urlRequest.allHTTPHeaderFields = [
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         ]
         urlRequest.httpBody = """
         {
@@ -37,10 +36,10 @@ extension QuickNodeClient: DependencyKey {
         return Converter.toEther(wei: value)
       }
     }
-    
+
     let url = URL(string: "")!
     let session = Session(baseUrl: url)
-    
+
     return Self(
       getBalance: { try await session.getBalance(address: $0) }
     )
@@ -49,7 +48,7 @@ extension QuickNodeClient: DependencyKey {
 
 enum Converter {
   static let etherInWei = pow(Decimal(10), 18)
-  
+
   static func toEther(wei: Int) -> Decimal {
     guard let decimalWei = Decimal(string: wei.description) else {
       return 0.0

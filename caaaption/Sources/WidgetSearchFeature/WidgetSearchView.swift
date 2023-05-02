@@ -1,8 +1,8 @@
 import AccountFeature
-import ComposableArchitecture
-import SwiftUI
 import BalanceWidget
 import BalanceWidgetFeature
+import ComposableArchitecture
+import SwiftUI
 
 public struct WidgetSearchView: View {
   let store: StoreOf<WidgetSearchReducer>
@@ -28,7 +28,6 @@ public struct WidgetSearchView: View {
           )
         }
         .listRowSeparator(.hidden)
-        
       }
       .listStyle(.plain)
       .navigationTitle("Widget Search")

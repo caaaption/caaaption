@@ -3,7 +3,7 @@ import SwiftUI
 public struct ListCard: View {
   let displayName: String
   let description: String
-  
+
   init(
     displayName: String,
     description: String
@@ -11,7 +11,7 @@ public struct ListCard: View {
     self.displayName = displayName
     self.description = description
   }
-  
+
   public var body: some View {
     VStack(spacing: 12) {
       HStack(spacing: 12) {

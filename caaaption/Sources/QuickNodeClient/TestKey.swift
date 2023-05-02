@@ -1,8 +1,8 @@
 import Dependencies
 import XCTestDynamicOverlay
 
-extension DependencyValues {
-  public var quickNodeClient: QuickNodeClient {
+public extension DependencyValues {
+  var quickNodeClient: QuickNodeClient {
     get { self[QuickNodeClient.self] }
     set { self[QuickNodeClient.self] = newValue }
   }
@@ -14,8 +14,8 @@ extension QuickNodeClient: TestDependencyKey {
   )
 }
 
-extension QuickNodeClient {
-  public static let noop = Self(
+public extension QuickNodeClient {
+  static let noop = Self(
     getBalance: { _ in try await Task.never() }
   )
 }
