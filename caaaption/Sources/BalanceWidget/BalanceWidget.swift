@@ -45,7 +45,8 @@ public struct BalanceWidget: WidgetProtocol {
     public init(
       date: Date,
       address: String,
-      balance: Decimal) {
+      balance: Decimal
+    ) {
       self.date = date
       self.address = address
       self.balance = balance
@@ -110,7 +111,7 @@ public struct BalanceWidget: WidgetProtocol {
           .font(Font.title2)
           .bold()
           .foregroundColor(Color.blue)
-        
+
         Text(entry.address)
           .foregroundColor(.secondary)
           .font(.caption)
@@ -135,19 +136,19 @@ public struct BalanceWidget: WidgetProtocol {
 }
 
 #if DEBUG
-import WidgetHelpers
+  import WidgetHelpers
 
-struct WidgetViewPreviews: PreviewProvider {
-  static var previews: some View {
-    WidgetPreview([.systemSmall]) {
-      BalanceWidget.WidgetView(
-        entry: BalanceWidget.Entry(
-          date: Date(),
-          address: "tomokisun.eth",
-          balance: 11.0
+  struct WidgetViewPreviews: PreviewProvider {
+    static var previews: some View {
+      WidgetPreview([.systemSmall]) {
+        BalanceWidget.WidgetView(
+          entry: BalanceWidget.Entry(
+            date: Date(),
+            address: "tomokisun.eth",
+            balance: 11.0
+          )
         )
-      )
+      }
     }
   }
-}
 #endif
