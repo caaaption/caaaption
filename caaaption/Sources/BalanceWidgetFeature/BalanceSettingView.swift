@@ -40,6 +40,7 @@ public struct BalanceSettingView: View {
         }
       }
       .padding(.horizontal, 12)
+      .navigationTitle("Balance Widget")
     }
   }
 }

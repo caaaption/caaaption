@@ -1,6 +1,8 @@
 import AccountFeature
 import ComposableArchitecture
 import SwiftUI
+import BalanceWidget
+import BalanceWidgetFeature
 
 public struct WidgetSearchView: View {
   let store: StoreOf<WidgetSearchReducer>
@@ -12,10 +14,21 @@ public struct WidgetSearchView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
-        ForEach(0 ..< 10) { _ in
-          ListCard()
-            .listRowSeparator(.hidden)
+        NavigationLink {
+          BalanceSettingView(
+            store: store.scope(
+              state: \.balanceSetting,
+              action: WidgetSearchReducer.Action.balanceSetting
+            )
+          )
+        } label: {
+          ListCard(
+            displayName: BalanceWidget.Constant.displayName,
+            description: BalanceWidget.Constant.description
+          )
         }
+        .listRowSeparator(.hidden)
+        
       }
       .listStyle(.plain)
       .navigationTitle("Widget Search")
