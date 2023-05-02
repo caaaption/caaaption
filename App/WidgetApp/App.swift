@@ -2,12 +2,14 @@ import AppFeature
 import ComposableArchitecture
 import QuickNodeClient
 import SwiftUI
+import UserDefaultsClient
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
   let store = Store(
     initialState: AppReducer.State(),
     reducer: AppReducer().transformDependency(\.self) {
       $0.quickNodeClient = .liveValue
+      $0.userDefaults = .liveValue
     }
   )
 

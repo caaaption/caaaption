@@ -30,8 +30,16 @@ public struct VotingStatusWidget: WidgetProtocol {
       .systemLarge,
     ]
   }
+  
+  public struct Input: Codable {
+    public let proposalId: String
+    
+    public init(proposalId: String) {
+      self.proposalId = proposalId
+    }
+  }
 
-  public struct Entry: TimelineEntry {
+  public struct Entry: TimelineEntry, Equatable {
     public let date: Date
     public let proposal: SnapshotModel.ProposalQuery.Data.Proposal?
 

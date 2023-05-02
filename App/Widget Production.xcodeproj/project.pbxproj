@@ -10,6 +10,9 @@
 		B731482D29FF3979002C2A57 /* BalanceWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B731482C29FF3979002C2A57 /* BalanceWidget */; };
 		B731482F29FF3982002C2A57 /* VotingStatusWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B731482E29FF3982002C2A57 /* VotingStatusWidget */; };
 		B73148332A013E3F002C2A57 /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B73148322A013E3F002C2A57 /* QuickNodeClient */; };
+		B73148372A01487D002C2A57 /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B73148362A01487D002C2A57 /* UserDefaultsClient */; };
+		B73148392A014886002C2A57 /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B73148382A014886002C2A57 /* UserDefaultsClient */; };
+		B731483B2A01488B002C2A57 /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B731483A2A01488B002C2A57 /* QuickNodeClient */; };
 		B74310CB29FEC61F00BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74310C629FEC61E00BD2D0D /* Assets.xcassets */; };
 		B74310CC29FEC61F00BD2D0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74310C829FEC61E00BD2D0D /* Preview Assets.xcassets */; };
 		B74310CD29FEC61F00BD2D0D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74310C929FEC61E00BD2D0D /* App.swift */; };
@@ -59,6 +62,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B73148432A014E69002C2A57 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
+		B73148442A014E6B002C2A57 /* BalanceWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BalanceWidgetExtension.entitlements; sourceTree = "<group>"; };
+		B73148452A014E6E002C2A57 /* VotingStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VotingStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		B74310B729FEC5F200BD2D0D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74310C629FEC61E00BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B74310C829FEC61E00BD2D0D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -85,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B74310D429FEC65300BD2D0D /* AppFeature in Frameworks */,
+				B73148372A01487D002C2A57 /* UserDefaultsClient in Frameworks */,
 				B73148332A013E3F002C2A57 /* QuickNodeClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B73148392A014886002C2A57 /* UserDefaultsClient in Frameworks */,
+				B731483B2A01488B002C2A57 /* QuickNodeClient in Frameworks */,
 				B743110A29FECA1600BD2D0D /* SwiftUI.framework in Frameworks */,
 				B731482D29FF3979002C2A57 /* BalanceWidget in Frameworks */,
 				B743110829FECA1600BD2D0D /* WidgetKit.framework in Frameworks */,
@@ -115,6 +124,9 @@
 		B743108429FEC51100BD2D0D = {
 			isa = PBXGroup;
 			children = (
+				B73148452A014E6E002C2A57 /* VotingStatusWidgetExtension.entitlements */,
+				B73148442A014E6B002C2A57 /* BalanceWidgetExtension.entitlements */,
+				B73148432A014E69002C2A57 /* App.entitlements */,
 				B74310C529FEC61E00BD2D0D /* WidgetApp */,
 				B743114429FECAB800BD2D0D /* Widgets */,
 				B743108E29FEC51100BD2D0D /* Products */,
@@ -222,6 +234,7 @@
 			packageProductDependencies = (
 				B74310D329FEC65300BD2D0D /* AppFeature */,
 				B73148322A013E3F002C2A57 /* QuickNodeClient */,
+				B73148362A01487D002C2A57 /* UserDefaultsClient */,
 			);
 			productName = App;
 			productReference = B74310B729FEC5F200BD2D0D /* App.app */;
@@ -242,6 +255,8 @@
 			name = BalanceWidgetExtension;
 			packageProductDependencies = (
 				B731482C29FF3979002C2A57 /* BalanceWidget */,
+				B73148382A014886002C2A57 /* UserDefaultsClient */,
+				B731483A2A01488B002C2A57 /* QuickNodeClient */,
 			);
 			productName = BalanceWidgetExtension;
 			productReference = B743110629FECA1600BD2D0D /* BalanceWidgetExtension.appex */;
@@ -497,6 +512,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WidgetApp/Preview Content\"";
@@ -530,6 +546,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WidgetApp/Preview Content\"";
@@ -562,6 +579,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BalanceWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
@@ -590,6 +608,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BalanceWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
@@ -618,6 +637,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = VotingStatusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
@@ -646,6 +666,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = VotingStatusWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
@@ -720,6 +741,18 @@
 			productName = VotingStatusWidget;
 		};
 		B73148322A013E3F002C2A57 /* QuickNodeClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = QuickNodeClient;
+		};
+		B73148362A01487D002C2A57 /* UserDefaultsClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UserDefaultsClient;
+		};
+		B73148382A014886002C2A57 /* UserDefaultsClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UserDefaultsClient;
+		};
+		B731483A2A01488B002C2A57 /* QuickNodeClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = QuickNodeClient;
 		};
