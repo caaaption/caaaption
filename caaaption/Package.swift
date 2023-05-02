@@ -148,6 +148,9 @@ package.targets.append(contentsOf: [
   .target(name: "BalanceWidget", dependencies: [
     "WidgetHelpers",
     "WidgetProtocol",
+    "QuickNodeClient",
+    "UserDefaultsClient",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "VotingStatusWidget", dependencies: [
     "WidgetHelpers",

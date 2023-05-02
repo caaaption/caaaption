@@ -10,6 +10,9 @@
 		B731482D29FF3979002C2A57 /* BalanceWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B731482C29FF3979002C2A57 /* BalanceWidget */; };
 		B731482F29FF3982002C2A57 /* VotingStatusWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B731482E29FF3982002C2A57 /* VotingStatusWidget */; };
 		B73148332A013E3F002C2A57 /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B73148322A013E3F002C2A57 /* QuickNodeClient */; };
+		B73148372A01487D002C2A57 /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B73148362A01487D002C2A57 /* UserDefaultsClient */; };
+		B73148392A014886002C2A57 /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B73148382A014886002C2A57 /* UserDefaultsClient */; };
+		B731483B2A01488B002C2A57 /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B731483A2A01488B002C2A57 /* QuickNodeClient */; };
 		B74310CB29FEC61F00BD2D0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74310C629FEC61E00BD2D0D /* Assets.xcassets */; };
 		B74310CC29FEC61F00BD2D0D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B74310C829FEC61E00BD2D0D /* Preview Assets.xcassets */; };
 		B74310CD29FEC61F00BD2D0D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74310C929FEC61E00BD2D0D /* App.swift */; };
@@ -85,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B74310D429FEC65300BD2D0D /* AppFeature in Frameworks */,
+				B73148372A01487D002C2A57 /* UserDefaultsClient in Frameworks */,
 				B73148332A013E3F002C2A57 /* QuickNodeClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B73148392A014886002C2A57 /* UserDefaultsClient in Frameworks */,
+				B731483B2A01488B002C2A57 /* QuickNodeClient in Frameworks */,
 				B743110A29FECA1600BD2D0D /* SwiftUI.framework in Frameworks */,
 				B731482D29FF3979002C2A57 /* BalanceWidget in Frameworks */,
 				B743110829FECA1600BD2D0D /* WidgetKit.framework in Frameworks */,
@@ -222,6 +228,7 @@
 			packageProductDependencies = (
 				B74310D329FEC65300BD2D0D /* AppFeature */,
 				B73148322A013E3F002C2A57 /* QuickNodeClient */,
+				B73148362A01487D002C2A57 /* UserDefaultsClient */,
 			);
 			productName = App;
 			productReference = B74310B729FEC5F200BD2D0D /* App.app */;
@@ -242,6 +249,8 @@
 			name = BalanceWidgetExtension;
 			packageProductDependencies = (
 				B731482C29FF3979002C2A57 /* BalanceWidget */,
+				B73148382A014886002C2A57 /* UserDefaultsClient */,
+				B731483A2A01488B002C2A57 /* QuickNodeClient */,
 			);
 			productName = BalanceWidgetExtension;
 			productReference = B743110629FECA1600BD2D0D /* BalanceWidgetExtension.appex */;
@@ -720,6 +729,18 @@
 			productName = VotingStatusWidget;
 		};
 		B73148322A013E3F002C2A57 /* QuickNodeClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = QuickNodeClient;
+		};
+		B73148362A01487D002C2A57 /* UserDefaultsClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UserDefaultsClient;
+		};
+		B73148382A014886002C2A57 /* UserDefaultsClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UserDefaultsClient;
+		};
+		B731483A2A01488B002C2A57 /* QuickNodeClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = QuickNodeClient;
 		};

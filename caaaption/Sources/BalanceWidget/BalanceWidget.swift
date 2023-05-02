@@ -1,6 +1,9 @@
 import SwiftUI
 import WidgetKit
 import WidgetProtocol
+import Dependencies
+import QuickNodeClient
+import UserDefaultsClient
 
 public struct BalanceWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
@@ -35,6 +38,9 @@ public struct BalanceWidget: WidgetProtocol {
       self.balance = balance
     }
   }
+  
+  @Dependency(\.quickNodeClient) var quickNodeClient
+  @Dependency(\.userDefaults) var userDefaults
 
   public struct Provider: TimelineProvider {
     public func placeholder(
