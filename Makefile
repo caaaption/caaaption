@@ -40,7 +40,7 @@ install-template:
 	./BuildTools/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/View.xctemplate
 
 apollo-cli-install:
-	@swift package --allow-writing-to-package-directory apollo-cli-install
+	@swift package --package-path ./caaaption --allow-writing-to-package-directory apollo-cli-install
 
 apollo-generate:
-	./apollo-ios-cli generate
+	./caaaption/apollo-ios-cli generate

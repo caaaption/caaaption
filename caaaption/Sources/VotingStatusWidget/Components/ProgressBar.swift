@@ -1,10 +1,18 @@
 import SwiftUI
 
-struct ProgressBar: View {
+public struct ProgressBar: View {
   let progress: Double
   let primaryColor: Color
+  
+  public init(
+    progress: Double,
+    primaryColor: Color
+  ) {
+    self.progress = progress
+    self.primaryColor = primaryColor
+  }
 
-  var body: some View {
+  public var body: some View {
     GeometryReader { proxy in
       ZStack(alignment: .leading) {
         Color.black
@@ -19,6 +27,7 @@ struct ProgressBar: View {
   }
 }
 
+#if DEBUG
 struct ProgressBarPreviews: PreviewProvider {
   static var previews: some View {
     VStack(spacing: 12) {
@@ -31,3 +40,4 @@ struct ProgressBarPreviews: PreviewProvider {
     .previewLayout(.sizeThatFits)
   }
 }
+#endif

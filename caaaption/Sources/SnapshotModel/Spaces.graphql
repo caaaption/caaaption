@@ -1,0 +1,8 @@
+query Spaces($idIn: [String]) {
+  spaces(where: {id_in: $idIn}, first: 300) {
+    id
+    name
+    avatar
+    followersCount
+  }
+}

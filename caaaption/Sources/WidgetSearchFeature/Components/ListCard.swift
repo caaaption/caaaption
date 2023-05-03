@@ -25,10 +25,6 @@ public struct ListCard: View {
           Text(description)
             .foregroundColor(.secondary)
         }
-
-        Spacer()
-
-        InstallButton(action: {})
       }
     }
   }

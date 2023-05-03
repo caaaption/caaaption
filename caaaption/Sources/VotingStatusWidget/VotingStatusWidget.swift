@@ -64,8 +64,8 @@ public struct VotingStatusWidget: WidgetProtocol {
     ) {
       Task {
         do {
-          let result = try await snapshotClient.proposal("0x4421dddc830355b7e3f5290fb9583ded426e61450fe0bd2742722b3d87db288f")
-          let entry = Entry(date: Date(), proposal: result.data?.proposal)
+          let data = try await snapshotClient.proposal("0x4421dddc830355b7e3f5290fb9583ded426e61450fe0bd2742722b3d87db288f")
+          let entry = Entry(date: Date(), proposal: data.proposal)
           completion(entry)
         } catch {
           let entry = Entry(date: Date(), proposal: nil)

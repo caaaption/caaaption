@@ -1,0 +1,19 @@
+query Proposals($spaceName: String!) {
+  proposals (
+    first: 200, 
+    where: {
+      space_in: [$spaceName]
+    },
+    orderBy: "created",
+    orderDirection: desc
+  ) {
+    id 
+    created
+    ipfs
+    title
+    body
+    choices
+    scores
+    state
+  }
+}

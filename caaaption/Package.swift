@@ -23,6 +23,7 @@ package.products.append(contentsOf: [
   .library(name: "AccountFeature", targets: ["AccountFeature"]),
   .library(name: "ContributorFeature", targets: ["ContributorFeature"]),
   .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
+  .library(name: "VotingStatusWidgetFeature", targets: ["VotingStatusWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -31,6 +32,7 @@ package.targets.append(contentsOf: [
   .target(name: "WidgetSearchFeature", dependencies: [
     "AccountFeature",
     "BalanceWidgetFeature",
+    "VotingStatusWidgetFeature",
   ]),
   .target(name: "AccountFeature", dependencies: [
     "ServerConfig",
@@ -48,7 +50,14 @@ package.targets.append(contentsOf: [
     "SwiftUIHelpers",
     "QuickNodeClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ])
+  ]),
+  .target(name: "VotingStatusWidgetFeature", dependencies: [
+    "SnapshotModel",
+    "SwiftUIHelpers",
+    "VotingStatusWidget",
+    "PlaceholderAsyncImage",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
 ])
 
 // GraphQL

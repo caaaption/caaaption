@@ -3,6 +3,8 @@ import BalanceWidget
 import BalanceWidgetFeature
 import ComposableArchitecture
 import SwiftUI
+import VotingStatusWidget
+import VotingStatusWidgetFeature
 
 public struct WidgetSearchView: View {
   let store: StoreOf<WidgetSearchReducer>
@@ -15,19 +17,23 @@ public struct WidgetSearchView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         NavigationLink {
-          BalanceSettingView(
-            store: store.scope(
-              state: \.balanceSetting,
-              action: WidgetSearchReducer.Action.balanceSetting
-            )
-          )
+          BalanceSettingView(store: store.scope(state: \.balanceSetting, action: WidgetSearchReducer.Action.balanceSetting))
         } label: {
           ListCard(
             displayName: BalanceWidget.Constant.displayName,
             description: BalanceWidget.Constant.description
           )
         }
-        .listRowSeparator(.hidden)
+        
+        NavigationLink {
+          SpaceListView(store: store.scope(state: \.spaces, action: WidgetSearchReducer.Action.spaces))
+        } label: {
+          ListCard(
+            displayName: VotingStatusWidget.Constant.displayName,
+            description: VotingStatusWidget.Constant.description
+          )
+        }
+
       }
       .listStyle(.plain)
       .navigationTitle("Widget Search")
