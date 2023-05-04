@@ -12,24 +12,24 @@ public struct SpaceListView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         ForEach(viewStore.spaces, id: \.id) { space in
-          NavigationLink(
-            destination: IfLetStore(
-              store.scope(
-                state: \.selection?.value,
-                action: SpaceListReducer.Action.proposals
-              ),
-              then: ProposalListView.init(store:),
-              else: ProgressView.init
-            ),
-            tag: space.id,
-            selection: viewStore.binding(
-              get: \.selection?.id,
-              send: SpaceListReducer.Action.setNavigation(id:)
-            ),
-            label: {
-              SpaceCard(name: space.name ?? "", followersCount: space.followersCount ?? 0)
-            }
-          )
+//          NavigationLink(
+//            destination: IfLetStore(
+//              store.scope(
+//                state: \.selection?.value,
+//                action: SpaceListReducer.Action.proposals
+//              ),
+//              then: ProposalListView.init(store:),
+//              else: ProgressView.init
+//            ),
+//            tag: space.id,
+//            selection: viewStore.binding(
+//              get: \.selection?.id,
+//              send: SpaceListReducer.Action.setNavigation(id:)
+//            ),
+//            label: {
+//              SpaceCard(name: space.name ?? "", followersCount: space.followersCount ?? 0)
+//            }
+//          )
         }
       }
       .listStyle(.plain)
