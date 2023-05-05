@@ -42,7 +42,7 @@ public extension SnapshotModel {
           "first": 1000,
           "where": ["space_in": [.variable("spaceName")]],
           "orderBy": "created",
-          "orderDirection": "desc",
+          "orderDirection": "desc"
         ]),
       ] }
 
@@ -75,4 +75,5 @@ public extension SnapshotModel {
       }
     }
   }
+
 }
