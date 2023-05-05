@@ -21,6 +21,25 @@ extension SnapshotClient: DependencyKey {
         return apolloClient.watch(query: query)
       },
       spaces: {
+//        guard let dirURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+//          　　　　　　　　　fatalError("フォルダURL取得エラー")
+//        }
+//
+//        if !FileManager.default.fileExists(atPath: NSHomeDirectory() + "/Documents/" + "bookdata.json"){
+//          fatalError("JSONが存在しない")
+//        }
+//
+//        let fileURL = dirURL.appendingPathComponent("bookdata.json")
+//
+//        guard let data = try? Data(contentsOf: fileURL) else {
+//          　　　　　　　　fatalError("JSON読み込みエラー")
+//        }
+//
+//        let decoder = JSONDecoder()
+//        guard let bookdata = try? decoder.decode([Bookdata].self, from: data) else {
+//          fatalError("JSONデコードエラー")
+//        }
+        
         return []
       }
     )
