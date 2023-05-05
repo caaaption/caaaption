@@ -49,7 +49,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
             }
           )
         }
-        
+
       case .dismiss:
         return EffectTask.fireAndForget {
           await self.dismiss()

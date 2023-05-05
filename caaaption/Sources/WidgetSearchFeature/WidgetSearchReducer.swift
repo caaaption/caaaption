@@ -19,7 +19,7 @@ public struct WidgetSearchReducer: ReducerProtocol {
     case refreshable
     case binding(BindingAction<State>)
     case dismiss
-    
+
     public enum Tapped: Equatable {
       case account
       case balance
@@ -35,7 +35,7 @@ public struct WidgetSearchReducer: ReducerProtocol {
       switch action {
       case .destination:
         return EffectTask.none
-        
+
       case .tapped(.account):
         state.destination = .account(
           AccountReducer.State()
@@ -61,7 +61,7 @@ public struct WidgetSearchReducer: ReducerProtocol {
 
       case .binding:
         return EffectTask.none
-        
+
       case .dismiss:
         return EffectTask.none
       }
@@ -72,16 +72,18 @@ public struct WidgetSearchReducer: ReducerProtocol {
   }
 }
 
-extension WidgetSearchReducer {
-  public struct Destination: ReducerProtocol {
+public extension WidgetSearchReducer {
+  struct Destination: ReducerProtocol {
     public enum State: Equatable {
       case account(AccountReducer.State)
       case balance(BalanceSettingReducer.State)
     }
+
     public enum Action: Equatable {
       case account(AccountReducer.Action)
       case balance(BalanceSettingReducer.Action)
     }
+
     public var body: some ReducerProtocol<State, Action> {
       Scope(state: /State.account, action: /Action.account) {
         AccountReducer()
