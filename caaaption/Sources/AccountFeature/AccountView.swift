@@ -4,7 +4,6 @@ import SwiftUI
 
 public struct AccountView: View {
   let store: StoreOf<AccountReducer>
-  @Environment(\.presentationMode) @Binding var presentationMode
 
   public init(store: StoreOf<AccountReducer>) {
     self.store = store
@@ -35,7 +34,7 @@ public struct AccountView: View {
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button("Done", action: {
-            self.presentationMode.dismiss()
+            viewStore.send(.dismiss)
           })
           .bold()
         }
