@@ -15,28 +15,30 @@ public struct WidgetPreview<Content: View>: View {
 
   public var body: some View {
     Group {
-      ForEach(families) { family in
+      ForEach(families) { widgetFamily in
         content
           .previewLayout(
             PreviewLayout.fixed(
-              width: family.size.width,
-              height: family.size.height
+              width: widgetFamily.size.width,
+              height: widgetFamily.size.height
             )
           )
           .environment(\.colorScheme, .light)
           .preferredColorScheme(.light)
+          .previewContext(WidgetPreviewContext(family: widgetFamily))
       }
 
-      ForEach(families) { family in
+      ForEach(families) { widgetFamily in
         content
           .previewLayout(
             PreviewLayout.fixed(
-              width: family.size.width,
-              height: family.size.height
+              width: widgetFamily.size.width,
+              height: widgetFamily.size.height
             )
           )
           .environment(\.colorScheme, .dark)
           .preferredColorScheme(.dark)
+          .previewContext(WidgetPreviewContext(family: widgetFamily))
       }
     }
   }

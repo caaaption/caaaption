@@ -81,21 +81,8 @@ public enum VoteWidget: WidgetProtocol {
     
     public var body: some View {
       HStack(spacing: 24) {
-        ZStack {
-          Circle()
-            .stroke(lineWidth: 24.0)
-            .foregroundColor(.blue.opacity(0.3))
-          
-          Circle()
-            .trim(from: 0.0, to: min(0.3, 1.0))
-            .stroke(style: StrokeStyle(lineWidth: 24, lineCap: .round, lineJoin: .round))
-            .foregroundColor(.blue)
-            .rotationEffect(Angle(degrees: 270.0))
-          
-          Text(String(format: "%.0f%%", min(0.3, 1.0) * 100.0))
-            .font(.largeTitle)
-            .bold()
-        }
+        CircleGraf(scores: [10, 20])
+          .scaleEffect(0.35)
         
         if widgetFamily != .systemSmall {
           VStack(alignment: .leading, spacing: 8) {
