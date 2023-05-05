@@ -11,14 +11,17 @@ public class Query: MockObject {
 
   public struct MockFields {
     @Field<Proposal>("proposal") public var proposal
+    @Field<[Proposal?]>("proposals") public var proposals
   }
 }
 
 public extension Mock where O == Query {
   convenience init(
-    proposal: Mock<Proposal>? = nil
+    proposal: Mock<Proposal>? = nil,
+    proposals: [Mock<Proposal>?]? = nil
   ) {
     self.init()
     self.proposal = proposal
+    self.proposals = proposals
   }
 }

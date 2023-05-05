@@ -1,0 +1,6 @@
+fragment ProposalCardFragment on Proposal {
+  id 
+  created
+  title
+  state
+}

@@ -1,0 +1,14 @@
+# import '../fragments/ProposalCard.graphql'
+
+query Proposals($spaceName: String!) {
+  proposals (
+    first: 1000,
+    where: {
+      space_in: [$spaceName]
+    },
+    orderBy: "created",
+    orderDirection: desc
+  ) {
+    ...ProposalCardFragment
+  }
+}
