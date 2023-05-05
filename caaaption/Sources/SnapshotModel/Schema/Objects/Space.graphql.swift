@@ -4,8 +4,8 @@
 import ApolloAPI
 
 public extension SnapshotModel.Objects {
-  static let Query = Object(
-    typename: "Query",
+  static let Space = Object(
+    typename: "Space",
     implementedInterfaces: []
   )
 }

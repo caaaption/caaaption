@@ -23,6 +23,7 @@ package.products.append(contentsOf: [
   .library(name: "AccountFeature", targets: ["AccountFeature"]),
   .library(name: "ContributorFeature", targets: ["ContributorFeature"]),
   .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
+  .library(name: "VoteWidgetFeature", targets: ["VoteWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -31,6 +32,7 @@ package.targets.append(contentsOf: [
   .target(name: "WidgetSearchFeature", dependencies: [
     "AccountFeature",
     "BalanceWidgetFeature",
+    "VoteWidgetFeature",
   ]),
   .target(name: "AccountFeature", dependencies: [
     "ServerConfig",
@@ -47,6 +49,12 @@ package.targets.append(contentsOf: [
     "BalanceWidget",
     "SwiftUIHelpers",
     "QuickNodeClient",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "VoteWidgetFeature", dependencies: [
+    "VoteWidget",
+    "SwiftUIHelpers",
+    "SnapshotClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
@@ -87,15 +95,11 @@ package.targets.append(contentsOf: [
   .target(name: "UIApplicationClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
-  .target(
-    name: "SnapshotClient",
-    dependencies: [
-      "ApolloHelpers",
-      "SnapshotModel",
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ],
-    resources: [.copy("./Resources/verifed.json")]
-  ),
+  .target(name: "SnapshotClient", dependencies: [
+    "ApolloHelpers",
+    "SnapshotModel",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
   .target(name: "ServerConfig"),
   .target(name: "GitHubClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),

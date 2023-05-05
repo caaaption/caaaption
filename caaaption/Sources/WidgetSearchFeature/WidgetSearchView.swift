@@ -3,6 +3,8 @@ import BalanceWidget
 import BalanceWidgetFeature
 import ComposableArchitecture
 import SwiftUI
+import VoteWidget
+import VoteWidgetFeature
 
 public struct WidgetSearchView: View {
   let store: StoreOf<WidgetSearchReducer>
@@ -18,6 +20,12 @@ public struct WidgetSearchView: View {
           viewStore.send(.tapped(.balance))
         } label: {
           ListCard(BalanceWidget.self)
+        }
+        
+        Button {
+          viewStore.send(.tapped(.vote))
+        } label: {
+          ListCard(VoteWidget.self)
         }
       }
       .listStyle(.plain)
@@ -64,6 +72,18 @@ public struct WidgetSearchView: View {
       ) { store in
         NavigationStack {
           BalanceSettingView(store: store)
+        }
+      }
+      .sheet(
+        store: store.scope(
+          state: \.$destination,
+          action: WidgetSearchReducer.Action.destination
+        ),
+        state: /WidgetSearchReducer.Destination.State.vote,
+        action: WidgetSearchReducer.Destination.Action.vote
+      ) { store in
+        NavigationStack {
+          SpacesView(store: store)
         }
       }
     }

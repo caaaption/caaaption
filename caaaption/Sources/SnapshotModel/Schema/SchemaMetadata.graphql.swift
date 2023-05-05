@@ -4,16 +4,16 @@
 import ApolloAPI
 
 public protocol SnapshotModel_SelectionSet: ApolloAPI.SelectionSet & ApolloAPI.RootSelectionSet
-  where Schema == SnapshotModel.SchemaMetadata {}
+where Schema == SnapshotModel.SchemaMetadata {}
 
 public protocol SnapshotModel_InlineFragment: ApolloAPI.SelectionSet & ApolloAPI.InlineFragment
-  where Schema == SnapshotModel.SchemaMetadata {}
+where Schema == SnapshotModel.SchemaMetadata {}
 
 public protocol SnapshotModel_MutableSelectionSet: ApolloAPI.MutableRootSelectionSet
-  where Schema == SnapshotModel.SchemaMetadata {}
+where Schema == SnapshotModel.SchemaMetadata {}
 
 public protocol SnapshotModel_MutableInlineFragment: ApolloAPI.MutableSelectionSet & ApolloAPI.InlineFragment
-  where Schema == SnapshotModel.SchemaMetadata {}
+where Schema == SnapshotModel.SchemaMetadata {}
 
 public extension SnapshotModel {
   typealias ID = String
@@ -33,6 +33,7 @@ public extension SnapshotModel {
       switch typename {
       case "Query": return SnapshotModel.Objects.Query
       case "Proposal": return SnapshotModel.Objects.Proposal
+      case "Space": return SnapshotModel.Objects.Space
       default: return nil
       }
     }
@@ -41,4 +42,5 @@ public extension SnapshotModel {
   enum Objects {}
   enum Interfaces {}
   enum Unions {}
+
 }
