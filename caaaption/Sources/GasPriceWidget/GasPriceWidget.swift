@@ -25,7 +25,7 @@ public struct GasPriceWidget: WidgetProtocol {
       .systemSmall,
     ]
   }
-  
+
   public struct Input: Codable {
     public let address: String
 
@@ -45,7 +45,6 @@ public struct GasPriceWidget: WidgetProtocol {
   }
 
   public struct Provider: TimelineProvider {
-
     public func placeholder(
       in context: Context
     ) -> Entry {
@@ -56,9 +55,8 @@ public struct GasPriceWidget: WidgetProtocol {
       in context: Context,
       completion: @escaping (Entry) -> Void
     ) {
-      
-        let entry = Entry(date: Date())
-        completion(entry)
+      let entry = Entry(date: Date())
+      completion(entry)
     }
 
     public func getTimeline(
@@ -80,9 +78,7 @@ public struct GasPriceWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      VStack(spacing: 8) {
-        
-      }
+      VStack(spacing: 8) {}
     }
 
     var updatedAt: some View {
@@ -93,7 +89,6 @@ public struct GasPriceWidget: WidgetProtocol {
     }
   }
 }
-
 
 #if DEBUG
   import WidgetHelpers
