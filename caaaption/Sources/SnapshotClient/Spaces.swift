@@ -1,4 +1,6 @@
-public let spaces = [
+import ApolloAPI
+
+public let spaceNames: GraphQLNullable<[String?]> = [
   "yam.eth",
   "colony.eth",
   "krausehouse.eth",
