@@ -14,7 +14,8 @@ extension SnapshotClient: DependencyKey {
     let actor = SnapshotClientActor(apolloClient: apolloClient)
 
     return Self(
-      proposal: { try await actor.proposal(id: $0) }
+      proposal: { try await actor.proposal(id: $0) },
+      proposals: { try await actor.proposals(spaceName: $0) }
     )
   }
 }
@@ -28,6 +29,11 @@ actor SnapshotClientActor {
   
   func proposal(id: String) async throws -> AsyncThrowingStream<SnapshotModel.ProposalQuery.Data, Error> {
     let query = SnapshotModel.ProposalQuery(id: id)
+    return apolloClient.watch(query: query)
+  }
+  
+  func proposals(spaceName: String) async throws -> AsyncThrowingStream<SnapshotModel.ProposalsQuery.Data, Error> {
+    let query = SnapshotModel.ProposalsQuery(spaceName: spaceName)
     return apolloClient.watch(query: query)
   }
 }
