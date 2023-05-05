@@ -25,11 +25,9 @@ actor SnapshotClientActor {
   init(apolloClient: ApolloClient) {
     self.apolloClient = apolloClient
   }
-
-  func proposal(
-    id: String
-  ) async throws -> GraphQLResult<SnapshotModel.ProposalQuery.Data> {
+  
+  func proposal(id: String) async throws -> AsyncThrowingStream<SnapshotModel.ProposalQuery.Data, Error> {
     let query = SnapshotModel.ProposalQuery(id: id)
-    return try await apolloClient.fetch(query: query)
+    return apolloClient.watch(query: query)
   }
 }
