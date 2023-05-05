@@ -35,7 +35,8 @@ public struct SpacesReducer: ReducerProtocol {
         .cancellable(id: CancelID.self)
 
       case let .responseSpace(.success(data)):
-        state.spaces = data.spaces?.compactMap(\.?.fragments.spaceCardFragment) ?? []
+        let spaces = data.spaces?.compactMap(\.?.fragments.spaceCardFragment) ?? []
+        state.spaces = spaces.sorted(by: { $0.followersCount ?? 0 > $1.followersCount ?? 0 })
         return EffectTask.none
 
       case let .responseSpace(.failure(error)):

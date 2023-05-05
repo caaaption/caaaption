@@ -1,6 +1,15 @@
 import ComposableArchitecture
 import SwiftUI
 
+func formatNumber(_ number: Int) -> String {
+  if number >= 1000 {
+    let num = Double(number) / 1000.0
+    return String(format: "%.1fK members", num)
+  } else {
+    return "\(number) members"
+  }
+}
+
 public struct SpacesView: View {
   let store: StoreOf<SpacesReducer>
 
@@ -12,7 +21,8 @@ public struct SpacesView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         ForEach(viewStore.spaces, id: \.id) { space in
-          Text(space.id)
+          Text(space.name ?? space.id)
+            .badge(formatNumber(space.followersCount ?? 0))
         }
       }
       .navigationTitle("Spaces")
@@ -33,3 +43,4 @@ public struct SpacesView: View {
     }
   }
 }
+
