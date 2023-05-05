@@ -14,20 +14,11 @@ public struct WidgetSearchView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
-        NavigationLink {
-          BalanceSettingView(
-            store: store.scope(
-              state: \.balanceSetting,
-              action: WidgetSearchReducer.Action.balanceSetting
-            )
-          )
+        Button {
+          viewStore.send(.tapped(.balance))
         } label: {
-          ListCard(
-            displayName: BalanceWidget.Constant.displayName,
-            description: BalanceWidget.Constant.description
-          )
+          ListCard(BalanceWidget.self)
         }
-        .listRowSeparator(.hidden)
       }
       .listStyle(.plain)
       .navigationTitle("Widget Search")
@@ -43,7 +34,7 @@ public struct WidgetSearchView: View {
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
-            viewStore.send(.binding(.set(\.$isPresented, true)))
+            viewStore.send(.tapped(.account))
           } label: {
             Color.red
               .frame(width: 36, height: 36)
@@ -51,9 +42,28 @@ public struct WidgetSearchView: View {
           }
         }
       }
-      .sheet(isPresented: viewStore.binding(\.$isPresented)) {
+      .sheet(
+        store: store.scope(
+          state: \.$destination,
+          action: WidgetSearchReducer.Action.destination
+        ),
+        state: /WidgetSearchReducer.Destination.State.account,
+        action: WidgetSearchReducer.Destination.Action.account
+      ) { store in
         NavigationStack {
-          AccountView(store: store.scope(state: \.account, action: WidgetSearchReducer.Action.account))
+          AccountView(store: store)
+        }
+      }
+      .sheet(
+        store: store.scope(
+          state: \.$destination,
+          action: WidgetSearchReducer.Action.destination
+        ),
+        state: /WidgetSearchReducer.Destination.State.balance,
+        action: WidgetSearchReducer.Destination.Action.balance
+      ) { store in
+        NavigationStack {
+          BalanceSettingView(store: store)
         }
       }
     }

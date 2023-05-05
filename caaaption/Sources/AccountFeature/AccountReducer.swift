@@ -15,9 +15,11 @@ public struct AccountReducer: ReducerProtocol {
     case contributor(ContributorReducer.Action)
 
     case privacyPolicy
+    case dismiss
   }
 
   @Dependency(\.applicationClient.open) var openURL
+  @Dependency(\.dismiss) var dismiss
 
   public var body: some ReducerProtocol<State, Action> {
     Scope(state: \.contributor, action: /Action.contributor) {
@@ -34,6 +36,10 @@ public struct AccountReducer: ReducerProtocol {
             ServerConfig.privacyPolicy,
             [:]
           )
+        }
+      case .dismiss:
+        return EffectTask.fireAndForget {
+          await self.dismiss()
         }
       }
     }

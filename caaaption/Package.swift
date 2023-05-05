@@ -11,7 +11,7 @@ var package = Package(
     .macOS(.v13),
   ],
   dependencies: [
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.51.0"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", branch: "navigation-beta"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.1.2"),
   ]
 )
@@ -139,6 +139,7 @@ package.products.append(contentsOf: [
   .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
   .library(name: "VotingStatusWidget", targets: ["VotingStatusWidget"]),
   .library(name: "VoteWidget", targets: ["VoteWidget"]),
+  .library(name: "GasPriceWidget", targets: ["GasPriceWidget"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "WidgetProtocol"),
@@ -159,6 +160,10 @@ package.targets.append(contentsOf: [
     "WidgetProtocol",
   ]),
   .target(name: "VoteWidget", dependencies: [
+    "WidgetHelpers",
+    "WidgetProtocol",
+  ]),
+  .target(name: "GasPriceWidget", dependencies: [
     "WidgetHelpers",
     "WidgetProtocol",
   ]),
