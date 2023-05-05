@@ -94,7 +94,7 @@ package.targets.append(contentsOf: [
       "SnapshotModel",
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ],
-    resources: [.copy("./Resources/verifed.json")]
+    resources: [.copy("./Resources/verified.json")]
   ),
   .target(name: "ServerConfig"),
   .target(name: "GitHubClient", dependencies: [
