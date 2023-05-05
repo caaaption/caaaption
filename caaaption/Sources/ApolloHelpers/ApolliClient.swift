@@ -3,6 +3,33 @@ import ApolloAPI
 import Foundation
 
 public extension ApolloClient {
+  func watch<Query: GraphQLQuery>(
+    query: Query,
+    cachePolicy: CachePolicy = .returnCacheDataAndFetch,
+    contextIdentifier: UUID? = nil,
+    callbackQueue: DispatchQueue = .main
+  ) -> AsyncThrowingStream<Query.Data, Error> {
+    AsyncThrowingStream { continuation in
+      let watcher = watch(
+        query: query,
+        cachePolicy: cachePolicy,
+        callbackQueue: callbackQueue
+      ) { result in
+        switch result {
+        case let .success(response):
+          if let data = response.data {
+            continuation.yield(data)
+          }
+        case let .failure(error):
+          continuation.finish(throwing: error)
+        }
+      }
+      continuation.onTermination = { @Sendable _ in watcher.cancel() }
+    }
+  }
+}
+
+public extension ApolloClient {
   @discardableResult
   func fetch<Query: GraphQLQuery>(
     query: Query,
