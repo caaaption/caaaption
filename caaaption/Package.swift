@@ -87,11 +87,15 @@ package.targets.append(contentsOf: [
   .target(name: "UIApplicationClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
-  .target(name: "SnapshotClient", dependencies: [
-    "ApolloHelpers",
-    "SnapshotModel",
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
+  .target(
+    name: "SnapshotClient",
+    dependencies: [
+      "ApolloHelpers",
+      "SnapshotModel",
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ],
+    resources: [.copy("./Resources/verifed.json")]
+  ),
   .target(name: "ServerConfig"),
   .target(name: "GitHubClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
