@@ -9,7 +9,13 @@ public struct SpacesView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      List {
+        ForEach(viewStore.spaces, id: \.id) { space in
+          Text(space.id)
+        }
+      }
+      .task { await viewStore.send(.task).finish() }
     }
   }
 }
