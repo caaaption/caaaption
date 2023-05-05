@@ -15,20 +15,17 @@ test-color-hex:
 	@xcodebuild test \
 		-workspace caaaption.xcworkspace \
 		-scheme "ColorHexTests" \
-		-destination platform="$(PLATFORM_IOS)" \
-		-clonedSourcePackagesDirPath SourcePackages
+		-destination platform="$(PLATFORM_IOS)"
 
 build-caaaption:
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "App (Widget Staging project)" \
-		-sdk iphonesimulator \
-		-clonedSourcePackagesDirPath SourcePackages
+		-sdk iphonesimulator
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "App (Widget Production project)" \
-		-sdk iphonesimulator \
-		-clonedSourcePackagesDirPath SourcePackages
+		-sdk iphonesimulator
 
 format:
 	@swift build -c release --package-path ./BuildTools --product swiftformat
