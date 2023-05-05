@@ -1,0 +1,7 @@
+# import '../fragments/ProposalWidget.graphql'
+
+query Proposal($id: String!) {
+  proposal(id: $id) {
+    ...ProposalWidgetFragment
+  }
+}

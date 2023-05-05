@@ -12,16 +12,11 @@ public extension SnapshotModel {
         query Proposal($id: String!) {
           proposal(id: $id) {
             __typename
-            title
-            choices
-            scores
-            space {
-              __typename
-              name
-            }
+            ...ProposalWidgetFragment
           }
         }
-        """#
+        """#,
+        fragments: [ProposalWidgetFragment.self]
       ))
 
     public var id: String
@@ -53,33 +48,21 @@ public extension SnapshotModel {
         public static var __parentType: ApolloAPI.ParentType { SnapshotModel.Objects.Proposal }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
-          .field("title", String.self),
-          .field("choices", [String?].self),
-          .field("scores", [Double?]?.self),
-          .field("space", Space?.self),
+          .fragment(ProposalWidgetFragment.self),
         ] }
 
         public var title: String { __data["title"] }
         public var choices: [String?] { __data["choices"] }
         public var scores: [Double?]? { __data["scores"] }
-        public var space: Space? { __data["space"] }
 
-        /// Proposal.Space
-        ///
-        /// Parent Type: `Space`
-        public struct Space: SnapshotModel.SelectionSet {
+        public struct Fragments: FragmentContainer {
           public let __data: DataDict
           public init(_dataDict: DataDict) { __data = _dataDict }
 
-          public static var __parentType: ApolloAPI.ParentType { SnapshotModel.Objects.Space }
-          public static var __selections: [ApolloAPI.Selection] { [
-            .field("__typename", String.self),
-            .field("name", String?.self),
-          ] }
-
-          public var name: String? { __data["name"] }
+          public var proposalWidgetFragment: ProposalWidgetFragment { _toFragment() }
         }
       }
     }
   }
+
 }
