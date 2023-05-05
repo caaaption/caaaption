@@ -48,7 +48,7 @@ package.targets.append(contentsOf: [
     "SwiftUIHelpers",
     "QuickNodeClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ])
+  ]),
 ])
 
 // GraphQL
