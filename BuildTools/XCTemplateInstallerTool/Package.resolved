@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "swiftformat",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/nicklockwood/SwiftFormat",
-      "state" : {
-        "revision" : "da92ec47672f1f962d60ce2a0f93c0b1293060b8",
-        "version" : "0.51.4"
-      }
-    },
-    {
       "identity" : "xctemplateinstaller",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/noppefoxwolf/XCTemplateInstaller",
