@@ -1,17 +1,8 @@
 import SwiftUI
+import WidgetProtocol
 
-public struct ListCard: View {
-  let displayName: String
-  let description: String
-
-  init(
-    displayName: String,
-    description: String
-  ) {
-    self.displayName = displayName
-    self.description = description
-  }
-
+public struct ListCard<W: WidgetProtocol>: View {
+  public init(_ value: W.Type) {}
   public var body: some View {
     VStack(spacing: 12) {
       HStack(spacing: 12) {
@@ -20,15 +11,11 @@ public struct ListCard: View {
           .cornerRadius(12)
 
         VStack(alignment: .leading, spacing: 0) {
-          Text(displayName)
+          Text(W.Constant.displayName)
             .bold()
-          Text(description)
+          Text(W.Constant.description)
             .foregroundColor(.secondary)
         }
-
-        Spacer()
-
-        InstallButton(action: {})
       }
     }
   }

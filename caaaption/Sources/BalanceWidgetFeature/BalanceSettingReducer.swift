@@ -17,12 +17,14 @@ public struct BalanceSettingReducer: ReducerProtocol {
   public enum Action: Equatable, BindableAction {
     case task
     case addWidget
+    case dismiss
     case responseBalance(TaskResult<Decimal>)
     case binding(BindingAction<State>)
   }
 
   @Dependency(\.quickNodeClient) var quickNodeClient
   @Dependency(\.userDefaults) var userDefaults
+  @Dependency(\.dismiss) var dismiss
 
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()
@@ -46,6 +48,11 @@ public struct BalanceSettingReducer: ReducerProtocol {
               try await self.quickNodeClient.getBalance(address)
             }
           )
+        }
+        
+      case .dismiss:
+        return EffectTask.fireAndForget {
+          await self.dismiss()
         }
 
       case let .responseBalance(.success(balance)):

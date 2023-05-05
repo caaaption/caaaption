@@ -6,21 +6,24 @@ public struct WidgetSearchReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    public var account = AccountReducer.State()
-    public var balanceSetting = BalanceSettingReducer.State()
-
+    @PresentationState public var destination: Destination.State?
     @BindingState public var searchable = ""
-    @BindingState public var isPresented = false
     public init() {}
   }
 
   public enum Action: Equatable, BindableAction {
-    case account(AccountReducer.Action)
-    case balanceSetting(BalanceSettingReducer.Action)
+    case destination(PresentationAction<Destination.Action>)
+    case tapped(Tapped)
 
     case task
     case refreshable
     case binding(BindingAction<State>)
+    case dismiss
+    
+    public enum Tapped: Equatable {
+      case account
+      case balance
+    }
   }
 
   @Dependency(\.mainQueue) var mainQueue
@@ -28,18 +31,21 @@ public struct WidgetSearchReducer: ReducerProtocol {
 
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()
-    Scope(state: \.account, action: /Action.account) {
-      AccountReducer()
-    }
-    Scope(state: \.balanceSetting, action: /Action.balanceSetting) {
-      BalanceSettingReducer()
-    }
-    Reduce { _, action in
+    Reduce { state, action in
       switch action {
-      case .account:
+      case .destination:
+        return EffectTask.none
+        
+      case .tapped(.account):
+        state.destination = .account(
+          AccountReducer.State()
+        )
         return EffectTask.none
 
-      case .balanceSetting:
+      case .tapped(.balance):
+        state.destination = .balance(
+          BalanceSettingReducer.State()
+        )
         return EffectTask.none
 
       case .task:
@@ -55,6 +61,33 @@ public struct WidgetSearchReducer: ReducerProtocol {
 
       case .binding:
         return EffectTask.none
+        
+      case .dismiss:
+        return EffectTask.none
+      }
+    }
+    .ifLet(\.$destination, action: /Action.destination) {
+      Destination()
+    }
+  }
+}
+
+extension WidgetSearchReducer {
+  public struct Destination: ReducerProtocol {
+    public enum State: Equatable {
+      case account(AccountReducer.State)
+      case balance(BalanceSettingReducer.State)
+    }
+    public enum Action: Equatable {
+      case account(AccountReducer.Action)
+      case balance(BalanceSettingReducer.Action)
+    }
+    public var body: some ReducerProtocol<State, Action> {
+      Scope(state: /State.account, action: /Action.account) {
+        AccountReducer()
+      }
+      Scope(state: /State.balance, action: /Action.balance) {
+        BalanceSettingReducer()
       }
     }
   }
