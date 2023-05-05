@@ -42,6 +42,19 @@ public struct BalanceSettingView: View {
       .task { await viewStore.send(.task).finish() }
       .padding(.horizontal, 12)
       .navigationTitle("Balance Widget")
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            viewStore.send(.dismiss)
+          } label: {
+            Image(systemName: "xmark.circle.fill")
+              .symbolRenderingMode(.palette)
+              .foregroundStyle(.gray, .bar)
+              .font(.system(size: 30))
+          }
+        }
+      }
     }
   }
 }
@@ -52,12 +65,14 @@ public struct BalanceSettingView: View {
   struct BalanceSettingViewPreviews: PreviewProvider {
     static var previews: some View {
       Preview {
-        BalanceSettingView(
-          store: .init(
-            initialState: BalanceSettingReducer.State(),
-            reducer: BalanceSettingReducer()
+        NavigationStack {
+          BalanceSettingView(
+            store: .init(
+              initialState: BalanceSettingReducer.State(),
+              reducer: BalanceSettingReducer()
+            )
           )
-        )
+        }
       }
     }
   }
