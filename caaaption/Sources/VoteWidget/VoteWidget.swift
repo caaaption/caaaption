@@ -18,9 +18,9 @@ public enum VoteWidget: WidgetProtocol {
   }
 
   public enum Constant: WidgetConstant {
-    public static var displayName = "Balance Widget"
-    public static var description = "Displays wallet balance."
-    public static var kind = "BalanceWidget"
+    public static var displayName = "Vote Status Widget"
+    public static var description = "Displays the vote result for the specified Snapshot."
+    public static var kind = "VoteWidget"
     public static var supportedFamilies: [WidgetFamily] = [
       .systemSmall,
       .systemMedium,

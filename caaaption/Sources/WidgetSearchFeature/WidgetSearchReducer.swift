@@ -1,6 +1,7 @@
 import AccountFeature
 import BalanceWidgetFeature
 import ComposableArchitecture
+import VoteWidgetFeature
 
 public struct WidgetSearchReducer: ReducerProtocol {
   public init() {}
@@ -23,6 +24,7 @@ public struct WidgetSearchReducer: ReducerProtocol {
     public enum Tapped: Equatable {
       case account
       case balance
+      case vote
     }
   }
 
@@ -36,16 +38,21 @@ public struct WidgetSearchReducer: ReducerProtocol {
       case .destination:
         return EffectTask.none
 
-      case .tapped(.account):
-        state.destination = .account(
-          AccountReducer.State()
-        )
-        return EffectTask.none
-
-      case .tapped(.balance):
-        state.destination = .balance(
-          BalanceSettingReducer.State()
-        )
+      case let .tapped(distination):
+        switch distination {
+        case .account:
+          state.destination = .account(
+            AccountReducer.State()
+          )
+        case .balance:
+          state.destination = .balance(
+            BalanceSettingReducer.State()
+          )
+        case .vote:
+          state.destination = .vote(
+            SpacesReducer.State()
+          )
+        }
         return EffectTask.none
 
       case .task:
@@ -77,11 +84,13 @@ public extension WidgetSearchReducer {
     public enum State: Equatable {
       case account(AccountReducer.State)
       case balance(BalanceSettingReducer.State)
+      case vote(SpacesReducer.State)
     }
 
     public enum Action: Equatable {
       case account(AccountReducer.Action)
       case balance(BalanceSettingReducer.Action)
+      case vote(SpacesReducer.Action)
     }
 
     public var body: some ReducerProtocol<State, Action> {
@@ -90,6 +99,9 @@ public extension WidgetSearchReducer {
       }
       Scope(state: /State.balance, action: /Action.balance) {
         BalanceSettingReducer()
+      }
+      Scope(state: /State.vote, action: /Action.vote) {
+        SpacesReducer()
       }
     }
   }

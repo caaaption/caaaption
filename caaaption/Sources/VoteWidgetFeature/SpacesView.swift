@@ -15,7 +15,21 @@ public struct SpacesView: View {
           Text(space.id)
         }
       }
+      .navigationTitle("Spaces")
+      .navigationBarTitleDisplayMode(.inline)
       .task { await viewStore.send(.task).finish() }
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            viewStore.send(.dismiss)
+          } label: {
+            Image(systemName: "xmark.circle.fill")
+              .symbolRenderingMode(.palette)
+              .foregroundStyle(.gray, .bar)
+              .font(.system(size: 30))
+          }
+        }
+      }
     }
   }
 }

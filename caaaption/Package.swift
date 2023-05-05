@@ -32,6 +32,7 @@ package.targets.append(contentsOf: [
   .target(name: "WidgetSearchFeature", dependencies: [
     "AccountFeature",
     "BalanceWidgetFeature",
+    "VoteWidgetFeature",
   ]),
   .target(name: "AccountFeature", dependencies: [
     "ServerConfig",

@@ -14,9 +14,11 @@ public struct SpacesReducer: ReducerProtocol {
   public enum Action: Equatable {
     case task
     case responseSpace(TaskResult<SnapshotModel.SpacesQuery.Data>)
+    case dismiss
   }
   
   @Dependency(\.snapshotClient.spaces) var spaces
+  @Dependency(\.dismiss) var dismiss
 
   public var body: some ReducerProtocol<State, Action> {
     Reduce { state, action in
@@ -40,6 +42,11 @@ public struct SpacesReducer: ReducerProtocol {
         print(error)
         state.spaces = []
         return EffectTask.none
+        
+      case .dismiss:
+        return EffectTask.fireAndForget {
+          await self.dismiss()
+        }
       }
     }
   }
