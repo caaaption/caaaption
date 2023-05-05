@@ -41,9 +41,9 @@ public struct VotingStatusWidget: WidgetProtocol {
 
   public struct Entry: TimelineEntry, Equatable {
     public let date: Date
-    public let proposal: SnapshotModel.ProposalQuery.Data.Proposal?
+    public let proposal: SnapshotModel.ProposalWidgetFragment?
 
-    public init(date: Date, proposal: SnapshotModel.ProposalQuery.Data.Proposal?) {
+    public init(date: Date, proposal: SnapshotModel.ProposalWidgetFragment?) {
       self.date = date
       self.proposal = proposal
     }
@@ -62,11 +62,13 @@ public struct VotingStatusWidget: WidgetProtocol {
       in context: Context,
       completion: @escaping (Entry) -> Void
     ) {
+      let proposalId = "0x4421dddc830355b7e3f5290fb9583ded426e61450fe0bd2742722b3d87db288f"
       Task {
         do {
-          let result = try await snapshotClient.proposal("0x4421dddc830355b7e3f5290fb9583ded426e61450fe0bd2742722b3d87db288f")
-          let entry = Entry(date: Date(), proposal: result.data?.proposal)
-          completion(entry)
+          for try await data in snapshotClient.proposal(proposalId) {
+            let entry = Entry(date: Date(), proposal: data.proposal?.fragments.proposalWidgetFragment)
+            completion(entry)
+          }
         } catch {
           let entry = Entry(date: Date(), proposal: nil)
           completion(entry)

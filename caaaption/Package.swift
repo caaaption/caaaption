@@ -138,6 +138,7 @@ package.products.append(contentsOf: [
   .library(name: "ArtWidget", targets: ["ArtWidget"]),
   .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
   .library(name: "VotingStatusWidget", targets: ["VotingStatusWidget"]),
+  .library(name: "VoteWidget", targets: ["VoteWidget"]),
   .library(name: "GasPriceWidget", targets: ["GasPriceWidget"]),
 ])
 package.targets.append(contentsOf: [
@@ -156,6 +157,10 @@ package.targets.append(contentsOf: [
   .target(name: "VotingStatusWidget", dependencies: [
     "WidgetHelpers",
     "SnapshotClient",
+    "WidgetProtocol",
+  ]),
+  .target(name: "VoteWidget", dependencies: [
+    "WidgetHelpers",
     "WidgetProtocol",
   ]),
   .target(name: "GasPriceWidget", dependencies: [
