@@ -216,6 +216,5 @@ public let spaceNames: GraphQLNullable<[String?]> = [
   "poktdao.eth",
   "gal.eth",
   "lenster.xyz",
-  "beanft.eth"
+  "beanft.eth",
 ]
-

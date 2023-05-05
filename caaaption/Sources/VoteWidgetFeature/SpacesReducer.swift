@@ -1,6 +1,6 @@
 import ComposableArchitecture
-import SnapshotClient
 import Dependencies
+import SnapshotClient
 import SnapshotModel
 
 public struct SpacesReducer: ReducerProtocol {
@@ -16,7 +16,7 @@ public struct SpacesReducer: ReducerProtocol {
     case responseSpace(TaskResult<SnapshotModel.SpacesQuery.Data>)
     case dismiss
   }
-  
+
   @Dependency(\.snapshotClient.spaces) var spaces
   @Dependency(\.dismiss) var dismiss
 
@@ -33,16 +33,16 @@ public struct SpacesReducer: ReducerProtocol {
           await send(.responseSpace(.failure(error)), animation: .default)
         }
         .cancellable(id: CancelID.self)
-        
+
       case let .responseSpace(.success(data)):
         state.spaces = data.spaces?.compactMap(\.?.fragments.spaceCardFragment) ?? []
         return EffectTask.none
-        
+
       case let .responseSpace(.failure(error)):
         print(error)
         state.spaces = []
         return EffectTask.none
-        
+
       case .dismiss:
         return EffectTask.fireAndForget {
           await self.dismiss()

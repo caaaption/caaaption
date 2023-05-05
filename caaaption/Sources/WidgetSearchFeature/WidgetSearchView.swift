@@ -21,7 +21,7 @@ public struct WidgetSearchView: View {
         } label: {
           ListCard(BalanceWidget.self)
         }
-        
+
         Button {
           viewStore.send(.tapped(.vote))
         } label: {
