@@ -6,7 +6,7 @@ public enum VoteWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
     let kind = Constant.kind
     public init() {}
-    
+
     public var body: some WidgetConfiguration {
       StaticConfiguration(kind: kind, provider: Provider()) { entry in
         VoteWidget.WidgetView(entry: entry)
@@ -16,42 +16,42 @@ public enum VoteWidget: WidgetProtocol {
       .supportedFamilies(Constant.supportedFamilies)
     }
   }
-  
+
   public enum Constant: WidgetConstant {
     public static var displayName = "Balance Widget"
     public static var description = "Displays wallet balance."
     public static var kind = "BalanceWidget"
     public static var supportedFamilies: [WidgetFamily] = [
       .systemSmall,
-      .systemMedium
+      .systemMedium,
     ]
   }
-  
+
   public struct Input: Codable {
     public let address: String
-    
+
     public init(address: String) {
       self.address = address
     }
   }
-  
+
   public struct Entry: TimelineEntry, Equatable {
     public let date: Date
-    
+
     public init(
       date: Date
     ) {
       self.date = date
     }
   }
-  
+
   public struct Provider: TimelineProvider {
     public func placeholder(
       in context: Context
     ) -> Entry {
       Entry(date: Date())
     }
-    
+
     public func getSnapshot(
       in context: Context,
       completion: @escaping (Entry) -> Void
@@ -59,7 +59,7 @@ public enum VoteWidget: WidgetProtocol {
       let entry = Entry(date: Date())
       completion(entry)
     }
-    
+
     public func getTimeline(
       in context: Context,
       completion: @escaping (Timeline<Entry>) -> Void
@@ -70,20 +70,20 @@ public enum VoteWidget: WidgetProtocol {
       }
     }
   }
-  
+
   public struct WidgetView: View {
     let entry: Entry
     @Environment(\.widgetFamily) var widgetFamily
-    
+
     public init(entry: Entry) {
       self.entry = entry
     }
-    
+
     public var body: some View {
       HStack(spacing: 24) {
         CircleGraf(scores: [10, 20])
           .scaleEffect(0.35)
-        
+
         if widgetFamily != .systemSmall {
           VStack(alignment: .leading, spacing: 8) {
             Text("For - Approve change")
@@ -98,7 +98,7 @@ public enum VoteWidget: WidgetProtocol {
       .frame(maxWidth: .infinity)
       .padding()
     }
-    
+
     var updatedAt: some View {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "HH:mm"
@@ -107,7 +107,6 @@ public enum VoteWidget: WidgetProtocol {
     }
   }
 }
-
 
 #if DEBUG
   import WidgetHelpers

@@ -23,12 +23,12 @@ public struct CircleGraf: View {
     .indigo,
     .mint,
   ]
-  
+
   func percentages(scores: [Double]) -> [CircleGrafValue] {
     let sortedScores = scores.sorted(by: >)
     let total = sortedScores.reduce(0, +)
     let percentages = sortedScores.map { $0 / total }
-    
+
     var values: [CircleGrafValue] = []
     percentages.enumerated().forEach { index, percentage in
       let startDegrees = values.last?.endDegrees ?? 0
@@ -42,11 +42,11 @@ public struct CircleGraf: View {
     }
     return values
   }
-  
+
   public init(scores: [Double]) {
     self.scores = scores
   }
-  
+
   public var body: some View {
     ZStack {
       ForEach(percentages(scores: scores)) { value in
@@ -67,7 +67,7 @@ public struct CircleGraf: View {
       .rotationEffect(Angle(degrees: 270.0))
     }
   }
-  
+
   func center(proxy: GeometryProxy) -> CGPoint {
     return CGPoint(
       x: proxy.size.width / 2,
@@ -79,7 +79,7 @@ public struct CircleGraf: View {
 struct CircleGrafPreviews: PreviewProvider {
   static var previews: some View {
     CircleGraf(
-      scores: [10,20,30,40]
+      scores: [10, 20, 30, 40]
     )
     .previewLayout(.sizeThatFits)
   }

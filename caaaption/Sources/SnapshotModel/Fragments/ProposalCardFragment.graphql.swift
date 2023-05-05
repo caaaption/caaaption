@@ -6,14 +6,14 @@
 public extension SnapshotModel {
   struct ProposalCardFragment: SnapshotModel.SelectionSet, Fragment {
     public static var fragmentDefinition: StaticString { """
-      fragment ProposalCardFragment on Proposal {
-        __typename
-        id
-        created
-        title
-        state
-      }
-      """ }
+    fragment ProposalCardFragment on Proposal {
+      __typename
+      id
+      created
+      title
+      state
+    }
+    """ }
 
     public let __data: DataDict
     public init(_dataDict: DataDict) { __data = _dataDict }
@@ -32,5 +32,4 @@ public extension SnapshotModel {
     public var title: String { __data["title"] }
     public var state: String? { __data["state"] }
   }
-
 }
