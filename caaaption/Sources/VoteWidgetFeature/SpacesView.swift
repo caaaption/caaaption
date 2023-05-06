@@ -43,4 +43,3 @@ public struct SpacesView: View {
     }
   }
 }
-
