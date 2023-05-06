@@ -25,6 +25,12 @@ This repo contains the full source code for [caaaption](https://caaaption.com), 
 
 [caaaption](https://caaaption.com) is an application built entirely in Swift. The logic is built with [Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture) and the UI is  built mostly in SwiftUI.
 
+# TestFlight
+
+You can install TestFlight by minting an Early Access Pass with Zora.
+
+http://mint.caaaption.com
+
 # Getting Started
 
 This repo contains both the client code for running the entire [caaaption](https://caaaption.com) application, as well as a test case. To get things running:
