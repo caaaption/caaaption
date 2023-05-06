@@ -17,6 +17,7 @@ This repo contains the full source code for [caaaption](https://caaaption.com), 
 ---
 
 - [About](#about)
+- [TestFlight](#testflight)
 - [Getting Started](#getting-started)
 - [Related Projects](#related-projects)
 - [License](#license)
