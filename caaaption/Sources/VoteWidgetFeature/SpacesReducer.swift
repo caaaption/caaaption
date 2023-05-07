@@ -1,3 +1,4 @@
+import ApolloHelpers
 import ComposableArchitecture
 import Dependencies
 import SnapshotClient
@@ -7,7 +8,7 @@ public struct SpacesReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    public var spaces: [SnapshotModel.SpaceCardFragment] = []
+    public var spaces: IdentifiedArrayOf<WrappedIdentifiable<SnapshotModel.SpaceCardFragment>> = []
     public init() {}
   }
 
@@ -36,7 +37,8 @@ public struct SpacesReducer: ReducerProtocol {
 
       case let .responseSpace(.success(data)):
         let spaces = data.spaces?.compactMap(\.?.fragments.spaceCardFragment) ?? []
-        state.spaces = spaces.sorted(by: { $0.followersCount ?? 0 > $1.followersCount ?? 0 })
+        let sortedSpaces = spaces.sorted(by: { $0.followersCount ?? 0 > $1.followersCount ?? 0 })
+        state.spaces.append(contentsOf: sortedSpaces.map(WrappedIdentifiable.init))
         return EffectTask.none
 
       case let .responseSpace(.failure(error)):
