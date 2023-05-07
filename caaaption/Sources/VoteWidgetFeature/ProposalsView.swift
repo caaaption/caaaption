@@ -10,6 +10,11 @@ public struct ProposalsView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { _ in
+      List {
+        
+      }
+      .navigationTitle("Proposals")
+      .navigationBarTitleDisplayMode(.inline)
     }
   }
 }

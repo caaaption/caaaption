@@ -21,9 +21,18 @@ public struct SpacesView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         ForEach(viewStore.spaces, id: \.id) { space in
-          Text(space.value.name ?? space.value.id)
-            .badge(formatNumber(space.value.followersCount ?? 0))
+          Button(action: { viewStore.send(.tappedSpace(space)) }) {
+            Text(space.value.name ?? space.value.id)
+              .badge(formatNumber(space.value.followersCount ?? 0))
+          }
         }
+        .navigationDestination(
+          store: store.scope(
+            state: \.$selection,
+            action: SpacesReducer.Action.selection
+          ),
+          destination: ProposalsView.init(store:)
+        )
       }
       .navigationTitle("Spaces")
       .navigationBarTitleDisplayMode(.inline)

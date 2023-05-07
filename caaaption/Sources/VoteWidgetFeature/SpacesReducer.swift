@@ -9,6 +9,7 @@ public struct SpacesReducer: ReducerProtocol {
 
   public struct State: Equatable {
     public var spaces: IdentifiedArrayOf<WrappedIdentifiable<SnapshotModel.SpaceCardFragment>> = []
+    @PresentationState var selection: ProposalsReducer.State?
     public init() {}
   }
 
@@ -16,6 +17,8 @@ public struct SpacesReducer: ReducerProtocol {
     case task
     case responseSpace(TaskResult<SnapshotModel.SpacesQuery.Data>)
     case dismiss
+    case tappedSpace(WrappedIdentifiable<SnapshotModel.SpaceCardFragment>)
+    case selection(PresentationAction<ProposalsReducer.Action>)
   }
 
   @Dependency(\.snapshotClient.spaces) var spaces
@@ -50,7 +53,16 @@ public struct SpacesReducer: ReducerProtocol {
         return EffectTask.fireAndForget {
           await self.dismiss()
         }
+      case let .tappedSpace(space):
+        print(space.id)
+        state.selection = .init()
+        return EffectTask.none
+      case .selection:
+        return EffectTask.none
       }
+    }
+    .ifLet(\.$selection, action: /Action.selection) {
+      ProposalsReducer()
     }
   }
 }
