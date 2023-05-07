@@ -18,10 +18,12 @@ public struct SpacesReducer: ReducerProtocol {
     case responseSpace(TaskResult<SnapshotModel.SpacesQuery.Data>)
     case dismiss
     case tappedSpace(WrappedIdentifiable<SnapshotModel.SpaceCardFragment>)
+    case responseProposals(TaskResult<SnapshotModel.ProposalsQuery.Data>)
     case selection(PresentationAction<ProposalsReducer.Action>)
   }
 
-  @Dependency(\.snapshotClient.spaces) var spaces
+  @Dependency(\.snapshotClient.spaces) var requestSpaces
+  @Dependency(\.snapshotClient.proposals) var requestProposals
   @Dependency(\.dismiss) var dismiss
 
   public var body: some ReducerProtocol<State, Action> {
@@ -30,7 +32,7 @@ public struct SpacesReducer: ReducerProtocol {
       case .task:
         enum CancelID {}
         return EffectTask.run { send in
-          for try await data in self.spaces() {
+          for try await data in self.requestSpaces() {
             await send(.responseSpace(.success(data)), animation: .default)
           }
         } catch: { error, send in
@@ -54,9 +56,26 @@ public struct SpacesReducer: ReducerProtocol {
           await self.dismiss()
         }
       case let .tappedSpace(space):
-        print(space.id)
+        enum CancelID {}
+        return EffectTask.run { send in
+          for try await data in self.requestProposals(space.value.id) {
+            await send(.responseProposals(.success(data)), animation: .default)
+          }
+        } catch: { error, send in
+          await send(.responseProposals(.failure(error)), animation: .default)
+        }
+        .cancellable(id: CancelID.self)
+        
+      case let .responseProposals(.success(data)):
+        print(data)
         state.selection = .init()
         return EffectTask.none
+        
+      case let .responseProposals(.failure(error)):
+        print(error)
+        state.selection = nil
+        return EffectTask.none
+        
       case .selection:
         return EffectTask.none
       }
