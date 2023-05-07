@@ -1,3 +1,4 @@
+import ApolloHelpers
 import ComposableArchitecture
 import Dependencies
 import SnapshotClient
@@ -7,7 +8,8 @@ public struct SpacesReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    public var spaces: [SnapshotModel.SpaceCardFragment] = []
+    public var spaces: IdentifiedArrayOf<WrappedIdentifiable<SnapshotModel.SpaceCardFragment>> = []
+    @PresentationState var selection: ProposalsReducer.State?
     public init() {}
   }
 
@@ -15,6 +17,8 @@ public struct SpacesReducer: ReducerProtocol {
     case task
     case responseSpace(TaskResult<SnapshotModel.SpacesQuery.Data>)
     case dismiss
+    case tappedSpace(WrappedIdentifiable<SnapshotModel.SpaceCardFragment>)
+    case selection(PresentationAction<ProposalsReducer.Action>)
   }
 
   @Dependency(\.snapshotClient.spaces) var spaces
@@ -36,7 +40,8 @@ public struct SpacesReducer: ReducerProtocol {
 
       case let .responseSpace(.success(data)):
         let spaces = data.spaces?.compactMap(\.?.fragments.spaceCardFragment) ?? []
-        state.spaces = spaces.sorted(by: { $0.followersCount ?? 0 > $1.followersCount ?? 0 })
+        let sortedSpaces = spaces.sorted(by: { $0.followersCount ?? 0 > $1.followersCount ?? 0 })
+        state.spaces.append(contentsOf: sortedSpaces.map(WrappedIdentifiable.init))
         return EffectTask.none
 
       case let .responseSpace(.failure(error)):
@@ -48,7 +53,16 @@ public struct SpacesReducer: ReducerProtocol {
         return EffectTask.fireAndForget {
           await self.dismiss()
         }
+      case let .tappedSpace(space):
+        print(space.id)
+        state.selection = .init()
+        return EffectTask.none
+      case .selection:
+        return EffectTask.none
       }
+    }
+    .ifLet(\.$selection, action: /Action.selection) {
+      ProposalsReducer()
     }
   }
 }
