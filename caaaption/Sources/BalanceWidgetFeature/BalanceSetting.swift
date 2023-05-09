@@ -2,8 +2,8 @@ import BalanceWidget
 import ComposableArchitecture
 import Foundation
 import QuickNodeClient
-import UserDefaultsClient
 import SwiftUI
+import UserDefaultsClient
 
 public struct BalanceSettingReducer: ReducerProtocol {
   public init() {}

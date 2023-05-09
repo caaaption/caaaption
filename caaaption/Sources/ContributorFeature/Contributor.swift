@@ -1,9 +1,9 @@
 import ComposableArchitecture
 import Foundation
 import GitHubClient
+import PlaceholderAsyncImage
 import SwiftUI
 import UIApplicationClient
-import PlaceholderAsyncImage
 
 public struct ContributorReducer: ReducerProtocol {
   public init() {}

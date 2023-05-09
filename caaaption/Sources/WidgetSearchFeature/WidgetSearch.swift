@@ -1,10 +1,10 @@
 import AccountFeature
+import BalanceWidget
 import BalanceWidgetFeature
 import ComposableArchitecture
-import VoteWidgetFeature
-import BalanceWidget
 import SwiftUI
 import VoteWidget
+import VoteWidgetFeature
 
 public struct WidgetSearchReducer: ReducerProtocol {
   public init() {}
