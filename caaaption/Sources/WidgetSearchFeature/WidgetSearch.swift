@@ -11,7 +11,6 @@ public struct WidgetSearchReducer: ReducerProtocol {
 
   public struct State: Equatable {
     @PresentationState public var destination: Destination.State?
-    @BindingState public var searchable = ""
     public init() {}
   }
 
@@ -160,13 +159,6 @@ public struct WidgetSearchView: View {
       .navigationTitle("Widget Search")
       .task { await viewStore.send(.task).finish() }
       .refreshable { await viewStore.send(.refreshable).finish() }
-      .searchable(
-        text: viewStore.binding(\.$searchable),
-        placement: .navigationBarDrawer(
-          displayMode: .always
-        ),
-        prompt: "Search Widget"
-      )
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
