@@ -34,10 +34,10 @@ public struct ProposalsReducer: ReducerProtocol {
       case .dialog(.presented(.confirmAddWidget)):
         print("confirm add widget")
         return EffectTask.none
-        
+
       case .dialog:
         return EffectTask.none
-        
+
       case let .tappedProposal(proposal):
         state.dialog = ConfirmationDialogState(titleVisibility: .visible) {
           TextState("Display in Widget.")
