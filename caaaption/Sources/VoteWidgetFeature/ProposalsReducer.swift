@@ -27,17 +27,10 @@ public struct ProposalsReducer: ReducerProtocol {
       case confirmAddWidget
     }
   }
-  
-  @Dependency(\.dismiss) var dismiss
 
   public var body: some ReducerProtocol<State, Action> {
     Reduce { state, action in
       switch action {
-      case .dialog(.presented(.confirmDiscard)):
-        return EffectTask.run { _ in
-          await self.dismiss()
-        }
-        
       case .dialog(.presented(.confirmAddWidget)):
         print("confirm add widget")
         return EffectTask.none
