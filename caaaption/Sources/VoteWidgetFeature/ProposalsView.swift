@@ -9,10 +9,18 @@ public struct ProposalsView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
-      List {}
-        .navigationTitle("Proposals")
-        .navigationBarTitleDisplayMode(.inline)
+    WithViewStore(store, observe: { $0 }) { viewStore in
+      List {
+        ForEach(viewStore.proposals) { proposal in
+          Button {
+            print("tapped proposal")
+          } label: {
+            Text(proposal.value.title)
+          }
+        }
+      }
+      .navigationTitle("Proposals")
+      .navigationBarTitleDisplayMode(.inline)
     }
   }
 }

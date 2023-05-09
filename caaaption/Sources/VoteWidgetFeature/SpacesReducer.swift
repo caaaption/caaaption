@@ -1,14 +1,17 @@
 import ApolloHelpers
+import Foundation
 import ComposableArchitecture
 import Dependencies
 import SnapshotClient
 import SnapshotModel
 
+public typealias Space = WrappedIdentifiable<SnapshotModel.SpaceCardFragment>
+
 public struct SpacesReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    public var spaces: IdentifiedArrayOf<WrappedIdentifiable<SnapshotModel.SpaceCardFragment>> = []
+    var spaces: IdentifiedArrayOf<Space> = []
     @PresentationState var selection: ProposalsReducer.State?
     public init() {}
   }
@@ -17,9 +20,9 @@ public struct SpacesReducer: ReducerProtocol {
     case task
     case responseSpace(TaskResult<SnapshotModel.SpacesQuery.Data>)
     case dismiss
-    case tappedSpace(WrappedIdentifiable<SnapshotModel.SpaceCardFragment>)
-    case responseProposals(TaskResult<SnapshotModel.ProposalsQuery.Data>)
+    case tappedSpace(Space)
     case selection(PresentationAction<ProposalsReducer.Action>)
+    case responseProposals(TaskResult<SnapshotModel.ProposalsQuery.Data>)
   }
 
   @Dependency(\.snapshotClient.spaces) var requestSpaces
@@ -55,6 +58,7 @@ public struct SpacesReducer: ReducerProtocol {
         return EffectTask.fireAndForget {
           await self.dismiss()
         }
+
       case let .tappedSpace(space):
         enum CancelID {}
         return EffectTask.run { send in
@@ -66,17 +70,19 @@ public struct SpacesReducer: ReducerProtocol {
         }
         .cancellable(id: CancelID.self)
         
+      case .selection:
+        return EffectTask.none
+        
       case let .responseProposals(.success(data)):
-        print(data)
-        state.selection = .init()
+        let proposals = data.proposals?.compactMap(\.?.fragments.proposalCardFragment) ?? []
+        state.selection = .init(
+          proposals: .init(uniqueElements: proposals.map(WrappedIdentifiable.init))
+        )
         return EffectTask.none
         
       case let .responseProposals(.failure(error)):
         print(error)
         state.selection = nil
-        return EffectTask.none
-        
-      case .selection:
         return EffectTask.none
       }
     }
