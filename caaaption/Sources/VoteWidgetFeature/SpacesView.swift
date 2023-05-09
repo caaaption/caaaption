@@ -21,7 +21,9 @@ public struct SpacesView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         ForEach(viewStore.spaces, id: \.id) { space in
-          Button(action: { viewStore.send(.tappedSpace(space)) }) {
+          Button {
+            viewStore.send(.tappedSpace(space))
+          } label: {
             Text(space.value.name ?? space.value.id)
               .badge(formatNumber(space.value.followersCount ?? 0))
           }

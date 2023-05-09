@@ -1,14 +1,17 @@
 import ApolloHelpers
+import Foundation
 import ComposableArchitecture
 import Dependencies
 import SnapshotClient
 import SnapshotModel
 
+public typealias Space = WrappedIdentifiable<SnapshotModel.SpaceCardFragment>
+
 public struct SpacesReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    public var spaces: IdentifiedArrayOf<WrappedIdentifiable<SnapshotModel.SpaceCardFragment>> = []
+    var spaces: IdentifiedArrayOf<Space> = []
     @PresentationState var selection: ProposalsReducer.State?
     public init() {}
   }
@@ -17,11 +20,13 @@ public struct SpacesReducer: ReducerProtocol {
     case task
     case responseSpace(TaskResult<SnapshotModel.SpacesQuery.Data>)
     case dismiss
-    case tappedSpace(WrappedIdentifiable<SnapshotModel.SpaceCardFragment>)
+    case tappedSpace(Space)
     case selection(PresentationAction<ProposalsReducer.Action>)
+    case responseProposals(TaskResult<SnapshotModel.ProposalsQuery.Data>)
   }
 
-  @Dependency(\.snapshotClient.spaces) var spaces
+  @Dependency(\.snapshotClient.spaces) var requestSpaces
+  @Dependency(\.snapshotClient.proposals) var requestProposals
   @Dependency(\.dismiss) var dismiss
 
   public var body: some ReducerProtocol<State, Action> {
@@ -30,7 +35,7 @@ public struct SpacesReducer: ReducerProtocol {
       case .task:
         enum CancelID {}
         return EffectTask.run { send in
-          for try await data in self.spaces() {
+          for try await data in self.requestSpaces() {
             await send(.responseSpace(.success(data)), animation: .default)
           }
         } catch: { error, send in
@@ -53,11 +58,31 @@ public struct SpacesReducer: ReducerProtocol {
         return EffectTask.fireAndForget {
           await self.dismiss()
         }
+
       case let .tappedSpace(space):
-        print(space.id)
-        state.selection = .init()
-        return EffectTask.none
+        enum CancelID {}
+        return EffectTask.run { send in
+          for try await data in self.requestProposals(space.value.id) {
+            await send(.responseProposals(.success(data)), animation: .default)
+          }
+        } catch: { error, send in
+          await send(.responseProposals(.failure(error)), animation: .default)
+        }
+        .cancellable(id: CancelID.self)
+        
       case .selection:
+        return EffectTask.none
+        
+      case let .responseProposals(.success(data)):
+        let proposals = data.proposals?.compactMap(\.?.fragments.proposalCardFragment) ?? []
+        state.selection = .init(
+          proposals: .init(uniqueElements: proposals.map(WrappedIdentifiable.init))
+        )
+        return EffectTask.none
+        
+      case let .responseProposals(.failure(error)):
+        print(error)
+        state.selection = nil
         return EffectTask.none
       }
     }
