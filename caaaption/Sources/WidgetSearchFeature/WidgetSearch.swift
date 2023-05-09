@@ -10,6 +10,7 @@ public struct WidgetSearchReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
+    @PresentationState public var destination: Destination.State?
     public init() {}
   }
 
