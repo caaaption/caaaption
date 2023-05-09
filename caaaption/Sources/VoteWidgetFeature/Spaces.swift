@@ -93,15 +93,6 @@ public struct SpacesReducer: ReducerProtocol {
   }
 }
 
-func formatNumber(_ number: Int) -> String {
-  if number >= 1000 {
-    let num = Double(number) / 1000.0
-    return String(format: "%.1fK members", num)
-  } else {
-    return "\(number) members"
-  }
-}
-
 public struct SpacesView: View {
   let store: StoreOf<SpacesReducer>
 
@@ -116,8 +107,13 @@ public struct SpacesView: View {
           Button {
             viewStore.send(.tappedSpace(space))
           } label: {
-            Text(space.value.name ?? space.value.id)
-              .badge(formatNumber(space.value.followersCount ?? 0))
+            HStack {
+              Text(space.value.name ?? space.value.id)
+                .foregroundColor(.primary)
+              Spacer()
+              Image(systemName: "chevron.right")
+                .foregroundColor(.gray)
+            }
           }
         }
         .navigationDestination(
