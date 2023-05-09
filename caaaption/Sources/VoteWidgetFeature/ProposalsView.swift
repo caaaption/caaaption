@@ -13,7 +13,7 @@ public struct ProposalsView: View {
       List {
         ForEach(viewStore.proposals) { proposal in
           Button {
-            print("tapped proposal")
+            viewStore.send(.tappedProposal(proposal))
           } label: {
             Text(proposal.value.title)
           }
@@ -21,6 +21,12 @@ public struct ProposalsView: View {
       }
       .navigationTitle("Proposals")
       .navigationBarTitleDisplayMode(.inline)
+      .confirmationDialog(
+        store: store.scope(
+          state: \.$dialog,
+          action: ProposalsReducer.Action.dialog
+        )
+      )
     }
   }
 }
