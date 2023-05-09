@@ -33,8 +33,7 @@ format:
 
 install-template:
 	@swift build -c release --package-path ./BuildTools/XCTemplateInstallerTool --product XCTemplateInstaller
-	./BuildTools/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/Reducer.xctemplate
-	./BuildTools/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/View.xctemplate
+	./BuildTools/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/TCA.xctemplate
 
 apollo-cli-install:
 	@swift package --package-path ./caaaption --allow-writing-to-package-directory apollo-cli-install
