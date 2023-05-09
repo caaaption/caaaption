@@ -7,7 +7,7 @@ public struct ProposalsReducer: ReducerProtocol {
 
   public struct State: Equatable {
     public var proposals: IdentifiedArrayOf<WrappedIdentifiable<SnapshotModel.ProposalCardFragment>>
-    
+
     public init(proposals: IdentifiedArrayOf<WrappedIdentifiable<SnapshotModel.ProposalCardFragment>>) {
       self.proposals = proposals
     }

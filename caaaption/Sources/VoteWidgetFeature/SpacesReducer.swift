@@ -1,7 +1,7 @@
 import ApolloHelpers
-import Foundation
 import ComposableArchitecture
 import Dependencies
+import Foundation
 import SnapshotClient
 import SnapshotModel
 
@@ -69,17 +69,17 @@ public struct SpacesReducer: ReducerProtocol {
           await send(.responseProposals(.failure(error)), animation: .default)
         }
         .cancellable(id: CancelID.self)
-        
+
       case .selection:
         return EffectTask.none
-        
+
       case let .responseProposals(.success(data)):
         let proposals = data.proposals?.compactMap(\.?.fragments.proposalCardFragment) ?? []
         state.selection = .init(
           proposals: .init(uniqueElements: proposals.map(WrappedIdentifiable.init))
         )
         return EffectTask.none
-        
+
       case let .responseProposals(.failure(error)):
         print(error)
         state.selection = nil
