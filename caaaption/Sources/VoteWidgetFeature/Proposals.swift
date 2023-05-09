@@ -78,6 +78,7 @@ public struct ProposalsView: View {
             viewStore.send(.tappedProposal(proposal))
           } label: {
             Text(proposal.value.title)
+              .foregroundColor(.primary)
           }
         }
       }
