@@ -56,6 +56,7 @@ public extension SnapshotModel {
 
         public var id: String { __data["id"] }
         public var name: String? { __data["name"] }
+        public var followersCount: Int? { __data["followersCount"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
