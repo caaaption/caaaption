@@ -68,7 +68,6 @@
 		B70B8E162A0CA3C4006DB3BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B70B8E1F2A0CA428006DB3BD /* VoteWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VoteWidgetExtension.entitlements; sourceTree = "<group>"; };
 		B73148402A014DDE002C2A57 /* BalanceWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BalanceWidgetExtension.entitlements; sourceTree = "<group>"; };
-		B73148412A014E4D002C2A57 /* VotingStatusWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VotingStatusWidgetExtension.entitlements; sourceTree = "<group>"; };
 		B73148422A014E55002C2A57 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
 		B743107329FEC4CD00BD2D0D /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B74310AA29FEC5C700BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,9 +80,6 @@
 		B743113929FECAB100BD2D0D /* BalanceWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceWidgetBundle.swift; sourceTree = "<group>"; };
 		B743113A29FECAB100BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B743113B29FECAB100BD2D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B743113D29FECAB100BD2D0D /* VotingStatusWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingStatusWidgetBundle.swift; sourceTree = "<group>"; };
-		B743113E29FECAB100BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B743113F29FECAB100BD2D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B743114129FECAB100BD2D0D /* ArtWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtWidgetBundle.swift; sourceTree = "<group>"; };
 		B743114229FECAB100BD2D0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B743114329FECAB100BD2D0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -141,7 +137,6 @@
 				B73148422A014E55002C2A57 /* App.entitlements */,
 				B73148402A014DDE002C2A57 /* BalanceWidgetExtension.entitlements */,
 				B70B8E1F2A0CA428006DB3BD /* VoteWidgetExtension.entitlements */,
-				B73148412A014E4D002C2A57 /* VotingStatusWidgetExtension.entitlements */,
 				B74310A929FEC5C700BD2D0D /* WidgetApp */,
 				B743113729FECAB100BD2D0D /* Widgets */,
 				B743107429FEC4CD00BD2D0D /* Products */,
@@ -193,7 +188,6 @@
 				B743114029FECAB100BD2D0D /* ArtWidget */,
 				B743113829FECAB100BD2D0D /* BalanceWidget */,
 				B70B8E0F2A0CA3C3006DB3BD /* VoteWidget */,
-				B743113C29FECAB100BD2D0D /* VotingStatusWidget */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -206,16 +200,6 @@
 				B743113B29FECAB100BD2D0D /* Info.plist */,
 			);
 			path = BalanceWidget;
-			sourceTree = "<group>";
-		};
-		B743113C29FECAB100BD2D0D /* VotingStatusWidget */ = {
-			isa = PBXGroup;
-			children = (
-				B743113D29FECAB100BD2D0D /* VotingStatusWidgetBundle.swift */,
-				B743113E29FECAB100BD2D0D /* Assets.xcassets */,
-				B743113F29FECAB100BD2D0D /* Info.plist */,
-			);
-			path = VotingStatusWidget;
 			sourceTree = "<group>";
 		};
 		B743114029FECAB100BD2D0D /* ArtWidget */ = {
