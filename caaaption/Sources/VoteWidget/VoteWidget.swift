@@ -23,7 +23,6 @@ public enum VoteWidget: WidgetProtocol {
     public static var kind = "VoteWidget"
     public static var supportedFamilies: [WidgetFamily] = [
       .systemSmall,
-      .systemMedium,
     ]
   }
 
