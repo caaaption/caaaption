@@ -94,15 +94,6 @@ public enum VoteWidget: WidgetProtocol {
           .lineLimit(1)
         }
       }
-      .frame(maxWidth: .infinity)
-      .padding()
-    }
-
-    var updatedAt: some View {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "HH:mm"
-      let dateString = dateFormatter.string(from: entry.date)
-      return Text("Updated at \(dateString)")
     }
   }
 }
