@@ -163,10 +163,10 @@
 		B743106A29FEC4CD00BD2D0D = {
 			isa = PBXGroup;
 			children = (
-				B70B8E1F2A0CA428006DB3BD /* VoteWidgetExtension.entitlements */,
 				B73148422A014E55002C2A57 /* App.entitlements */,
-				B73148412A014E4D002C2A57 /* VotingStatusWidgetExtension.entitlements */,
 				B73148402A014DDE002C2A57 /* BalanceWidgetExtension.entitlements */,
+				B70B8E1F2A0CA428006DB3BD /* VoteWidgetExtension.entitlements */,
+				B73148412A014E4D002C2A57 /* VotingStatusWidgetExtension.entitlements */,
 				B74310A929FEC5C700BD2D0D /* WidgetApp */,
 				B743113729FECAB100BD2D0D /* Widgets */,
 				B743107429FEC4CD00BD2D0D /* Products */,
@@ -490,7 +490,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VoteWidget/Info.plist;
+				INFOPLIST_FILE = Widgets/VoteWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VoteWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -499,7 +499,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.caaaption.widget.staging.VoteWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.caaaption.widget.staging.vote-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -518,7 +518,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = VoteWidget/Info.plist;
+				INFOPLIST_FILE = Widgets/VoteWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = VoteWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -527,7 +527,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.caaaption.widget.staging.VoteWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.caaaption.widget.staging.vote-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
