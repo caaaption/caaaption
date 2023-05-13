@@ -12,7 +12,7 @@
     <img src='https://img.shields.io/badge/platform-iOS%20-green.svg'>
 </div>
 
-This repo contains the full source code for [caaaption](https://caaaption.com), a Social Wallet specialized in identity.
+This repo contains the full source code for [caaaption](https://caaaption.com), Get real-time dApps information on iPhone widgets. 
 
 ---
 
