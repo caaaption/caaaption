@@ -8,7 +8,7 @@ import WidgetKit
 import SnapshotClient
 
 @main
-struct MainWidgetBundle: WidgetBundle {
+struct WidgetExtensionBundle: WidgetBundle {
   var body: some Widget {
     withDependencies {
       $0.userDefaults = .liveValue
