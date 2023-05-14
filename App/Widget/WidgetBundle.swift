@@ -1,11 +1,11 @@
 import BalanceWidget
 import Dependencies
 import QuickNodeClient
+import SnapshotClient
 import SwiftUI
 import UserDefaultsClient
 import VoteWidget
 import WidgetKit
-import SnapshotClient
 
 @main
 struct WidgetExtensionBundle: WidgetBundle {
@@ -16,7 +16,7 @@ struct WidgetExtensionBundle: WidgetBundle {
     } operation: {
       BalanceWidget.Entrypoint()
     }
-    
+
     withDependencies {
       $0.snapshotClient = .liveValue
     } operation: {
