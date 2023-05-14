@@ -145,7 +145,6 @@ package.products.append(contentsOf: [
   .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
   .library(name: "ArtWidget", targets: ["ArtWidget"]),
   .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
-  .library(name: "VotingStatusWidget", targets: ["VotingStatusWidget"]),
   .library(name: "VoteWidget", targets: ["VoteWidget"]),
   .library(name: "GasPriceWidget", targets: ["GasPriceWidget"]),
 ])
@@ -161,11 +160,6 @@ package.targets.append(contentsOf: [
     "QuickNodeClient",
     "UserDefaultsClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
-  .target(name: "VotingStatusWidget", dependencies: [
-    "WidgetHelpers",
-    "SnapshotClient",
-    "WidgetProtocol",
   ]),
   .target(name: "VoteWidget", dependencies: [
     "WidgetHelpers",

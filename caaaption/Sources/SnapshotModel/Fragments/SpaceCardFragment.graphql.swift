@@ -10,7 +10,6 @@ public extension SnapshotModel {
         __typename
         id
         name
-        avatar
         followersCount
       }
       """ }
@@ -23,13 +22,11 @@ public extension SnapshotModel {
       .field("__typename", String.self),
       .field("id", String.self),
       .field("name", String?.self),
-      .field("avatar", String?.self),
       .field("followersCount", Int?.self),
     ] }
 
     public var id: String { __data["id"] }
     public var name: String? { __data["name"] }
-    public var avatar: String? { __data["avatar"] }
     public var followersCount: Int? { __data["followersCount"] }
   }
 

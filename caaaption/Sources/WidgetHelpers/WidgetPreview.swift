@@ -25,7 +25,6 @@ public struct WidgetPreview<Content: View>: View {
           )
           .environment(\.colorScheme, .light)
           .preferredColorScheme(.light)
-          .previewContext(WidgetPreviewContext(family: widgetFamily))
       }
 
       ForEach(families) { widgetFamily in
@@ -38,7 +37,6 @@ public struct WidgetPreview<Content: View>: View {
           )
           .environment(\.colorScheme, .dark)
           .preferredColorScheme(.dark)
-          .previewContext(WidgetPreviewContext(family: widgetFamily))
       }
     }
   }

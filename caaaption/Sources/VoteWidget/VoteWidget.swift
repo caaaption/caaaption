@@ -18,7 +18,7 @@ public enum VoteWidget: WidgetProtocol {
   }
 
   public enum Constant: WidgetConstant {
-    public static var displayName = "Vote Status Widget"
+    public static var displayName = "Vote Widget"
     public static var description = "Displays the vote result for the specified Snapshot."
     public static var kind = "VoteWidget"
     public static var supportedFamilies: [WidgetFamily] = [
@@ -80,7 +80,7 @@ public enum VoteWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      HStack(spacing: 24) {
+      HStack(alignment: .top, spacing: 12) {
         CircleGraf(scores: [10, 20])
           .scaleEffect(0.35)
 
@@ -95,15 +95,6 @@ public enum VoteWidget: WidgetProtocol {
           .lineLimit(1)
         }
       }
-      .frame(maxWidth: .infinity)
-      .padding()
-    }
-
-    var updatedAt: some View {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "HH:mm"
-      let dateString = dateFormatter.string(from: entry.date)
-      return Text("Updated at \(dateString)")
     }
   }
 }

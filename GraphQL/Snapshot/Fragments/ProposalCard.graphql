@@ -1,6 +1,4 @@
 fragment ProposalCardFragment on Proposal {
-  id 
-  created
+  id
   title
-  state
 }

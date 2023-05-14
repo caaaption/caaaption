@@ -62,9 +62,7 @@ public extension SnapshotModel {
         ] }
 
         public var id: String { __data["id"] }
-        public var created: Int { __data["created"] }
         public var title: String { __data["title"] }
-        public var state: String? { __data["state"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
