@@ -3,7 +3,7 @@ name: Daily
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 15 * * *'
 
 jobs:
   version:
@@ -12,6 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: ./.github/workflows/scripts/auto-update-version.sh
+        env:
+          TZ: 'Asia/Tokyo'
       - continue-on-error: true
         run: |
           git config --local user.name 'github-actions[bot]'
