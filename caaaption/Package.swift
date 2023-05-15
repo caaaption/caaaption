@@ -23,6 +23,7 @@ package.products.append(contentsOf: [
   .library(name: "AccountFeature", targets: ["AccountFeature"]),
   .library(name: "ContributorFeature", targets: ["ContributorFeature"]),
   .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
+  .library(name: "TransactionFeature", targets: ["TransactionFeature"]),
   .library(name: "VoteWidgetFeature", targets: ["VoteWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
@@ -49,6 +50,9 @@ package.targets.append(contentsOf: [
     "BalanceWidget",
     "SwiftUIHelpers",
     "QuickNodeClient",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "TransactionFeature", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "VoteWidgetFeature", dependencies: [
