@@ -61,6 +61,7 @@
 		B783E1472A1200A2002E782F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B783E1492A1200A2002E782F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B783E16C2A1201BD002E782F /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
+		B783E16E2A121FC6002E782F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +117,7 @@
 			children = (
 				B783E1012A120003002E782F /* App.swift */,
 				B783E0F92A11FFD0002E782F /* Assets.xcassets */,
+				B783E16E2A121FC6002E782F /* Info.plist */,
 				B783E0FB2A11FFD0002E782F /* Preview Content */,
 			);
 			path = iOS;
