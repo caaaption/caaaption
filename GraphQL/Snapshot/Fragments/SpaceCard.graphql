@@ -1,0 +1,5 @@
+fragment SpaceCardFragment on Space {
+  id
+  name
+  followersCount
+}

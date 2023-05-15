@@ -7,6 +7,46 @@
    <FileRef
       location = "group:Makefile">
    </FileRef>
+   <Group
+      location = "group:GraphQL"
+      name = "GraphQL">
+      <Group
+         location = "group:Snapshot"
+         name = "Snapshot">
+         <FileRef
+            location = "group:Schema.graphqls">
+         </FileRef>
+         <Group
+            location = "group:Fragments"
+            name = "Fragments">
+            <FileRef
+               location = "group:ProposalWidget.graphql">
+            </FileRef>
+            <FileRef
+               location = "group:ProposalCard.graphql">
+            </FileRef>
+            <FileRef
+               location = "group:SpaceCard.graphql">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Queries"
+            name = "Queries">
+            <FileRef
+               location = "group:Proposal.graphql">
+            </FileRef>
+            <FileRef
+               location = "group:Spaces.graphql">
+            </FileRef>
+            <FileRef
+               location = "group:Proposals.graphql">
+            </FileRef>
+         </Group>
+      </Group>
+      <FileRef
+         location = "group:README.md">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:App/Widget Production.xcodeproj">
    </FileRef>

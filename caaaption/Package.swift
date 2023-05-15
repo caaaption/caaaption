@@ -24,6 +24,7 @@ package.products.append(contentsOf: [
   .library(name: "ContributorFeature", targets: ["ContributorFeature"]),
   .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
   .library(name: "TransactionFeature", targets: ["TransactionFeature"]),
+  .library(name: "VoteWidgetFeature", targets: ["VoteWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -32,6 +33,7 @@ package.targets.append(contentsOf: [
   .target(name: "WidgetSearchFeature", dependencies: [
     "AccountFeature",
     "BalanceWidgetFeature",
+    "VoteWidgetFeature",
   ]),
   .target(name: "AccountFeature", dependencies: [
     "ServerConfig",
@@ -51,6 +53,12 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "TransactionFeature", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "VoteWidgetFeature", dependencies: [
+    "VoteWidget",
+    "SwiftUIHelpers",
+    "SnapshotClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
@@ -141,7 +149,8 @@ package.products.append(contentsOf: [
   .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
   .library(name: "ArtWidget", targets: ["ArtWidget"]),
   .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
-  .library(name: "VotingStatusWidget", targets: ["VotingStatusWidget"]),
+  .library(name: "VoteWidget", targets: ["VoteWidget"]),
+  .library(name: "GasPriceWidget", targets: ["GasPriceWidget"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "WidgetProtocol"),
@@ -156,9 +165,12 @@ package.targets.append(contentsOf: [
     "UserDefaultsClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
-  .target(name: "VotingStatusWidget", dependencies: [
+  .target(name: "VoteWidget", dependencies: [
     "WidgetHelpers",
-    "SnapshotClient",
+    "WidgetProtocol",
+  ]),
+  .target(name: "GasPriceWidget", dependencies: [
+    "WidgetHelpers",
     "WidgetProtocol",
   ]),
 ])

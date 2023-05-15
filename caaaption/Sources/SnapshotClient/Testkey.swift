@@ -9,15 +9,9 @@ public extension DependencyValues {
 }
 
 extension SnapshotClient: TestDependencyKey {
-  public static let previewValue = Self.noop
-
   public static let testValue = Self(
-    proposal: unimplemented("\(Self.self).proposal")
-  )
-}
-
-public extension SnapshotClient {
-  static let noop = Self(
-    proposal: { _ in try await Task.never() }
+    proposal: unimplemented("\(Self.self).proposal"),
+    proposals: unimplemented("\(Self.self).proposals"),
+    spaces: unimplemented("\(Self.self).spaces")
   )
 }

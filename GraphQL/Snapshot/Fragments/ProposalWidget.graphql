@@ -1,0 +1,5 @@
+fragment ProposalWidgetFragment on Proposal {
+  title
+  choices
+  scores 
+}

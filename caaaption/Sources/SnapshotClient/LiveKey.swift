@@ -11,25 +11,19 @@ extension SnapshotClient: DependencyKey {
   public static func live() -> Self {
     let url = URL(string: "https://hub.snapshot.org/graphql")!
     let apolloClient = ApolloClient(url: url)
-    let actor = SnapshotClientActor(apolloClient: apolloClient)
-
     return Self(
-      proposal: { try await actor.proposal(id: $0) }
+      proposal: { id in
+        let query = SnapshotModel.ProposalQuery(id: id)
+        return apolloClient.watch(query: query)
+      },
+      proposals: { spaceName in
+        let query = SnapshotModel.ProposalsQuery(spaceName: spaceName)
+        return apolloClient.watch(query: query)
+      },
+      spaces: {
+        let query = SnapshotModel.SpacesQuery(idIn: spaceNames)
+        return apolloClient.watch(query: query)
+      }
     )
-  }
-}
-
-actor SnapshotClientActor {
-  let apolloClient: ApolloClient
-
-  init(apolloClient: ApolloClient) {
-    self.apolloClient = apolloClient
-  }
-
-  func proposal(
-    id: String
-  ) async throws -> GraphQLResult<SnapshotModel.ProposalQuery.Data> {
-    let query = SnapshotModel.ProposalQuery(id: id)
-    return try await apolloClient.fetch(query: query)
   }
 }

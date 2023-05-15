@@ -1,7 +1,7 @@
 # file options
 
---exclude ./caaaption/Package.swift
 --exclude ./XCTemplates
+--exclude **/*.graphql.swift
 
 # format options
 

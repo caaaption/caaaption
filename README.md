@@ -12,11 +12,12 @@
     <img src='https://img.shields.io/badge/platform-iOS%20-green.svg'>
 </div>
 
-This repo contains the full source code for [caaaption](https://caaaption.com), a Social Wallet specialized in identity.
+This repo contains the full source code for [caaaption](https://caaaption.com), Get real-time dApps information on iPhone widgets. 
 
 ---
 
 - [About](#about)
+- [TestFlight](#testflight)
 - [Getting Started](#getting-started)
 - [Related Projects](#related-projects)
 - [License](#license)
@@ -24,6 +25,12 @@ This repo contains the full source code for [caaaption](https://caaaption.com), 
 # About
 
 [caaaption](https://caaaption.com) is an application built entirely in Swift. The logic is built with [Composable Architecture](https://github.com/pointfreeco/swift-composable-architecture) and the UI is  built mostly in SwiftUI.
+
+# TestFlight
+
+You can install TestFlight by minting an Early Access Pass with Zora.
+
+http://mint.caaaption.com
 
 # Getting Started
 
