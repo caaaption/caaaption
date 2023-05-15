@@ -20,11 +20,11 @@ test-color-hex:
 build-caaaption:
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
-		-scheme "App (Widget Staging project)" \
+		-scheme "App (Staging project)" \
 		-sdk iphonesimulator
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
-		-scheme "App (Widget Production project)" \
+		-scheme "App (Production project)" \
 		-sdk iphonesimulator
 
 format:
