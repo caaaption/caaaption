@@ -42,7 +42,7 @@ This repo contains both the client code for running the entire [caaaption](https
     cd caaaption
     ```
 2. `make open` or Open the Xcode workspace `caaaption.xcworkspace`
-3. To run the client locally. select the `App (Widget Staging project)` target in Xcode and run (`⌘R`).
+3. To run the client locally. select the `App (Staging project)` target in Xcode and run (`⌘R`).
 
 # Related Projects
 
