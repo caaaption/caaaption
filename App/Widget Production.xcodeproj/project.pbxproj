@@ -62,6 +62,10 @@
 		B74310CA29FEC61E00BD2D0D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B743110729FECA1600BD2D0D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B743110929FECA1600BD2D0D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B783E1142A120068002E782F /* WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBundle.swift; sourceTree = "<group>"; };
+		B783E1162A120068002E782F /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		B783E1182A120068002E782F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B783E11A2A120068002E782F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 				B73148432A014E69002C2A57 /* App.entitlements */,
 				B74310C529FEC61E00BD2D0D /* WidgetApp */,
 				B70B8E592A10E8D4006DB3BD /* Widget */,
+				B783E1132A120068002E782F /* Widget */,
 				B743108E29FEC51100BD2D0D /* Products */,
 				B74310D229FEC65300BD2D0D /* Frameworks */,
 			);
@@ -148,6 +153,17 @@
 				B743110929FECA1600BD2D0D /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B783E1132A120068002E782F /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				B783E1142A120068002E782F /* WidgetBundle.swift */,
+				B783E1162A120068002E782F /* Widget.swift */,
+				B783E1182A120068002E782F /* Assets.xcassets */,
+				B783E11A2A120068002E782F /* Info.plist */,
+			);
+			path = Widget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

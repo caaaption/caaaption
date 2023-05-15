@@ -48,10 +48,10 @@
       </FileRef>
    </Group>
    <FileRef
-      location = "group:App/Widget Production.xcodeproj">
+      location = "group:App/Production.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:App/Widget Staging.xcodeproj">
+      location = "group:App/Staging.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:caaaption">
