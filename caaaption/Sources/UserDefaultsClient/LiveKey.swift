@@ -5,10 +5,10 @@ extension UserDefaultsClient: DependencyKey {
   public static let liveValue: Self = {
     fatalError("")
   }()
-  
+
   public static func live(suiteName: String) -> Self {
     let defaults = { UserDefaults(suiteName: suiteName)! }
-    
+
     return Self(
       boolForKey: { defaults().bool(forKey: $0) },
       dataForKey: { defaults().data(forKey: $0) },
