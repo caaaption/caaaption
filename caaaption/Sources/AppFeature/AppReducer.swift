@@ -1,7 +1,7 @@
 import ComposableArchitecture
 import SwiftUI
-import WidgetSearchFeature
 import UIApplicationClient
+import WidgetSearchFeature
 
 public struct AppReducer: ReducerProtocol {
   public init() {}
@@ -15,10 +15,10 @@ public struct AppReducer: ReducerProtocol {
   public enum Action: Equatable {
     case appDelegate(AppDelegateReducer.Action)
     case search(WidgetSearchReducer.Action)
-    
+
     case onOpenURL(URL)
   }
-  
+
   @Dependency(\.applicationClient.open) var openURL
 
   public var body: some ReducerProtocol<State, Action> {
