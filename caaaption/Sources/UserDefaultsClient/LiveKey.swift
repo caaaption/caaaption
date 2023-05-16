@@ -3,7 +3,12 @@ import Foundation
 
 extension UserDefaultsClient: DependencyKey {
   public static let liveValue: Self = {
-    let defaults = { UserDefaults(suiteName: "group.com.caaaption.widget")! }
+    fatalError("")
+  }()
+  
+  public static func live(suiteName: String) -> Self {
+    let defaults = { UserDefaults(suiteName: suiteName)! }
+    
     return Self(
       boolForKey: { defaults().bool(forKey: $0) },
       dataForKey: { defaults().data(forKey: $0) },
@@ -15,5 +20,5 @@ extension UserDefaultsClient: DependencyKey {
       setDouble: { defaults().set($0, forKey: $1) },
       setInteger: { defaults().set($0, forKey: $1) }
     )
-  }()
+  }
 }
