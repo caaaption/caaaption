@@ -11,8 +11,10 @@ import WidgetKit
 struct WidgetExtensionBundle: WidgetBundle {
   var body: some Widget {
     withDependencies {
-      $0.userDefaults = .liveValue
       $0.quickNodeClient = .liveValue
+      $0.userDefaults = .live(
+        suiteName: Bundle.main.object(forInfoDictionaryKey: "AppGroup") as! String
+      )
     } operation: {
       BalanceWidget.Entrypoint()
     }

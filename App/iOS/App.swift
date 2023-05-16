@@ -9,7 +9,9 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     initialState: AppReducer.State(),
     reducer: AppReducer().transformDependency(\.self) {
       $0.quickNodeClient = .liveValue
-      $0.userDefaults = .liveValue
+      $0.userDefaults = .live(
+        suiteName: Bundle.main.object(forInfoDictionaryKey: "AppGroup") as! String
+      )
     }
   )
 
