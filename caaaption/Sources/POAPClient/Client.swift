@@ -1,5 +1,5 @@
 public struct POAPClient {
-  public var scan: @Sendable () async throws -> String
+  public var scan: @Sendable (_ address: String) async throws -> String
 }
 
 extension POAPClient {
