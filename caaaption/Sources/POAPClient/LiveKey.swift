@@ -3,7 +3,7 @@ import Foundation
 
 extension POAPClient: DependencyKey {
   public static let liveValue = Self.live()
-  
+
   static func live() -> Self {
     let session = Session()
 
@@ -19,7 +19,7 @@ actor Session {
     decoder.keyDecodingStrategy = .convertFromSnakeCase
     return decoder
   }()
-  
+
   func scan(address: String) async throws -> [POAPClient.Scan] {
     let url = URL(string: "https://api.poap.tech/actions/scan/\(address)")!
     var urlRequest = URLRequest(url: url)
