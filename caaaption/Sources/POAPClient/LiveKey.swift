@@ -22,7 +22,9 @@ actor Session {
   
   func scan(address: String) async throws -> [POAPClient.Scan] {
     let url = URL(string: "https://api.poap.tech/actions/scan/\(address)")!
-    let (data, _) = try await URLSession.shared.data(from: url)
+    var urlRequest = URLRequest(url: url)
+    urlRequest.setValue("", forHTTPHeaderField: "X-API-Key")
+    let (data, _) = try await URLSession.shared.data(for: urlRequest)
     return try decoder.decode([POAPClient.Scan].self, from: data)
   }
 }
