@@ -11,4 +11,5 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v3
+    - run: make bootstrap
     - run: make build
