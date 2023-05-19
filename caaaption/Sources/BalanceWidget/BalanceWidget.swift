@@ -21,7 +21,7 @@ public struct BalanceWidget: WidgetProtocol {
   }
 
   public enum Constant: WidgetConstant {
-    public static var displayName = "Balance Widget"
+    public static var displayName = "Show balance"
     public static var description = "Displays wallet balance."
     public static var kind = "BalanceWidget"
     public static var supportedFamilies: [WidgetFamily] = [

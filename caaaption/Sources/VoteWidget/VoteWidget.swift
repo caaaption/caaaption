@@ -18,7 +18,7 @@ public enum VoteWidget: WidgetProtocol {
   }
 
   public enum Constant: WidgetConstant {
-    public static var displayName = "Vote Widget"
+    public static var displayName = "Show voting status"
     public static var description = "Displays the vote result for the specified Snapshot."
     public static var kind = "VoteWidget"
     public static var supportedFamilies: [WidgetFamily] = [
