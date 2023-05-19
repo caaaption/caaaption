@@ -155,8 +155,7 @@ public struct WidgetSearchView: View {
           }
         }
       }
-      .listStyle(.plain)
-      .navigationTitle("Widget Search")
+      .navigationTitle("Widget")
       .task { await viewStore.send(.task).finish() }
       .refreshable { await viewStore.send(.refreshable).finish() }
       .toolbar {
