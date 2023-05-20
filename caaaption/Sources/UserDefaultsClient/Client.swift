@@ -13,11 +13,22 @@ public struct UserDefaultsClient {
 
   public func codableForKey<T: Codable>(_ type: T.Type, forKey key: String) throws -> T? {
     guard let data = dataForKey(key) else { return nil }
-    return try decoder.decode(T.self, from: data)
+    let value = try decoder.decode(T.self, from: data)
+    print("""
+    \(Self.self).\(#function)
+    key: \(key)
+    value: \(value)
+    """)
+    return value
   }
 
   public func setCodable(_ value: Codable, forKey key: String) async {
     let data = try? encoder.encode(value)
+    print("""
+    \(Self.self).\(#function)
+    key: \(key)
+    value: \(value)
+    """)
     return await setData(data, key)
   }
 }
