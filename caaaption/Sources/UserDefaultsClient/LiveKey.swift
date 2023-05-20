@@ -3,10 +3,16 @@ import Foundation
 
 extension UserDefaultsClient: DependencyKey {
   public static let liveValue: Self = {
-    fatalError("")
+    guard
+      let suiteName = Bundle.main.infoDictionary?["AppGroup"] as? String
+    else {
+      fatalError("")
+    }
+    print("suiteName : \(suiteName)")
+    return Self.live(suiteName: suiteName)
   }()
 
-  public static func live(suiteName: String) -> Self {
+  private static func live(suiteName: String) -> Self {
     let defaults = { UserDefaults(suiteName: suiteName)! }
 
     return Self(
