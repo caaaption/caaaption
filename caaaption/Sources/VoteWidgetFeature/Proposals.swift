@@ -31,7 +31,7 @@ public struct ProposalsReducer: ReducerProtocol {
       case confirmAddWidget
     }
   }
-  
+
   @Dependency(\.userDefaults) var userDefaults
 
   public var body: some ReducerProtocol<State, Action> {
