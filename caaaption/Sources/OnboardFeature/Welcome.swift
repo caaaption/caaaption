@@ -6,19 +6,17 @@ public struct WelcomeReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
+    public var connectWithWallet = ConnectWithWalletReducer.State()
     public init() {}
   }
 
   public enum Action: Equatable {
-    case task
+    case connectWithWallet(ConnectWithWalletReducer.Action)
   }
 
   public var body: some ReducerProtocol<State, Action> {
-    Reduce { _, action in
-      switch action {
-        case .task:
-          return EffectTask.none
-      }
+    Scope(state: \.connectWithWallet, action: /Action.connectWithWallet) {
+      ConnectWithWalletReducer()
     }
   }
 }
@@ -40,7 +38,12 @@ public struct WelcomeView: View {
           .bold()
         
         NavigationLink {
-          Text("Connect with wallet")
+          ConnectWithWalletView(
+            store: store.scope(
+              state: \.connectWithWallet,
+              action: WelcomeReducer.Action.connectWithWallet
+            )
+          )
         } label: {
           Text("Get started")
             .frame(height: 56)
@@ -58,7 +61,6 @@ public struct WelcomeView: View {
           .padding(.horizontal, 20)
       }
       .padding(.horizontal, 20)
-      .task { await viewStore.send(.task).finish() }
     }
   }
 }

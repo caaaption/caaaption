@@ -5,19 +5,17 @@ public struct ConnectWithWalletReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
+    public var signInEthereum = SignInEthereumReducer.State()
     public init() {}
   }
 
   public enum Action: Equatable {
-    case task
+    case signInEthereum(SignInEthereumReducer.Action)
   }
 
   public var body: some ReducerProtocol<State, Action> {
-    Reduce { _, action in
-      switch action {
-        case .task:
-          return EffectTask.none
-      }
+    Scope(state: \.signInEthereum, action: /Action.signInEthereum) {
+      SignInEthereumReducer()
     }
   }
 }
@@ -43,7 +41,16 @@ public struct ConnectWithWalletView: View {
             .foregroundColor(.secondary)
           
           VStack(spacing: 12) {
-            WallettAppButton(appName: "Connect via Desktop")
+            NavigationLink {
+              SignInEthereumView(
+                store: store.scope(
+                  state: \.signInEthereum,
+                  action: ConnectWithWalletReducer.Action.signInEthereum
+                )
+              )
+            } label: {
+              WallettAppButton(appName: "Connect via Desktop")
+            }
             WallettAppButton(appName: "1inch Wallet")
             WallettAppButton(appName: "Argent")
             WallettAppButton(appName: "MetaMask")
@@ -57,9 +64,6 @@ public struct ConnectWithWalletView: View {
           .padding(.horizontal, 20)
         }
       }
-      .navigationTitle("ConnectWithWallet")
-      .navigationBarTitleDisplayMode(.inline)
-      .task { await viewStore.send(.task).finish() }
     }
   }
 }
