@@ -1,9 +1,9 @@
+import Dependencies
+import SnapshotClient
 import SwiftUI
+import UserDefaultsClient
 import WidgetKit
 import WidgetProtocol
-import UserDefaultsClient
-import SnapshotClient
-import Dependencies
 
 public enum VoteWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
@@ -55,7 +55,7 @@ public enum VoteWidget: WidgetProtocol {
     public func placeholder(
       in context: Context
     ) -> Entry {
-      Entry(date: Date(), scores: [1,1])
+      Entry(date: Date(), scores: [1, 1])
     }
 
     public func getSnapshot(
@@ -68,7 +68,7 @@ public enum VoteWidget: WidgetProtocol {
         completion(placeholder(in: context))
         return
       }
-      
+
       Task {
         for try await data in snapshotClient.proposal(input.proposalId) {
           let scores = data.proposal?.scores?.compactMap { $0 } ?? []
@@ -115,7 +115,7 @@ public enum VoteWidget: WidgetProtocol {
         VoteWidget.WidgetView(
           entry: VoteWidget.Entry(
             date: Date(),
-            scores: [1,1]
+            scores: [1, 1]
           )
         )
       }
