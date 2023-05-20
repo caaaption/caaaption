@@ -3,6 +3,7 @@ import ComposableArchitecture
 import QuickNodeClient
 import SwiftUI
 import UserDefaultsClient
+import WidgetClient
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
   let store = Store(
@@ -10,6 +11,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     reducer: AppReducer().transformDependency(\.self) {
       $0.quickNodeClient = .liveValue
       $0.userDefaults = .liveValue
+      $0.widgetClient = .liveValue
     }
   )
 

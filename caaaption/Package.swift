@@ -57,6 +57,7 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "VoteWidgetFeature", dependencies: [
     "VoteWidget",
+    "WidgetClient",
     "SwiftUIHelpers",
     "SnapshotClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
