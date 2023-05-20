@@ -28,10 +28,10 @@ public enum VoteWidget: WidgetProtocol {
   }
 
   public struct Input: Codable {
-    public let address: String
+    public let proposalId: String
 
-    public init(address: String) {
-      self.address = address
+    public init(proposalId: String) {
+      self.proposalId = proposalId
     }
   }
 
