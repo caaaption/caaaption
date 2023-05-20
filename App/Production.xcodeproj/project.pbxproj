@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B734D28F2A1914BA0078DE0F /* WidgetClient in Frameworks */ = {isa = PBXBuildFile; productRef = B734D28E2A1914BA0078DE0F /* WidgetClient */; };
 		B783E0E82A11FFBE002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0E72A11FFBE002E782F /* Assets.xcassets */; };
 		B783E0EB2A11FFBE002E782F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0EA2A11FFBE002E782F /* Preview Assets.xcassets */; };
 		B783E1042A12000A002E782F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1032A12000A002E782F /* App.swift */; };
@@ -73,6 +74,7 @@
 				B783E1072A120032002E782F /* AppFeature in Frameworks */,
 				B783E10B2A120040002E782F /* UserDefaultsClient in Frameworks */,
 				B783E1092A120038002E782F /* QuickNodeClient in Frameworks */,
+				B734D28F2A1914BA0078DE0F /* WidgetClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +176,7 @@
 				B783E1062A120032002E782F /* AppFeature */,
 				B783E1082A120038002E782F /* QuickNodeClient */,
 				B783E10A2A120040002E782F /* UserDefaultsClient */,
+				B734D28E2A1914BA0078DE0F /* WidgetClient */,
 			);
 			productName = iOS;
 			productReference = B783E0E12A11FFBE002E782F /* App.app */;
@@ -573,6 +576,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B734D28E2A1914BA0078DE0F /* WidgetClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WidgetClient;
+		};
 		B783E1062A120032002E782F /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;

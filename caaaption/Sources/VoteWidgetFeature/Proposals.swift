@@ -4,6 +4,7 @@ import SnapshotModel
 import SwiftUI
 import UserDefaultsClient
 import VoteWidget
+import WidgetClient
 
 public typealias Proposal = WrappedIdentifiable<SnapshotModel.ProposalCardFragment>
 
@@ -33,6 +34,7 @@ public struct ProposalsReducer: ReducerProtocol {
   }
 
   @Dependency(\.userDefaults) var userDefaults
+  @Dependency(\.widgetClient) var widgetClient
 
   public var body: some ReducerProtocol<State, Action> {
     Reduce { state, action in
@@ -44,6 +46,7 @@ public struct ProposalsReducer: ReducerProtocol {
         return .run { _ in
           let input = VoteWidget.Input(proposalId: proposalId)
           await userDefaults.setCodable(input, forKey: VoteWidget.Constant.kind)
+          widgetClient.reloadAllTimelines()
         }
 
       case .dialog:

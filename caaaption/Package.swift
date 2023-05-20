@@ -57,6 +57,7 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "VoteWidgetFeature", dependencies: [
     "VoteWidget",
+    "WidgetClient",
     "SwiftUIHelpers",
     "SnapshotClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -89,6 +90,7 @@ package.products.append(contentsOf: [
   .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"]),
   .library(name: "QuickNodeClient", targets: ["QuickNodeClient"]),
   .library(name: "POAPClient", targets: ["POAPClient"]),
+  .library(name: "WidgetClient", targets: ["WidgetClient"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "FirebaseClient", dependencies: [
@@ -116,6 +118,9 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "POAPClient", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "WidgetClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
