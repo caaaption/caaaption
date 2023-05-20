@@ -25,6 +25,7 @@ package.products.append(contentsOf: [
   .library(name: "BalanceWidgetFeature", targets: ["BalanceWidgetFeature"]),
   .library(name: "TransactionFeature", targets: ["TransactionFeature"]),
   .library(name: "VoteWidgetFeature", targets: ["VoteWidgetFeature"]),
+  .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -60,6 +61,11 @@ package.targets.append(contentsOf: [
     "WidgetClient",
     "SwiftUIHelpers",
     "SnapshotClient",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "OnboardFeature", dependencies: [
+    "ServerConfig",
+    "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
