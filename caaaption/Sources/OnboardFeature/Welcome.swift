@@ -1,6 +1,6 @@
 import ComposableArchitecture
-import SwiftUI
 import ServerConfig
+import SwiftUI
 
 public struct WelcomeReducer: ReducerProtocol {
   public init() {}
@@ -29,14 +29,14 @@ public struct WelcomeView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       VStack(spacing: 24) {
         Spacer()
         Text("Welcome to\ncaaaption")
           .multilineTextAlignment(.center)
           .font(.largeTitle)
           .bold()
-        
+
         NavigationLink {
           ConnectWithWalletView(
             store: store.scope(
@@ -53,7 +53,7 @@ public struct WelcomeView: View {
             .background(Color.black)
             .clipShape(Capsule())
         }
-        
+
         Text("By continuing, you agree to caaaption [Terms & Conditions](\(ServerConfig.termsConditions)) and [Privacy Policy](\(ServerConfig.privacyPolicy)).")
           .multilineTextAlignment(.center)
           .foregroundColor(.secondary)

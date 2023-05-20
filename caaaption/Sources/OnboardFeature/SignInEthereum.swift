@@ -15,8 +15,8 @@ public struct SignInEthereumReducer: ReducerProtocol {
   public var body: some ReducerProtocol<State, Action> {
     Reduce { _, action in
       switch action {
-        case .task:
-          return EffectTask.none
+      case .task:
+        return EffectTask.none
       }
     }
   }
@@ -30,24 +30,24 @@ public struct SignInEthereumView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       VStack(spacing: 20) {
         Text("Sign-In with\nEthereum")
           .multilineTextAlignment(.center)
           .font(.largeTitle)
           .bold()
-        
+
         Text("We use the signature to verify you're the owner of this wallet.")
           .multilineTextAlignment(.center)
           .padding(.horizontal, 20)
           .foregroundColor(.secondary)
-        
+
         HStack(spacing: 12) {
           Color.red
             .frame(width: 41, height: 41)
             .clipShape(Circle())
             .padding(.leading, 12)
-          
+
           VStack(alignment: .leading, spacing: 0) {
             Text("tomokisun.eth")
               .bold()
@@ -55,16 +55,16 @@ public struct SignInEthereumView: View {
               .foregroundColor(Color.blue)
               .font(.callout)
           }
-          
+
           Spacer()
         }
         .frame(height: 62)
         .frame(maxWidth: .infinity)
         .background(Color(uiColor: .quaternarySystemFill))
         .cornerRadius(8)
-        
+
         Spacer()
-        
+
         Text("Continue to Sign-In")
           .frame(height: 56)
           .frame(maxWidth: .infinity)
@@ -72,7 +72,7 @@ public struct SignInEthereumView: View {
           .foregroundColor(Color.white)
           .background(Color.black)
           .clipShape(Capsule())
-        
+
         Text("Signing is free and will not send a transaction. Learn more about Ethereum signature here.")
           .multilineTextAlignment(.center)
           .foregroundColor(.secondary)

@@ -28,18 +28,18 @@ public struct ConnectWithWalletView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       ScrollView(.vertical) {
         VStack(spacing: 24) {
           Text("Connect with\nwallet")
             .multilineTextAlignment(.center)
             .font(.largeTitle)
             .bold()
-          
+
           Text("We found the following options based on compatibility with caaaption.")
             .multilineTextAlignment(.center)
             .foregroundColor(.secondary)
-          
+
           VStack(spacing: 12) {
             NavigationLink {
               SignInEthereumView(
@@ -70,20 +70,20 @@ public struct ConnectWithWalletView: View {
 
 struct WallettAppButton: View {
   let appName: String
-  
+
   var body: some View {
     HStack(spacing: 12) {
       Color.red
         .frame(width: 41, height: 41)
         .cornerRadius(8)
         .padding(.leading, 12)
-      
+
       VStack(alignment: .leading, spacing: 0) {
         Text(appName)
         Text("App installed")
           .foregroundColor(Color.blue)
       }
-      
+
       Spacer()
     }
     .frame(height: 62)

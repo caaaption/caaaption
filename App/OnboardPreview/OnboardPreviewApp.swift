@@ -1,5 +1,5 @@
-import SwiftUI
 import OnboardFeature
+import SwiftUI
 
 @main
 struct OnboardPreviewApp: App {
