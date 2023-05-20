@@ -17,7 +17,7 @@ public struct UserDefaultsClient {
     print("""
     \(Self.self).\(#function)
     key: \(key)
-    value: \(value)
+    value: \(value)\n\n
     """)
     return value
   }
@@ -27,7 +27,7 @@ public struct UserDefaultsClient {
     print("""
     \(Self.self).\(#function)
     key: \(key)
-    value: \(value)
+    value: \(value)\n\n
     """)
     return await setData(data, key)
   }

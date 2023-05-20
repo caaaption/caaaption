@@ -12,15 +12,14 @@ struct WidgetExtensionBundle: WidgetBundle {
   var body: some Widget {
     withDependencies {
       $0.quickNodeClient = .liveValue
-      $0.userDefaults = .live(
-        suiteName: Bundle.main.object(forInfoDictionaryKey: "AppGroup") as! String
-      )
+      $0.userDefaults = .liveValue
     } operation: {
       BalanceWidget.Entrypoint()
     }
 
     withDependencies {
       $0.snapshotClient = .liveValue
+      $0.userDefaults = .liveValue
     } operation: {
       VoteWidget.Entrypoint()
     }
