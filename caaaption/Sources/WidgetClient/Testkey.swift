@@ -10,7 +10,7 @@ public extension DependencyValues {
 
 extension WidgetClient: TestDependencyKey {
   public static let previewValue = Self.noop
-  
+
   public static let testValue = Self(
     reloadAllTimelines: unimplemented("\(Self.self).reloadAllTimelines")
   )
@@ -18,6 +18,6 @@ extension WidgetClient: TestDependencyKey {
 
 public extension WidgetClient {
   static let noop = Self(
-    reloadAllTimelines: {  }
+    reloadAllTimelines: {}
   )
 }
