@@ -21,7 +21,7 @@ public struct ProposalsReducer: ReducerProtocol {
 
   public enum Action: Equatable {
     case dialog(PresentationAction<Dialog>)
-    case tappedProposal(Proposal)
+    case proposalButtonTapped(Proposal)
 
     public enum Dialog {
       case confirmDiscard
@@ -39,7 +39,7 @@ public struct ProposalsReducer: ReducerProtocol {
       case .dialog:
         return EffectTask.none
 
-      case let .tappedProposal(proposal):
+      case let .proposalButtonTapped(proposal):
         state.dialog = ConfirmationDialogState(titleVisibility: .visible) {
           TextState("Display in Widget.")
         } actions: {
@@ -75,7 +75,7 @@ public struct ProposalsView: View {
       List {
         ForEach(viewStore.proposals) { proposal in
           Button {
-            viewStore.send(.tappedProposal(proposal))
+            viewStore.send(.proposalButtonTapped(proposal))
           } label: {
             Text(proposal.value.title)
               .foregroundColor(.primary)
