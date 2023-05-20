@@ -172,6 +172,8 @@ package.targets.append(contentsOf: [
   .target(name: "VoteWidget", dependencies: [
     "WidgetHelpers",
     "WidgetProtocol",
+    "UserDefaultsClient",
+    "SnapshotClient",
   ]),
   .target(name: "GasPriceWidget", dependencies: [
     "WidgetHelpers",

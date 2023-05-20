@@ -1,6 +1,9 @@
 import SwiftUI
 import WidgetKit
 import WidgetProtocol
+import UserDefaultsClient
+import SnapshotClient
+import Dependencies
 
 public enum VoteWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
@@ -28,36 +31,51 @@ public enum VoteWidget: WidgetProtocol {
   }
 
   public struct Input: Codable {
-    public let address: String
+    public let proposalId: String
 
-    public init(address: String) {
-      self.address = address
+    public init(proposalId: String) {
+      self.proposalId = proposalId
     }
   }
 
   public struct Entry: TimelineEntry, Equatable {
     public let date: Date
+    public let scores: [Double]
 
-    public init(
-      date: Date
-    ) {
+    public init(date: Date, scores: [Double]) {
       self.date = date
+      self.scores = scores
     }
   }
 
   public struct Provider: TimelineProvider {
+    @Dependency(\.userDefaults) var userDefaults
+    @Dependency(\.snapshotClient) var snapshotClient
+
     public func placeholder(
       in context: Context
     ) -> Entry {
-      Entry(date: Date())
+      Entry(date: Date(), scores: [1,1])
     }
 
     public func getSnapshot(
       in context: Context,
       completion: @escaping (Entry) -> Void
     ) {
-      let entry = Entry(date: Date())
-      completion(entry)
+      guard
+        let input = try? userDefaults.codableForKey(Input.self, forKey: Constant.kind)
+      else {
+        completion(placeholder(in: context))
+        return
+      }
+      
+      Task {
+        for try await data in snapshotClient.proposal(input.proposalId) {
+          let scores = data.proposal?.scores?.compactMap { $0 } ?? []
+          let entry = Entry(date: Date(), scores: scores)
+          completion(entry)
+        }
+      }
     }
 
     public func getTimeline(
@@ -81,19 +99,8 @@ public enum VoteWidget: WidgetProtocol {
 
     public var body: some View {
       HStack(alignment: .top, spacing: 12) {
-        CircleGraf(scores: [10, 20])
+        CircleGraf(scores: entry.scores)
           .scaleEffect(0.35)
-
-        if widgetFamily != .systemSmall {
-          VStack(alignment: .leading, spacing: 8) {
-            Text("For - Approve change")
-              .foregroundColor(.blue)
-            Text("Against - Do not approve change")
-              .foregroundColor(.blue.opacity(0.3))
-          }
-          .font(.caption)
-          .lineLimit(1)
-        }
       }
     }
   }
@@ -107,7 +114,8 @@ public enum VoteWidget: WidgetProtocol {
       WidgetPreview([.systemSmall, .systemMedium]) {
         VoteWidget.WidgetView(
           entry: VoteWidget.Entry(
-            date: Date()
+            date: Date(),
+            scores: [1,1]
           )
         )
       }
