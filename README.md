@@ -20,6 +20,7 @@ This repo contains the full source code for [caaaption](https://caaaption.com), 
 - [TestFlight](#testflight)
 - [Getting Started](#getting-started)
 - [Related Projects](#related-projects)
+- [Dependencies Graph](#dependencies-graph)
 - [License](#license)
 
 # About
@@ -52,6 +53,13 @@ This repo contains both the client code for running the entire [caaaption](https
 - [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
 - [XCTemplateInstaller](https://github.com/noppefoxwolf/XCTemplateInstaller)
 - [apollo-ios](https://github.com/apollographql/apollo-ios)
+- [swift-dependencies-graph](https://github.com/Ryu0118/swift-dependencies-graph)
+
+# Dependencies Graph
+
+It uses [swift-dependencies-graph](https://github.com/Ryu0118/swift-dependencies-graph) to output module dependencies in a Mermaid diagram.
+
+[PackageDependencies.md](./caaaption/PackageDependencies.md)
 
 # License
 
