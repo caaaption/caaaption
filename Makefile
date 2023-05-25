@@ -32,6 +32,10 @@ else
 	@cp caaaption/Sources/POAPClient/Secrets.swift.example caaaption/Sources/POAPClient/Secrets.swift
 endif
 
+dgraph:
+	@swift build -c release --package-path ./BuildTools/DependenciesGraph --product dgraph
+	./BuildTools/DependenciesGraph/.build/release/dgraph ./caaaption
+
 format:
 	@swift build -c release --package-path ./BuildTools/SwiftFormatTool --product swiftformat
 	./BuildTools/SwiftFormatTool/.build/release/swiftformat ./

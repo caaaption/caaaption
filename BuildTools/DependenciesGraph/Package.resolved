@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser",
+      "state" : {
+        "revision" : "fee6933f37fde9a5e12a1e4aeaa93fe60116ff2a",
+        "version" : "1.2.2"
+      }
+    },
+    {
+      "identity" : "swift-dependencies-graph",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Ryu0118/swift-dependencies-graph",
+      "state" : {
+        "revision" : "ad9cb104a32f81b0621bb74d490c611ccb2a1696",
+        "version" : "0.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}

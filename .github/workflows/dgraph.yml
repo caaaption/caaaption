@@ -1,0 +1,21 @@
+name: dgraph
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'caaaption/Package.swift'
+
+jobs:
+  dgraph:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: make dgraph
+      - continue-on-error: true
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          git commit -am "Update PackageDependencies.md"
+          git push
