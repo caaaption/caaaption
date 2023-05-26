@@ -1,9 +1,9 @@
 import ComposableArchitecture
 import ContributorFeature
+import PlaceholderAsyncImage
 import ServerConfig
 import SwiftUI
 import UIApplicationClient
-import PlaceholderAsyncImage
 
 public struct AccountReducer: ReducerProtocol {
   public init() {}
@@ -67,7 +67,7 @@ public struct AccountView: View {
             )
             .frame(width: 56, height: 56)
             .clipShape(Circle())
-            
+
             VStack(alignment: .leading, spacing: 4) {
               Text("tomokisun.eth")
                 .bold()
@@ -78,11 +78,11 @@ public struct AccountView: View {
             }
           }
         }
-        
+
         Section {
           Button("Privacy Policy", action: { viewStore.send(.privacyPolicy) })
         }
-        
+
         Section {
           NavigationLink(
             destination: ContributorView(

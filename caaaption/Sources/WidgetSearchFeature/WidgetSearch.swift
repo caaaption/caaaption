@@ -2,10 +2,10 @@ import AccountFeature
 import BalanceWidget
 import BalanceWidgetFeature
 import ComposableArchitecture
+import PlaceholderAsyncImage
 import SwiftUI
 import VoteWidget
 import VoteWidgetFeature
-import PlaceholderAsyncImage
 
 public struct WidgetSearchReducer: ReducerProtocol {
   public init() {}
