@@ -60,7 +60,6 @@ package.targets.append(contentsOf: [
     "VoteWidget",
     "WidgetClient",
     "SwiftUIHelpers",
-    "SnapshotClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "OnboardFeature", dependencies: [
