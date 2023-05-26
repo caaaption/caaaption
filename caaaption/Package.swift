@@ -68,6 +68,7 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "OnboardFeature", dependencies: [
+    "AuthClient",
     "ServerConfig",
     "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -112,6 +113,7 @@ package.products.append(contentsOf: [
   .library(name: "QuickNodeClient", targets: ["QuickNodeClient"]),
   .library(name: "POAPClient", targets: ["POAPClient"]),
   .library(name: "WidgetClient", targets: ["WidgetClient"]),
+  .library(name: "AuthClient", targets: ["AuthClient"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "UIApplicationClient", dependencies: [
@@ -136,6 +138,9 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "WidgetClient", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "AuthClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
