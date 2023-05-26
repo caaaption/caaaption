@@ -87,7 +87,6 @@ package.targets.append(contentsOf: [
 // Client
 
 package.products.append(contentsOf: [
-  .library(name: "FirebaseClientLive", targets: ["FirebaseClientLive"]),
   .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
   .library(name: "SnapshotClient", targets: ["SnapshotClient"]),
   .library(name: "ServerConfig", targets: ["ServerConfig"]),
@@ -98,12 +97,6 @@ package.products.append(contentsOf: [
   .library(name: "WidgetClient", targets: ["WidgetClient"]),
 ])
 package.targets.append(contentsOf: [
-  .target(name: "FirebaseClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
-  .target(name: "FirebaseClientLive", dependencies: [
-    "FirebaseClient",
-  ]),
   .target(name: "UIApplicationClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
@@ -138,10 +131,6 @@ package.products.append(contentsOf: [
 ])
 package.targets.append(contentsOf: [
   .target(name: "SwiftUIHelpers"),
-  .target(name: "ColorHex"),
-  .testTarget(name: "ColorHexTests", dependencies: [
-    "ColorHex",
-  ]),
   .target(name: "ApolloHelpers", dependencies: [
     .product(name: "Apollo", package: "apollo-ios"),
     .product(name: "ApolloAPI", package: "apollo-ios"),
