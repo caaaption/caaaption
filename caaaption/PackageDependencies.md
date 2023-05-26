@@ -19,6 +19,7 @@ graph TD;
     VoteWidgetFeature-->VoteWidget;
     VoteWidgetFeature-->WidgetClient;
     VoteWidgetFeature-->SwiftUIHelpers;
+    OnboardFeature-->AuthClient;
     OnboardFeature-->ServerConfig;
     OnboardFeature-->SwiftUIHelpers;
     POAPWidgetFeature-->POAPWidget;
