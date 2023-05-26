@@ -5,6 +5,7 @@ import ComposableArchitecture
 import SwiftUI
 import VoteWidget
 import VoteWidgetFeature
+import PlaceholderAsyncImage
 
 public struct WidgetSearchReducer: ReducerProtocol {
   public init() {}
@@ -164,9 +165,13 @@ public struct WidgetSearchView: View {
           Button {
             viewStore.send(.tapped(.account))
           } label: {
-            Color.red
-              .frame(width: 36, height: 36)
-              .clipShape(Circle())
+            PlaceholderAsyncImage(
+              url: URL(
+                string: "https://i.seadn.io/gae/c_u0e9m4wH4zgsJowfOOHd-EkQEzuxiEUZTsUsEbcc-sSJgmGX6uHMRX8pMgC6OQbfJ987nrF0-CSwGaBDQuS1tAe2w7B0eaAEj_?w=500&auto=format"
+              )
+            )
+            .frame(width: 36, height: 36)
+            .clipShape(Circle())
           }
         }
       }
