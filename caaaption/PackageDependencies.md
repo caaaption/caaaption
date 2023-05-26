@@ -1,6 +1,7 @@
 ```mermaid
 graph TD;
     AppFeature-->WidgetSearchFeature;
+    AppFeature-->OnboardFeature;
     WidgetSearchFeature-->AccountFeature;
     WidgetSearchFeature-->BalanceWidgetFeature;
     WidgetSearchFeature-->VoteWidgetFeature;
@@ -12,11 +13,9 @@ graph TD;
     ContributorFeature-->PlaceholderAsyncImage;
     BalanceWidgetFeature-->BalanceWidget;
     BalanceWidgetFeature-->SwiftUIHelpers;
-    BalanceWidgetFeature-->QuickNodeClient;
     VoteWidgetFeature-->VoteWidget;
     VoteWidgetFeature-->WidgetClient;
     VoteWidgetFeature-->SwiftUIHelpers;
-    VoteWidgetFeature-->SnapshotClient;
     OnboardFeature-->ServerConfig;
     OnboardFeature-->SwiftUIHelpers;
     SnapshotModelMock-->SnapshotModel;
