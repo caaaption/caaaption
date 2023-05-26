@@ -27,6 +27,7 @@ package.products.append(contentsOf: [
   .library(name: "VoteWidgetFeature", targets: ["VoteWidgetFeature"]),
   .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
   .library(name: "POAPWidgetFeature", targets: ["POAPWidgetFeature"]),
+  .library(name: "GasPriceWidgetFeature", targets: ["GasPriceWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -70,6 +71,10 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "POAPWidgetFeature", dependencies: [
+    "SwiftUIHelpers",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "GasPriceWidgetFeature", dependencies: [
     "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
