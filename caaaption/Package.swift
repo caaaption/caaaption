@@ -30,6 +30,7 @@ package.products.append(contentsOf: [
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
     "WidgetSearchFeature",
+    "OnboardFeature",
   ]),
   .target(name: "WidgetSearchFeature", dependencies: [
     "AccountFeature",
@@ -50,7 +51,6 @@ package.targets.append(contentsOf: [
   .target(name: "BalanceWidgetFeature", dependencies: [
     "BalanceWidget",
     "SwiftUIHelpers",
-    "QuickNodeClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "TransactionFeature", dependencies: [
@@ -60,7 +60,6 @@ package.targets.append(contentsOf: [
     "VoteWidget",
     "WidgetClient",
     "SwiftUIHelpers",
-    "SnapshotClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "OnboardFeature", dependencies: [
