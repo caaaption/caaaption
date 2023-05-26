@@ -9,7 +9,7 @@ struct OnboardPreviewApp: App {
         WelcomeView(
           store: .init(
             initialState: WelcomeReducer.State(),
-            reducer: WelcomeReducer()
+            reducer: WelcomeReducer()._printChanges()
           )
         )
       }

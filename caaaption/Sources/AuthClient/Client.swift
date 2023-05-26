@@ -1,6 +1,26 @@
 public struct AuthClient {
-  public var nonce: @Sendable (_ address: String) async throws -> NonceResponse
-  public var verify: @Sendable (_ param: VerifyParam) async throws -> VerifyResponse
+  var nonce: @Sendable (_ address: String) async throws -> String
+  var verify: @Sendable (_ param: VerifyParam) async throws -> String
+}
+
+extension AuthClient {
+  public func nonce(address: String) async throws -> String {
+    return try await self.nonce(address)
+  }
+  
+  public func verify(
+    address: String,
+    nonce: String,
+    signature: String
+  ) async throws -> String {
+    return try await self.verify(
+      VerifyParam(
+        address: address,
+        message: "",
+        signature: signature
+      )
+    )
+  }
 }
 
 public extension AuthClient {

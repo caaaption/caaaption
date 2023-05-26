@@ -5,16 +5,25 @@ public struct SignInEthereumReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
+    var signInButton = SignInButtonReducer.State()
     public init() {}
   }
 
   public enum Action: Equatable {
+    case signInButton(SignInButtonReducer.Action)
+
     case task
   }
 
   public var body: some ReducerProtocol<State, Action> {
+    Scope(state: \.signInButton, action: /Action.signInButton) {
+      SignInButtonReducer()
+    }
     Reduce { _, action in
       switch action {
+      case .signInButton:
+        return EffectTask.none
+
       case .task:
         return EffectTask.none
       }
@@ -65,13 +74,12 @@ public struct SignInEthereumView: View {
 
         Spacer()
 
-        Text("Continue to Sign-In")
-          .frame(height: 56)
-          .frame(maxWidth: .infinity)
-          .bold()
-          .foregroundColor(Color.white)
-          .background(Color.black)
-          .clipShape(Capsule())
+        SignInButton(
+          store: store.scope(
+            state: \.signInButton,
+            action: SignInEthereumReducer.Action.signInButton
+          )
+        )
 
         Text("Signing is free and will not send a transaction. Learn more about Ethereum signature here.")
           .multilineTextAlignment(.center)

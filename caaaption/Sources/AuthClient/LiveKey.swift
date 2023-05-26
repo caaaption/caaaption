@@ -21,31 +21,35 @@ actor Session {
     return decoder
   }()
   
-  func nonce(address: String) async throws -> AuthClient.NonceResponse {
-    let url = URL(string: "https://auth-api.caaaption-staging.com/api/nonce")!
+  func nonce(address: String) async throws -> String {
+    let url = URL(string: "https://asia-northeast1-caaaption-staging.cloudfunctions.net/api/nonce")!
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
-    request.httpBody = Data("""
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = """
     {
       "address": "\(address)"
     }
-    """.utf8)
+    """.data(using: .utf8)
     let (data, _) = try await URLSession.shared.data(for: request)
-    return try decoder.decode(AuthClient.NonceResponse.self, from: data)
+    let response = try decoder.decode(AuthClient.NonceResponse.self, from: data)
+    return response.nonce
   }
   
-  func verify(param: AuthClient.VerifyParam) async throws -> AuthClient.VerifyResponse {
-    let url = URL(string: "https://auth-api.caaaption-staging.com/api/verify")!
+  func verify(param: AuthClient.VerifyParam) async throws -> String {
+    let url = URL(string: "https://asia-northeast1-caaaption-staging.cloudfunctions.net/api/verify")!
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
-    request.httpBody = Data("""
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = """
     {
       "address": "\(param.address)",
       "message": "\(param.message)",
       "signature": "\(param.signature)"
     }
-    """.utf8)
+    """.data(using: .utf8)
     let (data, _) = try await URLSession.shared.data(for: request)
-    return try decoder.decode(AuthClient.VerifyResponse.self, from: data)
+    let response = try decoder.decode(AuthClient.VerifyResponse.self, from: data)
+    return response.customToken
   }
 }
