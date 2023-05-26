@@ -30,6 +30,7 @@ package.products.append(contentsOf: [
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
     "WidgetSearchFeature",
+    "OnboardFeature",
   ]),
   .target(name: "WidgetSearchFeature", dependencies: [
     "AccountFeature",
