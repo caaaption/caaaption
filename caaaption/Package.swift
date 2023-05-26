@@ -50,7 +50,6 @@ package.targets.append(contentsOf: [
   .target(name: "BalanceWidgetFeature", dependencies: [
     "BalanceWidget",
     "SwiftUIHelpers",
-    "QuickNodeClient",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "TransactionFeature", dependencies: [
