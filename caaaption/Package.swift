@@ -71,11 +71,13 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "POAPWidgetFeature", dependencies: [
+    "POAPWidget",
     "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "GasPriceWidgetFeature", dependencies: [
     "SwiftUIHelpers",
+    "GasPriceWidget",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
@@ -164,6 +166,7 @@ package.products.append(contentsOf: [
   .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
   .library(name: "VoteWidget", targets: ["VoteWidget"]),
   .library(name: "GasPriceWidget", targets: ["GasPriceWidget"]),
+  .library(name: "POAPWidget", targets: ["POAPWidget"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "WidgetProtocol"),
@@ -184,5 +187,11 @@ package.targets.append(contentsOf: [
   .target(name: "GasPriceWidget", dependencies: [
     "WidgetHelpers",
     "WidgetProtocol",
+    "UserDefaultsClient",
+  ]),
+  .target(name: "POAPWidget", dependencies: [
+    "WidgetHelpers",
+    "WidgetProtocol",
+    "UserDefaultsClient",
   ]),
 ])
