@@ -53,6 +53,7 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "BalanceWidgetFeature", dependencies: [
+    "WidgetClient",
     "BalanceWidget",
     "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -73,10 +74,12 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "POAPWidgetFeature", dependencies: [
     "POAPWidget",
+    "WidgetClient",
     "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "GasPriceWidgetFeature", dependencies: [
+    "WidgetClient",
     "SwiftUIHelpers",
     "GasPriceWidget",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
