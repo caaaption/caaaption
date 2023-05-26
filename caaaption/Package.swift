@@ -26,6 +26,8 @@ package.products.append(contentsOf: [
   .library(name: "TransactionFeature", targets: ["TransactionFeature"]),
   .library(name: "VoteWidgetFeature", targets: ["VoteWidgetFeature"]),
   .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
+  .library(name: "POAPWidgetFeature", targets: ["POAPWidgetFeature"]),
+  .library(name: "GasPriceWidgetFeature", targets: ["GasPriceWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -36,6 +38,7 @@ package.targets.append(contentsOf: [
     "AccountFeature",
     "BalanceWidgetFeature",
     "VoteWidgetFeature",
+    "POAPWidgetFeature",
   ]),
   .target(name: "AccountFeature", dependencies: [
     "ServerConfig",
@@ -64,6 +67,14 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "OnboardFeature", dependencies: [
     "ServerConfig",
+    "SwiftUIHelpers",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "POAPWidgetFeature", dependencies: [
+    "SwiftUIHelpers",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "GasPriceWidgetFeature", dependencies: [
     "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
@@ -150,7 +161,6 @@ package.targets.append(contentsOf: [
 package.products.append(contentsOf: [
   .library(name: "WidgetProtocol", targets: ["WidgetProtocol"]),
   .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
-  .library(name: "ArtWidget", targets: ["ArtWidget"]),
   .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
   .library(name: "VoteWidget", targets: ["VoteWidget"]),
   .library(name: "GasPriceWidget", targets: ["GasPriceWidget"]),
@@ -158,9 +168,6 @@ package.products.append(contentsOf: [
 package.targets.append(contentsOf: [
   .target(name: "WidgetProtocol"),
   .target(name: "WidgetHelpers"),
-  .target(name: "ArtWidget", dependencies: [
-    "WidgetHelpers",
-  ]),
   .target(name: "BalanceWidget", dependencies: [
     "WidgetHelpers",
     "WidgetProtocol",
