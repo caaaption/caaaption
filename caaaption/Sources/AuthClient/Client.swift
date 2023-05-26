@@ -3,17 +3,17 @@ public struct AuthClient {
   var verify: @Sendable (_ param: VerifyParam) async throws -> String
 }
 
-extension AuthClient {
-  public func nonce(address: String) async throws -> String {
-    return try await self.nonce(address)
+public extension AuthClient {
+  func nonce(address: String) async throws -> String {
+    return try await nonce(address)
   }
-  
-  public func verify(
+
+  func verify(
     address: String,
     nonce: String,
     signature: String
   ) async throws -> String {
-    return try await self.verify(
+    return try await verify(
       VerifyParam(
         address: address,
         message: "",
@@ -35,6 +35,7 @@ public extension AuthClient {
     public let message: String
     public let signature: String
   }
+
   struct VerifyResponse: Codable {
     public let customToken: String
   }

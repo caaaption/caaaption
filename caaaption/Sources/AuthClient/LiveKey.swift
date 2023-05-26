@@ -3,10 +3,10 @@ import Foundation
 
 extension AuthClient: DependencyKey {
   public static let liveValue = Self.live()
-  
+
   static func live() -> Self {
     let session = Session()
-    
+
     return Self(
       nonce: { try await session.nonce(address: $0) },
       verify: { try await session.verify(param: $0) }
@@ -20,7 +20,7 @@ actor Session {
     decoder.keyDecodingStrategy = .convertFromSnakeCase
     return decoder
   }()
-  
+
   func nonce(address: String) async throws -> String {
     let url = URL(string: "https://asia-northeast1-caaaption-staging.cloudfunctions.net/api/nonce")!
     var request = URLRequest(url: url)
@@ -35,7 +35,7 @@ actor Session {
     let response = try decoder.decode(AuthClient.NonceResponse.self, from: data)
     return response.nonce
   }
-  
+
   func verify(param: AuthClient.VerifyParam) async throws -> String {
     let url = URL(string: "https://asia-northeast1-caaaption-staging.cloudfunctions.net/api/verify")!
     var request = URLRequest(url: url)

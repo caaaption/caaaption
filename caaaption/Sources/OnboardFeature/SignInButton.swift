@@ -13,11 +13,11 @@ public struct SignInButtonReducer: ReducerProtocol {
 
   public enum Action: Equatable {
     case signInButtonTapped
-    
+
     case nonceResponse(TaskResult<String>)
     case customTokenResponse(TaskResult<String>)
   }
-  
+
   @Dependency(\.authClient) var authClient
 
   public var body: some ReducerProtocol<State, Action> {
@@ -34,22 +34,22 @@ public struct SignInButtonReducer: ReducerProtocol {
             }
           )
         }
-        
+
       case let .nonceResponse(.success(nonce)):
         state.nonce = nonce
         state.isActivityIndicatorVisible = false
         return EffectTask.none
-        
+
       case let .nonceResponse(.failure(error)):
         print("error : \(error)")
         state.isActivityIndicatorVisible = false
         return EffectTask.none
-        
+
       case let .customTokenResponse(.success(customToken)):
         print("custom token : \(customToken)")
         state.isActivityIndicatorVisible = false
         return EffectTask.none
-        
+
       case let .customTokenResponse(.failure(error)):
         print("error : \(error)")
         state.isActivityIndicatorVisible = false

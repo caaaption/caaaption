@@ -15,8 +15,8 @@ public struct GasPriceReducer: ReducerProtocol {
   public var body: some ReducerProtocol<State, Action> {
     Reduce { _, action in
       switch action {
-        case .task:
-          return EffectTask.none
+      case .task:
+        return EffectTask.none
       }
     }
   }
