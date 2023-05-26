@@ -26,6 +26,7 @@ package.products.append(contentsOf: [
   .library(name: "TransactionFeature", targets: ["TransactionFeature"]),
   .library(name: "VoteWidgetFeature", targets: ["VoteWidgetFeature"]),
   .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
+  .library(name: "POAPWidgetFeature", targets: ["POAPWidgetFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -36,6 +37,7 @@ package.targets.append(contentsOf: [
     "AccountFeature",
     "BalanceWidgetFeature",
     "VoteWidgetFeature",
+    "POAPWidgetFeature",
   ]),
   .target(name: "AccountFeature", dependencies: [
     "ServerConfig",
@@ -64,6 +66,10 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "OnboardFeature", dependencies: [
     "ServerConfig",
+    "SwiftUIHelpers",
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "POAPWidgetFeature", dependencies: [
     "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),

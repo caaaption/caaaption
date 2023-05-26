@@ -1,7 +1,7 @@
 import ComposableArchitecture
 import SwiftUI
 
-public struct MyPOAPReducer: ReducerProtocol {
+public struct GasPriceReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
@@ -22,19 +22,19 @@ public struct MyPOAPReducer: ReducerProtocol {
   }
 }
 
-public struct MyPOAPView: View {
-  let store: StoreOf<MyPOAPReducer>
+public struct GasPriceView: View {
+  let store: StoreOf<GasPriceReducer>
 
-  public init(store: StoreOf<MyPOAPReducer>) {
+  public init(store: StoreOf<GasPriceReducer>) {
     self.store = store
   }
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
-        Text("MyPOAP")
+        Text("GasPrice")
       }
-      .navigationTitle("MyPOAP")
+      .navigationTitle("GasPrice")
       .navigationBarTitleDisplayMode(.inline)
       .task { await viewStore.send(.task).finish() }
     }
@@ -42,12 +42,12 @@ public struct MyPOAPView: View {
 }
 
 #if DEBUG
-  struct MyPOAPViewPreviews: PreviewProvider {
+  struct GasPriceViewPreviews: PreviewProvider {
     static var previews: some View {
-      MyPOAPView(
+      GasPriceView(
         store: .init(
-          initialState: MyPOAPReducer.State(),
-          reducer: MyPOAPReducer()
+          initialState: GasPriceReducer.State(),
+          reducer: GasPriceReducer()
         )
       )
     }
