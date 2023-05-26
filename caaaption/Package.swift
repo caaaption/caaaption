@@ -161,7 +161,6 @@ package.targets.append(contentsOf: [
 package.products.append(contentsOf: [
   .library(name: "WidgetProtocol", targets: ["WidgetProtocol"]),
   .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
-  .library(name: "ArtWidget", targets: ["ArtWidget"]),
   .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
   .library(name: "VoteWidget", targets: ["VoteWidget"]),
   .library(name: "GasPriceWidget", targets: ["GasPriceWidget"]),
@@ -169,9 +168,6 @@ package.products.append(contentsOf: [
 package.targets.append(contentsOf: [
   .target(name: "WidgetProtocol"),
   .target(name: "WidgetHelpers"),
-  .target(name: "ArtWidget", dependencies: [
-    "WidgetHelpers",
-  ]),
   .target(name: "BalanceWidget", dependencies: [
     "WidgetHelpers",
     "WidgetProtocol",
