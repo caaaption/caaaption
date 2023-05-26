@@ -39,6 +39,7 @@ package.targets.append(contentsOf: [
     "BalanceWidgetFeature",
     "VoteWidgetFeature",
     "POAPWidgetFeature",
+    "GasPriceWidgetFeature",
   ]),
   .target(name: "AccountFeature", dependencies: [
     "ServerConfig",
