@@ -1,12 +1,12 @@
 import BalanceWidget
 import Dependencies
+import POAPWidget
 import QuickNodeClient
 import SnapshotClient
 import SwiftUI
 import UserDefaultsClient
 import VoteWidget
 import WidgetKit
-import POAPWidget
 
 @main
 struct WidgetExtensionBundle: WidgetBundle {
@@ -24,7 +24,7 @@ struct WidgetExtensionBundle: WidgetBundle {
     } operation: {
       VoteWidget.Entrypoint()
     }
-    
+
     withDependencies {
       $0.userDefaults = .liveValue
     } operation: {
