@@ -28,6 +28,7 @@
 		B783E15C2A120109002E782F /* SnapshotClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E15B2A120109002E782F /* SnapshotClient */; };
 		B783E15E2A12010E002E782F /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E15D2A12010E002E782F /* UserDefaultsClient */; };
 		B783E1602A120112002E782F /* VoteWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B783E15F2A120112002E782F /* VoteWidget */; };
+		B7BFE5202A2242F200D1CE6F /* POAPWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B7BFE51F2A2242F200D1CE6F /* POAPWidget */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 				B783E1582A1200FF002E782F /* BalanceWidget in Frameworks */,
 				B783E13F2A1200A1002E782F /* WidgetKit.framework in Frameworks */,
 				B783E15E2A12010E002E782F /* UserDefaultsClient in Frameworks */,
+				B7BFE5202A2242F200D1CE6F /* POAPWidget in Frameworks */,
 				B783E15C2A120109002E782F /* SnapshotClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +259,7 @@
 				B783E15B2A120109002E782F /* SnapshotClient */,
 				B783E15D2A12010E002E782F /* UserDefaultsClient */,
 				B783E15F2A120112002E782F /* VoteWidget */,
+				B7BFE51F2A2242F200D1CE6F /* POAPWidget */,
 			);
 			productName = WidgetExtensionExtension;
 			productReference = B783E13C2A1200A1002E782F /* WidgetExtension.appex */;
@@ -759,6 +762,10 @@
 		B783E15F2A120112002E782F /* VoteWidget */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = VoteWidget;
+		};
+		B7BFE51F2A2242F200D1CE6F /* POAPWidget */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = POAPWidget;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

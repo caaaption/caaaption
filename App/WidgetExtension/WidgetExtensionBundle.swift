@@ -6,6 +6,7 @@ import SwiftUI
 import UserDefaultsClient
 import VoteWidget
 import WidgetKit
+import POAPWidget
 
 @main
 struct WidgetExtensionBundle: WidgetBundle {
@@ -22,6 +23,12 @@ struct WidgetExtensionBundle: WidgetBundle {
       $0.userDefaults = .liveValue
     } operation: {
       VoteWidget.Entrypoint()
+    }
+    
+    withDependencies {
+      $0.userDefaults = .liveValue
+    } operation: {
+      POAPWidget.Entrypoint()
     }
   }
 }
