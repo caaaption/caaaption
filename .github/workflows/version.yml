@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '0 15 * * *'
 
+env:
+  TZ: 'Asia/Tokyo'
+
 jobs:
   version:
     name: Auto update version
@@ -12,8 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: ./.github/workflows/scripts/auto-update-version.sh
-        env:
-          TZ: 'Asia/Tokyo'
       - continue-on-error: true
         uses: peter-evans/create-pull-request@v5
         id: create-pr
