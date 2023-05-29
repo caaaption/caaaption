@@ -6,7 +6,7 @@ extension AuthClient: DependencyKey {
 
   static func live() -> Self {
     let session = Session()
-               
+
     return Self(
       nonce: { try await session.nonce(address: $0) },
       verify: { try await session.verify(param: $0) }
