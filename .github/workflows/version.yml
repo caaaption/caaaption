@@ -15,8 +15,17 @@ jobs:
         env:
           TZ: 'Asia/Tokyo'
       - continue-on-error: true
-        run: |
-          git config --local user.name 'github-actions[bot]'
-          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
-          git commit -am "Auto update CFBundleShortVersionString"
-          git push
+        uses: peter-evans/create-pull-request@v5
+        id: create-pr
+        with:
+          delete-branch: true
+          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          branch-suffix: short-commit-hash
+          commit-message: Auto update CFBundleShortVersionString
+          title: Auto update CFBundleShortVersionString
+      - continue-on-error: true
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
