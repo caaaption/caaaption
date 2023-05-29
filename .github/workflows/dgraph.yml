@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'caaaption/Package.swift'
+      - '.github/workflows/dgraph.yml'
 
 jobs:
   dgraph:
