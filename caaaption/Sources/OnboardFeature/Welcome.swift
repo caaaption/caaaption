@@ -6,17 +6,18 @@ public struct WelcomeReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    public var connectWithWallet = ConnectWithWalletReducer.State()
-    public init() {}
   }
 
   public enum Action: Equatable {
-    case connectWithWallet(ConnectWithWalletReducer.Action)
+    case getStartedButtonTapped
   }
 
   public var body: some ReducerProtocol<State, Action> {
-    Scope(state: \.connectWithWallet, action: /Action.connectWithWallet) {
-      ConnectWithWalletReducer()
+    Reduce { state, action in
+      switch action {
+      case .getStartedButtonTapped:
+        return .none
+      }
     }
   }
 }
@@ -29,7 +30,7 @@ public struct WelcomeView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { _ in
+    WithViewStore(store, observe: { $0 }) { viewStore in
       VStack(spacing: 24) {
         Spacer()
         Text("Welcome to\ncaaaption")
@@ -37,13 +38,8 @@ public struct WelcomeView: View {
           .font(.largeTitle)
           .bold()
 
-        NavigationLink {
-          ConnectWithWalletView(
-            store: store.scope(
-              state: \.connectWithWallet,
-              action: WelcomeReducer.Action.connectWithWallet
-            )
-          )
+        Button {
+          viewStore.send(.getStartedButtonTapped)
         } label: {
           Text("Get started")
             .frame(height: 56)
