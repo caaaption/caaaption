@@ -11,7 +11,7 @@ var package = Package(
     .macOS(.v13),
   ],
   dependencies: [
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", branch: "navigation-beta"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", branch: "main"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.1.2"),
     .package(url: "https://github.com/SDWebImage/SDWebImageSwiftUI", from: "2.2.3"),
     .package(url: "https://github.com/caaaption/design-system", branch: "main"),
