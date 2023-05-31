@@ -36,7 +36,7 @@ public struct OnboardReducer: ReducerProtocol {
       Path()
     }
   }
-  
+
   public struct Path: ReducerProtocol {
     public enum State: Equatable {
       case connectWithWallet(ConnectWithWalletReducer.State = .init())
@@ -95,7 +95,6 @@ public struct OnboardView: View {
         )
       }
     }
-
   }
 }
 

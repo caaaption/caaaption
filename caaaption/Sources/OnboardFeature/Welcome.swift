@@ -5,15 +5,14 @@ import SwiftUI
 public struct WelcomeReducer: ReducerProtocol {
   public init() {}
 
-  public struct State: Equatable {
-  }
+  public struct State: Equatable {}
 
   public enum Action: Equatable {
     case getStartedButtonTapped
   }
 
   public var body: some ReducerProtocol<State, Action> {
-    Reduce { state, action in
+    Reduce { _, action in
       switch action {
       case .getStartedButtonTapped:
         return .none
