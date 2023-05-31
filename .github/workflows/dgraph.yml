@@ -25,7 +25,8 @@ jobs:
           commit-message: Run dgraph
           title: Run dgraph
       - continue-on-error: true
-        run: gh pr merge --auto --squash "$PR_URL"
+        run: gh pr merge --auto --squash --author-email "$AUTHOR_EMAIL" "$PR_URL"
         env:
           PR_URL: ${{ steps.create-pr.outputs.pull-request-url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
