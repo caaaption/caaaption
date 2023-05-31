@@ -54,6 +54,9 @@
       location = "group:App/Staging.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:PreviewApp/PreviewApp.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:caaaption">
    </FileRef>
 </Workspace>

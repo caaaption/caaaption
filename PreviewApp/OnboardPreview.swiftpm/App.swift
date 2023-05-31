@@ -2,7 +2,7 @@ import OnboardFeature
 import SwiftUI
 
 @main
-struct OnboardPreviewApp: App {
+struct App: SwiftUI.App {
   var body: some Scene {
     WindowGroup {
       NavigationStack {

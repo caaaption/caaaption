@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B734D28D2A1914AD0078DE0F /* WidgetClient in Frameworks */ = {isa = PBXBuildFile; productRef = B734D28C2A1914AD0078DE0F /* WidgetClient */; };
-		B734D2972A19883B0078DE0F /* OnboardPreviewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B734D2962A19883B0078DE0F /* OnboardPreviewApp.swift */; };
-		B734D29B2A19883C0078DE0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B734D29A2A19883C0078DE0F /* Assets.xcassets */; };
-		B734D29E2A19883C0078DE0F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B734D29D2A19883C0078DE0F /* Preview Assets.xcassets */; };
-		B734D2A32A1988570078DE0F /* OnboardFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B734D2A22A1988570078DE0F /* OnboardFeature */; };
 		B783E0FA2A11FFD0002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0F92A11FFD0002E782F /* Assets.xcassets */; };
 		B783E0FD2A11FFD0002E782F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0FC2A11FFD0002E782F /* Preview Assets.xcassets */; };
 		B783E1022A120003002E782F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1012A120003002E782F /* App.swift */; };
@@ -56,10 +52,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B734D2942A19883B0078DE0F /* OnboardPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnboardPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B734D2962A19883B0078DE0F /* OnboardPreviewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPreviewApp.swift; sourceTree = "<group>"; };
-		B734D29A2A19883C0078DE0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B734D29D2A19883C0078DE0F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B783E0F32A11FFD0002E782F /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B783E0F92A11FFD0002E782F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B783E0FC2A11FFD0002E782F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -76,14 +68,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B734D2912A19883B0078DE0F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B734D2A32A1988570078DE0F /* OnboardFeature in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B783E0F02A11FFD0002E782F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -113,30 +97,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B734D2952A19883B0078DE0F /* OnboardPreview */ = {
-			isa = PBXGroup;
-			children = (
-				B734D2962A19883B0078DE0F /* OnboardPreviewApp.swift */,
-				B734D29A2A19883C0078DE0F /* Assets.xcassets */,
-				B734D29C2A19883C0078DE0F /* Preview Content */,
-			);
-			path = OnboardPreview;
-			sourceTree = "<group>";
-		};
-		B734D29C2A19883C0078DE0F /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				B734D29D2A19883C0078DE0F /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		B783E0A92A11FF7D002E782F = {
 			isa = PBXGroup;
 			children = (
 				B783E0F42A11FFD0002E782F /* iOS */,
 				B783E1422A1200A1002E782F /* WidgetExtension */,
-				B734D2952A19883B0078DE0F /* OnboardPreview */,
 				B783E13D2A1200A1002E782F /* Frameworks */,
 				B783E0B32A11FF7D002E782F /* Products */,
 			);
@@ -147,7 +112,6 @@
 			children = (
 				B783E0F32A11FFD0002E782F /* App.app */,
 				B783E13C2A1200A1002E782F /* WidgetExtension.appex */,
-				B734D2942A19883B0078DE0F /* OnboardPreview.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,26 +159,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B734D2932A19883B0078DE0F /* OnboardPreview */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B734D2A12A19883C0078DE0F /* Build configuration list for PBXNativeTarget "OnboardPreview" */;
-			buildPhases = (
-				B734D2902A19883B0078DE0F /* Sources */,
-				B734D2912A19883B0078DE0F /* Frameworks */,
-				B734D2922A19883B0078DE0F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OnboardPreview;
-			packageProductDependencies = (
-				B734D2A22A1988570078DE0F /* OnboardFeature */,
-			);
-			productName = OnboardPreview;
-			productReference = B734D2942A19883B0078DE0F /* OnboardPreview.app */;
-			productType = "com.apple.product-type.application";
-		};
 		B783E0F22A11FFD0002E782F /* App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B783E1002A11FFD0002E782F /* Build configuration list for PBXNativeTarget "App" */;
@@ -275,9 +219,6 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					B734D2932A19883B0078DE0F = {
-						CreatedOnToolsVersion = 14.3;
-					};
 					B783E0F22A11FFD0002E782F = {
 						CreatedOnToolsVersion = 14.3;
 						LastSwiftMigration = 1430;
@@ -302,21 +243,11 @@
 			targets = (
 				B783E0F22A11FFD0002E782F /* App */,
 				B783E13B2A1200A1002E782F /* WidgetExtension */,
-				B734D2932A19883B0078DE0F /* OnboardPreview */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B734D2922A19883B0078DE0F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B734D29E2A19883C0078DE0F /* Preview Assets.xcassets in Resources */,
-				B734D29B2A19883C0078DE0F /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B783E0F12A11FFD0002E782F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -337,14 +268,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B734D2902A19883B0078DE0F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B734D2972A19883B0078DE0F /* OnboardPreviewApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B783E0EF2A11FFD0002E782F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,64 +295,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		B734D29F2A19883C0078DE0F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"OnboardPreview/Preview Content\"";
-				DEVELOPMENT_TEAM = AV9FQ3YF56;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.caaaption.OnboardPreview;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B734D2A02A19883C0078DE0F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"OnboardPreview/Preview Content\"";
-				DEVELOPMENT_TEAM = AV9FQ3YF56;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.caaaption.OnboardPreview;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		B783E0BE2A11FF7D002E782F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -684,15 +549,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B734D2A12A19883C0078DE0F /* Build configuration list for PBXNativeTarget "OnboardPreview" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B734D29F2A19883C0078DE0F /* Debug */,
-				B734D2A02A19883C0078DE0F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B783E0AD2A11FF7D002E782F /* Build configuration list for PBXProject "Staging" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -726,10 +582,6 @@
 		B734D28C2A1914AD0078DE0F /* WidgetClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WidgetClient;
-		};
-		B734D2A22A1988570078DE0F /* OnboardFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = OnboardFeature;
 		};
 		B783E1512A1200AF002E782F /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
