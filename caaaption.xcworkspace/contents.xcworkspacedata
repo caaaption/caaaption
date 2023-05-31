@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <FileRef
-      location = "group:README.md">
-   </FileRef>
-   <FileRef
-      location = "group:Makefile">
-   </FileRef>
    <Group
       location = "group:GraphQL"
       name = "GraphQL">
@@ -48,13 +42,13 @@
       </FileRef>
    </Group>
    <FileRef
+      location = "group:PreviewApp/PreviewApp.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:App/Production.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:App/Staging.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:PreviewApp/PreviewApp.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:caaaption">
