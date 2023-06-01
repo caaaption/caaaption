@@ -109,7 +109,7 @@ public struct BalanceWidget: WidgetProtocol {
         Text(entry.address)
           .lineLimit(1)
           .frame(maxHeight: .infinity, alignment: .top)
-        
+
         Text("\(entry.balance.description.prefix(6).lowercased()) ETH")
           .frame(maxWidth: .infinity, alignment: .trailing)
       }
