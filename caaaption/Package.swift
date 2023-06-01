@@ -116,6 +116,7 @@ package.products.append(contentsOf: [
   .library(name: "POAPClient", targets: ["POAPClient"]),
   .library(name: "WidgetClient", targets: ["WidgetClient"]),
   .library(name: "AuthClient", targets: ["AuthClient"]),
+  .library(name: "FirestoreClient", targets: ["FirestoreClient"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "UIApplicationClient", dependencies: [
@@ -143,6 +144,9 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "AuthClient", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+  ]),
+  .target(name: "FirestoreClient", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
