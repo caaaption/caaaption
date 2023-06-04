@@ -6,6 +6,8 @@ import PlaceholderAsyncImage
 import SwiftUI
 import VoteWidget
 import VoteWidgetFeature
+import POAPWidgetFeature
+import POAPWidget
 
 public struct WidgetSearchReducer: ReducerProtocol {
   public init() {}
@@ -15,65 +17,37 @@ public struct WidgetSearchReducer: ReducerProtocol {
     public init() {}
   }
 
-  public enum Action: Equatable, BindableAction {
+  public enum Action: Equatable {
     case destination(PresentationAction<Destination.Action>)
-    case tapped(Tapped)
-
-    case task
-    case refreshable
-    case binding(BindingAction<State>)
-    case dismiss
-
-    public enum Tapped: Equatable {
-      case account
-      case balance
-      case vote
-    }
+    case accountButtonTapped
+    case balanceButtonTapped
+    case voteButtonTapped
+    case poapButtonTapped
   }
 
   @Dependency(\.mainQueue) var mainQueue
-  private enum WidgetRequestID {}
 
   public var body: some ReducerProtocol<State, Action> {
-    BindingReducer()
     Reduce { state, action in
       switch action {
       case .destination:
         return EffectTask.none
 
-      case let .tapped(distination):
-        switch distination {
-        case .account:
-          state.destination = .account(
-            AccountReducer.State()
-          )
-        case .balance:
-          state.destination = .balance(
-            BalanceSettingReducer.State()
-          )
-        case .vote:
-          state.destination = .vote(
-            SpacesReducer.State()
-          )
-        }
-        return EffectTask.none
+      case .accountButtonTapped:
+        state.destination = .account()
+        return .none
 
-      case .task:
-        return EffectTask.none
+      case .balanceButtonTapped:
+        state.destination = .balance()
+        return .none
 
-      case .refreshable:
-        return EffectTask.task {
-          try await self.mainQueue.sleep(for: .seconds(2))
-          return Action.task
-        }
-        .animation()
-        .cancellable(id: WidgetRequestID.self)
-
-      case .binding:
-        return EffectTask.none
-
-      case .dismiss:
-        return EffectTask.none
+      case .voteButtonTapped:
+        state.destination = .vote()
+        return .none
+        
+      case .poapButtonTapped:
+        state.destination = .poap()
+        return .none
       }
     }
     .ifLet(\.$destination, action: /Action.destination) {
@@ -85,15 +59,17 @@ public struct WidgetSearchReducer: ReducerProtocol {
 public extension WidgetSearchReducer {
   struct Destination: ReducerProtocol {
     public enum State: Equatable {
-      case account(AccountReducer.State)
-      case balance(BalanceSettingReducer.State)
-      case vote(SpacesReducer.State)
+      case account(AccountReducer.State = .init())
+      case balance(BalanceSettingReducer.State = .init())
+      case vote(SpacesReducer.State = .init())
+      case poap(MyPOAPReducer.State = .init())
     }
 
     public enum Action: Equatable {
       case account(AccountReducer.Action)
       case balance(BalanceSettingReducer.Action)
       case vote(SpacesReducer.Action)
+      case poap(MyPOAPReducer.Action)
     }
 
     public var body: some ReducerProtocol<State, Action> {
@@ -105,6 +81,9 @@ public extension WidgetSearchReducer {
       }
       Scope(state: /State.vote, action: /Action.vote) {
         SpacesReducer()
+      }
+      Scope(state: /State.poap, action: /Action.poap) {
+        MyPOAPReducer()
       }
     }
   }
@@ -121,7 +100,7 @@ public struct WidgetSearchView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         Button {
-          viewStore.send(.tapped(.balance))
+          viewStore.send(.balanceButtonTapped)
         } label: {
           ListCard(BalanceWidget.self)
         }
@@ -139,7 +118,7 @@ public struct WidgetSearchView: View {
         }
 
         Button {
-          viewStore.send(.tapped(.vote))
+          viewStore.send(.voteButtonTapped)
         } label: {
           ListCard(VoteWidget.self)
         }
@@ -155,15 +134,31 @@ public struct WidgetSearchView: View {
             SpacesView(store: store)
           }
         }
+        
+        Button {
+          viewStore.send(.poapButtonTapped)
+        } label: {
+          ListCard(POAPWidget.self)
+        }
+        .sheet(
+          store: store.scope(
+            state: \.$destination,
+            action: WidgetSearchReducer.Action.destination
+          ),
+          state: /WidgetSearchReducer.Destination.State.poap,
+          action: WidgetSearchReducer.Destination.Action.poap
+        ) { store in
+          NavigationStack {
+            MyPOAPView(store: store)
+          }
+        }
       }
       .listStyle(.plain)
       .navigationTitle("Widget")
-      .task { await viewStore.send(.task).finish() }
-      .refreshable { await viewStore.send(.refreshable).finish() }
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
-            viewStore.send(.tapped(.account))
+            viewStore.send(.accountButtonTapped)
           } label: {
             PlaceholderAsyncImage(
               url: URL(
