@@ -102,28 +102,18 @@ public struct BalanceWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      VStack(spacing: 8) {
-        Spacer()
-        Text("Balance")
-          .font(Font.headline)
+      VStack(alignment: .leading, spacing: 4) {
+        Color.red
+          .frame(width: 32, height: 32)
+          .clipShape(Circle())
+        Text(entry.address)
+          .lineLimit(1)
+          .frame(maxHeight: .infinity, alignment: .top)
 
         Text("\(entry.balance.description.prefix(6).lowercased()) ETH")
-          .font(Font.title2)
-          .bold()
-          .foregroundColor(Color.blue)
-
-        Text(entry.address)
-          .foregroundColor(.secondary)
-          .font(.caption)
-
-        Spacer()
-
-        updatedAt
-          .foregroundColor(Color.secondary)
-          .font(Font.caption)
+          .frame(maxWidth: .infinity, alignment: .trailing)
       }
-      .frame(maxWidth: CGFloat.infinity, maxHeight: CGFloat.infinity)
-      .padding()
+      .padding(.all, 16)
     }
 
     var updatedAt: some View {
@@ -144,8 +134,8 @@ public struct BalanceWidget: WidgetProtocol {
         BalanceWidget.WidgetView(
           entry: BalanceWidget.Entry(
             date: Date(),
-            address: "tomokisun.eth",
-            balance: 11.0
+            address: "0x4F724516242829DC5Bc6119f666b18102437De53",
+            balance: 0.01
           )
         )
       }
