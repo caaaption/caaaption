@@ -1,6 +1,6 @@
 import ComposableArchitecture
-import SwiftUI
 import POAPClient
+import SwiftUI
 
 public struct MyPOAPReducer: ReducerProtocol {
   public init() {}
@@ -14,7 +14,7 @@ public struct MyPOAPReducer: ReducerProtocol {
     case task
     case scanResponse(TaskResult<[POAPClient.Scan]>)
   }
-  
+
   @Dependency(\.poapClient) var poapClient
 
   public var body: some ReducerProtocol<State, Action> {
@@ -29,7 +29,7 @@ public struct MyPOAPReducer: ReducerProtocol {
             }
           )
         }
-        
+
       case let .scanResponse(.success(rows)):
         state.rows = IdentifiedArray(uniqueElements: rows)
         return EffectTask.none
