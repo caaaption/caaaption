@@ -3,11 +3,11 @@ import Dependencies
 import POAPWidget
 import QuickNodeClient
 import SnapshotClient
+import SnapshotSpaceWidget
 import SwiftUI
 import UserDefaultsClient
 import VoteWidget
 import WidgetKit
-import SnapshotSpaceWidget
 
 @main
 struct WidgetExtensionBundle: WidgetBundle {
@@ -31,7 +31,7 @@ struct WidgetExtensionBundle: WidgetBundle {
     } operation: {
       POAPWidget.Entrypoint()
     }
-    
+
     SnapshotSpaceWidget.Entrypoint()
   }
 }

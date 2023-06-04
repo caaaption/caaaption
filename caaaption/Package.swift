@@ -180,7 +180,7 @@ package.products.append(contentsOf: [
     "VoteWidget",
     "GasPriceWidget",
     "POAPWidget",
-    "SnapshotSpaceWidget"
+    "SnapshotSpaceWidget",
   ]),
   .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
   .library(name: "VoteWidget", targets: ["VoteWidget"]),

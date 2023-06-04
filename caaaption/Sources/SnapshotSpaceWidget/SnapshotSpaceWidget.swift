@@ -36,7 +36,7 @@ public enum SnapshotSpaceWidget: WidgetProtocol {
       self.date = date
       self.spaces = spaces
     }
-    
+
     public struct Space: Codable, Equatable {
       let imageData: Data
       let name: String
@@ -112,19 +112,19 @@ public enum SnapshotSpaceWidget: WidgetProtocol {
           columns: Array(repeating: GridItem(), count: 4),
           spacing: 12
         ) {
-          ForEach(0..<entry.spaces.count, id: \.self) { index in
+          ForEach(0 ..< entry.spaces.count, id: \.self) { index in
             VStack(alignment: .center, spacing: 6) {
               Image(uiImage: UIImage(data: entry.spaces[index].imageData)!)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 48, height: 48)
                 .clipShape(Circle())
-              
+
               Text(entry.spaces[index].name)
                 .bold()
                 .font(.callout)
                 .lineLimit(1)
-              
+
               Text(entry.spaces[index].members)
                 .font(.caption)
                 .multilineTextAlignment(.center)
