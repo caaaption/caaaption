@@ -51,18 +51,26 @@ public struct MyPOAPView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      List {
-        ForEach(viewStore.rows) { scan in
-          LazyVGrid(
-            columns: [GridItem(), GridItem()],
-            alignment: .center,
-            spacing: 12
-          ) {
-            AsyncImage(url: URL(string: scan.event.imageUrl))
-              .aspectRatio(contentMode: .fill)
-              .clipped()
+      ScrollView {
+        LazyVGrid(
+          columns: [GridItem(), GridItem()],
+          alignment: .center,
+          spacing: 12
+        ) {
+          ForEach(viewStore.rows) { scan in
+            AsyncImage(
+              url: URL(string: scan.event.imageUrl)
+            ) { image in
+              image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipShape(Circle())
+            } placeholder: {
+              ProgressView()
+            }
           }
         }
+        .padding(.horizontal, 12)
       }
       .navigationTitle("MyPOAP")
       .navigationBarTitleDisplayMode(.inline)
