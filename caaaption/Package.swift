@@ -175,10 +175,18 @@ package.targets.append(contentsOf: [
 package.products.append(contentsOf: [
   .library(name: "WidgetProtocol", targets: ["WidgetProtocol"]),
   .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
+  .library(name: "WidgetModule", targets: [
+    "BalanceWidget",
+    "VoteWidget",
+    "GasPriceWidget",
+    "POAPWidget",
+    "SnapshotSpaceWidget"
+  ]),
   .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
   .library(name: "VoteWidget", targets: ["VoteWidget"]),
   .library(name: "GasPriceWidget", targets: ["GasPriceWidget"]),
   .library(name: "POAPWidget", targets: ["POAPWidget"]),
+  .library(name: "SnapshotSpaceWidget", targets: ["SnapshotSpaceWidget"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "WidgetProtocol"),
@@ -205,5 +213,9 @@ package.targets.append(contentsOf: [
     "WidgetHelpers",
     "WidgetProtocol",
     "UserDefaultsClient",
+  ]),
+  .target(name: "SnapshotSpaceWidget", dependencies: [
+    "WidgetHelpers",
+    "WidgetProtocol",
   ]),
 ])
