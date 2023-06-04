@@ -11,7 +11,7 @@ public struct MyPOAPReducer: ReducerProtocol {
 
     public init() {
       @Dependency(\.poapClient) var poapClient
-      self.key = poapClient.apiKey
+      key = poapClient.apiKey
     }
   }
 
