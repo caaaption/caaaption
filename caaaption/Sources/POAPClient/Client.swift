@@ -2,8 +2,8 @@ public struct POAPClient {
   public var scan: @Sendable (_ address: String) async throws -> [POAPClient.Scan]
 }
 
-extension POAPClient {
-  public var apiKey: String {
+public extension POAPClient {
+  var apiKey: String {
     return POAP_API_KEY
   }
 }
