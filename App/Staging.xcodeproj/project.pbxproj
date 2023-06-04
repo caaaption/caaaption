@@ -19,12 +19,10 @@
 		B783E1522A1200AF002E782F /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B783E1512A1200AF002E782F /* AppFeature */; };
 		B783E1542A1200B4002E782F /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E1532A1200B4002E782F /* QuickNodeClient */; };
 		B783E1562A1200BB002E782F /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E1552A1200BB002E782F /* UserDefaultsClient */; };
-		B783E1582A1200FF002E782F /* BalanceWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B783E1572A1200FF002E782F /* BalanceWidget */; };
 		B783E15A2A120105002E782F /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E1592A120105002E782F /* QuickNodeClient */; };
 		B783E15C2A120109002E782F /* SnapshotClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E15B2A120109002E782F /* SnapshotClient */; };
 		B783E15E2A12010E002E782F /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E15D2A12010E002E782F /* UserDefaultsClient */; };
-		B783E1602A120112002E782F /* VoteWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B783E15F2A120112002E782F /* VoteWidget */; };
-		B7BFE5202A2242F200D1CE6F /* POAPWidget in Frameworks */ = {isa = PBXBuildFile; productRef = B7BFE51F2A2242F200D1CE6F /* POAPWidget */; };
+		B7FDB9922A2D43E2005942B7 /* WidgetModule in Frameworks */ = {isa = PBXBuildFile; productRef = B7FDB9912A2D43E2005942B7 /* WidgetModule */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,12 +82,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B783E1412A1200A1002E782F /* SwiftUI.framework in Frameworks */,
-				B783E1602A120112002E782F /* VoteWidget in Frameworks */,
 				B783E15A2A120105002E782F /* QuickNodeClient in Frameworks */,
-				B783E1582A1200FF002E782F /* BalanceWidget in Frameworks */,
 				B783E13F2A1200A1002E782F /* WidgetKit.framework in Frameworks */,
 				B783E15E2A12010E002E782F /* UserDefaultsClient in Frameworks */,
-				B7BFE5202A2242F200D1CE6F /* POAPWidget in Frameworks */,
+				B7FDB9922A2D43E2005942B7 /* WidgetModule in Frameworks */,
 				B783E15C2A120109002E782F /* SnapshotClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,12 +194,10 @@
 			);
 			name = WidgetExtension;
 			packageProductDependencies = (
-				B783E1572A1200FF002E782F /* BalanceWidget */,
 				B783E1592A120105002E782F /* QuickNodeClient */,
 				B783E15B2A120109002E782F /* SnapshotClient */,
 				B783E15D2A12010E002E782F /* UserDefaultsClient */,
-				B783E15F2A120112002E782F /* VoteWidget */,
-				B7BFE51F2A2242F200D1CE6F /* POAPWidget */,
+				B7FDB9912A2D43E2005942B7 /* WidgetModule */,
 			);
 			productName = WidgetExtensionExtension;
 			productReference = B783E13C2A1200A1002E782F /* WidgetExtension.appex */;
@@ -595,10 +589,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = UserDefaultsClient;
 		};
-		B783E1572A1200FF002E782F /* BalanceWidget */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = BalanceWidget;
-		};
 		B783E1592A120105002E782F /* QuickNodeClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = QuickNodeClient;
@@ -611,13 +601,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = UserDefaultsClient;
 		};
-		B783E15F2A120112002E782F /* VoteWidget */ = {
+		B7FDB9912A2D43E2005942B7 /* WidgetModule */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = VoteWidget;
-		};
-		B7BFE51F2A2242F200D1CE6F /* POAPWidget */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = POAPWidget;
+			productName = WidgetModule;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
