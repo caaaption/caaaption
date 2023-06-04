@@ -2,6 +2,12 @@ public struct POAPClient {
   public var scan: @Sendable (_ address: String) async throws -> [POAPClient.Scan]
 }
 
+extension POAPClient {
+  public var apiKey: String {
+    return POAP_API_KEY
+  }
+}
+
 public extension POAPClient {
   struct Scan: Codable, Equatable, Identifiable {
     public var id: String {
