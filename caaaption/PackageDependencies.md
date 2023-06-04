@@ -23,6 +23,7 @@ graph TD;
     OnboardFeature-->ServerConfig;
     OnboardFeature-->SwiftUIHelpers;
     POAPWidgetFeature-->POAPWidget;
+    POAPWidgetFeature-->POAPClient;
     POAPWidgetFeature-->WidgetClient;
     POAPWidgetFeature-->SwiftUIHelpers;
     GasPriceWidgetFeature-->WidgetClient;
