@@ -3,11 +3,11 @@ import BalanceWidget
 import BalanceWidgetFeature
 import ComposableArchitecture
 import PlaceholderAsyncImage
+import POAPWidget
+import POAPWidgetFeature
 import SwiftUI
 import VoteWidget
 import VoteWidgetFeature
-import POAPWidgetFeature
-import POAPWidget
 
 public struct WidgetSearchReducer: ReducerProtocol {
   public init() {}
@@ -44,7 +44,7 @@ public struct WidgetSearchReducer: ReducerProtocol {
       case .voteButtonTapped:
         state.destination = .vote()
         return .none
-        
+
       case .poapButtonTapped:
         state.destination = .poap()
         return .none
@@ -134,7 +134,7 @@ public struct WidgetSearchView: View {
             SpacesView(store: store)
           }
         }
-        
+
         Button {
           viewStore.send(.poapButtonTapped)
         } label: {
