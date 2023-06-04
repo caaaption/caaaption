@@ -12,10 +12,12 @@ extension FirestoreClient: TestDependencyKey {
   public static let previewValue = Self.noop
   
   public static let testValue = Self(
+    listen: unimplemented("\(Self.self).listen")
   )
 }
 
 public extension FirestoreClient {
   static let noop = Self(
+    listen: { .never }
   )
 }

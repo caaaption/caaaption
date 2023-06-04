@@ -148,6 +148,8 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "FirestoreClient", dependencies: [
+    .product(name: "FirebaseFirestore", package: "firebase-ios-sdk"),
+    .product(name: "FirebaseFirestoreSwift", package: "firebase-ios-sdk"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
