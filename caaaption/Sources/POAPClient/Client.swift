@@ -3,6 +3,12 @@ public struct POAPClient {
 }
 
 public extension POAPClient {
+  var apiKey: String {
+    return POAP_API_KEY
+  }
+}
+
+public extension POAPClient {
   struct Scan: Codable, Equatable, Identifiable {
     public var id: String {
       return tokenId

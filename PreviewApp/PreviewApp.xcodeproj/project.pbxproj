@@ -8,6 +8,7 @@
 
 /* Begin PBXFileReference section */
 		B7BFE58A2A27C79700D1CE6F /* OnboardPreview.swiftpm */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OnboardPreview.swiftpm; sourceTree = "<group>"; };
+		B7FDB9902A2C1A88005942B7 /* POAPPreview.swiftpm */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = POAPPreview.swiftpm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -15,6 +16,7 @@
 			isa = PBXGroup;
 			children = (
 				B7BFE58A2A27C79700D1CE6F /* OnboardPreview.swiftpm */,
+				B7FDB9902A2C1A88005942B7 /* POAPPreview.swiftpm */,
 				B7BFE57A2A27C78100D1CE6F /* Products */,
 			);
 			sourceTree = "<group>";

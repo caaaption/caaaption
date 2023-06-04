@@ -78,6 +78,7 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "POAPWidgetFeature", dependencies: [
     "POAPWidget",
+    "POAPClient",
     "WidgetClient",
     "SwiftUIHelpers",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),

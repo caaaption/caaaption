@@ -8,41 +8,40 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "OnboardPreview",
+    name: "POAPPreview",
     platforms: [
-        .iOS("16.0"),
+        .iOS("16.0")
     ],
     products: [
         .iOSApplication(
-            name: "OnboardPreview",
-            targets: ["OnboardPreviewModule"],
-            bundleIdentifier: "com.caaaption.OnboardPreview",
-            teamIdentifier: "AV9FQ3YF56",
+            name: "POAPPreview",
+            targets: ["POAPPreviewModule"],
+            bundleIdentifier: "com.caaaption.POAPPreview",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .sandwich),
+            appIcon: .placeholder(icon: .magicWand),
             accentColor: .presetColor(.blue),
             supportedDeviceFamilies: [
                 .pad,
-                .phone,
+                .phone
             ],
             supportedInterfaceOrientations: [
                 .portrait,
                 .landscapeRight,
                 .landscapeLeft,
-                .portraitUpsideDown(.when(deviceFamilies: [.pad])),
+                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
             ]
-        ),
+        )
     ],
     dependencies: [
         .package(name: "caaaption", path: "../../caaaption"),
     ],
     targets: [
         .executableTarget(
-            name: "OnboardPreviewModule",
+            name: "POAPPreviewModule",
             dependencies: [
                 .productItem(
-                    name: "OnboardFeature",
+                    name: "POAPWidgetFeature",
                     package: "caaaption"
                 ),
             ],
