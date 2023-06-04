@@ -2,6 +2,7 @@
 
 --exclude ./XCTemplates
 --exclude **/*.graphql.swift
+--exclude ./PreviewApp
 
 # format options
 
