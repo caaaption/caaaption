@@ -6,13 +6,9 @@ public struct MyPOAPReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    public var key: String
     public var rows: IdentifiedArrayOf<POAPClient.Scan> = []
 
-    public init() {
-      @Dependency(\.poapClient) var poapClient
-      key = poapClient.apiKey
-    }
+    public init() {}
   }
 
   public enum Action: Equatable {
@@ -57,7 +53,6 @@ public struct MyPOAPView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       ScrollView {
-        Text(viewStore.key)
         LazyVGrid(
           columns: [GridItem(), GridItem()],
           alignment: .center,
