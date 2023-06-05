@@ -48,4 +48,6 @@ graph TD;
     POAPWidget-->UserDefaultsClient;
     SnapshotSpaceWidget-->WidgetHelpers;
     SnapshotSpaceWidget-->WidgetProtocol;
+    MirrorWidget-->WidgetHelpers;
+    MirrorWidget-->WidgetProtocol;
 ```
