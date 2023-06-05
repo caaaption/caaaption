@@ -181,12 +181,14 @@ package.products.append(contentsOf: [
     "GasPriceWidget",
     "POAPWidget",
     "SnapshotSpaceWidget",
+    "MirrorWidget",
   ]),
   .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
   .library(name: "VoteWidget", targets: ["VoteWidget"]),
   .library(name: "GasPriceWidget", targets: ["GasPriceWidget"]),
   .library(name: "POAPWidget", targets: ["POAPWidget"]),
   .library(name: "SnapshotSpaceWidget", targets: ["SnapshotSpaceWidget"]),
+  .library(name: "MirrorWidget", targets: ["MirrorWidget"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "WidgetProtocol"),
@@ -215,6 +217,10 @@ package.targets.append(contentsOf: [
     "UserDefaultsClient",
   ]),
   .target(name: "SnapshotSpaceWidget", dependencies: [
+    "WidgetHelpers",
+    "WidgetProtocol",
+  ]),
+  .target(name: "MirrorWidget", dependencies: [
     "WidgetHelpers",
     "WidgetProtocol",
   ]),
