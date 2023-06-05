@@ -1,5 +1,6 @@
 import BalanceWidget
 import Dependencies
+import MirrorWidget
 import POAPWidget
 import QuickNodeClient
 import SnapshotClient
@@ -8,7 +9,6 @@ import SwiftUI
 import UserDefaultsClient
 import VoteWidget
 import WidgetKit
-import MirrorWidget
 
 @main
 struct WidgetExtensionBundle: WidgetBundle {
@@ -34,7 +34,7 @@ struct WidgetExtensionBundle: WidgetBundle {
     }
 
     SnapshotSpaceWidget.Entrypoint()
-    
+
     MirrorWidget.Entrypoint()
   }
 }
