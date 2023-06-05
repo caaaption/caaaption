@@ -73,7 +73,7 @@ public enum MirrorWidget: WidgetProtocol {
       VStack(spacing: 4) {
         Color.red
           .frame(height: 78)
-        
+
         VStack(spacing: 2) {
           Text("Get real-time dApps information on iPhone widgets")
             .multilineTextAlignment(.leading)
@@ -86,7 +86,7 @@ public enum MirrorWidget: WidgetProtocol {
               .font(.caption)
               .foregroundColor(.secondary)
               .frame(maxWidth: .infinity, alignment: .leading)
-            
+
             Color.pink
               .frame(width: 14, height: 14)
               .clipShape(Circle())
