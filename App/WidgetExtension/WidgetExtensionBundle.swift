@@ -8,6 +8,7 @@ import SwiftUI
 import UserDefaultsClient
 import VoteWidget
 import WidgetKit
+import MirrorWidget
 
 @main
 struct WidgetExtensionBundle: WidgetBundle {
@@ -33,5 +34,7 @@ struct WidgetExtensionBundle: WidgetBundle {
     }
 
     SnapshotSpaceWidget.Entrypoint()
+    
+    MirrorWidget.Entrypoint()
   }
 }
