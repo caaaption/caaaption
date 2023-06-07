@@ -111,6 +111,7 @@ public struct BalanceWidget: WidgetProtocol {
           .frame(maxHeight: .infinity, alignment: .top)
 
         Text("\(entry.balance.description.prefix(6).lowercased()) ETH")
+          .bold()
           .frame(maxWidth: .infinity, alignment: .trailing)
       }
       .padding(.all, 16)
