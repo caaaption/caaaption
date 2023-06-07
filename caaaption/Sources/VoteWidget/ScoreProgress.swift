@@ -2,11 +2,11 @@ import SwiftUI
 
 struct ScoreProgress: View {
   let progress: Double
-  
+
   init(progress: Double) {
     self.progress = progress
   }
-  
+
   var body: some View {
     GeometryReader { proxy in
       ZStack {
@@ -25,7 +25,7 @@ struct ScoreProgress: View {
             lineJoin: .round
           )
         )
-        
+
         Path { path in
           path.move(to: CGPoint(x: 4, y: proxy.size.height - 4))
           path.addQuadCurve(
