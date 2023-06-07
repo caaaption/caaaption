@@ -16,6 +16,7 @@ var package = Package(
     .package(url: "https://github.com/SDWebImage/SDWebImageSwiftUI", from: "2.2.3"),
     .package(url: "https://github.com/caaaption/design-system", branch: "main"),
     .package(url: "https://github.com/caaaption/swiftui-helpers", from: "0.1.0"),
+    .package(url: "https://github.com/caaaption/widget-helpers", from: "0.1.0"),
   ]
 )
 
@@ -178,7 +179,6 @@ package.targets.append(contentsOf: [
 
 package.products.append(contentsOf: [
   .library(name: "WidgetProtocol", targets: ["WidgetProtocol"]),
-  .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
   .library(name: "WidgetModule", targets: [
     "BalanceWidget",
     "VoteWidget",
@@ -196,36 +196,35 @@ package.products.append(contentsOf: [
 ])
 package.targets.append(contentsOf: [
   .target(name: "WidgetProtocol"),
-  .target(name: "WidgetHelpers"),
   .target(name: "BalanceWidget", dependencies: [
-    "WidgetHelpers",
     "WidgetProtocol",
     "QuickNodeClient",
     "UserDefaultsClient",
+    .product(name: "WidgetHelpers", package: "widget-helpers"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "VoteWidget", dependencies: [
-    "WidgetHelpers",
     "WidgetProtocol",
     "UserDefaultsClient",
     "SnapshotClient",
+    .product(name: "WidgetHelpers", package: "widget-helpers"),
   ]),
   .target(name: "GasPriceWidget", dependencies: [
-    "WidgetHelpers",
     "WidgetProtocol",
     "UserDefaultsClient",
+    .product(name: "WidgetHelpers", package: "widget-helpers"),
   ]),
   .target(name: "POAPWidget", dependencies: [
-    "WidgetHelpers",
     "WidgetProtocol",
     "UserDefaultsClient",
+    .product(name: "WidgetHelpers", package: "widget-helpers"),
   ]),
   .target(name: "SnapshotSpaceWidget", dependencies: [
-    "WidgetHelpers",
     "WidgetProtocol",
+    .product(name: "WidgetHelpers", package: "widget-helpers"),
   ]),
   .target(name: "MirrorWidget", dependencies: [
-    "WidgetHelpers",
     "WidgetProtocol",
+    .product(name: "WidgetHelpers", package: "widget-helpers"),
   ]),
 ])

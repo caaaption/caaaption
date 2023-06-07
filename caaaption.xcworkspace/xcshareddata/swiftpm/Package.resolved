@@ -172,6 +172,15 @@
       }
     },
     {
+      "identity" : "widget-helpers",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/caaaption/widget-helpers",
+      "state" : {
+        "revision" : "818bb3291804ef1232c0fa15029903a4c23d420a",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "xctest-dynamic-overlay",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
