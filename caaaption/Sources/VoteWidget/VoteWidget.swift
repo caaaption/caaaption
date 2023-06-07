@@ -26,7 +26,6 @@ public enum VoteWidget: WidgetProtocol {
     public static var kind = "VoteWidget"
     public static var supportedFamilies: [WidgetFamily] = [
       .systemSmall,
-      .systemMedium,
     ]
   }
 
@@ -114,7 +113,7 @@ public enum VoteWidget: WidgetProtocol {
 
   struct WidgetViewPreviews: PreviewProvider {
     static var previews: some View {
-      WidgetPreview([.systemSmall, .systemMedium]) {
+      WidgetPreview([.systemSmall]) {
         VoteWidget.WidgetView(
           entry: VoteWidget.Entry(
             date: Date(),
