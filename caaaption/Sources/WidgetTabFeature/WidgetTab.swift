@@ -1,15 +1,15 @@
-import Avatar
 import AccountFeature
-import WidgetSearchFeature
+import Avatar
 import ComposableArchitecture
 import SwiftUI
+import WidgetSearchFeature
 
 public struct WidgetTabReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
     var widgetSearch = WidgetSearchReducer.State()
-    
+
     @PresentationState var destination: Destination.State?
     public init() {}
   }
@@ -28,10 +28,10 @@ public struct WidgetTabReducer: ReducerProtocol {
       switch action {
       case .widgetSearch:
         return .none
-        
+
       case .destination:
         return .none
-        
+
       case .accountButtonTapped:
         state.destination = .account()
         return .none
@@ -41,14 +41,16 @@ public struct WidgetTabReducer: ReducerProtocol {
       Destination()
     }
   }
-  
+
   public struct Destination: ReducerProtocol {
     public enum State: Equatable {
       case account(AccountReducer.State = .init())
     }
+
     public enum Action: Equatable {
       case account(AccountReducer.Action)
     }
+
     public var body: some ReducerProtocol<State, Action> {
       Scope(state: /State.account, action: /Action.account) {
         AccountReducer()

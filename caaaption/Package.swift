@@ -92,7 +92,7 @@ package.targets.append(contentsOf: [
     "WidgetSearchFeature",
     "AccountFeature",
     .product(name: "Avatar", package: "design-system"),
-  ])
+  ]),
 ])
 
 // GraphQL
