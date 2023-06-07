@@ -57,7 +57,7 @@ public struct ContributorReducer: ReducerProtocol {
         else {
           return EffectTask.none
         }
-        return EffectTask.fireAndForget {
+        return EffectTask.run { _ in
           _ = await self.openURL(url, [:])
         }
       }
