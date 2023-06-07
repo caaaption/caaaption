@@ -105,7 +105,7 @@ public enum VoteWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      VStack(alignment: .center, spacing: 0) {
+      VStack(alignment: .center, spacing: 4) {
         HStack(alignment: .top) {
           Text("System Upgrade: Establishing A Software Company")
             .font(.caption)
@@ -118,26 +118,28 @@ public enum VoteWidget: WidgetProtocol {
             .clipShape(Circle())
         }
 
-        ScoreProgress(progress: 0.85)
-          .frame(height: 34)
-          .background(alignment: .bottom) {
-            Text("Closed")
-              .font(.caption)
-              .bold()
-              .padding(.vertical, 2)
-              .padding(.horizontal, 6)
-              .foregroundColor(.white)
-              .background(Color.purple)
-              .clipShape(Capsule())
-          }
-        
-        Text("85%")
-          .font(.title2)
-          .bold()
-        
-        Text("Yes - Approve this Plan")
-          .lineLimit(1)
-          .font(.caption)
+        VStack(spacing: 0) {
+          ScoreProgress(progress: 0.85)
+            .frame(height: 34)
+            .background(alignment: .bottom) {
+              Text("Closed")
+                .font(.caption)
+                .bold()
+                .padding(.vertical, 2)
+                .padding(.horizontal, 6)
+                .foregroundColor(.white)
+                .background(Color.purple)
+                .clipShape(Capsule())
+            }
+          
+          Text("85%")
+            .font(.title2)
+            .bold()
+          
+          Text("Yes - Approve this Plan")
+            .lineLimit(1)
+            .font(.caption)
+        }
       }
       .padding(.all, 16)
     }
