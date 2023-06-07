@@ -181,6 +181,15 @@
       }
     },
     {
+      "identity" : "widget-protocol",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/caaaption/widget-protocol",
+      "state" : {
+        "revision" : "8387e1e9e79c322e0c2ae47749c4fcac1fe49b0a",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "xctest-dynamic-overlay",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
