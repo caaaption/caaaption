@@ -15,6 +15,7 @@ var package = Package(
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.1.2"),
     .package(url: "https://github.com/SDWebImage/SDWebImageSwiftUI", from: "2.2.3"),
     .package(url: "https://github.com/caaaption/design-system", branch: "main"),
+    .package(url: "https://github.com/caaaption/swiftui-helpers", from: "0.1.0"),
   ]
 )
 
@@ -49,15 +50,15 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "ContributorFeature", dependencies: [
     "GitHubClient",
-    "SwiftUIHelpers",
     "UIApplicationClient",
     "PlaceholderAsyncImage",
+    .product(name: "SwiftUIHelpers", package: "swiftui-helpers"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "BalanceWidgetFeature", dependencies: [
     "WidgetClient",
     "BalanceWidget",
-    "SwiftUIHelpers",
+    .product(name: "SwiftUIHelpers", package: "swiftui-helpers"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "TransactionFeature", dependencies: [
@@ -66,26 +67,26 @@ package.targets.append(contentsOf: [
   .target(name: "VoteWidgetFeature", dependencies: [
     "VoteWidget",
     "WidgetClient",
-    "SwiftUIHelpers",
+    .product(name: "SwiftUIHelpers", package: "swiftui-helpers"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "OnboardFeature", dependencies: [
     "AuthClient",
     "ServerConfig",
-    "SwiftUIHelpers",
+    .product(name: "SwiftUIHelpers", package: "swiftui-helpers"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "POAPWidgetFeature", dependencies: [
     "POAPWidget",
     "POAPClient",
     "WidgetClient",
-    "SwiftUIHelpers",
+    .product(name: "SwiftUIHelpers", package: "swiftui-helpers"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "GasPriceWidgetFeature", dependencies: [
     "WidgetClient",
-    "SwiftUIHelpers",
     "GasPriceWidget",
+    .product(name: "SwiftUIHelpers", package: "swiftui-helpers"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "WidgetTabFeature", dependencies: [
@@ -156,11 +157,9 @@ package.targets.append(contentsOf: [
 // Helpers
 
 package.products.append(contentsOf: [
-  .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
   .library(name: "ApolloHelpers", targets: ["ApolloHelpers"]),
 ])
 package.targets.append(contentsOf: [
-  .target(name: "SwiftUIHelpers"),
   .target(name: "ApolloHelpers", dependencies: [
     .product(name: "Apollo", package: "apollo-ios"),
     .product(name: "ApolloAPI", package: "apollo-ios"),
