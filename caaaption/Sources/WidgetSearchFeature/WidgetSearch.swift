@@ -1,4 +1,3 @@
-import AccountFeature
 import BalanceWidget
 import BalanceWidgetFeature
 import ComposableArchitecture
@@ -19,7 +18,6 @@ public struct WidgetSearchReducer: ReducerProtocol {
 
   public enum Action: Equatable {
     case destination(PresentationAction<Destination.Action>)
-    case accountButtonTapped
     case balanceButtonTapped
     case voteButtonTapped
     case poapButtonTapped
@@ -32,10 +30,6 @@ public struct WidgetSearchReducer: ReducerProtocol {
       switch action {
       case .destination:
         return EffectTask.none
-
-      case .accountButtonTapped:
-        state.destination = .account()
-        return .none
 
       case .balanceButtonTapped:
         state.destination = .balance()
@@ -59,23 +53,18 @@ public struct WidgetSearchReducer: ReducerProtocol {
 public extension WidgetSearchReducer {
   struct Destination: ReducerProtocol {
     public enum State: Equatable {
-      case account(AccountReducer.State = .init())
       case balance(BalanceSettingReducer.State = .init())
       case vote(SpacesReducer.State = .init())
       case poap(MyPOAPReducer.State = .init())
     }
 
     public enum Action: Equatable {
-      case account(AccountReducer.Action)
       case balance(BalanceSettingReducer.Action)
       case vote(SpacesReducer.Action)
       case poap(MyPOAPReducer.Action)
     }
 
     public var body: some ReducerProtocol<State, Action> {
-      Scope(state: /State.account, action: /Action.account) {
-        AccountReducer()
-      }
       Scope(state: /State.balance, action: /Action.balance) {
         BalanceSettingReducer()
       }
@@ -155,33 +144,6 @@ public struct WidgetSearchView: View {
       }
       .listStyle(.plain)
       .navigationTitle("Widget")
-      .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button {
-            viewStore.send(.accountButtonTapped)
-          } label: {
-            PlaceholderAsyncImage(
-              url: URL(
-                string: "https://i.seadn.io/gae/c_u0e9m4wH4zgsJowfOOHd-EkQEzuxiEUZTsUsEbcc-sSJgmGX6uHMRX8pMgC6OQbfJ987nrF0-CSwGaBDQuS1tAe2w7B0eaAEj_?w=500&auto=format"
-              )
-            )
-            .frame(width: 36, height: 36)
-            .clipShape(Circle())
-          }
-        }
-      }
-      .sheet(
-        store: store.scope(
-          state: \.$destination,
-          action: WidgetSearchReducer.Action.destination
-        ),
-        state: /WidgetSearchReducer.Destination.State.account,
-        action: WidgetSearchReducer.Destination.Action.account
-      ) { store in
-        NavigationStack {
-          AccountView(store: store)
-        }
-      }
     }
   }
 }
