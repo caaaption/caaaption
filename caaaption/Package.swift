@@ -17,6 +17,7 @@ var package = Package(
     .package(url: "https://github.com/caaaption/design-system", branch: "main"),
     .package(url: "https://github.com/caaaption/swiftui-helpers", from: "0.1.0"),
     .package(url: "https://github.com/caaaption/widget-helpers", from: "0.1.0"),
+    .package(url: "https://github.com/caaaption/widget-protocol", from: "0.1.0"),
   ]
 )
 
@@ -178,7 +179,6 @@ package.targets.append(contentsOf: [
 // Widgets
 
 package.products.append(contentsOf: [
-  .library(name: "WidgetProtocol", targets: ["WidgetProtocol"]),
   .library(name: "WidgetModule", targets: [
     "BalanceWidget",
     "VoteWidget",
@@ -195,36 +195,35 @@ package.products.append(contentsOf: [
   .library(name: "MirrorWidget", targets: ["MirrorWidget"]),
 ])
 package.targets.append(contentsOf: [
-  .target(name: "WidgetProtocol"),
   .target(name: "BalanceWidget", dependencies: [
-    "WidgetProtocol",
     "QuickNodeClient",
     "UserDefaultsClient",
     .product(name: "WidgetHelpers", package: "widget-helpers"),
+    .product(name: "WidgetProtocol", package: "widget-protocol"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "VoteWidget", dependencies: [
-    "WidgetProtocol",
     "UserDefaultsClient",
     "SnapshotClient",
     .product(name: "WidgetHelpers", package: "widget-helpers"),
+    .product(name: "WidgetProtocol", package: "widget-protocol"),
   ]),
   .target(name: "GasPriceWidget", dependencies: [
-    "WidgetProtocol",
     "UserDefaultsClient",
     .product(name: "WidgetHelpers", package: "widget-helpers"),
+    .product(name: "WidgetProtocol", package: "widget-protocol"),
   ]),
   .target(name: "POAPWidget", dependencies: [
-    "WidgetProtocol",
     "UserDefaultsClient",
     .product(name: "WidgetHelpers", package: "widget-helpers"),
+    .product(name: "WidgetProtocol", package: "widget-protocol"),
   ]),
   .target(name: "SnapshotSpaceWidget", dependencies: [
-    "WidgetProtocol",
     .product(name: "WidgetHelpers", package: "widget-helpers"),
+    .product(name: "WidgetProtocol", package: "widget-protocol"),
   ]),
   .target(name: "MirrorWidget", dependencies: [
-    "WidgetProtocol",
     .product(name: "WidgetHelpers", package: "widget-helpers"),
+    .product(name: "WidgetProtocol", package: "widget-protocol"),
   ]),
 ])
