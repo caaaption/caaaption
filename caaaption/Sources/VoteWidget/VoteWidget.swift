@@ -72,11 +72,11 @@ public enum VoteWidget: WidgetProtocol {
         do {
           let result = try await snapshotClient.proposal(input.proposalId)
           let scores = result.data?.proposal?.scores?.compactMap { $0 } ?? []
-          
+
           let sortedScore = scores.sorted(by: >)
           let total = sortedScore.reduce(0, +)
           let percentages = sortedScore.map { $0 / total }
-          
+
           let entry = Entry(date: Date(), scores: scores)
           completion(entry)
         } catch {
@@ -112,7 +112,7 @@ public enum VoteWidget: WidgetProtocol {
             .bold()
             .multilineTextAlignment(.leading)
             .frame(maxWidth: .infinity)
-          
+
           Color.red
             .frame(width: 24, height: 24)
             .clipShape(Circle())
@@ -131,11 +131,11 @@ public enum VoteWidget: WidgetProtocol {
                 .background(Color.purple)
                 .clipShape(Capsule())
             }
-          
+
           Text("85%")
             .font(.title2)
             .bold()
-          
+
           Text("Yes - Approve this Plan")
             .lineLimit(1)
             .font(.caption)
