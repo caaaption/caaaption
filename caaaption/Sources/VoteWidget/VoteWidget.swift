@@ -70,10 +70,13 @@ public enum VoteWidget: WidgetProtocol {
       }
 
       Task {
-        for try await data in snapshotClient.proposal(input.proposalId) {
-          let scores = data.proposal?.scores?.compactMap { $0 } ?? []
+        do {
+          let result = try await snapshotClient.proposal(input.proposalId)
+          let scores = result.data?.proposal?.scores?.compactMap { $0 } ?? []
           let entry = Entry(date: Date(), scores: scores)
           completion(entry)
+        } catch {
+          completion(placeholder(in: context))
         }
       }
     }
