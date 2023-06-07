@@ -30,14 +30,14 @@ package.products.append(contentsOf: [
   .library(name: "OnboardFeature", targets: ["OnboardFeature"]),
   .library(name: "POAPWidgetFeature", targets: ["POAPWidgetFeature"]),
   .library(name: "GasPriceWidgetFeature", targets: ["GasPriceWidgetFeature"]),
+  .library(name: "WidgetTabFeature", targets: ["WidgetTabFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
-    "WidgetSearchFeature",
+    "WidgetTabFeature",
     "OnboardFeature",
   ]),
   .target(name: "WidgetSearchFeature", dependencies: [
-    "AccountFeature",
     "BalanceWidgetFeature",
     "VoteWidgetFeature",
     "POAPWidgetFeature",
@@ -88,6 +88,11 @@ package.targets.append(contentsOf: [
     "GasPriceWidget",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
+  .target(name: "WidgetTabFeature", dependencies: [
+    "WidgetSearchFeature",
+    "AccountFeature",
+    .product(name: "Avatar", package: "design-system"),
+  ])
 ])
 
 // GraphQL
