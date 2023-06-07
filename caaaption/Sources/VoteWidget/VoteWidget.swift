@@ -26,7 +26,6 @@ public enum VoteWidget: WidgetProtocol {
     public static var kind = "VoteWidget"
     public static var supportedFamilies: [WidgetFamily] = [
       .systemSmall,
-      .systemMedium,
     ]
   }
 
@@ -73,6 +72,11 @@ public enum VoteWidget: WidgetProtocol {
         do {
           let result = try await snapshotClient.proposal(input.proposalId)
           let scores = result.data?.proposal?.scores?.compactMap { $0 } ?? []
+          
+          let sortedScore = scores.sorted(by: >)
+          let total = sortedScore.reduce(0, +)
+          let percentages = sortedScore.map { $0 / total }
+          
           let entry = Entry(date: Date(), scores: scores)
           completion(entry)
         } catch {
@@ -101,10 +105,43 @@ public enum VoteWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      HStack(alignment: .top, spacing: 12) {
-        CircleGraf(scores: entry.scores)
-          .scaleEffect(0.35)
+      VStack(alignment: .center, spacing: 4) {
+        HStack(alignment: .top) {
+          Text("System Upgrade: Establishing A Software Company")
+            .font(.caption)
+            .bold()
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity)
+          
+          Color.red
+            .frame(width: 24, height: 24)
+            .clipShape(Circle())
+        }
+
+        VStack(spacing: 0) {
+          ScoreProgress(progress: 0.85)
+            .frame(height: 34)
+            .background(alignment: .bottom) {
+              Text("Closed")
+                .font(.caption)
+                .bold()
+                .padding(.vertical, 2)
+                .padding(.horizontal, 6)
+                .foregroundColor(.white)
+                .background(Color.purple)
+                .clipShape(Capsule())
+            }
+          
+          Text("85%")
+            .font(.title2)
+            .bold()
+          
+          Text("Yes - Approve this Plan")
+            .lineLimit(1)
+            .font(.caption)
+        }
       }
+      .padding(.all, 16)
     }
   }
 }
@@ -114,7 +151,7 @@ public enum VoteWidget: WidgetProtocol {
 
   struct WidgetViewPreviews: PreviewProvider {
     static var previews: some View {
-      WidgetPreview([.systemSmall, .systemMedium]) {
+      WidgetPreview([.systemSmall]) {
         VoteWidget.WidgetView(
           entry: VoteWidget.Entry(
             date: Date(),
