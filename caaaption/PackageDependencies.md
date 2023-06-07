@@ -27,16 +27,10 @@ graph TD;
     SnapshotModelMock-->SnapshotModel;
     SnapshotClient-->ApolloHelpers;
     SnapshotClient-->SnapshotModel;
-    BalanceWidget-->WidgetProtocol;
     BalanceWidget-->QuickNodeClient;
     BalanceWidget-->UserDefaultsClient;
-    VoteWidget-->WidgetProtocol;
     VoteWidget-->UserDefaultsClient;
     VoteWidget-->SnapshotClient;
-    GasPriceWidget-->WidgetProtocol;
     GasPriceWidget-->UserDefaultsClient;
-    POAPWidget-->WidgetProtocol;
     POAPWidget-->UserDefaultsClient;
-    SnapshotSpaceWidget-->WidgetProtocol;
-    MirrorWidget-->WidgetProtocol;
 ```
