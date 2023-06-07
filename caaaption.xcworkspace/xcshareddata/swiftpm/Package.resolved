@@ -145,6 +145,15 @@
       }
     },
     {
+      "identity" : "swiftui-helpers",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/caaaption/swiftui-helpers",
+      "state" : {
+        "revision" : "53d112693cf5f75e2b60bd630b127cfb4424efa0",
+        "version" : "0.1.0"
+      }
+    },
+    {
       "identity" : "swiftui-navigation",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swiftui-navigation",
