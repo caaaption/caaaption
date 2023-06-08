@@ -89,11 +89,11 @@ public enum VoteWidget: WidgetProtocol {
           else {
             return completion(placeholder(in: context))
           }
-          
+
           let sortedScore = scores.sorted(by: >)
           let total = sortedScore.reduce(0, +)
           let percentages = sortedScore.map { $0 / total }
-          
+
           let entry = Entry(
             date: Date(),
             title: proposal.title,
@@ -134,7 +134,7 @@ public enum VoteWidget: WidgetProtocol {
             .font(.caption2)
             .multilineTextAlignment(.leading)
             .frame(maxWidth: .infinity)
-          
+
           Color.red
             .frame(width: 24, height: 24)
             .clipShape(Circle())
@@ -153,11 +153,11 @@ public enum VoteWidget: WidgetProtocol {
                 .background(Color.purple)
                 .clipShape(Capsule())
             }
-          
+
           Text(String(format: "%.2f%%", entry.score * 100))
             .font(.title2)
             .bold()
-          
+
           Text(entry.choice)
             .lineLimit(1)
             .font(.caption2)
