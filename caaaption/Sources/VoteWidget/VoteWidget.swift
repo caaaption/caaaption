@@ -39,11 +39,17 @@ public enum VoteWidget: WidgetProtocol {
 
   public struct Entry: TimelineEntry, Equatable {
     public let date: Date
-    public let scores: [Double]
+    public let title: String
+    public let score: Double
+    public let status: String
+    public let choice: String
 
-    public init(date: Date, scores: [Double]) {
+    public init(date: Date, title: String, score: Double, status: String, choice: String) {
       self.date = date
-      self.scores = scores
+      self.title = title
+      self.score = score
+      self.status = status
+      self.choice = choice
     }
   }
 
@@ -54,7 +60,13 @@ public enum VoteWidget: WidgetProtocol {
     public func placeholder(
       in context: Context
     ) -> Entry {
-      Entry(date: Date(), scores: [1, 1])
+      Entry(
+        date: Date(),
+        title: "System Upgrade: Establishing A Software Company",
+        score: 0.8599,
+        status: "Closed",
+        choice: "Yes - Approve this Plan"
+      )
     }
 
     public func getSnapshot(
@@ -71,13 +83,24 @@ public enum VoteWidget: WidgetProtocol {
       Task {
         do {
           let result = try await snapshotClient.proposal(input.proposalId)
-          let scores = result.data?.proposal?.scores?.compactMap { $0 } ?? []
+          guard
+            let proposal = result.data?.proposal,
+            let scores = proposal.scores?.compactMap({ $0 })
+          else {
+            return completion(placeholder(in: context))
+          }
           
           let sortedScore = scores.sorted(by: >)
           let total = sortedScore.reduce(0, +)
           let percentages = sortedScore.map { $0 / total }
           
-          let entry = Entry(date: Date(), scores: scores)
+          let entry = Entry(
+            date: Date(),
+            title: proposal.title,
+            score: percentages.first ?? 0.0,
+            status: "Closed",
+            choice: "Yes - Approve this Plan"
+          )
           completion(entry)
         } catch {
           completion(placeholder(in: context))
@@ -107,9 +130,8 @@ public enum VoteWidget: WidgetProtocol {
     public var body: some View {
       VStack(alignment: .center, spacing: 4) {
         HStack(alignment: .top) {
-          Text("System Upgrade: Establishing A Software Company")
-            .font(.caption)
-            .bold()
+          Text(entry.title)
+            .font(.caption2)
             .multilineTextAlignment(.leading)
             .frame(maxWidth: .infinity)
           
@@ -119,10 +141,10 @@ public enum VoteWidget: WidgetProtocol {
         }
 
         VStack(spacing: 0) {
-          ScoreProgress(progress: 0.85)
+          ScoreProgress(progress: entry.score)
             .frame(height: 34)
             .background(alignment: .bottom) {
-              Text("Closed")
+              Text(entry.status)
                 .font(.caption)
                 .bold()
                 .padding(.vertical, 2)
@@ -132,13 +154,13 @@ public enum VoteWidget: WidgetProtocol {
                 .clipShape(Capsule())
             }
           
-          Text("85%")
+          Text(String(format: "%.2f%%", entry.score * 100))
             .font(.title2)
             .bold()
           
-          Text("Yes - Approve this Plan")
+          Text(entry.choice)
             .lineLimit(1)
-            .font(.caption)
+            .font(.caption2)
         }
       }
       .padding(.all, 16)
@@ -155,7 +177,10 @@ public enum VoteWidget: WidgetProtocol {
         VoteWidget.WidgetView(
           entry: VoteWidget.Entry(
             date: Date(),
-            scores: [1, 1]
+            title: "System Upgrade: Establishing A Software Company",
+            score: 0.8599,
+            status: "Closed",
+            choice: "Yes - Approve this Plan"
           )
         )
       }
