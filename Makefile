@@ -26,7 +26,7 @@ secrets:
 
 dgraph:
 	@swift build -c release --package-path ./BuildTools/DependenciesGraph --product dgraph
-	./BuildTools/DependenciesGraph/.build/release/dgraph ./caaaption
+	./BuildTools/DependenciesGraph/.build/release/dgraph ./Package
 
 format:
 	@swift build -c release --package-path ./BuildTools/SwiftFormatTool --product swiftformat
@@ -37,7 +37,7 @@ install-template:
 	./BuildTools/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/TCA.xctemplate
 
 apollo-cli-install:
-	@swift package --package-path ./caaaption --allow-writing-to-package-directory apollo-cli-install
+	@swift package --package-path ./Package --allow-writing-to-package-directory apollo-cli-install
 
 apollo-generate:
 	./Package/apollo-ios-cli generate
