@@ -6,10 +6,11 @@ public struct MyPOAPReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    public var rows: IdentifiedArrayOf<POAPClient.Scan> = []
-    var isActivityIndicatorVisible = false
     @BindingState var nameOrAddress = ""
+    var rows: IdentifiedArrayOf<POAPClient.Scan> = []
+    var isActivityIndicatorVisible = false
     var address = ""
+    var errorMessage = ""
 
     public init() {}
   }
@@ -22,14 +23,18 @@ public struct MyPOAPReducer: ReducerProtocol {
   }
 
   @Dependency(\.poapClient) var poapClient
+  @Dependency(\.date.now) var now
 
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()
     Reduce { state, action in
       switch action {
       case .onTask:
-        let address = "0x4F724516242829DC5Bc6119f666b18102437De53"
-        return .task {
+        state.address = "0x4F724516242829DC5Bc6119f666b18102437De53"
+        if state.address.prefix(2) != "0x" {
+          return .none
+        }
+        return .task { [address = state.address] in
           await .scanResponse(
             TaskResult {
               try await self.poapClient.scan(address)
@@ -87,6 +92,10 @@ public struct MyPOAPView: View {
             }
           }
           .disabled(viewStore.isActivityIndicatorVisible)
+        } footer: {
+          Text(viewStore.errorMessage)
+            .foregroundColor(Color.red)
+            .disabled(viewStore.errorMessage.isEmpty)
         }
         
         Section {
