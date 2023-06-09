@@ -11,9 +11,11 @@ public struct BalanceWidget: WidgetProtocol {
     public init() {}
 
     public var body: some WidgetConfiguration {
-      StaticConfiguration(kind: kind, provider: Provider()) { entry in
-        BalanceWidget.WidgetView(entry: entry)
-      }
+      StaticConfiguration(
+        kind: kind,
+        provider: Provider(),
+        content: BalanceWidget.WidgetView.init(entry:)
+      )
       .configurationDisplayName(Constant.displayName)
       .description(Constant.description)
       .supportedFamilies(Constant.supportedFamilies)
