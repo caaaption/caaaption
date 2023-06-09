@@ -1,9 +1,9 @@
-import SwiftUI
+import Dependencies
 import Foundation
+import POAPClient
+import SwiftUI
 import WidgetKit
 import WidgetProtocol
-import Dependencies
-import POAPClient
 
 public struct POAPWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
@@ -136,7 +136,7 @@ public struct POAPWidget: WidgetProtocol {
               "https://assets.poap.xyz/i-met-kazushifukamieth-in-2023-2023-logo-1684503849953.png",
               "https://assets.poap.xyz/31cb94a2-0e1f-4fd3-8722-dbd48e95e2f8.png",
               "https://assets.poap.xyz/b86e7001-2d8c-4bd5-8497-43e6497bb07e.png",
-              "https://assets.poap.xyz/ethglobal-tokyo-private-after-party-fwbxone-2023-logo-1681541518682.png"
+              "https://assets.poap.xyz/ethglobal-tokyo-private-after-party-fwbxone-2023-logo-1681541518682.png",
             ].compactMap(URL.init(string:)).compactMap { try? Data(contentsOf: $0) }
           )
         )
