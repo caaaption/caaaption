@@ -9,13 +9,13 @@ public struct GasPriceReducer: ReducerProtocol {
   }
 
   public enum Action: Equatable {
-    case task
+    case onTask
   }
 
   public var body: some ReducerProtocol<State, Action> {
     Reduce { _, action in
       switch action {
-      case .task:
+      case .onTask:
         return EffectTask.none
       }
     }
@@ -36,7 +36,7 @@ public struct GasPriceView: View {
       }
       .navigationTitle("GasPrice")
       .navigationBarTitleDisplayMode(.inline)
-      .task { await viewStore.send(.task).finish() }
+      .task { await viewStore.send(.onTask).finish() }
     }
   }
 }

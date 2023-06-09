@@ -12,7 +12,7 @@ public struct MyPOAPReducer: ReducerProtocol {
   }
 
   public enum Action: Equatable {
-    case task
+    case onTask
     case scanResponse(TaskResult<[POAPClient.Scan]>)
   }
 
@@ -21,7 +21,7 @@ public struct MyPOAPReducer: ReducerProtocol {
   public var body: some ReducerProtocol<State, Action> {
     Reduce { state, action in
       switch action {
-      case .task:
+      case .onTask:
         let address = "0x4F724516242829DC5Bc6119f666b18102437De53"
         return EffectTask.task {
           await .scanResponse(
@@ -54,7 +54,7 @@ public struct MyPOAPView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       ScrollView {
         LazyVGrid(
-          columns: [GridItem(), GridItem()],
+          columns: Array(repeating: GridItem(), count: 4),
           alignment: .center,
           spacing: 12
         ) {
@@ -75,7 +75,7 @@ public struct MyPOAPView: View {
       }
       .navigationTitle("MyPOAP")
       .navigationBarTitleDisplayMode(.inline)
-      .task { await viewStore.send(.task).finish() }
+      .task { await viewStore.send(.onTask).finish() }
     }
   }
 }
