@@ -49,11 +49,11 @@ public struct MyPOAPReducer: ReducerProtocol {
       case let .scanResponse(.failure(error)):
         print(error)
         return .none
-        
+
       case .searchButtonTapped:
         state.isActivityIndicatorVisible = true
         return .none
-        
+
       case .binding:
         return .none
       }
@@ -97,7 +97,7 @@ public struct MyPOAPView: View {
             .foregroundColor(Color.red)
             .disabled(viewStore.errorMessage.isEmpty)
         }
-        
+
         Section {
           LazyVGrid(
             columns: Array(repeating: GridItem(), count: 4),
