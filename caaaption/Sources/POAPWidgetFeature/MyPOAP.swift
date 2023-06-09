@@ -54,7 +54,7 @@ public struct MyPOAPView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       ScrollView {
         LazyVGrid(
-          columns: [GridItem(), GridItem()],
+          columns: Array(repeating: GridItem(), count: 4),
           alignment: .center,
           spacing: 12
         ) {
