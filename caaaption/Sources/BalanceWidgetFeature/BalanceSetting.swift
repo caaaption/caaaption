@@ -108,7 +108,7 @@ public struct BalanceSettingView: View {
           }
           .frame(height: 50, alignment: .center)
           .frame(maxWidth: CGFloat.infinity)
-          .background(Color.blue)
+          .background(Color.accentColor)
           .clipShape(Capsule())
         }
       }
