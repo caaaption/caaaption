@@ -15,7 +15,7 @@ public struct ContributorReducer: ReducerProtocol {
   }
 
   public enum Action: Equatable {
-    case task
+    case onTask
     case refreshable
     case contributorsResponse(TaskResult<[GitHubClient.Contributor]>)
     case tappendContributor(Int)
@@ -27,7 +27,7 @@ public struct ContributorReducer: ReducerProtocol {
   public var body: some ReducerProtocol<State, Action> {
     Reduce { state, action in
       switch action {
-      case .task:
+      case .onTask:
         return EffectTask.task {
           await .contributorsResponse(
             TaskResult {
@@ -38,7 +38,7 @@ public struct ContributorReducer: ReducerProtocol {
 
       case .refreshable:
         return EffectTask.run { send in
-          await send(.task)
+          await send(.onTask)
         }
 
       case let .contributorsResponse(.success(contributors)):
@@ -92,7 +92,7 @@ public struct ContributorView: View {
         }
       }
       .navigationTitle("Contributors")
-      .task { await viewStore.send(.task).finish() }
+      .task { await viewStore.send(.onTask).finish() }
       .refreshable { await viewStore.send(.refreshable).finish() }
     }
   }

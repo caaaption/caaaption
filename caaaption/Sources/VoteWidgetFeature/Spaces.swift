@@ -18,7 +18,7 @@ public struct SpacesReducer: ReducerProtocol {
   }
 
   public enum Action: Equatable {
-    case task
+    case onTask
     case responseSpace(TaskResult<SnapshotModel.SpacesQuery.Data>)
     case dismiss
     case tappedSpace(Space)
@@ -33,7 +33,7 @@ public struct SpacesReducer: ReducerProtocol {
   public var body: some ReducerProtocol<State, Action> {
     Reduce { state, action in
       switch action {
-      case .task:
+      case .onTask:
         enum CancelID {}
         return EffectTask.run { send in
           for try await data in self.requestSpaces() {
@@ -126,7 +126,7 @@ public struct SpacesView: View {
       }
       .navigationTitle("Spaces")
       .navigationBarTitleDisplayMode(.inline)
-      .task { await viewStore.send(.task).finish() }
+      .task { await viewStore.send(.onTask).finish() }
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
