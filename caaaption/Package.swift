@@ -217,6 +217,7 @@ package.targets.append(contentsOf: [
     "UserDefaultsClient",
   ]),
   .target(name: "POAPWidget", dependencies: [
+    "POAPClient",
     "WidgetHelpers",
     "WidgetProtocol",
     "UserDefaultsClient",
