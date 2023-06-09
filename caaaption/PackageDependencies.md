@@ -44,6 +44,7 @@ graph TD;
     GasPriceWidget-->WidgetHelpers;
     GasPriceWidget-->WidgetProtocol;
     GasPriceWidget-->UserDefaultsClient;
+    POAPWidget-->POAPClient;
     POAPWidget-->WidgetHelpers;
     POAPWidget-->WidgetProtocol;
     POAPWidget-->UserDefaultsClient;
