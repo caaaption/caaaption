@@ -59,7 +59,7 @@ This repo contains both the client code for running the entire [caaaption](https
 
 It uses [swift-dependencies-graph](https://github.com/Ryu0118/swift-dependencies-graph) to output module dependencies in a Mermaid diagram.
 
-[PackageDependencies.md](./caaaption/PackageDependencies.md)
+[PackageDependencies.md](./Package/PackageDependencies.md)
 
 # License
 
