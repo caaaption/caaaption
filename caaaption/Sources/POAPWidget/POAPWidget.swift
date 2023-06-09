@@ -11,9 +11,11 @@ public struct POAPWidget: WidgetProtocol {
     public init() {}
 
     public var body: some WidgetConfiguration {
-      StaticConfiguration(kind: kind, provider: Provider()) { entry in
-        POAPWidget.WidgetView(entry: entry)
-      }
+      StaticConfiguration(
+        kind: kind,
+        provider: Provider(),
+        content: POAPWidget.WidgetView.init(entry:)
+      )
       .configurationDisplayName(Constant.displayName)
       .description(Constant.description)
       .supportedFamilies(Constant.supportedFamilies)
