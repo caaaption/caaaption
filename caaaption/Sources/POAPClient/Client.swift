@@ -1,11 +1,7 @@
+import Foundation
+
 public struct POAPClient {
   public var scan: @Sendable (_ address: String) async throws -> [POAPClient.Scan]
-}
-
-public extension POAPClient {
-  var apiKey: String {
-    return POAP_API_KEY
-  }
 }
 
 public extension POAPClient {
@@ -25,7 +21,7 @@ public extension POAPClient {
       public let fancyId: String
       public let name: String
       public let eventUrl: String
-      public let imageUrl: String
+      public let imageUrl: URL
       public let description: String
     }
   }

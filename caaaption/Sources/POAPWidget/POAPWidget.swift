@@ -1,6 +1,9 @@
 import SwiftUI
+import Foundation
 import WidgetKit
 import WidgetProtocol
+import Dependencies
+import POAPClient
 
 public struct POAPWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
@@ -36,27 +39,41 @@ public struct POAPWidget: WidgetProtocol {
 
   public struct Entry: TimelineEntry, Equatable {
     public let date: Date
+    public let data: [Data]
 
     public init(
-      date: Date
+      date: Date,
+      data: [Data]
     ) {
       self.date = date
+      self.data = data
     }
   }
 
   public struct Provider: TimelineProvider {
+    @Dependency(\.poapClient) var poapClient
+
     public func placeholder(
       in context: Context
     ) -> Entry {
-      Entry(date: Date())
+      Entry(date: Date(), data: [])
     }
 
     public func getSnapshot(
       in context: Context,
       completion: @escaping (Entry) -> Void
     ) {
-      let entry = Entry(date: Date())
-      completion(entry)
+      Task {
+        let address = "0x4F724516242829DC5Bc6119f666b18102437De53"
+        let response = try await poapClient.scan(address)
+        let contents = response.sorted(by: { $0.created > $1.created })
+        let imageUrls = contents.count >= 4
+          ? contents.prefix(4).map(\.event.imageUrl)
+          : contents.map(\.event.imageUrl)
+        let data = imageUrls.compactMap { try? Data(contentsOf: $0) }
+        let entry = Entry(date: Date(), data: data)
+        completion(entry)
+      }
     }
 
     public func getTimeline(
@@ -78,16 +95,30 @@ public struct POAPWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      VStack(spacing: 8) {
-        Text("POAP")
+      LazyVGrid(
+        columns: Array(repeating: GridItem(), count: 2),
+        alignment: .center,
+        spacing: 6
+      ) {
+        ForEach(entry.data, id: \.self) { data in
+          Image(uiImage: UIImage(data: data)!)
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .background(Color.red)
+            .clipShape(Circle())
+            .overlay(
+              RoundedRectangle(cornerRadius: 1000)
+                .stroke(Color.primary, lineWidth: 1)
+            )
+            .shadow(
+              color: Color("shadow", bundle: .module),
+              radius: 0,
+              x: -2,
+              y: 4
+            )
+        }
       }
-    }
-
-    var updatedAt: some View {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "HH:mm"
-      let dateString = dateFormatter.string(from: entry.date)
-      return Text("Updated at \(dateString)")
+      .padding(.all, 12)
     }
   }
 }
@@ -100,7 +131,13 @@ public struct POAPWidget: WidgetProtocol {
       WidgetPreview([.systemSmall]) {
         POAPWidget.WidgetView(
           entry: POAPWidget.Entry(
-            date: Date()
+            date: Date(),
+            data: [
+              "https://assets.poap.xyz/i-met-kazushifukamieth-in-2023-2023-logo-1684503849953.png",
+              "https://assets.poap.xyz/31cb94a2-0e1f-4fd3-8722-dbd48e95e2f8.png",
+              "https://assets.poap.xyz/b86e7001-2d8c-4bd5-8497-43e6497bb07e.png",
+              "https://assets.poap.xyz/ethglobal-tokyo-private-after-party-fwbxone-2023-logo-1681541518682.png"
+            ].compactMap(URL.init(string:)).compactMap { try? Data(contentsOf: $0) }
           )
         )
       }
