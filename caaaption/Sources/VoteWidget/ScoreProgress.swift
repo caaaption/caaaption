@@ -18,7 +18,7 @@ struct ScoreProgress: View {
           )
         }
         .stroke(
-          Color.gray,
+          Color(.secondarySystemFill),
           style: StrokeStyle(
             lineWidth: 8,
             lineCap: .round,

@@ -41,14 +41,12 @@ public enum VoteWidget: WidgetProtocol {
     public let date: Date
     public let title: String
     public let score: Double
-    public let status: String
     public let choice: String
 
-    public init(date: Date, title: String, score: Double, status: String, choice: String) {
+    public init(date: Date, title: String, score: Double, choice: String) {
       self.date = date
       self.title = title
       self.score = score
-      self.status = status
       self.choice = choice
     }
   }
@@ -64,7 +62,6 @@ public enum VoteWidget: WidgetProtocol {
         date: Date(),
         title: "System Upgrade: Establishing A Software Company",
         score: 0.8599,
-        status: "Closed",
         choice: "Yes - Approve this Plan"
       )
     }
@@ -84,22 +81,25 @@ public enum VoteWidget: WidgetProtocol {
         do {
           let result = try await snapshotClient.proposal(input.proposalId)
           guard
-            let proposal = result.data?.proposal,
-            let scores = proposal.scores?.compactMap({ $0 })
+            let proposal = result.data?.proposal
           else {
             return completion(placeholder(in: context))
           }
-
-          let sortedScore = scores.sorted(by: >)
-          let total = sortedScore.reduce(0, +)
-          let percentages = sortedScore.map { $0 / total }
+          
+          let scores = (proposal.scores ?? []).map { $0 ?? 0.0 }
+          let choices = proposal.choices.map { $0 ?? "" }
+          let values = Array(zip(scores, choices))
+          let totalScore = scores.reduce(0, +)
+          let sorted = values.sorted(by: { $0.0 > $1.0 })
+          let percentages: [(Double, String)] = sorted.map { (score, choice) in
+            return (score / totalScore, choice)
+          }
 
           let entry = Entry(
             date: Date(),
             title: proposal.title,
-            score: percentages.first ?? 0.0,
-            status: "Closed",
-            choice: "Yes - Approve this Plan"
+            score: percentages.first?.0 ?? 0.0,
+            choice: percentages.first?.1 ?? ""
           )
           completion(entry)
         } catch {
@@ -141,22 +141,16 @@ public enum VoteWidget: WidgetProtocol {
         }
 
         VStack(spacing: 0) {
-          ScoreProgress(progress: entry.score)
-            .frame(height: 34)
-            .background(alignment: .bottom) {
-              Text(entry.status)
-                .font(.caption)
-                .bold()
-                .padding(.vertical, 2)
-                .padding(.horizontal, 6)
-                .foregroundColor(.white)
-                .background(Color.purple)
-                .clipShape(Capsule())
-            }
-
-          Text(String(format: "%.2f%%", entry.score * 100))
-            .font(.title2)
-            .bold()
+          ZStack(alignment: .bottom) {
+            ScoreProgress(progress: entry.score)
+              .frame(height: 34)
+              .padding(.bottom, 50 - 34)
+            
+            Text(String(format: "%.2f%%", entry.score * 100))
+              .font(.title2)
+              .bold()
+          }
+          .frame(height: 50)
 
           Text(entry.choice)
             .lineLimit(1)
@@ -179,7 +173,6 @@ public enum VoteWidget: WidgetProtocol {
             date: Date(),
             title: "System Upgrade: Establishing A Software Company",
             score: 0.8599,
-            status: "Closed",
             choice: "Yes - Approve this Plan"
           )
         )
