@@ -41,14 +41,12 @@ public enum VoteWidget: WidgetProtocol {
     public let date: Date
     public let title: String
     public let score: Double
-    public let status: String
     public let choice: String
 
-    public init(date: Date, title: String, score: Double, status: String, choice: String) {
+    public init(date: Date, title: String, score: Double, choice: String) {
       self.date = date
       self.title = title
       self.score = score
-      self.status = status
       self.choice = choice
     }
   }
@@ -64,7 +62,6 @@ public enum VoteWidget: WidgetProtocol {
         date: Date(),
         title: "System Upgrade: Establishing A Software Company",
         score: 0.8599,
-        status: "Closed",
         choice: "Yes - Approve this Plan"
       )
     }
@@ -98,7 +95,6 @@ public enum VoteWidget: WidgetProtocol {
             date: Date(),
             title: proposal.title,
             score: percentages.first ?? 0.0,
-            status: "Closed",
             choice: "Yes - Approve this Plan"
           )
           completion(entry)
@@ -141,22 +137,16 @@ public enum VoteWidget: WidgetProtocol {
         }
 
         VStack(spacing: 0) {
-          ScoreProgress(progress: entry.score)
-            .frame(height: 34)
-            .background(alignment: .bottom) {
-              Text(entry.status)
-                .font(.caption)
-                .bold()
-                .padding(.vertical, 2)
-                .padding(.horizontal, 6)
-                .foregroundColor(.white)
-                .background(Color.purple)
-                .clipShape(Capsule())
-            }
-
-          Text(String(format: "%.2f%%", entry.score * 100))
-            .font(.title2)
-            .bold()
+          ZStack(alignment: .bottom) {
+            ScoreProgress(progress: entry.score)
+              .frame(height: 34)
+              .padding(.bottom, 50 - 34)
+            
+            Text(String(format: "%.2f%%", entry.score * 100))
+              .font(.title2)
+              .bold()
+          }
+          .frame(height: 50)
 
           Text(entry.choice)
             .lineLimit(1)
@@ -179,7 +169,6 @@ public enum VoteWidget: WidgetProtocol {
             date: Date(),
             title: "System Upgrade: Establishing A Software Company",
             score: 0.8599,
-            status: "Closed",
             choice: "Yes - Approve this Plan"
           )
         )
