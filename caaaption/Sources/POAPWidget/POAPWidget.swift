@@ -4,6 +4,7 @@ import POAPClient
 import SwiftUI
 import WidgetKit
 import WidgetProtocol
+import UserDefaultsClient
 
 public struct POAPWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
@@ -54,6 +55,7 @@ public struct POAPWidget: WidgetProtocol {
 
   public struct Provider: TimelineProvider {
     @Dependency(\.poapClient) var poapClient
+    @Dependency(\.userDefaults) var userDefaults
 
     public func placeholder(
       in context: Context
@@ -66,8 +68,13 @@ public struct POAPWidget: WidgetProtocol {
       completion: @escaping (Entry) -> Void
     ) {
       Task {
-        let address = "0x4F724516242829DC5Bc6119f666b18102437De53"
-        let response = try await poapClient.scan(address)
+        guard
+          let input = try userDefaults.codableForKey(Input.self, forKey: Constant.kind)
+        else {
+          completion(placeholder(in: context))
+          return
+        }
+        let response = try await poapClient.scan(input.address)
         let contents = response.sorted(by: { $0.created > $1.created })
         let imageUrls = contents.count >= 4
           ? contents.prefix(4).map(\.event.imageUrl)
