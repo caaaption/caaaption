@@ -103,21 +103,24 @@ public struct POAPWidget: WidgetProtocol {
         spacing: 6
       ) {
         ForEach(entry.data, id: \.self) { data in
-          Image(uiImage: UIImage(data: data)!)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .background(Color.red)
-            .clipShape(Circle())
-            .overlay(
-              RoundedRectangle(cornerRadius: 1000)
-                .stroke(Color.primary, lineWidth: 1)
-            )
-            .shadow(
-              color: Color("shadow", bundle: .module),
-              radius: 0,
-              x: -2,
-              y: 4
-            )
+          Image(
+            uiImage: UIImage(data: data)!
+              .resized(toWidth: 64 * 3)!
+          )
+          .resizable()
+          .scaledToFill()
+          .background(Color.red)
+          .clipShape(Circle())
+          .overlay(
+            RoundedRectangle(cornerRadius: 1000)
+              .stroke(Color.primary, lineWidth: 1)
+          )
+          .shadow(
+            color: Color("shadow", bundle: .module),
+            radius: 0,
+            x: -2,
+            y: 4
+          )
         }
       }
       .padding(.all, 12)
@@ -146,3 +149,14 @@ public struct POAPWidget: WidgetProtocol {
     }
   }
 #endif
+
+extension UIImage {
+  func resized(toWidth width: CGFloat, isOpaque: Bool = true) -> UIImage? {
+    let canvas = CGSize(width: width, height: CGFloat(ceil(width / size.width * size.height)))
+    let format = imageRendererFormat
+    format.opaque = isOpaque
+    return UIGraphicsImageRenderer(size: canvas, format: format).image {
+      _ in draw(in: CGRect(origin: .zero, size: canvas))
+    }
+  }
+}
