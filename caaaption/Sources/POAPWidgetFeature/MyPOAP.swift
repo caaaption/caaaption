@@ -72,7 +72,7 @@ public struct MyPOAPView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         Section {
-          TextField("ENS or address", text: viewStore.binding(\.$address))
+          TextField("Address", text: viewStore.binding(\.$address))
 
           Button {
             _ = UIApplication.shared.sendAction(
