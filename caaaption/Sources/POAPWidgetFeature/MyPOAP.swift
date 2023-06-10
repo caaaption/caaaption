@@ -97,9 +97,6 @@ public struct MyPOAPView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         Section {
-          Text(POAPClient.apiKey)
-        }
-        Section {
           TextField("Address", text: viewStore.binding(\.$address))
 
           Button {
@@ -119,7 +116,9 @@ public struct MyPOAPView: View {
               }
             }
           }
-          .disabled(viewStore.isActivityIndicatorVisible)
+          .disabled(
+            viewStore.isActivityIndicatorVisible || viewStore.address.isEmpty
+          )
         } footer: {
           if let message = viewStore.errorMessage {
             Text(message)
