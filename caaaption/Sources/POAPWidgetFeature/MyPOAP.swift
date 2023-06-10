@@ -97,9 +97,6 @@ public struct MyPOAPView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         Section {
-          Text(POAPClient.apiKey)
-        }
-        Section {
           TextField("Address", text: viewStore.binding(\.$address))
 
           Button {
