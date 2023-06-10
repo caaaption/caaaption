@@ -32,9 +32,5 @@ struct WidgetExtensionBundle: WidgetBundle {
     } operation: {
       POAPWidget.Entrypoint()
     }
-
-    SnapshotSpaceWidget.Entrypoint()
-
-    MirrorWidget.Entrypoint()
   }
 }
