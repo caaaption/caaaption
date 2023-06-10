@@ -9,7 +9,6 @@ public struct MyPOAPReducer: ReducerProtocol {
     @BindingState var address = ""
     var rows: IdentifiedArrayOf<POAPClient.Scan> = []
     var isActivityIndicatorVisible = false
-    var address = ""
     var errorMessage = ""
 
     public init() {}
