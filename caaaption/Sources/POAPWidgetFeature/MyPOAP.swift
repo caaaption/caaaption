@@ -6,7 +6,7 @@ public struct MyPOAPReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    @BindingState var nameOrAddress = ""
+    @BindingState var address = ""
     var rows: IdentifiedArrayOf<POAPClient.Scan> = []
     var isActivityIndicatorVisible = false
     var address = ""
@@ -72,7 +72,7 @@ public struct MyPOAPView: View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
         Section {
-          TextField("ENS or address", text: viewStore.binding(\.$nameOrAddress))
+          TextField("ENS or address", text: viewStore.binding(\.$address))
 
           Button {
             _ = UIApplication.shared.sendAction(
