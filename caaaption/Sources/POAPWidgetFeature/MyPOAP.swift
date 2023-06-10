@@ -116,7 +116,9 @@ public struct MyPOAPView: View {
               }
             }
           }
-          .disabled(viewStore.isActivityIndicatorVisible)
+          .disabled(
+            viewStore.isActivityIndicatorVisible || viewStore.address.isEmpty
+          )
         } footer: {
           if let message = viewStore.errorMessage {
             Text(message)
