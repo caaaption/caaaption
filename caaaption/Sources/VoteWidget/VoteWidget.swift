@@ -134,10 +134,6 @@ public enum VoteWidget: WidgetProtocol {
             .font(.caption2)
             .multilineTextAlignment(.leading)
             .frame(maxWidth: .infinity)
-
-          Color.red
-            .frame(width: 24, height: 24)
-            .clipShape(Circle())
         }
 
         VStack(spacing: 0) {
