@@ -23,8 +23,8 @@ public extension Mock where O == Query {
     spaces: [Mock<Space>?]? = nil
   ) {
     self.init()
-    self.proposal = proposal
-    self.proposals = proposals
-    self.spaces = spaces
+    _set(proposal, for: \.proposal)
+    _set(proposals, for: \.proposals)
+    _set(spaces, for: \.spaces)
   }
 }

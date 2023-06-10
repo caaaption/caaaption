@@ -23,8 +23,8 @@ public extension Mock where O == Space {
     name: String? = nil
   ) {
     self.init()
-    self.followersCount = followersCount
-    self.id = id
-    self.name = name
+    _set(followersCount, for: \.followersCount)
+    _set(id, for: \.id)
+    _set(name, for: \.name)
   }
 }

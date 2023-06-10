@@ -3,7 +3,7 @@
 
 import ApolloAPI
 
-public extension SnapshotModel.Objects {
+extension SnapshotModel.Objects {
   static let Query = Object(
     typename: "Query",
     implementedInterfaces: []
