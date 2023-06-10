@@ -30,9 +30,6 @@ public struct MyPOAPReducer: ReducerProtocol {
       switch action {
       case .onTask:
         state.address = "0x4F724516242829DC5Bc6119f666b18102437De53"
-        if state.address.prefix(2) != "0x" {
-          return .none
-        }
         return .task { [address = state.address] in
           await .scanResponse(
             TaskResult {
