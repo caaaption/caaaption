@@ -81,21 +81,25 @@ public enum VoteWidget: WidgetProtocol {
         do {
           let result = try await snapshotClient.proposal(input.proposalId)
           guard
-            let proposal = result.data?.proposal,
-            let scores = proposal.scores?.compactMap({ $0 })
+            let proposal = result.data?.proposal
           else {
             return completion(placeholder(in: context))
           }
-
-          let sortedScore = scores.sorted(by: >)
-          let total = sortedScore.reduce(0, +)
-          let percentages = sortedScore.map { $0 / total }
+          
+          let scores = (proposal.scores ?? []).map { $0 ?? 0.0 }
+          let choices = proposal.choices.map { $0 ?? "" }
+          let values = Array(zip(scores, choices))
+          let totalScore = scores.reduce(0, +)
+          let sorted = values.sorted(by: { $0.0 > $1.0 })
+          let percentages: [(Double, String)] = sorted.map { (score, choice) in
+            return (score / totalScore, choice)
+          }
 
           let entry = Entry(
             date: Date(),
             title: proposal.title,
-            score: percentages.first ?? 0.0,
-            choice: "Yes - Approve this Plan"
+            score: percentages.first?.0 ?? 0.0,
+            choice: percentages.first?.1 ?? ""
           )
           completion(entry)
         } catch {
