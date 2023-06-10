@@ -105,9 +105,6 @@ public struct BalanceWidget: WidgetProtocol {
 
     public var body: some View {
       VStack(alignment: .leading, spacing: 4) {
-        Color.red
-          .frame(width: 32, height: 32)
-          .clipShape(Circle())
         Text(entry.address)
           .lineLimit(1)
           .frame(maxHeight: .infinity, alignment: .top)
