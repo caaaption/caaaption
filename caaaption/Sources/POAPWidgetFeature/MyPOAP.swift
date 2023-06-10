@@ -1,6 +1,9 @@
 import ComposableArchitecture
 import POAPClient
 import SwiftUI
+import UserDefaultsClient
+import POAPWidget
+import WidgetClient
 
 public struct MyPOAPReducer: ReducerProtocol {
   public init() {}
@@ -9,27 +12,50 @@ public struct MyPOAPReducer: ReducerProtocol {
     @BindingState var address = ""
     var rows: IdentifiedArrayOf<POAPClient.Scan> = []
     var isActivityIndicatorVisible = false
-    var errorMessage = ""
+    var errorMessage: String?
 
     public init() {}
   }
 
   public enum Action: Equatable, BindableAction {
     case onTask
-    case scanResponse(TaskResult<[POAPClient.Scan]>)
     case searchButtonTapped
+    case requestMyPOAP
+    case scanResponse(TaskResult<[POAPClient.Scan]>)
     case binding(BindingAction<State>)
   }
 
   @Dependency(\.poapClient) var poapClient
   @Dependency(\.date.now) var now
+  @Dependency(\.userDefaults) var userDefaults
+  @Dependency(\.dismiss) var dismiss
+  @Dependency(\.widgetClient) var widgetClient
 
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()
     Reduce { state, action in
       switch action {
       case .onTask:
-        state.address = "0x4F724516242829DC5Bc6119f666b18102437De53"
+        let input = try? userDefaults.codableForKey(POAPWidget.Input.self, forKey: POAPWidget.Constant.kind)
+        state.address = input?.address ?? ""
+        if state.address.isEmpty {
+          return .none
+        }
+
+        return .run { send in
+          await send(.requestMyPOAP)
+        }
+        
+      case .searchButtonTapped:
+        return .run { send in
+          await send(.requestMyPOAP)
+        }
+        
+      case .requestMyPOAP:
+        state.isActivityIndicatorVisible = true
+        state.errorMessage = nil
+        state.rows = []
+        
         return .task { [address = state.address] in
           await .scanResponse(
             TaskResult {
@@ -39,15 +65,18 @@ public struct MyPOAPReducer: ReducerProtocol {
         }
 
       case let .scanResponse(.success(rows)):
+        state.isActivityIndicatorVisible = false
         state.rows = IdentifiedArray(uniqueElements: rows)
-        return .none
+
+        return .run { [address = state.address] _ in
+          let input = POAPWidget.Input(address: address)
+          await userDefaults.setCodable(input, forKey: POAPWidget.Constant.kind)
+          widgetClient.reloadAllTimelines()
+        }
 
       case let .scanResponse(.failure(error)):
-        print(error)
-        return .none
-
-      case .searchButtonTapped:
-        state.isActivityIndicatorVisible = true
+        state.isActivityIndicatorVisible = false
+        state.errorMessage = error.localizedDescription
         return .none
 
       case .binding:
@@ -89,25 +118,28 @@ public struct MyPOAPView: View {
           }
           .disabled(viewStore.isActivityIndicatorVisible)
         } footer: {
-          Text(viewStore.errorMessage)
-            .foregroundColor(Color.red)
-            .disabled(viewStore.errorMessage.isEmpty)
+          if let message = viewStore.errorMessage {
+            Text(message)
+              .foregroundColor(Color.red)
+          }
         }
-
-        Section {
-          LazyVGrid(
-            columns: Array(repeating: GridItem(), count: 4),
-            alignment: .center,
-            spacing: 12
-          ) {
-            ForEach(viewStore.rows) { scan in
-              AsyncImage(url: scan.event.imageUrl) { image in
-                image
-                  .resizable()
-                  .aspectRatio(contentMode: .fill)
-                  .clipShape(Circle())
-              } placeholder: {
-                ProgressView()
+        
+        if !viewStore.rows.isEmpty {
+          Section {
+            LazyVGrid(
+              columns: Array(repeating: GridItem(), count: 4),
+              alignment: .center,
+              spacing: 12
+            ) {
+              ForEach(viewStore.rows) { scan in
+                AsyncImage(url: scan.event.imageUrl) { image in
+                  image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(Circle())
+                } placeholder: {
+                  ProgressView()
+                }
               }
             }
           }

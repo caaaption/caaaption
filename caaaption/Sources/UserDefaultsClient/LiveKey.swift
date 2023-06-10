@@ -3,11 +3,8 @@ import Foundation
 
 extension UserDefaultsClient: DependencyKey {
   public static let liveValue: Self = {
-    guard
-      let suiteName = Bundle.main.infoDictionary?["AppGroup"] as? String
-    else {
-      fatalError("")
-    }
+    let appGroup = Bundle.main.infoDictionary?["AppGroup"] as? String
+    let suiteName = appGroup ?? "group.com.caaaption-staging"
     print("suiteName : \(suiteName)")
     return Self.live(suiteName: suiteName)
   }()
