@@ -22,6 +22,7 @@ public struct MyPOAPReducer: ReducerProtocol {
     case searchButtonTapped
     case requestMyPOAP
     case scanResponse(TaskResult<[POAPClient.Scan]>)
+    case dismissButtonTapped
     case binding(BindingAction<State>)
   }
 
@@ -78,6 +79,11 @@ public struct MyPOAPReducer: ReducerProtocol {
         state.isActivityIndicatorVisible = false
         state.errorMessage = error.localizedDescription
         return .none
+        
+      case .dismissButtonTapped:
+        return .run { _ in
+          await self.dismiss()
+        }
 
       case .binding:
         return .none
@@ -150,6 +156,18 @@ public struct MyPOAPView: View {
       .navigationTitle("MyPOAP")
       .navigationBarTitleDisplayMode(.inline)
       .task { await viewStore.send(.onTask).finish() }
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            viewStore.send(.dismissButtonTapped)
+          } label: {
+            Image(systemName: "xmark.circle.fill")
+              .symbolRenderingMode(.palette)
+              .foregroundStyle(.gray, .bar)
+              .font(.system(size: 30))
+          }
+        }
+      }
     }
   }
 }
