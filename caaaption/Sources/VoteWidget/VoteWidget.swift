@@ -85,14 +85,14 @@ public enum VoteWidget: WidgetProtocol {
           else {
             return completion(placeholder(in: context))
           }
-          
+
           let scores = (proposal.scores ?? []).map { $0 ?? 0.0 }
           let choices = proposal.choices.map { $0 ?? "" }
           let values = Array(zip(scores, choices))
           let totalScore = scores.reduce(0, +)
           let sorted = values.sorted(by: { $0.0 > $1.0 })
-          let percentages: [(Double, String)] = sorted.map { (score, choice) in
-            return (score / totalScore, choice)
+          let percentages: [(Double, String)] = sorted.map { score, choice in
+            (score / totalScore, choice)
           }
 
           let entry = Entry(
@@ -145,7 +145,7 @@ public enum VoteWidget: WidgetProtocol {
             ScoreProgress(progress: entry.score)
               .frame(height: 34)
               .padding(.bottom, 50 - 34)
-            
+
             Text(String(format: "%.2f%%", entry.score * 100))
               .font(.title2)
               .bold()
