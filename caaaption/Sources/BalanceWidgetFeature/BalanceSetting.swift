@@ -16,7 +16,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
   }
 
   public enum Action: Equatable, BindableAction {
-    case task
+    case onTask
     case addWidget
     case dismiss
     case responseBalance(TaskResult<Decimal>)
@@ -31,7 +31,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
     BindingReducer()
     Reduce { state, action in
       switch action {
-      case .task:
+      case .onTask:
         let input = try? userDefaults.codableForKey(BalanceWidget.Input.self, forKey: BalanceWidget.Constant.kind)
         state.address = input?.address ?? ""
 
@@ -52,7 +52,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
         }
 
       case .dismiss:
-        return EffectTask.fireAndForget {
+        return EffectTask.run { _ in
           await self.dismiss()
         }
 
@@ -108,11 +108,11 @@ public struct BalanceSettingView: View {
           }
           .frame(height: 50, alignment: .center)
           .frame(maxWidth: CGFloat.infinity)
-          .background(Color.blue)
+          .background(Color.accentColor)
           .clipShape(Capsule())
         }
       }
-      .task { await viewStore.send(.task).finish() }
+      .task { await viewStore.send(.onTask).finish() }
       .padding(.horizontal, 12)
       .navigationTitle("Balance Widget")
       .navigationBarTitleDisplayMode(.inline)

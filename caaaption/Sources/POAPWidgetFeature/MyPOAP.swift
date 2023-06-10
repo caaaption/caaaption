@@ -1,29 +1,62 @@
 import ComposableArchitecture
 import POAPClient
+import POAPWidget
 import SwiftUI
+import UserDefaultsClient
+import WidgetClient
 
 public struct MyPOAPReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    public var rows: IdentifiedArrayOf<POAPClient.Scan> = []
+    @BindingState var address = ""
+    var rows: IdentifiedArrayOf<POAPClient.Scan> = []
+    var isActivityIndicatorVisible = false
+    var errorMessage: String?
 
     public init() {}
   }
 
-  public enum Action: Equatable {
-    case task
+  public enum Action: Equatable, BindableAction {
+    case onTask
+    case searchButtonTapped
+    case requestMyPOAP
     case scanResponse(TaskResult<[POAPClient.Scan]>)
+    case binding(BindingAction<State>)
   }
 
   @Dependency(\.poapClient) var poapClient
+  @Dependency(\.date.now) var now
+  @Dependency(\.userDefaults) var userDefaults
+  @Dependency(\.dismiss) var dismiss
+  @Dependency(\.widgetClient) var widgetClient
 
   public var body: some ReducerProtocol<State, Action> {
+    BindingReducer()
     Reduce { state, action in
       switch action {
-      case .task:
-        let address = "0x4F724516242829DC5Bc6119f666b18102437De53"
-        return EffectTask.task {
+      case .onTask:
+        let input = try? userDefaults.codableForKey(POAPWidget.Input.self, forKey: POAPWidget.Constant.kind)
+        state.address = input?.address ?? ""
+        if state.address.isEmpty {
+          return .none
+        }
+
+        return .run { send in
+          await send(.requestMyPOAP)
+        }
+
+      case .searchButtonTapped:
+        return .run { send in
+          await send(.requestMyPOAP)
+        }
+
+      case .requestMyPOAP:
+        state.isActivityIndicatorVisible = true
+        state.errorMessage = nil
+        state.rows = []
+
+        return .task { [address = state.address] in
           await .scanResponse(
             TaskResult {
               try await self.poapClient.scan(address)
@@ -32,12 +65,22 @@ public struct MyPOAPReducer: ReducerProtocol {
         }
 
       case let .scanResponse(.success(rows)):
+        state.isActivityIndicatorVisible = false
         state.rows = IdentifiedArray(uniqueElements: rows)
-        return EffectTask.none
+
+        return .run { [address = state.address] _ in
+          let input = POAPWidget.Input(address: address)
+          await userDefaults.setCodable(input, forKey: POAPWidget.Constant.kind)
+          widgetClient.reloadAllTimelines()
+        }
 
       case let .scanResponse(.failure(error)):
-        print(error)
-        return EffectTask.none
+        state.isActivityIndicatorVisible = false
+        state.errorMessage = error.localizedDescription
+        return .none
+
+      case .binding:
+        return .none
       }
     }
   }
@@ -52,30 +95,62 @@ public struct MyPOAPView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      ScrollView {
-        LazyVGrid(
-          columns: [GridItem(), GridItem()],
-          alignment: .center,
-          spacing: 12
-        ) {
-          ForEach(viewStore.rows) { scan in
-            AsyncImage(
-              url: URL(string: scan.event.imageUrl)
-            ) { image in
-              image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .clipShape(Circle())
-            } placeholder: {
-              ProgressView()
+      List {
+        Section {
+          Text(POAPClient.apiKey)
+        }
+        Section {
+          TextField("Address", text: viewStore.binding(\.$address))
+
+          Button {
+            _ = UIApplication.shared.sendAction(
+              #selector(UIResponder.resignFirstResponder),
+              to: nil,
+              from: nil,
+              for: nil
+            )
+            viewStore.send(.searchButtonTapped)
+          } label: {
+            HStack {
+              Text("Search")
+                .frame(maxWidth: .infinity, alignment: .leading)
+              if viewStore.isActivityIndicatorVisible {
+                ProgressView()
+              }
+            }
+          }
+          .disabled(viewStore.isActivityIndicatorVisible)
+        } footer: {
+          if let message = viewStore.errorMessage {
+            Text(message)
+              .foregroundColor(Color.red)
+          }
+        }
+
+        if !viewStore.rows.isEmpty {
+          Section {
+            LazyVGrid(
+              columns: Array(repeating: GridItem(), count: 4),
+              alignment: .center,
+              spacing: 12
+            ) {
+              ForEach(viewStore.rows) { scan in
+                AsyncImage(url: scan.event.imageUrl) { image in
+                  image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipShape(Circle())
+                } placeholder: {
+                  ProgressView()
+                }
+              }
             }
           }
         }
-        .padding(.horizontal, 12)
       }
       .navigationTitle("MyPOAP")
       .navigationBarTitleDisplayMode(.inline)
-      .task { await viewStore.send(.task).finish() }
+      .task { await viewStore.send(.onTask).finish() }
     }
   }
 }

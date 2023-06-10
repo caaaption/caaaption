@@ -14,7 +14,7 @@ extension SnapshotClient: DependencyKey {
     return Self(
       proposal: { id in
         let query = SnapshotModel.ProposalQuery(id: id)
-        return apolloClient.watch(query: query)
+        return try await apolloClient.fetch(query: query)
       },
       proposals: { spaceName in
         let query = SnapshotModel.ProposalsQuery(spaceName: spaceName)

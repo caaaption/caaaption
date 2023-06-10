@@ -5,12 +5,14 @@ import POAPWidgetFeature
 struct MyApp: App {
   var body: some Scene {
     WindowGroup {
-      MyPOAPView(
-        store: .init(
-          initialState: MyPOAPReducer.State(),
-          reducer: MyPOAPReducer()._printChanges()
+      NavigationStack {
+        MyPOAPView(
+          store: .init(
+            initialState: MyPOAPReducer.State(),
+            reducer: MyPOAPReducer()._printChanges()
+          )
         )
-      )
+      }
     }
   }
 }

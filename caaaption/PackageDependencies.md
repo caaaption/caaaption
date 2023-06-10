@@ -1,8 +1,7 @@
 ```mermaid
 graph TD;
-    AppFeature-->WidgetSearchFeature;
+    AppFeature-->WidgetTabFeature;
     AppFeature-->OnboardFeature;
-    WidgetSearchFeature-->AccountFeature;
     WidgetSearchFeature-->BalanceWidgetFeature;
     WidgetSearchFeature-->VoteWidgetFeature;
     WidgetSearchFeature-->POAPWidgetFeature;
@@ -29,6 +28,8 @@ graph TD;
     GasPriceWidgetFeature-->WidgetClient;
     GasPriceWidgetFeature-->SwiftUIHelpers;
     GasPriceWidgetFeature-->GasPriceWidget;
+    WidgetTabFeature-->WidgetSearchFeature;
+    WidgetTabFeature-->AccountFeature;
     SnapshotModelMock-->SnapshotModel;
     SnapshotClient-->ApolloHelpers;
     SnapshotClient-->SnapshotModel;
@@ -43,9 +44,12 @@ graph TD;
     GasPriceWidget-->WidgetHelpers;
     GasPriceWidget-->WidgetProtocol;
     GasPriceWidget-->UserDefaultsClient;
+    POAPWidget-->POAPClient;
     POAPWidget-->WidgetHelpers;
     POAPWidget-->WidgetProtocol;
     POAPWidget-->UserDefaultsClient;
     SnapshotSpaceWidget-->WidgetHelpers;
     SnapshotSpaceWidget-->WidgetProtocol;
+    MirrorWidget-->WidgetHelpers;
+    MirrorWidget-->WidgetProtocol;
 ```

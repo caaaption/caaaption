@@ -26,7 +26,6 @@ public enum VoteWidget: WidgetProtocol {
     public static var kind = "VoteWidget"
     public static var supportedFamilies: [WidgetFamily] = [
       .systemSmall,
-      .systemMedium,
     ]
   }
 
@@ -40,11 +39,17 @@ public enum VoteWidget: WidgetProtocol {
 
   public struct Entry: TimelineEntry, Equatable {
     public let date: Date
-    public let scores: [Double]
+    public let title: String
+    public let score: Double
+    public let status: String
+    public let choice: String
 
-    public init(date: Date, scores: [Double]) {
+    public init(date: Date, title: String, score: Double, status: String, choice: String) {
       self.date = date
-      self.scores = scores
+      self.title = title
+      self.score = score
+      self.status = status
+      self.choice = choice
     }
   }
 
@@ -55,7 +60,13 @@ public enum VoteWidget: WidgetProtocol {
     public func placeholder(
       in context: Context
     ) -> Entry {
-      Entry(date: Date(), scores: [1, 1])
+      Entry(
+        date: Date(),
+        title: "System Upgrade: Establishing A Software Company",
+        score: 0.8599,
+        status: "Closed",
+        choice: "Yes - Approve this Plan"
+      )
     }
 
     public func getSnapshot(
@@ -70,10 +81,29 @@ public enum VoteWidget: WidgetProtocol {
       }
 
       Task {
-        for try await data in snapshotClient.proposal(input.proposalId) {
-          let scores = data.proposal?.scores?.compactMap { $0 } ?? []
-          let entry = Entry(date: Date(), scores: scores)
+        do {
+          let result = try await snapshotClient.proposal(input.proposalId)
+          guard
+            let proposal = result.data?.proposal,
+            let scores = proposal.scores?.compactMap({ $0 })
+          else {
+            return completion(placeholder(in: context))
+          }
+
+          let sortedScore = scores.sorted(by: >)
+          let total = sortedScore.reduce(0, +)
+          let percentages = sortedScore.map { $0 / total }
+
+          let entry = Entry(
+            date: Date(),
+            title: proposal.title,
+            score: percentages.first ?? 0.0,
+            status: "Closed",
+            choice: "Yes - Approve this Plan"
+          )
           completion(entry)
+        } catch {
+          completion(placeholder(in: context))
         }
       }
     }
@@ -98,10 +128,42 @@ public enum VoteWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      HStack(alignment: .top, spacing: 12) {
-        CircleGraf(scores: entry.scores)
-          .scaleEffect(0.35)
+      VStack(alignment: .center, spacing: 4) {
+        HStack(alignment: .top) {
+          Text(entry.title)
+            .font(.caption2)
+            .multilineTextAlignment(.leading)
+            .frame(maxWidth: .infinity)
+
+          Color.red
+            .frame(width: 24, height: 24)
+            .clipShape(Circle())
+        }
+
+        VStack(spacing: 0) {
+          ScoreProgress(progress: entry.score)
+            .frame(height: 34)
+            .background(alignment: .bottom) {
+              Text(entry.status)
+                .font(.caption)
+                .bold()
+                .padding(.vertical, 2)
+                .padding(.horizontal, 6)
+                .foregroundColor(.white)
+                .background(Color.purple)
+                .clipShape(Capsule())
+            }
+
+          Text(String(format: "%.2f%%", entry.score * 100))
+            .font(.title2)
+            .bold()
+
+          Text(entry.choice)
+            .lineLimit(1)
+            .font(.caption2)
+        }
       }
+      .padding(.all, 16)
     }
   }
 }
@@ -111,11 +173,14 @@ public enum VoteWidget: WidgetProtocol {
 
   struct WidgetViewPreviews: PreviewProvider {
     static var previews: some View {
-      WidgetPreview([.systemSmall, .systemMedium]) {
+      WidgetPreview([.systemSmall]) {
         VoteWidget.WidgetView(
           entry: VoteWidget.Entry(
             date: Date(),
-            scores: [1, 1]
+            title: "System Upgrade: Establishing A Software Company",
+            score: 0.8599,
+            status: "Closed",
+            choice: "Yes - Approve this Plan"
           )
         )
       }

@@ -12,7 +12,7 @@ public struct SignInEthereumReducer: ReducerProtocol {
   public enum Action: Equatable {
     case signInButton(SignInButtonReducer.Action)
 
-    case task
+    case onTask
   }
 
   public var body: some ReducerProtocol<State, Action> {
@@ -24,7 +24,7 @@ public struct SignInEthereumReducer: ReducerProtocol {
       case .signInButton:
         return EffectTask.none
 
-      case .task:
+      case .onTask:
         return EffectTask.none
       }
     }

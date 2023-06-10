@@ -33,14 +33,14 @@ public struct AccountReducer: ReducerProtocol {
         return EffectTask.none
 
       case .privacyPolicy:
-        return .fireAndForget {
+        return .run { _ in
           _ = await self.openURL(
             ServerConfig.privacyPolicy,
             [:]
           )
         }
       case .dismiss:
-        return EffectTask.fireAndForget {
+        return .run { _ in
           await self.dismiss()
         }
       }
