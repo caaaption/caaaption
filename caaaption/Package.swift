@@ -13,7 +13,6 @@ var package = Package(
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.1.2"),
-    .package(url: "https://github.com/SDWebImage/SDWebImageSwiftUI", from: "2.2.3"),
     .package(url: "https://github.com/caaaption/design-system", branch: "main"),
   ]
 )
