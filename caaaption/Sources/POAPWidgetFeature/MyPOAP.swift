@@ -79,7 +79,7 @@ public struct MyPOAPReducer: ReducerProtocol {
         state.isActivityIndicatorVisible = false
         state.errorMessage = error.localizedDescription
         return .none
-        
+
       case .dismissButtonTapped:
         return .run { _ in
           await self.dismiss()
