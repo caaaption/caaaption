@@ -1,8 +1,8 @@
 import ComposableArchitecture
 import POAPClient
+import POAPWidget
 import SwiftUI
 import UserDefaultsClient
-import POAPWidget
 import WidgetClient
 
 public struct MyPOAPReducer: ReducerProtocol {
@@ -45,17 +45,17 @@ public struct MyPOAPReducer: ReducerProtocol {
         return .run { send in
           await send(.requestMyPOAP)
         }
-        
+
       case .searchButtonTapped:
         return .run { send in
           await send(.requestMyPOAP)
         }
-        
+
       case .requestMyPOAP:
         state.isActivityIndicatorVisible = true
         state.errorMessage = nil
         state.rows = []
-        
+
         return .task { [address = state.address] in
           await .scanResponse(
             TaskResult {
@@ -123,7 +123,7 @@ public struct MyPOAPView: View {
               .foregroundColor(Color.red)
           }
         }
-        
+
         if !viewStore.rows.isEmpty {
           Section {
             LazyVGrid(

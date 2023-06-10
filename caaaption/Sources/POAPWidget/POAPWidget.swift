@@ -2,9 +2,9 @@ import Dependencies
 import Foundation
 import POAPClient
 import SwiftUI
+import UserDefaultsClient
 import WidgetKit
 import WidgetProtocol
-import UserDefaultsClient
 
 public struct POAPWidget: WidgetProtocol {
   public struct Entrypoint: Widget {
