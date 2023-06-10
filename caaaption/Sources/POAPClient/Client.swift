@@ -2,7 +2,7 @@ import Foundation
 
 public struct POAPClient {
   public var scan: @Sendable (_ address: String) async throws -> [POAPClient.Scan]
-  
+
   public static let apiKey = POAP_API_KEY
 }
 
