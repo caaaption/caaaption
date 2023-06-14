@@ -14,12 +14,14 @@ public struct AppReducer: ReducerProtocol {
 
   public enum Action: Equatable {
     case appDelegate(AppDelegateReducer.Action)
+    case sceneDelegate(SceneDelegateReducer.Action)
     case search(WidgetSearchReducer.Action)
 
     case onOpenURL(URL)
   }
 
-  @Dependency(\.applicationClient.open) var openURL
+  
+  @Dependency(\.openURL) var openURL
 
   public var body: some ReducerProtocol<State, Action> {
     Scope(state: \.search, action: /Action.search) {
@@ -29,13 +31,30 @@ public struct AppReducer: ReducerProtocol {
       switch action {
       case .appDelegate:
         return .none
+        
+      case let .sceneDelegate(.shortcutItem(shortcutItem)):
+        let urls: [String: URL] = [
+          "talk-to-ceo": URL(string: "https://twitter.com/0xsatoya")!,
+          "talk-to-lead-dev": URL(string: "https://twitter.com/tomokisun")!
+        ]
+
+        guard let url = urls[shortcutItem.type] else {
+          return .none
+        }
+
+        return .run { _ in
+          await self.openURL(url)
+        }
+        
+      case .sceneDelegate:
+        return .none
 
       case .search:
         return .none
 
       case let .onOpenURL(url):
         return .run { _ in
-          _ = await self.openURL(url, [:])
+          _ = await self.openURL(url)
         }
       }
     }

@@ -56,5 +56,24 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>if you want to talk about product discuss</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>talk-to-ceo</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>👋Talk to CEO!</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>if you want to talk about development discuss</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>talk-to-lead-dev</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>👨🏻‍💻Talk to LeadDev!</string>
+		</dict>
+	</array>
 </dict>
 </plist>

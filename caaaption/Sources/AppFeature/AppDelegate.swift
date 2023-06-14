@@ -8,8 +8,6 @@ public struct AppDelegateReducer: ReducerProtocol {
     case didRegisterForRemoteNotifications(TaskResult<Data>)
   }
 
-  public init() {}
-
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
     switch action {
     case .didFinishLaunching:
