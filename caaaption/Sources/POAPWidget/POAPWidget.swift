@@ -104,33 +104,36 @@ public struct POAPWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      LazyVGrid(
-        columns: Array(repeating: GridItem(), count: 2),
-        alignment: .center,
-        spacing: 6
-      ) {
-        ForEach(entry.data, id: \.self) { data in
-          Image(
-            uiImage: UIImage(data: data)!
-              .resized(toWidth: 64 * 3)!
-          )
-          .resizable()
-          .scaledToFill()
-          .background(Color.red)
-          .clipShape(Circle())
-          .overlay(
-            RoundedRectangle(cornerRadius: 1000)
-              .stroke(Color.primary, lineWidth: 1)
-          )
-          .shadow(
-            color: Color("shadow", bundle: .module),
-            radius: 0,
-            x: -2,
-            y: 4
-          )
+      VStack {
+        LazyVGrid(
+          columns: Array(repeating: GridItem(), count: 2),
+          alignment: .center,
+          spacing: 6
+        ) {
+          ForEach(entry.data, id: \.self) { data in
+            Image(
+              uiImage: UIImage(data: data)!
+                .resized(toWidth: 64 * 3)!
+            )
+            .resizable()
+            .scaledToFill()
+            .background(Color.red)
+            .clipShape(Circle())
+            .overlay(
+              RoundedRectangle(cornerRadius: 1000)
+                .stroke(Color.primary, lineWidth: 1)
+            )
+            .shadow(
+              color: Color("shadow", bundle: .module),
+              radius: 0,
+              x: -2,
+              y: 4
+            )
+          }
         }
+        .padding(.all, 12)
       }
-      .padding(.all, 12)
+      .background(Color(uiColor: UIColor.tertiarySystemBackground))
     }
   }
 }
