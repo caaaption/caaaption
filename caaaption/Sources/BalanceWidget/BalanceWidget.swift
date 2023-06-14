@@ -106,7 +106,7 @@ public struct BalanceWidget: WidgetProtocol {
     public var body: some View {
       VStack {
         VStack(alignment: .leading, spacing: 4) {
-          Text(entry.address)
+          Text(shortenHex(hexString: entry.address))
             .lineLimit(1)
             .frame(maxHeight: .infinity, alignment: .top)
 
@@ -117,6 +117,16 @@ public struct BalanceWidget: WidgetProtocol {
         .padding(.all, 16)
       }
       .background(Color(uiColor: UIColor.tertiarySystemBackground))
+    }
+    
+    func shortenHex(hexString: String, startLength: Int = 4, endLength: Int = 4) -> String {
+      guard hexString.count > (startLength + endLength) else {
+        return hexString
+      }
+      let startIndex = hexString.index(hexString.startIndex, offsetBy: startLength)
+      let endIndex = hexString.index(hexString.endIndex, offsetBy: -endLength)
+      
+      return "\(hexString[..<startIndex])…\(hexString[endIndex...])"
     }
   }
 }
