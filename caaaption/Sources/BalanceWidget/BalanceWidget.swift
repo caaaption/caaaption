@@ -104,23 +104,19 @@ public struct BalanceWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      VStack(alignment: .leading, spacing: 4) {
-        Text(entry.address)
-          .lineLimit(1)
-          .frame(maxHeight: .infinity, alignment: .top)
+      VStack {
+        VStack(alignment: .leading, spacing: 4) {
+          Text(entry.address)
+            .lineLimit(1)
+            .frame(maxHeight: .infinity, alignment: .top)
 
-        Text("\(entry.balance.description.prefix(6).lowercased()) ETH")
-          .bold()
-          .frame(maxWidth: .infinity, alignment: .trailing)
+          Text("\(entry.balance.description.prefix(6).lowercased()) ETH")
+            .bold()
+            .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+        .padding(.all, 16)
       }
-      .padding(.all, 16)
-    }
-
-    var updatedAt: some View {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "HH:mm"
-      let dateString = dateFormatter.string(from: entry.date)
-      return Text("Updated at \(dateString)")
+      .background(Color(uiColor: UIColor.tertiarySystemBackground))
     }
   }
 }
