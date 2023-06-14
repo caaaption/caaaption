@@ -20,7 +20,6 @@ public struct AppReducer: ReducerProtocol {
     case onOpenURL(URL)
   }
 
-  
   @Dependency(\.openURL) var openURL
 
   public var body: some ReducerProtocol<State, Action> {
@@ -31,11 +30,11 @@ public struct AppReducer: ReducerProtocol {
       switch action {
       case .appDelegate:
         return .none
-        
+
       case let .sceneDelegate(.shortcutItem(shortcutItem)):
         let urls: [String: URL] = [
           "talk-to-ceo": URL(string: "https://twitter.com/0xsatoya")!,
-          "talk-to-lead-dev": URL(string: "https://twitter.com/tomokisun")!
+          "talk-to-lead-dev": URL(string: "https://twitter.com/tomokisun")!,
         ]
 
         guard let url = urls[shortcutItem.type] else {
@@ -45,7 +44,7 @@ public struct AppReducer: ReducerProtocol {
         return .run { _ in
           await self.openURL(url)
         }
-        
+
       case .sceneDelegate:
         return .none
 

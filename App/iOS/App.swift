@@ -53,7 +53,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
   ) {
     viewStore.send(.appDelegate(.didRegisterForRemoteNotifications(.failure(error))))
   }
-  
+
   func application(
     _ application: UIApplication,
     configurationForConnecting connectingSceneSession: UISceneSession,
