@@ -35,7 +35,7 @@ struct ScoreProgress: View {
         }
         .trim(from: 0.0, to: min(progress, 1.0))
         .stroke(
-          Color.blue,
+          Color("progress", bundle: .module),
           style: StrokeStyle(
             lineWidth: 8,
             lineCap: .round,
