@@ -114,7 +114,7 @@ public struct BalanceSettingView: View {
       }
       .task { await viewStore.send(.onTask).finish() }
       .padding(.horizontal, 12)
-      .navigationTitle("Balance Widget")
+      .navigationTitle("Balance")
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
