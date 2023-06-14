@@ -153,7 +153,7 @@ public struct MyPOAPView: View {
           }
         }
       }
-      .navigationTitle("MyPOAP")
+      .navigationTitle("POAP")
       .navigationBarTitleDisplayMode(.inline)
       .task { await viewStore.send(.onTask).finish() }
       .toolbar {
