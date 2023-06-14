@@ -118,14 +118,14 @@ public struct BalanceWidget: WidgetProtocol {
       }
       .background(Color(uiColor: UIColor.tertiarySystemBackground))
     }
-    
+
     func shortenHex(hexString: String, startLength: Int = 4, endLength: Int = 4) -> String {
       guard hexString.count > (startLength + endLength) else {
         return hexString
       }
       let startIndex = hexString.index(hexString.startIndex, offsetBy: startLength)
       let endIndex = hexString.index(hexString.endIndex, offsetBy: -endLength)
-      
+
       return "\(hexString[..<startIndex])…\(hexString[endIndex...])"
     }
   }
