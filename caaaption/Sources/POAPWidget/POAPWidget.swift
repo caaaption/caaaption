@@ -44,13 +44,16 @@ public struct POAPWidget: WidgetProtocol {
   public struct Entry: TimelineEntry, Equatable {
     public let date: Date
     public let data: [Data]
+    public let address: String
 
     public init(
       date: Date,
-      data: [Data]
+      data: [Data],
+      address: String
     ) {
       self.date = date
       self.data = data
+      self.address = address
     }
   }
 
@@ -61,7 +64,7 @@ public struct POAPWidget: WidgetProtocol {
     public func placeholder(
       in context: Context
     ) -> Entry {
-      Entry(date: Date(), data: [])
+      Entry(date: Date(), data: [], address: "poap.eth")
     }
 
     public func getSnapshot(
@@ -81,7 +84,7 @@ public struct POAPWidget: WidgetProtocol {
           ? contents.prefix(4).map(\.event.imageUrl)
           : contents.map(\.event.imageUrl)
         let data = imageUrls.compactMap { try? Data(contentsOf: $0) }
-        let entry = Entry(date: Date(), data: data)
+        let entry = Entry(date: Date(), data: data, address: input.address)
         completion(entry)
       }
     }
@@ -135,6 +138,9 @@ public struct POAPWidget: WidgetProtocol {
         .padding(.all, 12)
       }
       .background(Color(uiColor: UIColor.tertiarySystemBackground))
+      .widgetURL(
+        URL(string: "https://app.poap.xyz/scan/\(entry.address)")
+      )
     }
   }
 }
@@ -153,7 +159,8 @@ public struct POAPWidget: WidgetProtocol {
               "https://assets.poap.xyz/31cb94a2-0e1f-4fd3-8722-dbd48e95e2f8.png",
               "https://assets.poap.xyz/b86e7001-2d8c-4bd5-8497-43e6497bb07e.png",
               "https://assets.poap.xyz/ethglobal-tokyo-private-after-party-fwbxone-2023-logo-1681541518682.png",
-            ].compactMap(URL.init(string:)).compactMap { try? Data(contentsOf: $0) }
+            ].compactMap(URL.init(string:)).compactMap { try? Data(contentsOf: $0) },
+            address: "tomokisun.eth"
           )
         )
       }

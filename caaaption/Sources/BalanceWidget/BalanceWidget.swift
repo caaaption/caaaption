@@ -117,6 +117,9 @@ public struct BalanceWidget: WidgetProtocol {
         .padding(.all, 16)
       }
       .background(Color(uiColor: UIColor.tertiarySystemBackground))
+      .widgetURL(
+        URL(string: "https://etherscan.io/address/\(entry.address)")
+      )
     }
 
     func shortenHex(hexString: String, startLength: Int = 4, endLength: Int = 4) -> String {
