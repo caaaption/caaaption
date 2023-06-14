@@ -29,6 +29,7 @@ public struct POAPWidget: WidgetProtocol {
     public static var kind = "POAPWidget"
     public static var supportedFamilies: [WidgetFamily] = [
       .systemSmall,
+      .systemLarge,
     ]
   }
 
