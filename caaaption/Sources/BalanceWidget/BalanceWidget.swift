@@ -104,23 +104,29 @@ public struct BalanceWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      VStack(alignment: .leading, spacing: 4) {
-        Text(entry.address)
-          .lineLimit(1)
-          .frame(maxHeight: .infinity, alignment: .top)
+      VStack {
+        VStack(alignment: .leading, spacing: 4) {
+          Text(shortenHex(hexString: entry.address))
+            .lineLimit(1)
+            .frame(maxHeight: .infinity, alignment: .top)
 
-        Text("\(entry.balance.description.prefix(6).lowercased()) ETH")
-          .bold()
-          .frame(maxWidth: .infinity, alignment: .trailing)
+          Text("\(entry.balance.description.prefix(6).lowercased()) ETH")
+            .bold()
+            .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+        .padding(.all, 16)
       }
-      .padding(.all, 16)
+      .background(Color(uiColor: UIColor.tertiarySystemBackground))
     }
-
-    var updatedAt: some View {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "HH:mm"
-      let dateString = dateFormatter.string(from: entry.date)
-      return Text("Updated at \(dateString)")
+    
+    func shortenHex(hexString: String, startLength: Int = 4, endLength: Int = 4) -> String {
+      guard hexString.count > (startLength + endLength) else {
+        return hexString
+      }
+      let startIndex = hexString.index(hexString.startIndex, offsetBy: startLength)
+      let endIndex = hexString.index(hexString.endIndex, offsetBy: -endLength)
+      
+      return "\(hexString[..<startIndex])…\(hexString[endIndex...])"
     }
   }
 }

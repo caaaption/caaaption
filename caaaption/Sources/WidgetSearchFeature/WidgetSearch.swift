@@ -143,7 +143,7 @@ public struct WidgetSearchView: View {
         }
       }
       .listStyle(.plain)
-      .navigationTitle("Widget")
+      .navigationTitle("Widgets")
     }
   }
 }

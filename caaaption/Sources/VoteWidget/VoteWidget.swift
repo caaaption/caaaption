@@ -128,32 +128,36 @@ public enum VoteWidget: WidgetProtocol {
     }
 
     public var body: some View {
-      VStack(alignment: .center, spacing: 4) {
-        HStack(alignment: .top) {
-          Text(entry.title)
-            .font(.caption2)
-            .multilineTextAlignment(.leading)
-            .frame(maxWidth: .infinity)
-        }
-
-        VStack(spacing: 0) {
-          ZStack(alignment: .bottom) {
-            ScoreProgress(progress: entry.score)
-              .frame(height: 34)
-              .padding(.bottom, 50 - 34)
-
-            Text(String(format: "%.2f%%", entry.score * 100))
-              .font(.title2)
-              .bold()
+      VStack {
+        VStack(alignment: .center, spacing: 4) {
+          HStack(alignment: .top) {
+            Text(entry.title)
+              .font(.caption2)
+              .multilineTextAlignment(.leading)
+              .frame(maxWidth: .infinity)
           }
-          .frame(height: 50)
+          .frame(maxHeight: .infinity, alignment: .top)
 
-          Text(entry.choice)
-            .lineLimit(1)
-            .font(.caption2)
+          VStack(spacing: 0) {
+            ZStack(alignment: .bottom) {
+              ScoreProgress(progress: entry.score)
+                .frame(height: 34)
+                .padding(.bottom, 50 - 34)
+
+              Text(String(format: "%.2f%%", entry.score * 100))
+                .font(.title2)
+                .bold()
+            }
+            .frame(height: 50)
+
+            Text(entry.choice)
+              .lineLimit(1)
+              .font(.caption2)
+          }
         }
+        .padding(.all, 16)
       }
-      .padding(.all, 16)
+      .background(Color(uiColor: UIColor.tertiarySystemBackground))
     }
   }
 }
