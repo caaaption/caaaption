@@ -132,7 +132,7 @@ public enum VoteWidget: WidgetProtocol {
         VStack(alignment: .center, spacing: 4) {
           HStack(alignment: .top) {
             Text(entry.title)
-              .font(.caption2)
+              .font(.caption)
               .multilineTextAlignment(.leading)
               .frame(maxWidth: .infinity)
           }
@@ -142,17 +142,16 @@ public enum VoteWidget: WidgetProtocol {
             ZStack(alignment: .bottom) {
               ScoreProgress(progress: entry.score)
                 .frame(height: 34)
-                .padding(.bottom, 50 - 34)
+                .padding(.bottom, 55 - 34)
 
               Text(String(format: "%.2f%%", entry.score * 100))
-                .font(.title2)
-                .bold()
+                .font(.title)
             }
             .frame(height: 50)
 
             Text(entry.choice)
               .lineLimit(1)
-              .font(.caption2)
+              .font(.caption)
           }
         }
         .padding(.all, 16)

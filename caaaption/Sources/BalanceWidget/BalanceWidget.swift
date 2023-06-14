@@ -107,11 +107,12 @@ public struct BalanceWidget: WidgetProtocol {
       VStack {
         VStack(alignment: .leading, spacing: 4) {
           Text(shortenHex(hexString: entry.address))
+            .font(.subheadline)
             .lineLimit(1)
             .frame(maxHeight: .infinity, alignment: .top)
 
           Text("\(entry.balance.description.prefix(6).lowercased()) ETH")
-            .bold()
+            .font(.title2)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(.all, 16)
