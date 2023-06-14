@@ -60,7 +60,7 @@
 	<array>
 		<dict>
 			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>if you want to talk about product discuss</string>
+			<string>If you want to talk about product discuss</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>talk-to-ceo</string>
 			<key>UIApplicationShortcutItemTitle</key>
@@ -68,7 +68,7 @@
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemSubtitle</key>
-			<string>if you want to talk about development discuss</string>
+			<string>If you want to talk about development discuss</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>talk-to-lead-dev</string>
 			<key>UIApplicationShortcutItemTitle</key>
