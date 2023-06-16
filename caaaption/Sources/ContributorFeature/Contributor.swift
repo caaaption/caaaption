@@ -3,7 +3,6 @@ import Foundation
 import GitHubClient
 import PlaceholderAsyncImage
 import SwiftUI
-import UIApplicationClient
 
 public struct ContributorReducer: ReducerProtocol {
   public init() {}
@@ -22,7 +21,7 @@ public struct ContributorReducer: ReducerProtocol {
   }
 
   @Dependency(\.githubClient.contributors) var contributors
-  @Dependency(\.applicationClient.open) var openURL
+  @Dependency(\.openURL) var openURL
 
   public var body: some ReducerProtocol<State, Action> {
     Reduce { state, action in
@@ -58,7 +57,7 @@ public struct ContributorReducer: ReducerProtocol {
           return EffectTask.none
         }
         return EffectTask.run { _ in
-          _ = await self.openURL(url, [:])
+          await self.openURL(url)
         }
       }
     }
