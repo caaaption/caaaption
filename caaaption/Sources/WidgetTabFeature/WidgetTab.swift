@@ -80,7 +80,7 @@ public struct WidgetTabView: View {
             Button {
               viewStore.send(.accountButtonTapped)
             } label: {
-              EmptyView()
+              Image(systemName: "gearshape.fill")
             }
           }
         }
@@ -102,14 +102,18 @@ public struct WidgetTabView: View {
 }
 
 #if DEBUG
+  import SwiftUIHelpers
+
   struct WidgetTabViewPreviews: PreviewProvider {
     static var previews: some View {
-      WidgetTabView(
-        store: .init(
-          initialState: WidgetTabReducer.State(),
-          reducer: WidgetTabReducer()
+      Preview {
+        WidgetTabView(
+          store: .init(
+            initialState: WidgetTabReducer.State(),
+            reducer: WidgetTabReducer()
+          )
         )
-      )
+      }
     }
   }
 #endif
