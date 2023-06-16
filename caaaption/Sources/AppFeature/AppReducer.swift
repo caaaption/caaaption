@@ -1,6 +1,5 @@
 import ComposableArchitecture
 import SwiftUI
-import UIApplicationClient
 import WidgetSearchFeature
 
 public struct AppReducer: ReducerProtocol {

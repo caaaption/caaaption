@@ -49,7 +49,6 @@ package.targets.append(contentsOf: [
   .target(name: "ContributorFeature", dependencies: [
     "GitHubClient",
     "SwiftUIHelpers",
-    "UIApplicationClient",
     "PlaceholderAsyncImage",
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),

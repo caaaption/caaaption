@@ -3,7 +3,6 @@ import ContributorFeature
 import PlaceholderAsyncImage
 import ServerConfig
 import SwiftUI
-import UIApplicationClient
 
 public struct AccountReducer: ReducerProtocol {
   public init() {}
@@ -20,7 +19,7 @@ public struct AccountReducer: ReducerProtocol {
     case dismiss
   }
 
-  @Dependency(\.applicationClient.open) var openURL
+  @Dependency(\.openURL) var openURL
   @Dependency(\.dismiss) var dismiss
 
   public var body: some ReducerProtocol<State, Action> {
@@ -34,10 +33,7 @@ public struct AccountReducer: ReducerProtocol {
 
       case .privacyPolicy:
         return .run { _ in
-          _ = await self.openURL(
-            ServerConfig.privacyPolicy,
-            [:]
-          )
+          await self.openURL(ServerConfig.privacyPolicy)
         }
       case .dismiss:
         return .run { _ in
