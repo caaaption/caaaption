@@ -16,6 +16,6 @@ extension GitHubClient: TestDependencyKey {
 
 public extension GitHubClient {
   static let noop = Self(
-    contributors: { _, _ in try await Task.never() }
+    contributors: { _ in try await Task.never() }
   )
 }
