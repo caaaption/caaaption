@@ -45,6 +45,7 @@ package.targets.append(contentsOf: [
   .target(name: "AccountFeature", dependencies: [
     "ServerConfig",
     "ContributorFeature",
+    .product(name: "Avatar", package: "design-system"),
   ]),
   .target(name: "ContributorFeature", dependencies: [
     "GitHubClient",

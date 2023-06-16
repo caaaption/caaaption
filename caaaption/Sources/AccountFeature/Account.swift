@@ -3,6 +3,11 @@ import ContributorFeature
 import PlaceholderAsyncImage
 import ServerConfig
 import SwiftUI
+import Avatar
+
+private let avatarURL = URL(
+  string: "https://i.seadn.io/gae/c_u0e9m4wH4zgsJowfOOHd-EkQEzuxiEUZTsUsEbcc-sSJgmGX6uHMRX8pMgC6OQbfJ987nrF0-CSwGaBDQuS1tAe2w7B0eaAEj_?w=500&auto=format"
+)
 
 public struct AccountReducer: ReducerProtocol {
   public init() {}
@@ -15,8 +20,8 @@ public struct AccountReducer: ReducerProtocol {
   public enum Action: Equatable {
     case contributor(ContributorReducer.Action)
 
-    case privacyPolicy
-    case dismiss
+    case privacyPolicyButtonTapped
+    case dismissButtonTapped
   }
 
   @Dependency(\.openURL) var openURL
@@ -31,11 +36,11 @@ public struct AccountReducer: ReducerProtocol {
       case .contributor:
         return EffectTask.none
 
-      case .privacyPolicy:
+      case .privacyPolicyButtonTapped:
         return .run { _ in
           await self.openURL(ServerConfig.privacyPolicy)
         }
-      case .dismiss:
+      case .dismissButtonTapped:
         return .run { _ in
           await self.dismiss()
         }
@@ -54,29 +59,27 @@ public struct AccountView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
+//        Section {
+//          HStack(spacing: 8) {
+//            Avatar(url: avatarURL)
+//              .frame(width: 56, height: 56)
+//              .clipShape(Circle())
+//
+//            VStack(alignment: .leading, spacing: 4) {
+//              Text("tomokisun.eth")
+//                .bold()
+//
+//              Text("0x4F724516242829DC5Bc6119f666b18102437De53")
+//                .foregroundColor(.secondary)
+//                .font(.caption)
+//            }
+//          }
+//        }
+
         Section {
-          HStack(spacing: 8) {
-            PlaceholderAsyncImage(
-              url: URL(
-                string: "https://i.seadn.io/gae/c_u0e9m4wH4zgsJowfOOHd-EkQEzuxiEUZTsUsEbcc-sSJgmGX6uHMRX8pMgC6OQbfJ987nrF0-CSwGaBDQuS1tAe2w7B0eaAEj_?w=500&auto=format"
-              )
-            )
-            .frame(width: 56, height: 56)
-            .clipShape(Circle())
-
-            VStack(alignment: .leading, spacing: 4) {
-              Text("tomokisun.eth")
-                .bold()
-
-              Text("0x4F724516242829DC5Bc6119f666b18102437De53")
-                .foregroundColor(.secondary)
-                .font(.caption)
-            }
+          Button("Privacy Policy") {
+            viewStore.send(.privacyPolicyButtonTapped)
           }
-        }
-
-        Section {
-          Button("Privacy Policy", action: { viewStore.send(.privacyPolicy) })
         }
 
         Section {
@@ -97,9 +100,9 @@ public struct AccountView: View {
       .navigationTitle("Account")
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button("Done", action: {
-            viewStore.send(.dismiss)
-          })
+          Button("Done") {
+            viewStore.send(.dismissButtonTapped)
+          }
           .bold()
         }
       }
