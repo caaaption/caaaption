@@ -10,7 +10,6 @@ graph TD;
     AccountFeature-->ContributorFeature;
     ContributorFeature-->GitHubClient;
     ContributorFeature-->SwiftUIHelpers;
-    ContributorFeature-->UIApplicationClient;
     ContributorFeature-->PlaceholderAsyncImage;
     BalanceWidgetFeature-->WidgetClient;
     BalanceWidgetFeature-->BalanceWidget;
