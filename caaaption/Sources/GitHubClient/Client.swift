@@ -13,7 +13,7 @@ public struct ContributorsRequest: Sendable {
 
   let owner: String
   let repo: String
-  
+
   public init(owner: String, repo: String) {
     self.owner = owner
     self.repo = repo
