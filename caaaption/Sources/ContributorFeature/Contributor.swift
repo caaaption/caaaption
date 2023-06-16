@@ -8,7 +8,7 @@ public struct ContributorReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
-    public var contributors: [GitHubClient.Contributor] = []
+    public var contributors: [Contributor] = []
 
     public init() {}
   }
@@ -16,7 +16,7 @@ public struct ContributorReducer: ReducerProtocol {
   public enum Action: Equatable {
     case onTask
     case refreshable
-    case contributorsResponse(TaskResult<[GitHubClient.Contributor]>)
+    case contributorsResponse(TaskResult<[Contributor]>)
     case tappendContributor(Int)
   }
 
@@ -27,36 +27,37 @@ public struct ContributorReducer: ReducerProtocol {
     Reduce { state, action in
       switch action {
       case .onTask:
-        return EffectTask.task {
+        let request = ContributorsRequest(owner: "caaaption", repo: "caaaption")
+        return .task {
           await .contributorsResponse(
             TaskResult {
-              try await self.contributors("caaaption", "caaaption")
+              try await self.contributors(request)
             }
           )
         }
 
       case .refreshable:
-        return EffectTask.run { send in
+        return .run { send in
           await send(.onTask)
         }
 
       case let .contributorsResponse(.success(contributors)):
         state.contributors = contributors
           .sorted(by: { $0.contributions > $1.contributions })
-        return EffectTask.none
+        return .none
 
       case .contributorsResponse(.failure):
         state.contributors = []
-        return EffectTask.none
+        return .none
 
       case let .tappendContributor(id):
         guard
           let contributor = state.contributors.first(where: { $0.id == id }),
           let url = URL(string: "https://github.com/\(contributor.login)")
         else {
-          return EffectTask.none
+          return .none
         }
-        return EffectTask.run { _ in
+        return .run { _ in
           await self.openURL(url)
         }
       }
