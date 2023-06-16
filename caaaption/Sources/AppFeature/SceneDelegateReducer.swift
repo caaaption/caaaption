@@ -13,7 +13,7 @@ public struct SceneDelegateReducer: ReducerProtocol {
     switch action {
     case let .shortcutItem(shortcutItem):
       let urls: [String: URL] = [
-        "talk-to-ceo": URL(string: "https://twitter.com/0xsatoya")!,
+        "talk-to-founder": URL(string: "https://twitter.com/0xsatoya")!,
         "talk-to-lead-dev": URL(string: "https://twitter.com/tomokisun")!,
       ]
 

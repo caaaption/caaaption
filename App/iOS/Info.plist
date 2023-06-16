@@ -62,9 +62,9 @@
 			<key>UIApplicationShortcutItemSubtitle</key>
 			<string>If you want to talk about product discuss</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>talk-to-ceo</string>
+			<string>talk-to-founder</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>👋Talk to CEO!</string>
+			<string>👋Talk to Founder!</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemSubtitle</key>
