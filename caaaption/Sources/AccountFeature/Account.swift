@@ -15,8 +15,8 @@ public struct AccountReducer: ReducerProtocol {
   public enum Action: Equatable {
     case contributor(ContributorReducer.Action)
 
-    case privacyPolicy
-    case dismiss
+    case privacyPolicyButtonTapped
+    case dismissButtonTapped
   }
 
   @Dependency(\.openURL) var openURL
@@ -31,11 +31,11 @@ public struct AccountReducer: ReducerProtocol {
       case .contributor:
         return EffectTask.none
 
-      case .privacyPolicy:
+      case .privacyPolicyButtonTapped:
         return .run { _ in
           await self.openURL(ServerConfig.privacyPolicy)
         }
-      case .dismiss:
+      case .dismissButtonTapped:
         return .run { _ in
           await self.dismiss()
         }
@@ -76,7 +76,9 @@ public struct AccountView: View {
         }
 
         Section {
-          Button("Privacy Policy", action: { viewStore.send(.privacyPolicy) })
+          Button("Privacy Policy") {
+            viewStore.send(.privacyPolicyButtonTapped)
+          }
         }
 
         Section {
@@ -98,7 +100,7 @@ public struct AccountView: View {
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button("Done", action: {
-            viewStore.send(.dismiss)
+            viewStore.send(.dismissButtonTapped)
           })
           .bold()
         }
