@@ -1,9 +1,9 @@
+import Avatar
 import ComposableArchitecture
 import ContributorFeature
 import PlaceholderAsyncImage
 import ServerConfig
 import SwiftUI
-import Avatar
 
 private let avatarURL = URL(
   string: "https://i.seadn.io/gae/c_u0e9m4wH4zgsJowfOOHd-EkQEzuxiEUZTsUsEbcc-sSJgmGX6uHMRX8pMgC6OQbfJ987nrF0-CSwGaBDQuS1tAe2w7B0eaAEj_?w=500&auto=format"
