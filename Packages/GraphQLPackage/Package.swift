@@ -9,17 +9,19 @@ let package = Package(
     .iOS(.v16),
   ],
   products: [
+    .library(name: "ApolloHelpers", targets: ["ApolloHelpers"]),
     .library(name: "SnapshotModel", targets: ["SnapshotModel"]),
   ],
   dependencies: [
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.2.2"),
   ],
   targets: [
-    .target(
-      name: "SnapshotModel",
-      dependencies: [
-        .product(name: "ApolloAPI", package: "apollo-ios"),
-      ]
-    ),
+    .target(name: "ApolloHelpers", dependencies: [
+      .product(name: "Apollo", package: "apollo-ios"),
+      .product(name: "ApolloAPI", package: "apollo-ios"),
+    ]),
+    .target(name: "SnapshotModel", dependencies: [
+      .product(name: "ApolloAPI", package: "apollo-ios"),
+    ]),
   ]
 )

@@ -22,7 +22,8 @@ build-caaaption:
 		-sdk iphonesimulator
 
 secrets:
-	@cp ./Packages/caaaption/Sources/POAPClient/Secrets.swift.example ./Packages/caaaption/Sources/POAPClient/Secrets.swift
+	@cp ./Packages/ClientPackage/Sources/POAPClient/Secrets.swift.example ./Packages/ClientPackage/Sources/POAPClient/Secrets.swift
+	@echo "import Foundation\n\nlet baseURL = URL(string: \"https://chaotic-quiet-meme.discover.quiknode.pro/86804d1e5443408f5fe8f2c85d421bf018dbe433\")!" > ./Packages/ClientPackage/Sources/QuickNodeClient/Secrets.swift
 
 dgraph:
 	@swift build -c release --package-path ./BuildTools/DependenciesGraph --product dgraph
