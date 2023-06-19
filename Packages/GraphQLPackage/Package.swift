@@ -7,6 +7,7 @@ let package = Package(
   name: "GraphQLPackage",
   platforms: [
     .iOS(.v16),
+    .macOS(.v13),
   ],
   products: [
     .library(name: "ApolloHelpers", targets: ["ApolloHelpers"]),

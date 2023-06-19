@@ -7,6 +7,7 @@ let package = Package(
   name: "WidgetPackage",
   platforms: [
     .iOS(.v16),
+    .macOS(.v13),
   ],
   products: [
     .library(name: "WidgetProtocol", targets: ["WidgetProtocol"]),
