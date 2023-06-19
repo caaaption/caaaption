@@ -12,7 +12,7 @@
     <img src='https://img.shields.io/badge/platform-iOS%20-green.svg'>
 </div>
 
-This repo contains the full source code for [caaaption](https://caaaption.com), Get real-time dApps information on iPhone widgets. 
+This repo contains the full source code for [caaaption](https://caaaption.com), Boost your dApps experience with iPhone widgets. 
 
 ---
 
