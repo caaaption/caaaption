@@ -1,0 +1,39 @@
+
+## Package Dependencies
+```mermaid
+graph TD;
+    AppFeature-->WidgetTabFeature;
+    AppFeature-->OnboardFeature;
+    WidgetSearchFeature-->BalanceWidgetFeature;
+    WidgetSearchFeature-->VoteWidgetFeature;
+    WidgetSearchFeature-->POAPWidgetFeature;
+    WidgetSearchFeature-->GasPriceWidgetFeature;
+    AccountFeature-->ServerConfig;
+    AccountFeature-->ContributorFeature;
+    ContributorFeature-->SwiftUIHelpers;
+    ContributorFeature-->PlaceholderAsyncImage;
+    BalanceWidgetFeature-->BalanceWidget;
+    BalanceWidgetFeature-->SwiftUIHelpers;
+    VoteWidgetFeature-->VoteWidget;
+    VoteWidgetFeature-->SwiftUIHelpers;
+    OnboardFeature-->ServerConfig;
+    OnboardFeature-->SwiftUIHelpers;
+    POAPWidgetFeature-->POAPWidget;
+    POAPWidgetFeature-->SwiftUIHelpers;
+    GasPriceWidgetFeature-->SwiftUIHelpers;
+    GasPriceWidgetFeature-->GasPriceWidget;
+    WidgetTabFeature-->WidgetSearchFeature;
+    WidgetTabFeature-->AccountFeature;
+    BalanceWidget-->WidgetHelpers;
+    BalanceWidget-->WidgetProtocol;
+    VoteWidget-->WidgetHelpers;
+    VoteWidget-->WidgetProtocol;
+    GasPriceWidget-->WidgetHelpers;
+    GasPriceWidget-->WidgetProtocol;
+    POAPWidget-->WidgetHelpers;
+    POAPWidget-->WidgetProtocol;
+    SnapshotSpaceWidget-->WidgetHelpers;
+    SnapshotSpaceWidget-->WidgetProtocol;
+    MirrorWidget-->WidgetHelpers;
+    MirrorWidget-->WidgetProtocol;
+```
