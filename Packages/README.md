@@ -4,5 +4,4 @@ graph TD;
     FeaturePackage-->HelperPackage;
     WidgetPackage-->ClientPackage;
     ClientPackage-->GraphQLPackage;
-    GraphQLMockPackage-->GraphQLPackage;
 ```
