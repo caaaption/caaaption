@@ -1,7 +1,6 @@
 import BalanceWidget
 import BalanceWidgetFeature
 import ComposableArchitecture
-import PlaceholderAsyncImage
 import POAPWidget
 import POAPWidgetFeature
 import SwiftUI
@@ -18,18 +17,26 @@ public struct WidgetSearchReducer: ReducerProtocol {
 
   public enum Action: Equatable {
     case destination(PresentationAction<Destination.Action>)
+    case helpButtonTapped
     case balanceButtonTapped
     case voteButtonTapped
     case poapButtonTapped
   }
 
   @Dependency(\.mainQueue) var mainQueue
+  @Dependency(\.openURL) var openURL
 
   public var body: some ReducerProtocol<State, Action> {
     Reduce { state, action in
       switch action {
       case .destination:
-        return EffectTask.none
+        return .none
+        
+      case .helpButtonTapped:
+        return .run { _ in
+          let url = URL(string: "https://caaaption.notion.site/How-to-setup-my-widgets-Add-the-caaaption-widget-to-your-iPhone-home-screen-892061686c154b72ae6b4230329466b6")!
+          await self.openURL(url)
+        }
 
       case .balanceButtonTapped:
         state.destination = .balance()
@@ -88,61 +95,73 @@ public struct WidgetSearchView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
-        Button {
-          viewStore.send(.balanceButtonTapped)
-        } label: {
-          ListCard(BalanceWidget.self)
-        }
-        .sheet(
-          store: store.scope(
-            state: \.$destination,
-            action: WidgetSearchReducer.Action.destination
-          ),
-          state: /WidgetSearchReducer.Destination.State.balance,
-          action: WidgetSearchReducer.Destination.Action.balance
-        ) { store in
-          NavigationStack {
-            BalanceSettingView(store: store)
+        Section("Help") {
+          Button {
+            viewStore.send(.helpButtonTapped)
+          } label: {
+            Label(
+              "How to setup my widgets",
+              systemImage: "questionmark.circle"
+            )
           }
         }
-
-        Button {
-          viewStore.send(.voteButtonTapped)
-        } label: {
-          ListCard(VoteWidget.self)
-        }
-        .sheet(
-          store: store.scope(
-            state: \.$destination,
-            action: WidgetSearchReducer.Action.destination
-          ),
-          state: /WidgetSearchReducer.Destination.State.vote,
-          action: WidgetSearchReducer.Destination.Action.vote
-        ) { store in
-          NavigationStack {
-            SpacesView(store: store)
+        
+        Section("Widgets") {
+          Button {
+            viewStore.send(.balanceButtonTapped)
+          } label: {
+            ListCard(BalanceWidget.self)
           }
-        }
+          .sheet(
+            store: store.scope(
+              state: \.$destination,
+              action: WidgetSearchReducer.Action.destination
+            ),
+            state: /WidgetSearchReducer.Destination.State.balance,
+            action: WidgetSearchReducer.Destination.Action.balance
+          ) { store in
+            NavigationStack {
+              BalanceSettingView(store: store)
+            }
+          }
 
-        Button {
-          viewStore.send(.poapButtonTapped)
-        } label: {
-          ListCard(POAPWidget.self)
-        }
-        .sheet(
-          store: store.scope(
-            state: \.$destination,
-            action: WidgetSearchReducer.Action.destination
-          ),
-          state: /WidgetSearchReducer.Destination.State.poap,
-          action: WidgetSearchReducer.Destination.Action.poap
-        ) { store in
-          NavigationStack {
-            MyPOAPView(store: store)
+          Button {
+            viewStore.send(.voteButtonTapped)
+          } label: {
+            ListCard(VoteWidget.self)
+          }
+          .sheet(
+            store: store.scope(
+              state: \.$destination,
+              action: WidgetSearchReducer.Action.destination
+            ),
+            state: /WidgetSearchReducer.Destination.State.vote,
+            action: WidgetSearchReducer.Destination.Action.vote
+          ) { store in
+            NavigationStack {
+              SpacesView(store: store)
+            }
+          }
+
+          Button {
+            viewStore.send(.poapButtonTapped)
+          } label: {
+            ListCard(POAPWidget.self)
+          }
+          .sheet(
+            store: store.scope(
+              state: \.$destination,
+              action: WidgetSearchReducer.Action.destination
+            ),
+            state: /WidgetSearchReducer.Destination.State.poap,
+            action: WidgetSearchReducer.Destination.Action.poap
+          ) { store in
+            NavigationStack {
+              MyPOAPView(store: store)
+            }
           }
         }
       }
-      .listStyle(.plain)
       .navigationTitle("Widgets")
     }
   }
