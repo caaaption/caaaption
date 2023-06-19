@@ -2,7 +2,6 @@ open:
 	open caaaption.xcworkspace
 
 clean:
-	rm -rf **/*/.swiftpm
 	rm -rf **/*/.build
 
 bootstrap: secrets
