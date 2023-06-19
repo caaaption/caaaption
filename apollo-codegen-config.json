@@ -9,6 +9,11 @@
     ]
   },
   "output" : {
+    "testMocks" : {
+      "absolute" : {
+        "path": "./Packages/SnapshotModelPackage"
+      }
+    },
     "schemaTypes" : {
       "path" : "./Packages/SnapshotModelPackage",
       "moduleType" : {
