@@ -49,7 +49,7 @@ public enum VoteWidget: WidgetProtocol {
       self.title = title
       self.score = score
       self.choice = choice
-      self.widgetURL = URL(string: link ?? "")
+      widgetURL = URL(string: link ?? "")
     }
   }
 
