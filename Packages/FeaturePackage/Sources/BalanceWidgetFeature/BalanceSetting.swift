@@ -1,31 +1,34 @@
-import BalanceWidget
 import ComposableArchitecture
-import Foundation
-import QuickNodeClient
 import SwiftUI
+import WidgetClient
 import UserDefaultsClient
+import BalanceWidget
+import QuickNodeClient
 
 public struct BalanceSettingReducer: ReducerProtocol {
   public init() {}
 
   public struct State: Equatable {
     @BindingState var address = ""
-    var entry: BalanceWidget.Entry?
-
+    var isActivityIndicatorVisible = false
+    var errorMessage: String?
+    var balance: Decimal?
     public init() {}
   }
 
   public enum Action: Equatable, BindableAction {
     case onTask
-    case addWidget
-    case dismiss
-    case responseBalance(TaskResult<Decimal>)
+    case searchButtonTapped
+    case dismissButtonTapped
+    case balanceRequest
+    case balanceResponse(TaskResult<Decimal>)
     case binding(BindingAction<State>)
   }
-
-  @Dependency(\.quickNodeClient) var quickNodeClient
-  @Dependency(\.userDefaults) var userDefaults
+  
   @Dependency(\.dismiss) var dismiss
+  @Dependency(\.userDefaults) var userDefaults
+  @Dependency(\.widgetClient) var widgetClient
+  @Dependency(\.quickNodeClient) var quickNodeClient
 
   public var body: some ReducerProtocol<State, Action> {
     BindingReducer()
@@ -34,40 +37,44 @@ public struct BalanceSettingReducer: ReducerProtocol {
       case .onTask:
         let input = try? userDefaults.codableForKey(BalanceWidget.Input.self, forKey: BalanceWidget.Constant.kind)
         state.address = input?.address ?? ""
-
-        return .task {
-          .addWidget
+        
+        if state.address.isEmpty {
+          return .none
         }
-
-      case .addWidget:
-        return .task { [address = state.address] in
-          let input = BalanceWidget.Input(address: address)
-          await userDefaults.setCodable(input, forKey: BalanceWidget.Constant.kind)
-
-          return await .responseBalance(
-            TaskResult {
-              try await self.quickNodeClient.getBalance(address)
-            }
-          )
+        return .run { send in
+          await send(.balanceRequest)
         }
-
-      case .dismiss:
+        
+      case .searchButtonTapped:
+        return .run { send in
+          await send(.balanceRequest)
+        }
+        
+      case .dismissButtonTapped:
         return .run { _ in
           await self.dismiss()
         }
-
-      case let .responseBalance(.success(balance)):
-        state.entry = BalanceWidget.Entry(
-          date: Date(),
-          address: state.address,
-          balance: balance
-        )
+        
+      case .balanceRequest:
+        state.isActivityIndicatorVisible = true
         return .none
+        
+      case let .balanceResponse(.success(value)):
+        state.balance = value
+        state.isActivityIndicatorVisible = false
 
-      case .responseBalance(.failure):
-        state.entry = nil
+        return .run { [address = state.address] _ in
+          let input = BalanceWidget.Input(address: address)
+          await userDefaults.setCodable(input, forKey: BalanceWidget.Constant.kind)
+          widgetClient.reloadAllTimelines()
+        }
+        
+      case let .balanceResponse(.failure(error)):
+        state.isActivityIndicatorVisible = false
+        state.errorMessage = error.localizedDescription
+        state.balance = nil
         return .none
-
+        
       case .binding:
         return .none
       }
@@ -84,32 +91,42 @@ public struct BalanceSettingView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      VStack(spacing: 12) {
-        Spacer()
-
-        if let entry = viewStore.entry {
-          BalanceWidget.WidgetView(entry: entry)
-        }
-
-        Spacer()
-
-        TextField(
-          "Search addresses",
-          text: viewStore.binding(\.$address)
-        )
-
-        Button(action: { viewStore.send(.addWidget) }) {
-          HStack {
-            Image(systemName: "plus.circle.fill")
-              .tint(Color.white)
-            Text("Add Widget")
-              .bold()
-              .foregroundColor(Color.white)
+      Form {
+        Section {
+          TextField("Address", text: viewStore.binding(\.$address))
+          
+          Button {
+            viewStore.send(.searchButtonTapped)
+          } label: {
+            HStack {
+              Text("Search")
+                .frame(maxWidth: .infinity, alignment: .leading)
+              if viewStore.isActivityIndicatorVisible {
+                ProgressView()
+              }
+            }
           }
-          .frame(height: 50, alignment: .center)
-          .frame(maxWidth: CGFloat.infinity)
-          .background(Color.accentColor)
-          .clipShape(Capsule())
+          .disabled(
+            viewStore.isActivityIndicatorVisible || viewStore.address.isEmpty
+          )
+        } footer: {
+          if let message = viewStore.errorMessage {
+            Text(message)
+              .foregroundColor(.red)
+          }
+        }
+        
+        Section {
+          Text("Address")
+            .layoutPriority(1)
+            .badge(viewStore.address)
+          
+          if let balance = viewStore.balance {
+            Text("Balance")
+              .badge("\(balance.description) ETH")
+          } else {
+            Text("Balance")
+          }
         }
       }
       .task { await viewStore.send(.onTask).finish() }
@@ -119,7 +136,7 @@ public struct BalanceSettingView: View {
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
-            viewStore.send(.dismiss)
+            viewStore.send(.dismissButtonTapped)
           } label: {
             Image(systemName: "xmark.circle.fill")
               .symbolRenderingMode(.palette)
@@ -133,19 +150,15 @@ public struct BalanceSettingView: View {
 }
 
 #if DEBUG
-  import SwiftUIHelpers
-
   struct BalanceSettingViewPreviews: PreviewProvider {
     static var previews: some View {
-      Preview {
-        NavigationStack {
-          BalanceSettingView(
-            store: .init(
-              initialState: BalanceSettingReducer.State(),
-              reducer: BalanceSettingReducer()
-            )
+      NavigationStack {
+        BalanceSettingView(
+          store: .init(
+            initialState: BalanceSettingReducer.State(),
+            reducer: BalanceSettingReducer()
           )
-        }
+        )
       }
     }
   }
