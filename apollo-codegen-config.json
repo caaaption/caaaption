@@ -11,13 +11,16 @@
   "output" : {
     "testMocks" : {
       "absolute" : {
-        "path": "./Packages/SnapshotModelPackage"
+        "path": "./Packages/GraphQLPackage/Sources/SnapshotModelMock"
       }
     },
     "schemaTypes" : {
-      "path" : "./Packages/SnapshotModelPackage",
+      "path" : "./Packages/GraphQLPackage/Sources/SnapshotModel",
       "moduleType" : {
-        "swiftPackageManager" : {}
+        "embeddedInTarget" : {
+          "name" : "SnapshotModel",
+          "accessModifier": "public"
+        }
       }
     },
     "operations" : {

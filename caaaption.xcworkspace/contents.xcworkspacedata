@@ -14,6 +14,6 @@
       location = "group:Packages/caaaption">
    </FileRef>
    <FileRef
-      location = "group:Packages/SnapshotModelPackage">
+      location = "group:Packages/GraphQLPackage">
    </FileRef>
 </Workspace>
