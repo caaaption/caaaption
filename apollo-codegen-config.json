@@ -9,17 +9,10 @@
     ]
   },
   "output" : {
-    "testMocks" : {
-      "absolute" : {
-        "path": "./Packages/caaaption/Sources/SnapshotModelMock"
-      }
-    },
     "schemaTypes" : {
-      "path" : "./Packages/caaaption/Sources/SnapshotModel",
+      "path" : "./Packages/SnapshotModelPackage",
       "moduleType" : {
-        "embeddedInTarget" : {
-          "name" : "SnapshotModel"
-        }
+        "swiftPackageManager" : {}
       }
     },
     "operations" : {

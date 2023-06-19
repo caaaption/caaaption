@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "design-system",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/caaaption/design-system",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f8582feaaacc55139e9644bf04f9766948928d66"
+      }
+    },
+    {
       "identity" : "inflectorkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mattt/InflectorKit",
@@ -77,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
-        "branch" : "navigation-beta",
-        "revision" : "0f9482983360b0010ee5f126536860fa305b376b"
+        "revision" : "3fa456c04636978288ca6aa5acbe7b642bee3328",
+        "version" : "0.54.1"
       }
     },
     {
@@ -86,8 +95,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-custom-dump",
       "state" : {
-        "revision" : "84b30e1af72e0ffe6dfbfe39d53b8173caacf224",
-        "version" : "0.10.2"
+        "revision" : "505aa98716275fbd045d8f934fee3337c82ffbd3",
+        "version" : "0.10.3"
       }
     },
     {
@@ -95,8 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-dependencies",
       "state" : {
-        "revision" : "ad0a6a0dd4d4741263e798f4f5029589c9b5da73",
-        "version" : "0.4.2"
+        "revision" : "de1a984a71e51f6e488e98ce3652035563eb8acb",
+        "version" : "0.5.1"
       }
     },
     {
@@ -109,12 +118,30 @@
       }
     },
     {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
+      "state" : {
+        "revision" : "cef5b3f6f11781dd4591bdd1dd0a3d22bd609334",
+        "version" : "1.11.0"
+      }
+    },
+    {
       "identity" : "swiftui-navigation",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swiftui-navigation",
       "state" : {
-        "revision" : "47dd574b900ba5ba679f56ea00d4d282fc7305a6",
-        "version" : "0.7.1"
+        "revision" : "db81007362f998654239021ca9308a264e59d3e2",
+        "version" : "0.7.2"
+      }
+    },
+    {
+      "identity" : "swiftui-preview-snapshots",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/doordash-oss/swiftui-preview-snapshots",
+      "state" : {
+        "revision" : "09964baa5084a4208b0730dbed067fe4ce5d4465",
+        "version" : "1.0.0"
       }
     },
     {
