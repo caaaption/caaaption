@@ -12,7 +12,7 @@ let package = Package(
     .library(name: "SnapshotModel", targets: ["SnapshotModel"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/apollographql/apollo-ios.git", from: "1.0.0"),
+    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.2.2"),
   ],
   targets: [
     .target(
