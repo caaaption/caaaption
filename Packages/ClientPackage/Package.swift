@@ -20,7 +20,8 @@ let package = Package(
   ],
   dependencies: [
     .package(path: "../GraphQLPackage"),
-    .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "0.5.1")
+    .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "0.5.1"),
+    .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "0.8.5"),
   ],
   targets: [
     .target(name: "UIApplicationClient", dependencies: [
