@@ -1,11 +1,12 @@
 name: dgraph
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
     paths:
-      - 'Package.swift'
+      - '**/*/Package.swift'
       - '.github/workflows/dgraph.yml'
 
 jobs:
