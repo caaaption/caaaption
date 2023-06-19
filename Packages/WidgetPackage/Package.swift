@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
   name: "WidgetPackage",
   platforms: [
-    .iOS(.v16)
+    .iOS(.v16),
   ],
   products: [
     .library(name: "WidgetProtocol", targets: ["WidgetProtocol"]),
@@ -27,7 +27,7 @@ let package = Package(
     ]),
   ],
   dependencies: [
-    .package(path: "../ClientPackage")
+    .package(path: "../ClientPackage"),
   ],
   targets: [
     .target(name: "WidgetProtocol"),
