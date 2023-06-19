@@ -22,7 +22,7 @@ build-caaaption:
 		-sdk iphonesimulator
 
 secrets:
-	@cp caaaption/Sources/POAPClient/Secrets.swift.example caaaption/Sources/POAPClient/Secrets.swift
+	@cp ./Packages/caaaption/Sources/POAPClient/Secrets.swift.example ./Packages/caaaption/Sources/POAPClient/Secrets.swift
 
 dgraph:
 	@swift build -c release --package-path ./BuildTools/DependenciesGraph --product dgraph
