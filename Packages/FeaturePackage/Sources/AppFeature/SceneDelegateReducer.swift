@@ -5,6 +5,7 @@ public struct SceneDelegateReducer: ReducerProtocol {
   public struct State: Equatable {}
   public enum Action: Equatable {
     case shortcutItem(UIApplicationShortcutItem)
+    case quickAction(QuickActionReducer.Action)
   }
 
   @Dependency(\.openURL) var openURL
@@ -12,18 +13,11 @@ public struct SceneDelegateReducer: ReducerProtocol {
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
     switch action {
     case let .shortcutItem(shortcutItem):
-      let urls: [String: URL] = [
-        "talk-to-founder": URL(string: "https://twitter.com/0xsatoya")!,
-        "talk-to-lead-dev": URL(string: "https://twitter.com/tomokisun")!,
-      ]
-
-      guard let url = urls[shortcutItem.type] else {
-        return .none
+      return .run { @Sendable send in
+        await send(.quickAction(.quickAction(shortcutItem)))
       }
-
-      return .run { _ in
-        await self.openURL(url)
-      }
+    case .quickAction:
+      return .none
     }
   }
 }
