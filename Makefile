@@ -40,4 +40,4 @@ apollo-cli-install:
 	@swift package --package-path ./Packages/caaaption --allow-writing-to-package-directory apollo-cli-install
 
 apollo-generate:
-	./Packages/caaaption/apollo-ios-cli generate
+	./Packages/caaaption/apollo-ios-cli generate --ignore-version-mismatch
