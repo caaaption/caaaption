@@ -1,46 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "group:GraphQL"
-      name = "GraphQL">
-      <Group
-         location = "group:Snapshot"
-         name = "Snapshot">
-         <FileRef
-            location = "group:Schema.graphqls">
-         </FileRef>
-         <Group
-            location = "group:Fragments"
-            name = "Fragments">
-            <FileRef
-               location = "group:ProposalWidget.graphql">
-            </FileRef>
-            <FileRef
-               location = "group:ProposalCard.graphql">
-            </FileRef>
-            <FileRef
-               location = "group:SpaceCard.graphql">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:Queries"
-            name = "Queries">
-            <FileRef
-               location = "group:Proposal.graphql">
-            </FileRef>
-            <FileRef
-               location = "group:Spaces.graphql">
-            </FileRef>
-            <FileRef
-               location = "group:Proposals.graphql">
-            </FileRef>
-         </Group>
-      </Group>
-      <FileRef
-         location = "group:README.md">
-      </FileRef>
-   </Group>
    <FileRef
       location = "group:PreviewApp/PreviewApp.xcodeproj">
    </FileRef>
@@ -51,6 +11,6 @@
       location = "group:App/Staging.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:caaaption">
+      location = "group:Packages/caaaption">
    </FileRef>
 </Workspace>
