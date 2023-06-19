@@ -14,6 +14,7 @@ var package = Package(
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.2.2"),
     .package(url: "https://github.com/caaaption/design-system", branch: "main"),
+    .package(path: "../WidgetPackage"),
     .package(path: "../ClientPackage"),
     .package(path: "../GraphQLPackage"),
   ]
@@ -55,14 +56,14 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "BalanceWidgetFeature", dependencies: [
-    "BalanceWidget",
     "SwiftUIHelpers",
     .product(name: "WidgetClient", package: "ClientPackage"),
+    .product(name: "BalanceWidget", package: "WidgetPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "VoteWidgetFeature", dependencies: [
-    "VoteWidget",
     "SwiftUIHelpers",
+    .product(name: "VoteWidget", package: "WidgetPackage"),
     .product(name: "WidgetClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
@@ -73,15 +74,15 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "POAPWidgetFeature", dependencies: [
-    "POAPWidget",
     "SwiftUIHelpers",
+    .product(name: "POAPWidget", package: "WidgetPackage"),
     .product(name: "POAPClient", package: "ClientPackage"),
     .product(name: "WidgetClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "GasPriceWidgetFeature", dependencies: [
     "SwiftUIHelpers",
-    "GasPriceWidget",
+    .product(name: "GasPriceWidget", package: "WidgetPackage"),
     .product(name: "WidgetClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
@@ -116,61 +117,4 @@ package.products.append(contentsOf: [
 ])
 package.targets.append(contentsOf: [
   .target(name: "PlaceholderAsyncImage"),
-])
-
-// Widgets
-
-package.products.append(contentsOf: [
-  .library(name: "WidgetProtocol", targets: ["WidgetProtocol"]),
-  .library(name: "WidgetHelpers", targets: ["WidgetHelpers"]),
-  .library(name: "WidgetModule", targets: [
-    "BalanceWidget",
-    "VoteWidget",
-    "GasPriceWidget",
-    "POAPWidget",
-    "SnapshotSpaceWidget",
-    "MirrorWidget",
-  ]),
-  .library(name: "BalanceWidget", targets: ["BalanceWidget"]),
-  .library(name: "VoteWidget", targets: ["VoteWidget"]),
-  .library(name: "GasPriceWidget", targets: ["GasPriceWidget"]),
-  .library(name: "POAPWidget", targets: ["POAPWidget"]),
-  .library(name: "SnapshotSpaceWidget", targets: ["SnapshotSpaceWidget"]),
-  .library(name: "MirrorWidget", targets: ["MirrorWidget"]),
-])
-package.targets.append(contentsOf: [
-  .target(name: "WidgetProtocol"),
-  .target(name: "WidgetHelpers"),
-  .target(name: "BalanceWidget", dependencies: [
-    "WidgetHelpers",
-    "WidgetProtocol",
-    .product(name: "QuickNodeClient", package: "ClientPackage"),
-    .product(name: "UserDefaultsClient", package: "ClientPackage"),
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
-  .target(name: "VoteWidget", dependencies: [
-    "WidgetHelpers",
-    "WidgetProtocol",
-    .product(name: "SnapshotClient", package: "ClientPackage"),
-    .product(name: "UserDefaultsClient", package: "ClientPackage"),
-  ]),
-  .target(name: "GasPriceWidget", dependencies: [
-    "WidgetHelpers",
-    "WidgetProtocol",
-    .product(name: "UserDefaultsClient", package: "ClientPackage"),
-  ]),
-  .target(name: "POAPWidget", dependencies: [
-    "WidgetHelpers",
-    "WidgetProtocol",
-    .product(name: "POAPClient", package: "ClientPackage"),
-    .product(name: "UserDefaultsClient", package: "ClientPackage"),
-  ]),
-  .target(name: "SnapshotSpaceWidget", dependencies: [
-    "WidgetHelpers",
-    "WidgetProtocol",
-  ]),
-  .target(name: "MirrorWidget", dependencies: [
-    "WidgetHelpers",
-    "WidgetProtocol",
-  ]),
 ])
