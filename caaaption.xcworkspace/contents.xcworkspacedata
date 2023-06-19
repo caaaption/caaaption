@@ -11,7 +11,7 @@
       location = "group:App/Staging.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Packages/caaaption">
+      location = "group:Packages/FeaturePackage">
    </FileRef>
    <FileRef
       location = "group:Packages/WidgetPackage">
