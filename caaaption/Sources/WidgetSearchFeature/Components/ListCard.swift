@@ -4,15 +4,11 @@ import WidgetProtocol
 public struct ListCard<W: WidgetProtocol>: View {
   public init(_ value: W.Type) {}
   public var body: some View {
-    VStack(spacing: 12) {
-      HStack(spacing: 12) {
-        VStack(alignment: .leading, spacing: 0) {
-          Text(W.Constant.displayName)
-            .bold()
-          Text(W.Constant.description)
-            .foregroundColor(.secondary)
-        }
-      }
+    VStack(alignment: .leading, spacing: 0) {
+      Text(W.Constant.displayName)
+        .bold()
+      Text(W.Constant.description)
+        .foregroundColor(.secondary)
     }
   }
 }
