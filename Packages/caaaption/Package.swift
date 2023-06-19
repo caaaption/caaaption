@@ -14,6 +14,7 @@ var package = Package(
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.1.2"),
     .package(url: "https://github.com/caaaption/design-system", branch: "main"),
+    .package(path: "../SnapshotModelPackage"),
   ]
 )
 
@@ -90,21 +91,6 @@ package.targets.append(contentsOf: [
   ]),
 ])
 
-// GraphQL
-package.products.append(contentsOf: [
-  .library(name: "SnapshotModel", targets: ["SnapshotModel"]),
-  .library(name: "SnapshotModelMock", targets: ["SnapshotModelMock"]),
-])
-package.targets.append(contentsOf: [
-  .target(name: "SnapshotModel", dependencies: [
-    .product(name: "ApolloAPI", package: "apollo-ios"),
-  ]),
-  .target(name: "SnapshotModelMock", dependencies: [
-    "SnapshotModel",
-    .product(name: "ApolloTestSupport", package: "apollo-ios"),
-  ]),
-])
-
 // Client
 
 package.products.append(contentsOf: [
@@ -124,7 +110,7 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "SnapshotClient", dependencies: [
     "ApolloHelpers",
-    "SnapshotModel",
+    .product(name: "SnapshotModel", package: "SnapshotModelPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "ServerConfig"),
