@@ -25,9 +25,9 @@ public extension Mock where O == Proposal {
     title: String? = nil
   ) {
     self.init()
-    self.choices = choices
-    self.id = id
-    self.scores = scores
-    self.title = title
+    _set(choices, for: \.choices)
+    _set(id, for: \.id)
+    _set(scores, for: \.scores)
+    _set(title, for: \.title)
   }
 }
