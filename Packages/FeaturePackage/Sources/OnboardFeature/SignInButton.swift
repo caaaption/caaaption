@@ -25,7 +25,7 @@ public struct SignInButtonReducer: ReducerProtocol {
       switch action {
       case .signInButtonTapped:
         state.isActivityIndicatorVisible = true
-        return EffectTask.task {
+        return .task {
           await .nonceResponse(
             TaskResult {
               try await self.authClient.nonce(
@@ -38,22 +38,22 @@ public struct SignInButtonReducer: ReducerProtocol {
       case let .nonceResponse(.success(nonce)):
         state.nonce = nonce
         state.isActivityIndicatorVisible = false
-        return EffectTask.none
+        return .none
 
       case let .nonceResponse(.failure(error)):
         print("error : \(error)")
         state.isActivityIndicatorVisible = false
-        return EffectTask.none
+        return .none
 
       case let .customTokenResponse(.success(customToken)):
         print("custom token : \(customToken)")
         state.isActivityIndicatorVisible = false
-        return EffectTask.none
+        return .none
 
       case let .customTokenResponse(.failure(error)):
         print("error : \(error)")
         state.isActivityIndicatorVisible = false
-        return EffectTask.none
+        return .none
       }
     }
   }
