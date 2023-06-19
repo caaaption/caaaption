@@ -6,7 +6,7 @@ public struct QuickActionReducer: ReducerProtocol {
   public enum Action: Equatable {
     case quickAction(UIApplicationShortcutItem)
   }
-  
+
   @Dependency(\.openURL) var openURL
 
   public var body: some ReducerProtocol<State, Action> {
