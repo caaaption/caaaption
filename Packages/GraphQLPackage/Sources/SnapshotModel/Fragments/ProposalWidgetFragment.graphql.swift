@@ -11,6 +11,7 @@ public extension SnapshotModel {
         title
         choices
         scores
+        link
       }
       """ }
 
@@ -23,11 +24,13 @@ public extension SnapshotModel {
       .field("title", String.self),
       .field("choices", [String?].self),
       .field("scores", [Double?]?.self),
+      .field("link", String?.self),
     ] }
 
     public var title: String { __data["title"] }
     public var choices: [String?] { __data["choices"] }
     public var scores: [Double?]? { __data["scores"] }
+    public var link: String? { __data["link"] }
   }
 
 }
