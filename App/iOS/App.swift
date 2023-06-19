@@ -59,6 +59,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
     configurationForConnecting connectingSceneSession: UISceneSession,
     options: UIScene.ConnectionOptions
   ) -> UISceneConfiguration {
+    viewStore.send(.appDelegate(.configurationForConnecting(options.shortcutItem)))
     let config = UISceneConfiguration(
       name: connectingSceneSession.configuration.name,
       sessionRole: connectingSceneSession.role
