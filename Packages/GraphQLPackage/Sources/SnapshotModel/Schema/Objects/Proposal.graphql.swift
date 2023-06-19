@@ -3,7 +3,7 @@
 
 import ApolloAPI
 
-public extension Objects {
+public extension SnapshotModel.Objects {
   static let Proposal = Object(
     typename: "Proposal",
     implementedInterfaces: []

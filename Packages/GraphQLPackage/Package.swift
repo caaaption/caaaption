@@ -1,14 +1,12 @@
-// swift-tools-version:5.7
+// swift-tools-version: 5.8
+// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-  name: "SnapshotModel",
+  name: "GraphQLPackage",
   platforms: [
-    .iOS(.v12),
-    .macOS(.v10_14),
-    .tvOS(.v12),
-    .watchOS(.v5),
+    .iOS(.v16)
   ],
   products: [
     .library(name: "SnapshotModel", targets: ["SnapshotModel"]),
@@ -21,8 +19,7 @@ let package = Package(
       name: "SnapshotModel",
       dependencies: [
         .product(name: "ApolloAPI", package: "apollo-ios"),
-      ],
-      path: "./Sources"
+      ]
     ),
   ]
 )
