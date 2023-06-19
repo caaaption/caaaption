@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B734D28D2A1914AD0078DE0F /* WidgetClient in Frameworks */ = {isa = PBXBuildFile; productRef = B734D28C2A1914AD0078DE0F /* WidgetClient */; };
 		B783E0FA2A11FFD0002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0F92A11FFD0002E782F /* Assets.xcassets */; };
 		B783E0FD2A11FFD0002E782F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0FC2A11FFD0002E782F /* Preview Assets.xcassets */; };
 		B783E1022A120003002E782F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1012A120003002E782F /* App.swift */; };
@@ -16,13 +15,14 @@
 		B783E1442A1200A1002E782F /* WidgetExtensionBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1432A1200A1002E782F /* WidgetExtensionBundle.swift */; };
 		B783E1482A1200A2002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E1472A1200A2002E782F /* Assets.xcassets */; };
 		B783E14D2A1200A2002E782F /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B783E13C2A1200A1002E782F /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B783E1522A1200AF002E782F /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B783E1512A1200AF002E782F /* AppFeature */; };
-		B783E1542A1200B4002E782F /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E1532A1200B4002E782F /* QuickNodeClient */; };
-		B783E1562A1200BB002E782F /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E1552A1200BB002E782F /* UserDefaultsClient */; };
-		B783E15A2A120105002E782F /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E1592A120105002E782F /* QuickNodeClient */; };
-		B783E15C2A120109002E782F /* SnapshotClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E15B2A120109002E782F /* SnapshotClient */; };
-		B783E15E2A12010E002E782F /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B783E15D2A12010E002E782F /* UserDefaultsClient */; };
-		B7FDB9922A2D43E2005942B7 /* WidgetModule in Frameworks */ = {isa = PBXBuildFile; productRef = B7FDB9912A2D43E2005942B7 /* WidgetModule */; };
+		B7DAE4872A40BAF30078772F /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4862A40BAF30078772F /* AppFeature */; };
+		B7DAE4892A40BB060078772F /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4882A40BB060078772F /* QuickNodeClient */; };
+		B7DAE48B2A40BB0A0078772F /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE48A2A40BB0A0078772F /* UserDefaultsClient */; };
+		B7DAE48D2A40BB110078772F /* WidgetClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE48C2A40BB110078772F /* WidgetClient */; };
+		B7DAE48F2A40BB290078772F /* WidgetModule in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE48E2A40BB290078772F /* WidgetModule */; };
+		B7DAE4912A40BB3E0078772F /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4902A40BB3E0078772F /* QuickNodeClient */; };
+		B7DAE4932A40BB440078772F /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4922A40BB440078772F /* UserDefaultsClient */; };
+		B7DAE4952A40BB480078772F /* SnapshotClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4942A40BB480078772F /* SnapshotClient */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,10 +70,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B783E1522A1200AF002E782F /* AppFeature in Frameworks */,
-				B783E1562A1200BB002E782F /* UserDefaultsClient in Frameworks */,
-				B783E1542A1200B4002E782F /* QuickNodeClient in Frameworks */,
-				B734D28D2A1914AD0078DE0F /* WidgetClient in Frameworks */,
+				B7DAE48B2A40BB0A0078772F /* UserDefaultsClient in Frameworks */,
+				B7DAE4892A40BB060078772F /* QuickNodeClient in Frameworks */,
+				B7DAE4872A40BAF30078772F /* AppFeature in Frameworks */,
+				B7DAE48D2A40BB110078772F /* WidgetClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,11 +82,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B783E1412A1200A1002E782F /* SwiftUI.framework in Frameworks */,
-				B783E15A2A120105002E782F /* QuickNodeClient in Frameworks */,
+				B7DAE4932A40BB440078772F /* UserDefaultsClient in Frameworks */,
+				B7DAE4912A40BB3E0078772F /* QuickNodeClient in Frameworks */,
+				B7DAE48F2A40BB290078772F /* WidgetModule in Frameworks */,
 				B783E13F2A1200A1002E782F /* WidgetKit.framework in Frameworks */,
-				B783E15E2A12010E002E782F /* UserDefaultsClient in Frameworks */,
-				B7FDB9922A2D43E2005942B7 /* WidgetModule in Frameworks */,
-				B783E15C2A120109002E782F /* SnapshotClient in Frameworks */,
+				B7DAE4952A40BB480078772F /* SnapshotClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,10 +171,10 @@
 			);
 			name = App;
 			packageProductDependencies = (
-				B783E1512A1200AF002E782F /* AppFeature */,
-				B783E1532A1200B4002E782F /* QuickNodeClient */,
-				B783E1552A1200BB002E782F /* UserDefaultsClient */,
-				B734D28C2A1914AD0078DE0F /* WidgetClient */,
+				B7DAE4862A40BAF30078772F /* AppFeature */,
+				B7DAE4882A40BB060078772F /* QuickNodeClient */,
+				B7DAE48A2A40BB0A0078772F /* UserDefaultsClient */,
+				B7DAE48C2A40BB110078772F /* WidgetClient */,
 			);
 			productName = iOS;
 			productReference = B783E0F32A11FFD0002E782F /* App.app */;
@@ -194,10 +194,10 @@
 			);
 			name = WidgetExtension;
 			packageProductDependencies = (
-				B783E1592A120105002E782F /* QuickNodeClient */,
-				B783E15B2A120109002E782F /* SnapshotClient */,
-				B783E15D2A12010E002E782F /* UserDefaultsClient */,
-				B7FDB9912A2D43E2005942B7 /* WidgetModule */,
+				B7DAE48E2A40BB290078772F /* WidgetModule */,
+				B7DAE4902A40BB3E0078772F /* QuickNodeClient */,
+				B7DAE4922A40BB440078772F /* UserDefaultsClient */,
+				B7DAE4942A40BB480078772F /* SnapshotClient */,
 			);
 			productName = WidgetExtensionExtension;
 			productReference = B783E13C2A1200A1002E782F /* WidgetExtension.appex */;
@@ -573,37 +573,37 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B734D28C2A1914AD0078DE0F /* WidgetClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WidgetClient;
-		};
-		B783E1512A1200AF002E782F /* AppFeature */ = {
+		B7DAE4862A40BAF30078772F /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
 		};
-		B783E1532A1200B4002E782F /* QuickNodeClient */ = {
+		B7DAE4882A40BB060078772F /* QuickNodeClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = QuickNodeClient;
 		};
-		B783E1552A1200BB002E782F /* UserDefaultsClient */ = {
+		B7DAE48A2A40BB0A0078772F /* UserDefaultsClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UserDefaultsClient;
 		};
-		B783E1592A120105002E782F /* QuickNodeClient */ = {
+		B7DAE48C2A40BB110078772F /* WidgetClient */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = QuickNodeClient;
+			productName = WidgetClient;
 		};
-		B783E15B2A120109002E782F /* SnapshotClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SnapshotClient;
-		};
-		B783E15D2A12010E002E782F /* UserDefaultsClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = UserDefaultsClient;
-		};
-		B7FDB9912A2D43E2005942B7 /* WidgetModule */ = {
+		B7DAE48E2A40BB290078772F /* WidgetModule */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WidgetModule;
+		};
+		B7DAE4902A40BB3E0078772F /* QuickNodeClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = QuickNodeClient;
+		};
+		B7DAE4922A40BB440078772F /* UserDefaultsClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UserDefaultsClient;
+		};
+		B7DAE4942A40BB480078772F /* SnapshotClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SnapshotClient;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
