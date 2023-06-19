@@ -7,6 +7,7 @@ let package = Package(
   name: "ClientPackage",
   platforms: [
     .iOS(.v16),
+    .macOS(.v13),
   ],
   products: [
     .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),

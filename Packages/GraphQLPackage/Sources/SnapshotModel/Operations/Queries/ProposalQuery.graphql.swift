@@ -54,6 +54,7 @@ public extension SnapshotModel {
         public var title: String { __data["title"] }
         public var choices: [String?] { __data["choices"] }
         public var scores: [Double?]? { __data["scores"] }
+        public var link: String? { __data["link"] }
 
         public struct Fragments: FragmentContainer {
           public let __data: DataDict
