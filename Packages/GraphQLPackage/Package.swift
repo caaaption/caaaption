@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
   name: "GraphQLPackage",
   platforms: [
-    .iOS(.v16)
+    .iOS(.v16),
   ],
   products: [
     .library(name: "SnapshotModel", targets: ["SnapshotModel"]),
