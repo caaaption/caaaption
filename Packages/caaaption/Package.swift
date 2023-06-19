@@ -14,6 +14,7 @@ var package = Package(
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.2.2"),
     .package(url: "https://github.com/caaaption/design-system", branch: "main"),
+    .package(path: "../ClientPackage"),
     .package(path: "../GraphQLPackage"),
   ]
 )
@@ -48,40 +49,40 @@ package.targets.append(contentsOf: [
     .product(name: "Avatar", package: "design-system"),
   ]),
   .target(name: "ContributorFeature", dependencies: [
-    "GitHubClient",
     "SwiftUIHelpers",
     "PlaceholderAsyncImage",
+    .product(name: "GitHubClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "BalanceWidgetFeature", dependencies: [
-    "WidgetClient",
     "BalanceWidget",
     "SwiftUIHelpers",
+    .product(name: "WidgetClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "VoteWidgetFeature", dependencies: [
     "VoteWidget",
-    "WidgetClient",
     "SwiftUIHelpers",
+    .product(name: "WidgetClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "OnboardFeature", dependencies: [
-    "AuthClient",
     "ServerConfig",
     "SwiftUIHelpers",
+    .product(name: "AuthClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "POAPWidgetFeature", dependencies: [
     "POAPWidget",
-    "POAPClient",
-    "WidgetClient",
     "SwiftUIHelpers",
+    .product(name: "POAPClient", package: "ClientPackage"),
+    .product(name: "WidgetClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "GasPriceWidgetFeature", dependencies: [
-    "WidgetClient",
     "SwiftUIHelpers",
     "GasPriceWidget",
+    .product(name: "WidgetClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "WidgetTabFeature", dependencies: [
@@ -94,58 +95,19 @@ package.targets.append(contentsOf: [
 // Client
 
 package.products.append(contentsOf: [
-  .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
-  .library(name: "SnapshotClient", targets: ["SnapshotClient"]),
   .library(name: "ServerConfig", targets: ["ServerConfig"]),
-  .library(name: "GitHubClient", targets: ["GitHubClient"]),
-  .library(name: "UserDefaultsClient", targets: ["UserDefaultsClient"]),
-  .library(name: "QuickNodeClient", targets: ["QuickNodeClient"]),
-  .library(name: "POAPClient", targets: ["POAPClient"]),
-  .library(name: "WidgetClient", targets: ["WidgetClient"]),
-  .library(name: "AuthClient", targets: ["AuthClient"]),
 ])
 package.targets.append(contentsOf: [
-  .target(name: "UIApplicationClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
-  .target(name: "SnapshotClient", dependencies: [
-    "ApolloHelpers",
-    .product(name: "SnapshotModel", package: "GraphQLPackage"),
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
   .target(name: "ServerConfig"),
-  .target(name: "GitHubClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
-  .target(name: "UserDefaultsClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
-  .target(name: "QuickNodeClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
-  .target(name: "POAPClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
-  .target(name: "WidgetClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
-  .target(name: "AuthClient", dependencies: [
-    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-  ]),
 ])
 
 // Helpers
 
 package.products.append(contentsOf: [
   .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
-  .library(name: "ApolloHelpers", targets: ["ApolloHelpers"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "SwiftUIHelpers"),
-  .target(name: "ApolloHelpers", dependencies: [
-    .product(name: "Apollo", package: "apollo-ios"),
-    .product(name: "ApolloAPI", package: "apollo-ios"),
-  ]),
 ])
 
 // Utilities
@@ -182,26 +144,26 @@ package.targets.append(contentsOf: [
   .target(name: "BalanceWidget", dependencies: [
     "WidgetHelpers",
     "WidgetProtocol",
-    "QuickNodeClient",
-    "UserDefaultsClient",
+    .product(name: "QuickNodeClient", package: "ClientPackage"),
+    .product(name: "UserDefaultsClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "VoteWidget", dependencies: [
     "WidgetHelpers",
     "WidgetProtocol",
-    "UserDefaultsClient",
-    "SnapshotClient",
+    .product(name: "SnapshotClient", package: "ClientPackage"),
+    .product(name: "UserDefaultsClient", package: "ClientPackage"),
   ]),
   .target(name: "GasPriceWidget", dependencies: [
     "WidgetHelpers",
     "WidgetProtocol",
-    "UserDefaultsClient",
+    .product(name: "UserDefaultsClient", package: "ClientPackage"),
   ]),
   .target(name: "POAPWidget", dependencies: [
-    "POAPClient",
     "WidgetHelpers",
     "WidgetProtocol",
-    "UserDefaultsClient",
+    .product(name: "POAPClient", package: "ClientPackage"),
+    .product(name: "UserDefaultsClient", package: "ClientPackage"),
   ]),
   .target(name: "SnapshotSpaceWidget", dependencies: [
     "WidgetHelpers",
