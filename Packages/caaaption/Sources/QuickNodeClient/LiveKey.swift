@@ -17,7 +17,7 @@ extension QuickNodeClient: DependencyKey {
       }
 
       func getBalance(address: String) async throws -> Decimal {
-        var urlRequest = URLRequest(url: baseURL)
+        var urlRequest = URLRequest(url: baseURL, cachePolicy: .returnCacheDataElseLoad)
         urlRequest.httpMethod = "POST"
         urlRequest.allHTTPHeaderFields = [
           "Content-Type": "application/json",

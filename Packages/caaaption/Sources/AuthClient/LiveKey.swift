@@ -23,7 +23,7 @@ actor Session {
 
   func nonce(address: String) async throws -> String {
     let url = URL(string: "https://asia-northeast1-caaaption-staging.cloudfunctions.net/api/nonce")!
-    var request = URLRequest(url: url)
+    var request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
     request.httpMethod = "POST"
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.httpBody = """
@@ -38,7 +38,7 @@ actor Session {
 
   func verify(param: AuthClient.VerifyParam) async throws -> String {
     let url = URL(string: "https://asia-northeast1-caaaption-staging.cloudfunctions.net/api/verify")!
-    var request = URLRequest(url: url)
+    var request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
     request.httpMethod = "POST"
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
     request.httpBody = """
