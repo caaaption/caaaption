@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - './Packages/caaaption/Package.swift'
+      - 'Package.swift'
       - '.github/workflows/dgraph.yml'
 
 jobs:
