@@ -35,12 +35,12 @@ public struct BalanceSettingReducer: ReducerProtocol {
         let input = try? userDefaults.codableForKey(BalanceWidget.Input.self, forKey: BalanceWidget.Constant.kind)
         state.address = input?.address ?? ""
 
-        return EffectTask.task {
+        return .task {
           .addWidget
         }
 
       case .addWidget:
-        return EffectTask.task { [address = state.address] in
+        return .task { [address = state.address] in
           let input = BalanceWidget.Input(address: address)
           await userDefaults.setCodable(input, forKey: BalanceWidget.Constant.kind)
 
@@ -52,7 +52,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
         }
 
       case .dismiss:
-        return EffectTask.run { _ in
+        return .run { _ in
           await self.dismiss()
         }
 
@@ -62,14 +62,14 @@ public struct BalanceSettingReducer: ReducerProtocol {
           address: state.address,
           balance: balance
         )
-        return EffectTask.none
+        return .none
 
       case .responseBalance(.failure):
         state.entry = nil
-        return EffectTask.none
+        return .none
 
       case .binding:
-        return EffectTask.none
+        return .none
       }
     }
   }

@@ -16,7 +16,7 @@ public struct GasPriceReducer: ReducerProtocol {
     Reduce { _, action in
       switch action {
       case .onTask:
-        return EffectTask.none
+        return .none
       }
     }
   }

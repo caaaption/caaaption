@@ -22,10 +22,10 @@ public struct SignInEthereumReducer: ReducerProtocol {
     Reduce { _, action in
       switch action {
       case .signInButton:
-        return EffectTask.none
+        return .none
 
       case .onTask:
-        return EffectTask.none
+        return .none
       }
     }
   }

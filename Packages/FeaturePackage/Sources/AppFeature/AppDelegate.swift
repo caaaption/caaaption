@@ -13,13 +13,13 @@ public struct AppDelegateReducer: ReducerProtocol {
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
     switch action {
     case .didFinishLaunching:
-      return EffectTask.none
+      return .none
     case .didRegisterForRemoteNotifications(.failure):
-      return EffectTask.none
+      return .none
     case let .didRegisterForRemoteNotifications(.success(tokenData)):
       let token = tokenData.map { String(format: "%02.2hhx", $0) }.joined()
       print("didRegisterForRemoteNotifications : \(token)")
-      return EffectTask.none
+      return .none
     case let .configurationForConnecting(shortcutItem):
       if let shortcutItem {
         return .run { send in

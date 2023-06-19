@@ -16,7 +16,7 @@ public struct ___VARIABLE_productName:identifier___Reducer: ReducerProtocol {
     Reduce { _, action in
       switch action {
         case .onTask:
-          return EffectTask.none
+          return .none
       }
     }
   }

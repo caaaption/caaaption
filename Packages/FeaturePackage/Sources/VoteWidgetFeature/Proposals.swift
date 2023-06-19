@@ -41,7 +41,7 @@ public struct ProposalsReducer: ReducerProtocol {
       switch action {
       case .dialog(.presented(.confirmAddWidget)):
         guard let proposalId = state.selection?.value.id else {
-          return EffectTask.none
+          return .none
         }
         return .run { _ in
           let input = VoteWidget.Input(proposalId: proposalId)
@@ -50,7 +50,7 @@ public struct ProposalsReducer: ReducerProtocol {
         }
 
       case .dialog:
-        return EffectTask.none
+        return .none
 
       case let .proposalButtonTapped(proposal):
         state.selection = proposal
@@ -70,7 +70,7 @@ public struct ProposalsReducer: ReducerProtocol {
             """
           )
         }
-        return EffectTask.none
+        return .none
       }
     }
     .ifLet(\.$dialog, action: /Action.dialog)

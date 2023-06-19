@@ -34,7 +34,7 @@ public struct AccountReducer: ReducerProtocol {
     Reduce { _, action in
       switch action {
       case .contributor:
-        return EffectTask.none
+        return .none
 
       case .privacyPolicyButtonTapped:
         return .run { _ in

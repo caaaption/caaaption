@@ -35,7 +35,7 @@ public struct SpacesReducer: ReducerProtocol {
       switch action {
       case .onTask:
         enum CancelID {}
-        return EffectTask.run { send in
+        return .run { send in
           for try await data in self.requestSpaces() {
             await send(.responseSpace(.success(data)), animation: .default)
           }
@@ -48,21 +48,21 @@ public struct SpacesReducer: ReducerProtocol {
         let spaces = data.spaces?.compactMap(\.?.fragments.spaceCardFragment) ?? []
         let sortedSpaces = spaces.sorted(by: { $0.followersCount ?? 0 > $1.followersCount ?? 0 })
         state.spaces.append(contentsOf: sortedSpaces.map(WrappedIdentifiable.init))
-        return EffectTask.none
+        return .none
 
       case let .responseSpace(.failure(error)):
         print(error)
         state.spaces = []
-        return EffectTask.none
+        return .none
 
       case .dismiss:
-        return EffectTask.run { _ in
+        return .run { _ in
           await self.dismiss()
         }
 
       case let .tappedSpace(space):
         enum CancelID {}
-        return EffectTask.run { send in
+        return .run { send in
           for try await data in self.requestProposals(space.value.id) {
             await send(.responseProposals(.success(data)), animation: .default)
           }
@@ -72,19 +72,19 @@ public struct SpacesReducer: ReducerProtocol {
         .cancellable(id: CancelID.self)
 
       case .selection:
-        return EffectTask.none
+        return .none
 
       case let .responseProposals(.success(data)):
         let proposals = data.proposals?.compactMap(\.?.fragments.proposalCardFragment) ?? []
         state.selection = .init(
           proposals: .init(uniqueElements: proposals.map(WrappedIdentifiable.init))
         )
-        return EffectTask.none
+        return .none
 
       case let .responseProposals(.failure(error)):
         print(error)
         state.selection = nil
-        return EffectTask.none
+        return .none
       }
     }
     .ifLet(\.$selection, action: /Action.selection) {
