@@ -42,12 +42,14 @@ public enum VoteWidget: WidgetProtocol {
     public let title: String
     public let score: Double
     public let choice: String
+    public let widgetURL: URL?
 
-    public init(date: Date, title: String, score: Double, choice: String) {
+    public init(date: Date, title: String, score: Double, choice: String, link: String?) {
       self.date = date
       self.title = title
       self.score = score
       self.choice = choice
+      self.widgetURL = URL(string: link ?? "")
     }
   }
 
@@ -62,7 +64,8 @@ public enum VoteWidget: WidgetProtocol {
         date: Date(),
         title: "System Upgrade: Establishing A Software Company",
         score: 0.8599,
-        choice: "Yes - Approve this Plan"
+        choice: "Yes - Approve this Plan",
+        link: nil
       )
     }
 
@@ -99,7 +102,8 @@ public enum VoteWidget: WidgetProtocol {
             date: Date(),
             title: proposal.title,
             score: percentages.first?.0 ?? 0.0,
-            choice: percentages.first?.1 ?? ""
+            choice: percentages.first?.1 ?? "",
+            link: proposal.link
           )
           completion(entry)
         } catch {
@@ -157,6 +161,7 @@ public enum VoteWidget: WidgetProtocol {
         .padding(.all, 16)
       }
       .background(Color(uiColor: UIColor.tertiarySystemBackground))
+      .widgetURL(entry.widgetURL)
     }
   }
 }
@@ -172,7 +177,8 @@ public enum VoteWidget: WidgetProtocol {
             date: Date(),
             title: "System Upgrade: Establishing A Software Company",
             score: 0.8599,
-            choice: "Yes - Approve this Plan"
+            choice: "Yes - Approve this Plan",
+            link: nil
           )
         )
       }
