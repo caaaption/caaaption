@@ -27,7 +27,9 @@ secrets:
 
 dgraph:
 	@swift build -c release --package-path ./BuildTools/DependenciesGraph --product dgraph
-	./BuildTools/DependenciesGraph/.build/release/dgraph ./Packages/caaaption
+	./BuildTools/DependenciesGraph/.build/release/dgraph --add-to-readme ./Packages/caaaption
+	./BuildTools/DependenciesGraph/.build/release/dgraph --add-to-readme ./Packages/ClientPackage
+	./BuildTools/DependenciesGraph/.build/release/dgraph --add-to-readme ./Packages/GraphQLPackage
 
 format:
 	@swift build -c release --package-path ./BuildTools/SwiftFormatTool --product swiftformat
