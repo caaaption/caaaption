@@ -12,6 +12,7 @@ public struct BalanceReducer: ReducerProtocol {
     @BindingState var address = ""
     var isActivityIndicatorVisible = false
     var errorMessage: String?
+    var balance: Decimal?
     public init() {}
   }
 
@@ -59,7 +60,7 @@ public struct BalanceReducer: ReducerProtocol {
         return .none
         
       case let .balanceResponse(.success(value)):
-        print(value)
+        state.balance = value
         state.isActivityIndicatorVisible = false
 
         return .run { [address = state.address] _ in
@@ -71,6 +72,7 @@ public struct BalanceReducer: ReducerProtocol {
       case let .balanceResponse(.failure(error)):
         state.isActivityIndicatorVisible = false
         state.errorMessage = error.localizedDescription
+        state.balance = nil
         return .none
         
       case .binding:
@@ -111,6 +113,19 @@ public struct BalanceView: View {
           if let message = viewStore.errorMessage {
             Text(message)
               .foregroundColor(.red)
+          }
+        }
+        
+        Section {
+          Text("Address")
+            .layoutPriority(1)
+            .badge(viewStore.address)
+          
+          if let balance = viewStore.balance {
+            Text("Balance")
+              .badge("\(balance.description) ETH")
+          } else {
+            Text("Balance")
           }
         }
       }
