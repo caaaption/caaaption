@@ -11,11 +11,11 @@
   "output" : {
     "testMocks" : {
       "absolute" : {
-        "path": "./caaaption/Sources/SnapshotModelMock"
+        "path": "./Packages/caaaption/Sources/SnapshotModelMock"
       }
     },
     "schemaTypes" : {
-      "path" : "./caaaption/Sources/SnapshotModel",
+      "path" : "./Packages/caaaption/Sources/SnapshotModel",
       "moduleType" : {
         "embeddedInTarget" : {
           "name" : "SnapshotModel"

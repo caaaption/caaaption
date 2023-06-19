@@ -22,11 +22,11 @@ build-caaaption:
 		-sdk iphonesimulator
 
 secrets:
-	@cp caaaption/Sources/POAPClient/Secrets.swift.example caaaption/Sources/POAPClient/Secrets.swift
+	@cp ./Packages/caaaption/Sources/POAPClient/Secrets.swift.example ./Packages/caaaption/Sources/POAPClient/Secrets.swift
 
 dgraph:
 	@swift build -c release --package-path ./BuildTools/DependenciesGraph --product dgraph
-	./BuildTools/DependenciesGraph/.build/release/dgraph ./caaaption
+	./BuildTools/DependenciesGraph/.build/release/dgraph ./Packages/caaaption
 
 format:
 	@swift build -c release --package-path ./BuildTools/SwiftFormatTool --product swiftformat
@@ -37,7 +37,7 @@ install-template:
 	./BuildTools/XCTemplateInstallerTool/.build/release/XCTemplateInstaller --xctemplate-path XCTemplates/TCA.xctemplate
 
 apollo-cli-install:
-	@swift package --package-path ./caaaption --allow-writing-to-package-directory apollo-cli-install
+	@swift package --package-path ./Packages/caaaption --allow-writing-to-package-directory apollo-cli-install
 
 apollo-generate:
-	./caaaption/apollo-ios-cli generate
+	./Packages/caaaption/apollo-ios-cli generate

@@ -35,7 +35,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(name: "caaaption", path: "../../caaaption"),
+        .package(name: "caaaption", path: "../../Packages/caaaption"),
     ],
     targets: [
         .executableTarget(

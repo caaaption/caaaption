@@ -1,6 +1,5 @@
 .DS_Store
 **/.build
-/Packages
 /*.xcodeproj
 xcuserdata/
 DerivedData/
@@ -8,4 +7,4 @@ DerivedData/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
 apollo-ios-cli
-**/*/Secrets.swift
+**/*/Secrets.swift.example
