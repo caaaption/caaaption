@@ -31,7 +31,7 @@ public struct WidgetSearchReducer: ReducerProtocol {
       switch action {
       case .destination:
         return .none
-        
+
       case .helpButtonTapped:
         return .run { _ in
           let url = URL(string: "https://caaaption.notion.site/How-to-setup-my-widgets-Add-the-caaaption-widget-to-your-iPhone-home-screen-892061686c154b72ae6b4230329466b6")!
@@ -105,7 +105,7 @@ public struct WidgetSearchView: View {
             )
           }
         }
-        
+
         Section("Widgets") {
           Button {
             viewStore.send(.balanceButtonTapped)
