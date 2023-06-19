@@ -1,13 +1,7 @@
-import Avatar
 import ComposableArchitecture
 import ContributorFeature
-import PlaceholderAsyncImage
 import ServerConfig
 import SwiftUI
-
-private let avatarURL = URL(
-  string: "https://i.seadn.io/gae/c_u0e9m4wH4zgsJowfOOHd-EkQEzuxiEUZTsUsEbcc-sSJgmGX6uHMRX8pMgC6OQbfJ987nrF0-CSwGaBDQuS1tAe2w7B0eaAEj_?w=500&auto=format"
-)
 
 public struct AccountReducer: ReducerProtocol {
   public init() {}
@@ -59,23 +53,6 @@ public struct AccountView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
-//        Section {
-//          HStack(spacing: 8) {
-//            Avatar(url: avatarURL)
-//              .frame(width: 56, height: 56)
-//              .clipShape(Circle())
-//
-//            VStack(alignment: .leading, spacing: 4) {
-//              Text("tomokisun.eth")
-//                .bold()
-//
-//              Text("0x4F724516242829DC5Bc6119f666b18102437De53")
-//                .foregroundColor(.secondary)
-//                .font(.caption)
-//            }
-//          }
-//        }
-
         Section {
           Button("Privacy Policy") {
             viewStore.send(.privacyPolicyButtonTapped)
