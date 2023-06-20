@@ -1,9 +1,9 @@
-import ComposableArchitecture
-import SwiftUI
-import WidgetClient
-import UserDefaultsClient
 import BalanceWidget
+import ComposableArchitecture
 import QuickNodeClient
+import SwiftUI
+import UserDefaultsClient
+import WidgetClient
 
 public struct BalanceSettingReducer: ReducerProtocol {
   public init() {}
@@ -24,7 +24,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
     case balanceResponse(TaskResult<Decimal>)
     case binding(BindingAction<State>)
   }
-  
+
   @Dependency(\.dismiss) var dismiss
   @Dependency(\.userDefaults) var userDefaults
   @Dependency(\.widgetClient) var widgetClient
@@ -37,24 +37,24 @@ public struct BalanceSettingReducer: ReducerProtocol {
       case .onTask:
         let input = try? userDefaults.codableForKey(BalanceWidget.Input.self, forKey: BalanceWidget.Constant.kind)
         state.address = input?.address ?? ""
-        
+
         if state.address.isEmpty {
           return .none
         }
         return .run { send in
           await send(.balanceRequest)
         }
-        
+
       case .searchButtonTapped:
         return .run { send in
           await send(.balanceRequest)
         }
-        
+
       case .dismissButtonTapped:
         return .run { _ in
           await self.dismiss()
         }
-        
+
       case .balanceRequest:
         state.isActivityIndicatorVisible = true
         return .task { [address = state.address] in
@@ -64,7 +64,7 @@ public struct BalanceSettingReducer: ReducerProtocol {
             }
           )
         }
-        
+
       case let .balanceResponse(.success(value)):
         state.balance = value
         state.errorMessage = nil
@@ -75,13 +75,13 @@ public struct BalanceSettingReducer: ReducerProtocol {
           await userDefaults.setCodable(input, forKey: BalanceWidget.Constant.kind)
           widgetClient.reloadAllTimelines()
         }
-        
+
       case let .balanceResponse(.failure(error)):
         state.balance = nil
         state.isActivityIndicatorVisible = false
         state.errorMessage = error.localizedDescription
         return .none
-        
+
       case .binding:
         return .none
       }
@@ -101,7 +101,7 @@ public struct BalanceSettingView: View {
       Form {
         Section {
           TextField("Address", text: viewStore.binding(\.$address))
-          
+
           Button {
             viewStore.send(.searchButtonTapped)
           } label: {
@@ -122,7 +122,7 @@ public struct BalanceSettingView: View {
               .foregroundColor(.red)
           }
         }
-        
+
         if let balance = viewStore.balance {
           Section("Balance") {
             Text("\(balance.description.prefix(6).lowercased()) ETH")
