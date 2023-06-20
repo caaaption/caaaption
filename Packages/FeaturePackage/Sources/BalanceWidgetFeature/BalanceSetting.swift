@@ -57,10 +57,17 @@ public struct BalanceSettingReducer: ReducerProtocol {
         
       case .balanceRequest:
         state.isActivityIndicatorVisible = true
-        return .none
+        return .task { [address = state.address] in
+          await .balanceResponse(
+            TaskResult {
+              try await self.quickNodeClient.getBalance(address)
+            }
+          )
+        }
         
       case let .balanceResponse(.success(value)):
         state.balance = value
+        state.errorMessage = nil
         state.isActivityIndicatorVisible = false
 
         return .run { [address = state.address] _ in
@@ -70,9 +77,9 @@ public struct BalanceSettingReducer: ReducerProtocol {
         }
         
       case let .balanceResponse(.failure(error)):
+        state.balance = nil
         state.isActivityIndicatorVisible = false
         state.errorMessage = error.localizedDescription
-        state.balance = nil
         return .none
         
       case .binding:
@@ -116,16 +123,9 @@ public struct BalanceSettingView: View {
           }
         }
         
-        Section {
-          Text("Address")
-            .layoutPriority(1)
-            .badge(viewStore.address)
-          
-          if let balance = viewStore.balance {
-            Text("Balance")
-              .badge("\(balance.description) ETH")
-          } else {
-            Text("Balance")
+        if let balance = viewStore.balance {
+          Section("Balance") {
+            Text("\(balance.description.prefix(6).lowercased()) ETH")
           }
         }
       }
