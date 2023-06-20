@@ -18,6 +18,7 @@ let package = Package(
     .library(name: "POAPClient", targets: ["POAPClient"]),
     .library(name: "WidgetClient", targets: ["WidgetClient"]),
     .library(name: "AuthClient", targets: ["AuthClient"]),
+    .library(name: "APIKit", targets: ["APIKit"]),
   ],
   dependencies: [
     .package(path: "../GraphQLPackage"),
@@ -40,6 +41,7 @@ let package = Package(
       .product(name: "Dependencies", package: "swift-dependencies"),
     ]),
     .target(name: "QuickNodeClient", dependencies: [
+      "APIKit",
       .product(name: "Dependencies", package: "swift-dependencies"),
     ]),
     .target(name: "POAPClient", dependencies: [
@@ -51,5 +53,6 @@ let package = Package(
     .target(name: "AuthClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
     ]),
+    .target(name: "APIKit"),
   ]
 )

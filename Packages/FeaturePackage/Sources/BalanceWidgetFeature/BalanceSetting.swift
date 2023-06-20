@@ -57,10 +57,11 @@ public struct BalanceSettingReducer: ReducerProtocol {
 
       case .balanceRequest:
         state.isActivityIndicatorVisible = true
-        return .task { [address = state.address] in
+        let request = BalanceRequest(address: state.address)
+        return .task {
           await .balanceResponse(
             TaskResult {
-              try await self.quickNodeClient.getBalance(address)
+              try await self.quickNodeClient.balance(request)
             }
           )
         }
