@@ -56,7 +56,7 @@ public struct BalanceWidget: WidgetProtocol {
   }
 
   public struct Provider: TimelineProvider {
-    @Dependency(\.quickNodeClient) var quickNodeClient
+    @Dependency(\.quickNodeClient.balance) var getBalance
     @Dependency(\.userDefaults) var userDefaults
 
     public func placeholder(
@@ -79,7 +79,8 @@ public struct BalanceWidget: WidgetProtocol {
       }
 
       Task {
-        let balance = try await quickNodeClient.getBalance(input.address)
+        let request = BalanceRequest(address: input.address)
+        let balance = try await getBalance(request)
         let entry = Entry(date: Date(), address: input.address, balance: balance)
         completion(entry)
       }

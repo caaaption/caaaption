@@ -10,12 +10,12 @@ public extension DependencyValues {
 
 extension QuickNodeClient: TestDependencyKey {
   public static let testValue = Self(
-    getBalance: unimplemented("\(Self.self).getBalance")
+    balance: unimplemented("\(Self.self).balance")
   )
 }
 
 public extension QuickNodeClient {
   static let noop = Self(
-    getBalance: { _ in try await Task.never() }
+    balance: { _ in try await Task.never() }
   )
 }
