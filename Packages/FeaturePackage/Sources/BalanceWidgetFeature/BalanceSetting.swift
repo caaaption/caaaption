@@ -99,7 +99,7 @@ public struct BalanceSettingView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      Form {
+      List {
         Section {
           TextField("Address", text: viewStore.binding(\.$address))
 
