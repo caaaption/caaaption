@@ -23,7 +23,7 @@ extension Request {
     var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
     urlComponents.queryItems = queryItems
     var request = URLRequest(url: urlComponents.url!)
-    request.allHTTPHeaderFields = self.headerFields
+    request.allHTTPHeaderFields = headerFields
     request.httpMethod = method.rawValue
     request.httpBody = httpBody
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
