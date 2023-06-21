@@ -18,6 +18,8 @@ public struct WidgetSearchReducer: ReducerProtocol {
   public enum Action: Equatable {
     case destination(PresentationAction<Destination.Action>)
     case helpButtonTapped
+    case founderButtonTapped
+    case leadDevButtonTapped
     case balanceButtonTapped
     case voteButtonTapped
     case poapButtonTapped
@@ -35,6 +37,18 @@ public struct WidgetSearchReducer: ReducerProtocol {
       case .helpButtonTapped:
         return .run { _ in
           let url = URL(string: "https://caaaption.notion.site/How-to-setup-my-widgets-Add-the-caaaption-widget-to-your-iPhone-home-screen-892061686c154b72ae6b4230329466b6")!
+          await self.openURL(url)
+        }
+        
+      case .founderButtonTapped:
+        return .run { _ in
+          let url = URL(string: "https://twitter.com/0xsatoya")!
+          await self.openURL(url)
+        }
+        
+      case .leadDevButtonTapped:
+        return .run { _ in
+          let url = URL(string: "https://twitter.com/tomokisun")!
           await self.openURL(url)
         }
 
@@ -103,6 +117,26 @@ public struct WidgetSearchView: View {
               "How to setup my widgets",
               systemImage: "questionmark.circle"
             )
+          }
+          
+          Button {
+            viewStore.send(.founderButtonTapped)
+          } label: {
+            Label {
+              Text("Talk to Founder!")
+            } icon: {
+              Text("👋")
+            }
+          }
+          
+          Button {
+            viewStore.send(.leadDevButtonTapped)
+          } label: {
+            Label {
+              Text("Talk to LeadDev!")
+            } icon: {
+              Text("👨🏻‍💻")
+            }
           }
         }
 
