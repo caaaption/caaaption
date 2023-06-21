@@ -8,9 +8,9 @@ extension WidgetClient: DependencyKey {
       try await withCheckedThrowingContinuation { continuation in
         WidgetCenter.shared.getCurrentConfigurations { result in
           switch result {
-          case .success(let success):
+          case let .success(success):
             continuation.resume(returning: success)
-          case .failure(let failure):
+          case let .failure(failure):
             continuation.resume(throwing: failure)
           }
         }

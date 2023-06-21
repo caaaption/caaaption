@@ -39,13 +39,13 @@ public struct WidgetSearchReducer: ReducerProtocol {
           let url = URL(string: "https://caaaption.notion.site/How-to-setup-my-widgets-Add-the-caaaption-widget-to-your-iPhone-home-screen-892061686c154b72ae6b4230329466b6")!
           await self.openURL(url)
         }
-        
+
       case .founderButtonTapped:
         return .run { _ in
           let url = URL(string: "https://twitter.com/0xsatoya")!
           await self.openURL(url)
         }
-        
+
       case .leadDevButtonTapped:
         return .run { _ in
           let url = URL(string: "https://twitter.com/tomokisun")!
@@ -118,7 +118,7 @@ public struct WidgetSearchView: View {
               systemImage: "questionmark.circle"
             )
           }
-          
+
           Button {
             viewStore.send(.founderButtonTapped)
           } label: {
@@ -128,7 +128,7 @@ public struct WidgetSearchView: View {
               Text("👋")
             }
           }
-          
+
           Button {
             viewStore.send(.leadDevButtonTapped)
           } label: {
