@@ -10,6 +10,7 @@ let package = Package(
     .macOS(.v13),
   ],
   products: [
+    .library(name: "APIKit", targets: ["APIKit"]),
     .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
     .library(name: "SnapshotClient", targets: ["SnapshotClient"]),
     .library(name: "GitHubClient", targets: ["GitHubClient"]),
@@ -18,7 +19,6 @@ let package = Package(
     .library(name: "POAPClient", targets: ["POAPClient"]),
     .library(name: "WidgetClient", targets: ["WidgetClient"]),
     .library(name: "AuthClient", targets: ["AuthClient"]),
-    .library(name: "APIKit", targets: ["APIKit"]),
   ],
   dependencies: [
     .package(path: "../GraphQLPackage"),
@@ -26,6 +26,10 @@ let package = Package(
     .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "0.8.5"),
   ],
   targets: [
+    .target(name: "APIKit"),
+    .testTarget(name: "APIKitTests", dependencies: [
+      "APIKit"
+    ]),
     .target(name: "UIApplicationClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
     ]),
@@ -53,6 +57,5 @@ let package = Package(
     .target(name: "AuthClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
     ]),
-    .target(name: "APIKit"),
   ]
 )
