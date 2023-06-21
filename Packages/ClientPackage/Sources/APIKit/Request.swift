@@ -21,8 +21,10 @@ extension Request {
   var urlRequest: URLRequest {
     let url = baseURL.appendingPathComponent(path)
     var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-    urlComponents.queryItems = queryItems
-    var request = URLRequest(url: urlComponents.url!)
+    if !queryItems.isEmpty {
+      urlComponents.queryItems = queryItems
+    }
+    var request = URLRequest(url: urlComponents.url!, cachePolicy: .returnCacheDataElseLoad)
     request.allHTTPHeaderFields = headerFields
     request.httpMethod = method.rawValue
     request.httpBody = httpBody
