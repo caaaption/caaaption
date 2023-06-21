@@ -8,7 +8,7 @@ public struct GitHubClient {
 public struct ContributorsRequest: Request {
   public typealias Response = [Contributor]
   public typealias Error = String
-  
+
   let owner: String
   let repo: String
 
@@ -16,11 +16,12 @@ public struct ContributorsRequest: Request {
     self.owner = owner
     self.repo = repo
   }
-  
+
   public var baseURL = URL(string: "https://api.github.com")!
   public var path: String {
     return "/repos/\(owner)/\(repo)/contributors"
   }
+
   public var method = HTTPMethod.get
 }
 
