@@ -6,15 +6,18 @@ on:
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        env: ['staging', 'production']
     steps:
-    - uses: actions/checkout@v3
-    - run: make bootstrap
-    - run: make build
+      - uses: actions/checkout@v3
+      - run: make bootstrap
+      - run: make build-${{ matrix.env }}
 
-  test-client-package:
+  test:
     runs-on: macOS-latest
     steps:
-    - uses: actions/checkout@v3
-    - run: make bootstrap
-    - run: make test
+      - uses: actions/checkout@v3
+      - run: make bootstrap
+      - run: make test
