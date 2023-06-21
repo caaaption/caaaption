@@ -15,7 +15,6 @@ public class APIKit {
     guard let httpURLResponse = response as? HTTPURLResponse else {
       throw InternalError.unknown
     }
-    print("statusCode: \(httpURLResponse.statusCode)")
     guard 200 ..< 300 ~= httpURLResponse.statusCode else {
       let error = try decoder.decode(T.Error.self, from: data)
       throw InternalError.service(error)
