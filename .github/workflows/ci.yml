@@ -17,4 +17,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: make bootstrap
-    - run: xcodebuild test -workspace caaaption.xcworkspace -sdk iphonesimulator -scheme APIKitTests
+    - run: make test
