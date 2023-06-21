@@ -1,5 +1,4 @@
 import AccountFeature
-import Avatar
 import ComposableArchitecture
 import SwiftUI
 import WidgetSearchFeature

@@ -13,7 +13,6 @@ var package = Package(
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.2.2"),
-    .package(url: "https://github.com/caaaption/design-system", branch: "main"),
     .package(path: "../WidgetPackage"),
     .package(path: "../ClientPackage"),
     .package(path: "../GraphQLPackage"),
@@ -88,7 +87,6 @@ package.targets.append(contentsOf: [
   .target(name: "WidgetTabFeature", dependencies: [
     "WidgetSearchFeature",
     "AccountFeature",
-    .product(name: "Avatar", package: "design-system"),
   ]),
 ])
 
