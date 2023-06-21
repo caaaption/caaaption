@@ -28,7 +28,7 @@ let package = Package(
   targets: [
     .target(name: "APIKit"),
     .testTarget(name: "APIKitTests", dependencies: [
-      "APIKit"
+      "APIKit",
     ]),
     .target(name: "UIApplicationClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
