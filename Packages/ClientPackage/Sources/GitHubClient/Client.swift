@@ -1,15 +1,14 @@
+import APIKit
 import Foundation
 
 public struct GitHubClient {
   public var contributors: @Sendable (ContributorsRequest) async throws -> ContributorsRequest.Response
 }
 
-public struct ContributorsRequest: Sendable {
+public struct ContributorsRequest: Request {
   public typealias Response = [Contributor]
-  public var url: URL {
-    return URL(string: "https://api.github.com/repos/\(owner)/\(repo)/contributors")!
-  }
-
+  public typealias Error = String
+  
   let owner: String
   let repo: String
 
@@ -17,6 +16,12 @@ public struct ContributorsRequest: Sendable {
     self.owner = owner
     self.repo = repo
   }
+  
+  public var baseURL = URL(string: "https://api.github.com")!
+  public var path: String {
+    return "/repos/\(owner)/\(repo)/contributors"
+  }
+  public var method = HTTPMethod.get
 }
 
 public struct Contributor: Codable, Equatable, Identifiable {
