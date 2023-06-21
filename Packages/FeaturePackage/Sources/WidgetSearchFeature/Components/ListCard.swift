@@ -6,7 +6,7 @@ public struct ListCard<W: WidgetProtocol>: View {
   public var body: some View {
     VStack(alignment: .leading, spacing: 0) {
       Text(W.Constant.displayName)
-        .bold()
+        .foregroundColor(.primary)
       Text(W.Constant.description)
         .foregroundColor(.secondary)
     }
