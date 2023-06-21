@@ -39,6 +39,7 @@ let package = Package(
       .product(name: "Dependencies", package: "swift-dependencies"),
     ]),
     .target(name: "GitHubClient", dependencies: [
+      "APIKit",
       .product(name: "Dependencies", package: "swift-dependencies"),
     ]),
     .target(name: "UserDefaultsClient", dependencies: [

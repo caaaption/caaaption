@@ -67,33 +67,31 @@ public struct WidgetTabView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      NavigationStack {
-        WidgetSearchView(
-          store: store.scope(
-            state: \.widgetSearch,
-            action: WidgetTabReducer.Action.widgetSearch
-          )
+      WidgetSearchView(
+        store: store.scope(
+          state: \.widgetSearch,
+          action: WidgetTabReducer.Action.widgetSearch
         )
-        .toolbar {
-          ToolbarItem(placement: .navigationBarTrailing) {
-            Button {
-              viewStore.send(.accountButtonTapped)
-            } label: {
-              Image(systemName: "gearshape.fill")
-            }
+      )
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            viewStore.send(.accountButtonTapped)
+          } label: {
+            Image(systemName: "gearshape.fill")
           }
         }
-        .sheet(
-          store: store.scope(
-            state: \.$destination,
-            action: WidgetTabReducer.Action.destination
-          ),
-          state: /WidgetTabReducer.Destination.State.account,
-          action: WidgetTabReducer.Destination.Action.account
-        ) { store in
-          NavigationStack {
-            AccountView(store: store)
-          }
+      }
+      .sheet(
+        store: store.scope(
+          state: \.$destination,
+          action: WidgetTabReducer.Action.destination
+        ),
+        state: /WidgetTabReducer.Destination.State.account,
+        action: WidgetTabReducer.Destination.Action.account
+      ) { store in
+        NavigationStack {
+          AccountView(store: store)
         }
       }
     }
@@ -106,12 +104,14 @@ public struct WidgetTabView: View {
   struct WidgetTabViewPreviews: PreviewProvider {
     static var previews: some View {
       Preview {
-        WidgetTabView(
-          store: .init(
-            initialState: WidgetTabReducer.State(),
-            reducer: WidgetTabReducer()
+        NavigationStack {
+          WidgetTabView(
+            store: .init(
+              initialState: WidgetTabReducer.State(),
+              reducer: WidgetTabReducer()
+            )
           )
-        )
+        }
       }
     }
   }

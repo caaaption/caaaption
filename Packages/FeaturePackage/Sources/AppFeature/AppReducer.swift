@@ -1,6 +1,6 @@
 import ComposableArchitecture
 import SwiftUI
-import WidgetSearchFeature
+import WidgetTabFeature
 
 public struct AppReducer: ReducerProtocol {
   public init() {}
@@ -8,13 +8,13 @@ public struct AppReducer: ReducerProtocol {
   public struct State: Equatable {
     public init() {}
 
-    public var search = WidgetSearchReducer.State()
+    public var widget = WidgetTabReducer.State()
   }
 
   public enum Action: Equatable {
     case appDelegate(AppDelegateReducer.Action)
     case sceneDelegate(SceneDelegateReducer.Action)
-    case search(WidgetSearchReducer.Action)
+    case widget(WidgetTabReducer.Action)
 
     case onOpenURL(URL)
   }
@@ -22,8 +22,8 @@ public struct AppReducer: ReducerProtocol {
   @Dependency(\.openURL) var openURL
 
   public var body: some ReducerProtocol<State, Action> {
-    Scope(state: \.search, action: /Action.search) {
-      WidgetSearchReducer()
+    Scope(state: \.widget, action: /Action.widget) {
+      WidgetTabReducer()
     }
     Reduce { _, action in
       switch action {
@@ -47,7 +47,7 @@ public struct AppReducer: ReducerProtocol {
       case .sceneDelegate:
         return .none
 
-      case .search:
+      case .widget:
         return .none
 
       case let .onOpenURL(url):
@@ -67,11 +67,9 @@ public struct AppView: View {
   }
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
-      NavigationStack {
-        WidgetSearchView(store: store.scope(state: \.search, action: AppReducer.Action.search))
-      }
-      .onOpenURL(perform: { viewStore.send(.onOpenURL($0)) })
+    NavigationStack {
+      WidgetTabView(store: store.scope(state: \.widget, action: AppReducer.Action.widget))
     }
+    .onOpenURL(perform: { ViewStore(store).send(.onOpenURL($0)) })
   }
 }
