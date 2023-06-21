@@ -12,12 +12,14 @@ extension WidgetClient: TestDependencyKey {
   public static let previewValue = Self.noop
 
   public static let testValue = Self(
-    reloadAllTimelines: unimplemented("\(Self.self).reloadAllTimelines")
+    reloadAllTimelines: unimplemented("\(Self.self).reloadAllTimelines"),
+    currentConfigurations: unimplemented("\(Self.self).currentConfigurations")
   )
 }
 
 public extension WidgetClient {
   static let noop = Self(
-    reloadAllTimelines: {}
+    reloadAllTimelines: {},
+    currentConfigurations: { [] }
   )
 }
