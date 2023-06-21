@@ -50,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B748AC5A2A439285009D3722 /* App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = App.xctestplan; path = ../App.xctestplan; sourceTree = "<group>"; };
 		B783E0F32A11FFD0002E782F /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B783E0F92A11FFD0002E782F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B783E0FC2A11FFD0002E782F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		B783E0A92A11FF7D002E782F = {
 			isa = PBXGroup;
 			children = (
+				B748AC5A2A439285009D3722 /* App.xctestplan */,
 				B783E0F42A11FFD0002E782F /* iOS */,
 				B783E1422A1200A1002E782F /* WidgetExtension */,
 				B783E13D2A1200A1002E782F /* Frameworks */,
