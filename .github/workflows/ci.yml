@@ -17,4 +17,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: make bootstrap
-    - run: swift test --package-path ./Packages/ClientPackage -sdk iphonesimulator
+    - run: swift test --package-path ./Packages/ClientPackage --sdk iphonesimulator
