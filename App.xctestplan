@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "90F3A6EA-94A7-4079-B195-88D9B1F06FC9",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:..\/Packages\/ClientPackage",
+        "identifier" : "APIKitTests",
+        "name" : "APIKitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

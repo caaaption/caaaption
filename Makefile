@@ -8,7 +8,7 @@ bootstrap: secrets
 
 build: build-caaaption
 
-PLATFORM_IOS = iOS Simulator,name=iPhone 13 Pro,OS=16.2
+PLATFORM_IOS = iOS Simulator,name=iPhone 14 Pro,OS=16.2
 
 build-caaaption:
 	@xcodebuild build \
@@ -19,6 +19,13 @@ build-caaaption:
 		-workspace caaaption.xcworkspace \
 		-scheme "App (Production project)" \
 		-sdk iphonesimulator
+
+test:
+	@xcodebuild test \
+		-workspace caaaption.xcworkspace \
+		-scheme "App (Staging project)" \
+		-testPlan App \
+		-destination platform="$(PLATFORM_IOS)"
 
 secrets:
 	@cp ./Packages/ClientPackage/Sources/POAPClient/Secrets.swift.example ./Packages/ClientPackage/Sources/POAPClient/Secrets.swift
