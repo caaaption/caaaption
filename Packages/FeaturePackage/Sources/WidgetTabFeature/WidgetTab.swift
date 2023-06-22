@@ -1,10 +1,9 @@
 import AccountFeature
 import ComposableArchitecture
 import ContributorFeature
+import LinkFeature
 import SwiftUI
 import WidgetSearchFeature
-import ContributorFeature
-import LinkFeature
 
 public struct WidgetTabReducer: ReducerProtocol {
   public init() {}
@@ -36,14 +35,14 @@ public struct WidgetTabReducer: ReducerProtocol {
 
       case .contributor:
         return .none
-        
+
       case .link:
         return .none
 
       case .contributorButtonTapped:
         state.contributor = .init()
         return .none
-        
+
       case .linkButtonTapped:
         state.link = .init()
         return .none
