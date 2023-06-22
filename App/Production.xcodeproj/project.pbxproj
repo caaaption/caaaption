@@ -61,8 +61,8 @@
 		B783E12E2A120082002E782F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B783E1302A120082002E782F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B783E16F2A121FCD002E782F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B783E1742A137F38002E782F /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = App.entitlements; path = Production/App.entitlements; sourceTree = "<group>"; };
-		B783E1762A137F95002E782F /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = WidgetExtension.entitlements; path = Production/WidgetExtension.entitlements; sourceTree = "<group>"; };
+		B7F46E352A44EBAE00ABB6C0 /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = App.entitlements; path = Production/App.entitlements; sourceTree = SOURCE_ROOT; };
+		B7F46E362A44EBB400ABB6C0 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = WidgetExtension.entitlements; path = Production/WidgetExtension.entitlements; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				B783E1032A12000A002E782F /* App.swift */,
-				B783E1742A137F38002E782F /* App.entitlements */,
+				B7F46E352A44EBAE00ABB6C0 /* App.entitlements */,
 				B783E0E72A11FFBE002E782F /* Assets.xcassets */,
 				B783E16F2A121FCD002E782F /* Info.plist */,
 				B783E0E92A11FFBE002E782F /* Preview Content */,
@@ -145,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				B783E12A2A120081002E782F /* WidgetExtensionBundle.swift */,
-				B783E1762A137F95002E782F /* WidgetExtension.entitlements */,
+				B7F46E362A44EBB400ABB6C0 /* WidgetExtension.entitlements */,
 				B783E12E2A120082002E782F /* Assets.xcassets */,
 				B783E1302A120082002E782F /* Info.plist */,
 			);
