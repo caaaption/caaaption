@@ -11,7 +11,7 @@ public struct LinkReducer: ReducerProtocol {
   public enum Action: Equatable {
     case doneButtonTapped
   }
-  
+
   @Dependency(\.dismiss) var dismiss
 
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
