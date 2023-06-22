@@ -1,5 +1,6 @@
 import AccountFeature
 import ComposableArchitecture
+import ContributorFeature
 import SwiftUI
 import WidgetSearchFeature
 import ContributorFeature
