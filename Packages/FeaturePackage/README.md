@@ -8,6 +8,7 @@ graph TD;
     WidgetSearchFeature-->VoteWidgetFeature;
     WidgetSearchFeature-->POAPWidgetFeature;
     WidgetSearchFeature-->GasPriceWidgetFeature;
+    AccountFeature-->LinkFeature;
     AccountFeature-->ServerConfig;
     AccountFeature-->ContributorFeature;
     ContributorFeature-->SwiftUIHelpers;
