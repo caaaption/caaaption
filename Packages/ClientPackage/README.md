@@ -5,4 +5,5 @@ graph TD;
     APIKitTests-->APIKit;
     GitHubClient-->APIKit;
     QuickNodeClient-->APIKit;
+    ServerConfigClient-->ServerConfig;
 ```
