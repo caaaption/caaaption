@@ -20,12 +20,11 @@ public struct AppDelegateReducer: ReducerProtocol {
       let token = tokenData.map { String(format: "%02.2hhx", $0) }.joined()
       print("didRegisterForRemoteNotifications : \(token)")
       return .none
-    case let .configurationForConnecting(shortcutItem):
-      if let shortcutItem {
-        return .run { send in
-          await send(.quickAction(.quickAction(shortcutItem)))
-        }
+    case let .configurationForConnecting(.some(shortcutItem)):
+      return .run { send in
+        await send(.quickAction(.quickAction(shortcutItem)))
       }
+    case .configurationForConnecting:
       return .none
     case .quickAction:
       return .none
