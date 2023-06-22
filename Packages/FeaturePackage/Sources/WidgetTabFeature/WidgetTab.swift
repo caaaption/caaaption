@@ -1,8 +1,8 @@
 import AccountFeature
 import ComposableArchitecture
+import ContributorFeature
 import SwiftUI
 import WidgetSearchFeature
-import ContributorFeature
 
 public struct WidgetTabReducer: ReducerProtocol {
   public init() {}
