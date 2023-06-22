@@ -1,5 +1,4 @@
 import ComposableArchitecture
-import ServerConfig
 import SwiftUI
 
 public struct WelcomeReducer: ReducerProtocol {
@@ -49,7 +48,7 @@ public struct WelcomeView: View {
             .clipShape(Capsule())
         }
 
-        Text("By continuing, you agree to caaaption [Terms & Conditions](\(ServerConfig.termsConditions)) and [Privacy Policy](\(ServerConfig.privacyPolicy)).")
+        Text("By continuing, you agree to caaaption Terms & Conditions and Privacy Policy.")
           .multilineTextAlignment(.center)
           .foregroundColor(.secondary)
           .font(.caption)

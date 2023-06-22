@@ -1,6 +1,5 @@
 import ComposableArchitecture
 import ContributorFeature
-import ServerConfig
 import SwiftUI
 
 public struct AccountReducer: ReducerProtocol {
@@ -14,7 +13,6 @@ public struct AccountReducer: ReducerProtocol {
   public enum Action: Equatable {
     case contributor(ContributorReducer.Action)
 
-    case privacyPolicyButtonTapped
     case dismissButtonTapped
   }
 
@@ -30,10 +28,6 @@ public struct AccountReducer: ReducerProtocol {
       case .contributor:
         return .none
 
-      case .privacyPolicyButtonTapped:
-        return .run { _ in
-          await self.openURL(ServerConfig.privacyPolicy)
-        }
       case .dismissButtonTapped:
         return .run { _ in
           await self.dismiss()
@@ -53,12 +47,6 @@ public struct AccountView: View {
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
       List {
-        Section {
-          Button("Privacy Policy") {
-            viewStore.send(.privacyPolicyButtonTapped)
-          }
-        }
-
         Section {
           NavigationLink(
             destination: ContributorView(
