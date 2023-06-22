@@ -46,7 +46,6 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "AccountFeature", dependencies: [
     "LinkFeature",
-    "ServerConfig",
     "ContributorFeature",
   ]),
   .target(name: "ContributorFeature", dependencies: [
@@ -68,7 +67,6 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "OnboardFeature", dependencies: [
-    "ServerConfig",
     "SwiftUIHelpers",
     .product(name: "AuthClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -93,15 +91,6 @@ package.targets.append(contentsOf: [
   .target(name: "LinkFeature", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
-])
-
-// Client
-
-package.products.append(contentsOf: [
-  .library(name: "ServerConfig", targets: ["ServerConfig"]),
-])
-package.targets.append(contentsOf: [
-  .target(name: "ServerConfig"),
 ])
 
 // Helpers
