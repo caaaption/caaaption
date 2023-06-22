@@ -18,10 +18,12 @@ public struct ContributorReducer: ReducerProtocol {
     case refreshable
     case contributorsResponse(TaskResult<[Contributor]>)
     case tappendContributor(Int)
+    case doneButtonTapped
   }
 
   @Dependency(\.githubClient.contributors) var contributors
   @Dependency(\.openURL) var openURL
+  @Dependency(\.dismiss) var dismiss
 
   public var body: some ReducerProtocol<State, Action> {
     Reduce { state, action in
@@ -60,6 +62,10 @@ public struct ContributorReducer: ReducerProtocol {
         return .run { _ in
           await self.openURL(url)
         }
+      case .doneButtonTapped:
+        return .run { _ in
+          await self.dismiss()
+        }
       }
     }
   }
@@ -92,8 +98,17 @@ public struct ContributorView: View {
         }
       }
       .navigationTitle("Contributors")
+      .navigationBarTitleDisplayMode(.inline)
       .task { await viewStore.send(.onTask).finish() }
       .refreshable { await viewStore.send(.refreshable).finish() }
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button("Done") {
+            viewStore.send(.doneButtonTapped)
+          }
+          .bold()
+        }
+      }
     }
   }
 }

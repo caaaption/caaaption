@@ -2,6 +2,7 @@ import AccountFeature
 import ComposableArchitecture
 import SwiftUI
 import WidgetSearchFeature
+import ContributorFeature
 
 public struct WidgetTabReducer: ReducerProtocol {
   public init() {}
@@ -9,14 +10,14 @@ public struct WidgetTabReducer: ReducerProtocol {
   public struct State: Equatable {
     var widgetSearch = WidgetSearchReducer.State()
 
-    @PresentationState var destination: Destination.State?
+    @PresentationState var contributor: ContributorReducer.State?
     public init() {}
   }
 
   public enum Action: Equatable {
     case widgetSearch(WidgetSearchReducer.Action)
-    case destination(PresentationAction<Destination.Action>)
-    case accountButtonTapped
+    case contributor(PresentationAction<ContributorReducer.Action>)
+    case contributorButtonTapped
   }
 
   public var body: some ReducerProtocol<State, Action> {
@@ -28,32 +29,16 @@ public struct WidgetTabReducer: ReducerProtocol {
       case .widgetSearch:
         return .none
 
-      case .destination:
+      case .contributor:
         return .none
 
-      case .accountButtonTapped:
-        state.destination = .account()
+      case .contributorButtonTapped:
+        state.contributor = .init()
         return .none
       }
     }
-    .ifLet(\.$destination, action: /Action.destination) {
-      Destination()
-    }
-  }
-
-  public struct Destination: ReducerProtocol {
-    public enum State: Equatable {
-      case account(AccountReducer.State = .init())
-    }
-
-    public enum Action: Equatable {
-      case account(AccountReducer.Action)
-    }
-
-    public var body: some ReducerProtocol<State, Action> {
-      Scope(state: /State.account, action: /Action.account) {
-        AccountReducer()
-      }
+    .ifLet(\.$contributor, action: /Action.contributor) {
+      ContributorReducer()
     }
   }
 }
@@ -75,8 +60,12 @@ public struct WidgetTabView: View {
       )
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button {
-            viewStore.send(.accountButtonTapped)
+          Menu {
+            Button {
+              viewStore.send(.contributorButtonTapped)
+            } label: {
+              Label("Contributors", systemImage: "person.3")
+            }
           } label: {
             Image(systemName: "gearshape.fill")
           }
@@ -84,14 +73,12 @@ public struct WidgetTabView: View {
       }
       .sheet(
         store: store.scope(
-          state: \.$destination,
-          action: WidgetTabReducer.Action.destination
-        ),
-        state: /WidgetTabReducer.Destination.State.account,
-        action: WidgetTabReducer.Destination.Action.account
+          state: \.$contributor,
+          action: WidgetTabReducer.Action.contributor
+        )
       ) { store in
         NavigationStack {
-          AccountView(store: store)
+          ContributorView(store: store)
         }
       }
     }
