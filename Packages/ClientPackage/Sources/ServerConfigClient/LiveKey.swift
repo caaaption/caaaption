@@ -2,8 +2,8 @@ import Dependencies
 import Foundation
 import ServerConfig
 
-extension ServerConfigClient {
-  public static func live(
+public extension ServerConfigClient {
+  static func live(
     fetch: @escaping @Sendable () async throws -> ServerConfig
   ) -> Self {
     Self(

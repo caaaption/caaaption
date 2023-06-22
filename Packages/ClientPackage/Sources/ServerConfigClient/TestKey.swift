@@ -1,8 +1,8 @@
 import Dependencies
 import XCTestDynamicOverlay
 
-extension DependencyValues {
-  public var serverConfig: ServerConfigClient {
+public extension DependencyValues {
+  var serverConfig: ServerConfigClient {
     get { self[ServerConfigClient.self] }
     set { self[ServerConfigClient.self] = newValue }
   }
@@ -17,8 +17,8 @@ extension ServerConfigClient: TestDependencyKey {
   )
 }
 
-extension ServerConfigClient {
-  public static let noop = Self(
+public extension ServerConfigClient {
+  static let noop = Self(
     config: { .init() },
     refresh: { try await Task.never() }
   )
