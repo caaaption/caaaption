@@ -15,7 +15,7 @@ public extension ServerConfig {
     URL(string: "https://apps.apple.com/us/app/caaaption/id\(appId)")!
   }
 
-  var appStoreReviewUrl: URL {
+  var appStoreReviewURL: URL {
     URL(string: "https://itunes.apple.com/us/app/apple-store/id\(appId)?mt=8&action=write-review")!
   }
 }
