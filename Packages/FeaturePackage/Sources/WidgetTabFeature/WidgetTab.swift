@@ -3,6 +3,8 @@ import ComposableArchitecture
 import ContributorFeature
 import SwiftUI
 import WidgetSearchFeature
+import ContributorFeature
+import LinkFeature
 
 public struct WidgetTabReducer: ReducerProtocol {
   public init() {}
@@ -11,13 +13,16 @@ public struct WidgetTabReducer: ReducerProtocol {
     var widgetSearch = WidgetSearchReducer.State()
 
     @PresentationState var contributor: ContributorReducer.State?
+    @PresentationState var link: LinkReducer.State?
     public init() {}
   }
 
   public enum Action: Equatable {
     case widgetSearch(WidgetSearchReducer.Action)
     case contributor(PresentationAction<ContributorReducer.Action>)
+    case link(PresentationAction<LinkReducer.Action>)
     case contributorButtonTapped
+    case linkButtonTapped
   }
 
   public var body: some ReducerProtocol<State, Action> {
@@ -31,14 +36,24 @@ public struct WidgetTabReducer: ReducerProtocol {
 
       case .contributor:
         return .none
+        
+      case .link:
+        return .none
 
       case .contributorButtonTapped:
         state.contributor = .init()
+        return .none
+        
+      case .linkButtonTapped:
+        state.link = .init()
         return .none
       }
     }
     .ifLet(\.$contributor, action: /Action.contributor) {
       ContributorReducer()
+    }
+    .ifLet(\.$link, action: /Action.link) {
+      LinkReducer()
     }
   }
 }
@@ -66,6 +81,11 @@ public struct WidgetTabView: View {
             } label: {
               Label("Contributors", systemImage: "person.3")
             }
+            Button {
+              viewStore.send(.linkButtonTapped)
+            } label: {
+              Label("Links", systemImage: "link")
+            }
           } label: {
             Image(systemName: "gearshape.fill")
           }
@@ -79,6 +99,16 @@ public struct WidgetTabView: View {
       ) { store in
         NavigationStack {
           ContributorView(store: store)
+        }
+      }
+      .sheet(
+        store: store.scope(
+          state: \.$link,
+          action: WidgetTabReducer.Action.link
+        )
+      ) { store in
+        NavigationStack {
+          LinkView(store: store)
         }
       }
     }

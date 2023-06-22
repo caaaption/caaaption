@@ -31,6 +31,7 @@ package.products.append(contentsOf: [
   .library(name: "POAPWidgetFeature", targets: ["POAPWidgetFeature"]),
   .library(name: "GasPriceWidgetFeature", targets: ["GasPriceWidgetFeature"]),
   .library(name: "WidgetTabFeature", targets: ["WidgetTabFeature"]),
+  .library(name: "LinkFeature", targets: ["LinkFeature"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "AppFeature", dependencies: [
@@ -44,6 +45,7 @@ package.targets.append(contentsOf: [
     "GasPriceWidgetFeature",
   ]),
   .target(name: "AccountFeature", dependencies: [
+    "LinkFeature",
     "ServerConfig",
     "ContributorFeature",
   ]),
@@ -87,6 +89,9 @@ package.targets.append(contentsOf: [
   .target(name: "WidgetTabFeature", dependencies: [
     "WidgetSearchFeature",
     "AccountFeature",
+  ]),
+  .target(name: "LinkFeature", dependencies: [
+    .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
 ])
 
