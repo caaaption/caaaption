@@ -47,16 +47,18 @@ public struct WidgetTabReducer: ReducerProtocol {
       Destination()
     }
   }
-  
+
   public struct Destination: ReducerProtocol {
     public enum State: Equatable {
       case contributor(ContributorReducer.State = .init())
       case link(LinkReducer.State = .init())
     }
+
     public enum Action: Equatable {
       case contributor(ContributorReducer.Action)
       case link(LinkReducer.Action)
     }
+
     public var body: some ReducerProtocol<State, Action> {
       Scope(state: /State.contributor, action: /Action.contributor) {
         ContributorReducer()
@@ -109,14 +111,14 @@ public struct WidgetTabView: View {
           case .contributor:
             CaseLet(
               /WidgetTabReducer.Destination.State.contributor,
-               action: WidgetTabReducer.Destination.Action.contributor,
-               then: ContributorView.init(store:)
+              action: WidgetTabReducer.Destination.Action.contributor,
+              then: ContributorView.init(store:)
             )
           case .link:
             CaseLet(
               /WidgetTabReducer.Destination.State.link,
-               action: WidgetTabReducer.Destination.Action.link,
-               then: LinkView.init(store:)
+              action: WidgetTabReducer.Destination.Action.link,
+              then: LinkView.init(store:)
             )
           }
         }
