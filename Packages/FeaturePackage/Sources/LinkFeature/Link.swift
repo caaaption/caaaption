@@ -33,24 +33,26 @@ public struct LinkView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      List {
-        Link("caaaption.com", destination: URL(string: "https://caaaption.com")!)
-        Link("Twitter", destination: URL(string: "https://twitter.com/caaaption")!)
-        Link("GitHub", destination: URL(string: "https://github.com/caaaption")!)
-        Link("Mirror", destination: URL(string: "https://mirror.xyz/caaaption.eth")!)
-        Link("Guild", destination: URL(string: "https://guild.xyz/caaaption")!)
-        Link("Discord", destination: URL(string: "https://discord.gg/C3b9hgVnnk")!)
-        Link("Lens", destination: URL(string: "https://www.lensfrens.xyz/caaaption.lens")!)
-        Link("Widget Request", destination: URL(string: "https://caaaption.com/requests")!)
-      }
-      .navigationTitle("Links")
-      .navigationBarTitleDisplayMode(.inline)
-      .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button("Done") {
-            viewStore.send(.doneButtonTapped)
+      NavigationStack {
+        List {
+          Link("caaaption.com", destination: URL(string: "https://caaaption.com")!)
+          Link("Twitter", destination: URL(string: "https://twitter.com/caaaption")!)
+          Link("GitHub", destination: URL(string: "https://github.com/caaaption")!)
+          Link("Mirror", destination: URL(string: "https://mirror.xyz/caaaption.eth")!)
+          Link("Guild", destination: URL(string: "https://guild.xyz/caaaption")!)
+          Link("Discord", destination: URL(string: "https://discord.gg/C3b9hgVnnk")!)
+          Link("Lens", destination: URL(string: "https://www.lensfrens.xyz/caaaption.lens")!)
+          Link("Widget Request", destination: URL(string: "https://caaaption.com/requests")!)
+        }
+        .navigationTitle("Links")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+          ToolbarItem(placement: .navigationBarTrailing) {
+            Button("Done") {
+              viewStore.send(.doneButtonTapped)
+            }
+            .bold()
           }
-          .bold()
         }
       }
     }
@@ -60,14 +62,12 @@ public struct LinkView: View {
 #if DEBUG
   struct LinkViewPreviews: PreviewProvider {
     static var previews: some View {
-      NavigationStack {
-        LinkView(
-          store: .init(
-            initialState: LinkReducer.State(),
-            reducer: LinkReducer()
-          )
+      LinkView(
+        store: .init(
+          initialState: LinkReducer.State(),
+          reducer: LinkReducer()
         )
-      }
+      )
     }
   }
 #endif

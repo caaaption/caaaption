@@ -80,33 +80,35 @@ public struct ContributorView: View {
 
   public var body: some View {
     WithViewStore(store, observe: { $0 }) { viewStore in
-      List(viewStore.contributors) { contributor in
-        Button {
-          viewStore.send(.tappendContributor(contributor.id))
-        } label: {
-          HStack(alignment: .center, spacing: 12) {
-            PlaceholderAsyncImage(
-              url: URL(string: contributor.avatarUrl)
-            )
-            .frame(width: 44, height: 44)
-            .clipShape(Circle())
+      NavigationStack {
+        List(viewStore.contributors) { contributor in
+          Button {
+            viewStore.send(.tappendContributor(contributor.id))
+          } label: {
+            HStack(alignment: .center, spacing: 12) {
+              PlaceholderAsyncImage(
+                url: URL(string: contributor.avatarUrl)
+              )
+              .frame(width: 44, height: 44)
+              .clipShape(Circle())
 
-            Text(contributor.login)
-              .bold()
+              Text(contributor.login)
+                .bold()
+            }
+            .frame(height: 68)
           }
-          .frame(height: 68)
         }
-      }
-      .navigationTitle("Contributors")
-      .navigationBarTitleDisplayMode(.inline)
-      .task { await viewStore.send(.onTask).finish() }
-      .refreshable { await viewStore.send(.refreshable).finish() }
-      .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button("Done") {
-            viewStore.send(.doneButtonTapped)
+        .navigationTitle("Contributors")
+        .navigationBarTitleDisplayMode(.inline)
+        .task { await viewStore.send(.onTask).finish() }
+        .refreshable { await viewStore.send(.refreshable).finish() }
+        .toolbar {
+          ToolbarItem(placement: .navigationBarTrailing) {
+            Button("Done") {
+              viewStore.send(.doneButtonTapped)
+            }
+            .bold()
           }
-          .bold()
         }
       }
     }

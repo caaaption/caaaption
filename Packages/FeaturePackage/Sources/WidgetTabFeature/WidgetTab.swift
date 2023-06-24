@@ -11,15 +11,13 @@ public struct WidgetTabReducer: ReducerProtocol {
   public struct State: Equatable {
     var widgetSearch = WidgetSearchReducer.State()
 
-    @PresentationState var contributor: ContributorReducer.State?
-    @PresentationState var link: LinkReducer.State?
+    @PresentationState var destination: Destination.State?
     public init() {}
   }
 
   public enum Action: Equatable {
     case widgetSearch(WidgetSearchReducer.Action)
-    case contributor(PresentationAction<ContributorReducer.Action>)
-    case link(PresentationAction<LinkReducer.Action>)
+    case destination(PresentationAction<Destination.Action>)
     case contributorButtonTapped
     case linkButtonTapped
   }
@@ -33,26 +31,39 @@ public struct WidgetTabReducer: ReducerProtocol {
       case .widgetSearch:
         return .none
 
-      case .contributor:
-        return .none
-
-      case .link:
+      case .destination:
         return .none
 
       case .contributorButtonTapped:
-        state.contributor = .init()
+        state.destination = .contributor()
         return .none
 
       case .linkButtonTapped:
-        state.link = .init()
+        state.destination = .link()
         return .none
       }
     }
-    .ifLet(\.$contributor, action: /Action.contributor) {
-      ContributorReducer()
+    .ifLet(\.$destination, action: /Action.destination) {
+      Destination()
     }
-    .ifLet(\.$link, action: /Action.link) {
-      LinkReducer()
+  }
+  
+  public struct Destination: ReducerProtocol {
+    public enum State: Equatable {
+      case contributor(ContributorReducer.State = .init())
+      case link(LinkReducer.State = .init())
+    }
+    public enum Action: Equatable {
+      case contributor(ContributorReducer.Action)
+      case link(LinkReducer.Action)
+    }
+    public var body: some ReducerProtocol<State, Action> {
+      Scope(state: /State.contributor, action: /Action.contributor) {
+        ContributorReducer()
+      }
+      Scope(state: /State.link, action: /Action.link) {
+        LinkReducer()
+      }
     }
   }
 }
@@ -91,23 +102,23 @@ public struct WidgetTabView: View {
         }
       }
       .sheet(
-        store: store.scope(
-          state: \.$contributor,
-          action: WidgetTabReducer.Action.contributor
-        )
+        store: store.scope(state: \.$destination, action: { .destination($0) })
       ) { store in
-        NavigationStack {
-          ContributorView(store: store)
-        }
-      }
-      .sheet(
-        store: store.scope(
-          state: \.$link,
-          action: WidgetTabReducer.Action.link
-        )
-      ) { store in
-        NavigationStack {
-          LinkView(store: store)
+        SwitchStore(store) {
+          switch $0 {
+          case .contributor:
+            CaseLet(
+              /WidgetTabReducer.Destination.State.contributor,
+               action: WidgetTabReducer.Destination.Action.contributor,
+               then: ContributorView.init(store:)
+            )
+          case .link:
+            CaseLet(
+              /WidgetTabReducer.Destination.State.link,
+               action: WidgetTabReducer.Destination.Action.link,
+               then: LinkView.init(store:)
+            )
+          }
         }
       }
     }
