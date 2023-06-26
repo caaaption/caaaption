@@ -64,6 +64,8 @@
 		B783E16E2A121FC6002E782F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B783E1752A137F3E002E782F /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = App.entitlements; path = Staging/App.entitlements; sourceTree = "<group>"; };
 		B783E1772A137F9D002E782F /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = WidgetExtension.entitlements; path = Staging/WidgetExtension.entitlements; sourceTree = "<group>"; };
+		B7938C322A4A2C0B00B15B06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Staging/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B7938C342A4A2C1200B15B06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Staging/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				B783E1752A137F3E002E782F /* App.entitlements */,
 				B783E0F92A11FFD0002E782F /* Assets.xcassets */,
 				B783E16E2A121FC6002E782F /* Info.plist */,
+				B7938C322A4A2C0B00B15B06 /* GoogleService-Info.plist */,
 				B783E0FB2A11FFD0002E782F /* Preview Content */,
 			);
 			path = iOS;
@@ -150,6 +153,7 @@
 				B783E1772A137F9D002E782F /* WidgetExtension.entitlements */,
 				B783E1472A1200A2002E782F /* Assets.xcassets */,
 				B783E1492A1200A2002E782F /* Info.plist */,
+				B7938C342A4A2C1200B15B06 /* GoogleService-Info.plist */,
 			);
 			path = WidgetExtension;
 			sourceTree = "<group>";
