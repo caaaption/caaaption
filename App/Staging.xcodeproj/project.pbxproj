@@ -15,6 +15,8 @@
 		B783E1442A1200A1002E782F /* WidgetExtensionBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1432A1200A1002E782F /* WidgetExtensionBundle.swift */; };
 		B783E1482A1200A2002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E1472A1200A2002E782F /* Assets.xcassets */; };
 		B783E14D2A1200A2002E782F /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B783E13C2A1200A1002E782F /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B7938C332A4A2C0B00B15B06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7938C322A4A2C0B00B15B06 /* GoogleService-Info.plist */; };
+		B7938C352A4A2C1200B15B06 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7938C342A4A2C1200B15B06 /* GoogleService-Info.plist */; };
 		B7DAE4872A40BAF30078772F /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4862A40BAF30078772F /* AppFeature */; };
 		B7DAE4892A40BB060078772F /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4882A40BB060078772F /* QuickNodeClient */; };
 		B7DAE48B2A40BB0A0078772F /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE48A2A40BB0A0078772F /* UserDefaultsClient */; };
@@ -64,6 +66,8 @@
 		B783E16E2A121FC6002E782F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B783E1752A137F3E002E782F /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = App.entitlements; path = Staging/App.entitlements; sourceTree = "<group>"; };
 		B783E1772A137F9D002E782F /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = WidgetExtension.entitlements; path = Staging/WidgetExtension.entitlements; sourceTree = "<group>"; };
+		B7938C322A4A2C0B00B15B06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Staging/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B7938C342A4A2C1200B15B06 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Staging/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				B783E1752A137F3E002E782F /* App.entitlements */,
 				B783E0F92A11FFD0002E782F /* Assets.xcassets */,
 				B783E16E2A121FC6002E782F /* Info.plist */,
+				B7938C322A4A2C0B00B15B06 /* GoogleService-Info.plist */,
 				B783E0FB2A11FFD0002E782F /* Preview Content */,
 			);
 			path = iOS;
@@ -150,6 +155,7 @@
 				B783E1772A137F9D002E782F /* WidgetExtension.entitlements */,
 				B783E1472A1200A2002E782F /* Assets.xcassets */,
 				B783E1492A1200A2002E782F /* Info.plist */,
+				B7938C342A4A2C1200B15B06 /* GoogleService-Info.plist */,
 			);
 			path = WidgetExtension;
 			sourceTree = "<group>";
@@ -250,6 +256,7 @@
 			files = (
 				B783E0FD2A11FFD0002E782F /* Preview Assets.xcassets in Resources */,
 				B783E0FA2A11FFD0002E782F /* Assets.xcassets in Resources */,
+				B7938C332A4A2C0B00B15B06 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B783E1482A1200A2002E782F /* Assets.xcassets in Resources */,
+				B7938C352A4A2C1200B15B06 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
