@@ -13,6 +13,7 @@ var package = Package(
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.2.2"),
+    .package(url: "https://github.com/onevcat/Kingfisher", from: "7.8.1"),
     .package(path: "../WidgetPackage"),
     .package(path: "../ClientPackage"),
     .package(path: "../GraphQLPackage"),
