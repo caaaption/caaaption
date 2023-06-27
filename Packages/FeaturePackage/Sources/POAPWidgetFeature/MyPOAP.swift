@@ -1,10 +1,10 @@
 import ComposableArchitecture
+import Kingfisher
 import POAPClient
 import POAPWidget
 import SwiftUI
 import UserDefaultsClient
 import WidgetClient
-import Kingfisher
 
 public struct MyPOAPReducer: ReducerProtocol {
   public init() {}
