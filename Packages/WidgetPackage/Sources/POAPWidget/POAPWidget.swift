@@ -78,7 +78,8 @@ public struct POAPWidget: WidgetProtocol {
           completion(placeholder(in: context))
           return
         }
-        let response = try await poapClient.scan(input.address)
+        let request = ScanRequest(address: input.address)
+        let response = try await poapClient.scan(request)
         let contents = response.sorted(by: { $0.created > $1.created })
         let imageUrls = contents.count >= 4
           ? contents.prefix(4).map(\.event.imageUrl)
