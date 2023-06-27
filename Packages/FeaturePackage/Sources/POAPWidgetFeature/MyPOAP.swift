@@ -69,7 +69,9 @@ public struct MyPOAPReducer: ReducerProtocol {
 
       case let .scanResponse(.success(rows)):
         state.isActivityIndicatorVisible = false
-        state.rows = IdentifiedArray(uniqueElements: rows)
+        state.rows = IdentifiedArray(
+          uniqueElements: rows.prefix(50)
+        )
 
         return .run { [address = state.address] _ in
           let input = POAPWidget.Input(address: address)
