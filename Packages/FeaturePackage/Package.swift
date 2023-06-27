@@ -74,6 +74,7 @@ package.targets.append(contentsOf: [
   ]),
   .target(name: "POAPWidgetFeature", dependencies: [
     "SwiftUIHelpers",
+    .product(name: "Kingfisher", package: "Kingfisher"),
     .product(name: "POAPWidget", package: "WidgetPackage"),
     .product(name: "POAPClient", package: "ClientPackage"),
     .product(name: "WidgetClient", package: "ClientPackage"),

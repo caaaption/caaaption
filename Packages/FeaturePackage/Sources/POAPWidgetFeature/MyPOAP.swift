@@ -4,6 +4,7 @@ import POAPWidget
 import SwiftUI
 import UserDefaultsClient
 import WidgetClient
+import Kingfisher
 
 public struct MyPOAPReducer: ReducerProtocol {
   public init() {}
@@ -141,14 +142,13 @@ public struct MyPOAPView: View {
               spacing: 12
             ) {
               ForEach(viewStore.rows) { scan in
-                AsyncImage(url: scan.event.imageUrl) { image in
-                  image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .clipShape(Circle())
-                } placeholder: {
-                  ProgressView()
-                }
+                KFImage(scan.event.imageUrl)
+                  .placeholder { _ in
+                    ProgressView()
+                  }
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+                  .clipShape(Circle())
               }
             }
           }
