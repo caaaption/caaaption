@@ -10,7 +10,7 @@ public struct MyPOAPReducer: ReducerProtocol {
 
   public struct State: Equatable {
     @BindingState var address = ""
-    var rows: IdentifiedArrayOf<POAPClient.Scan> = []
+    var rows: IdentifiedArrayOf<Scan> = []
     var isActivityIndicatorVisible = false
     var errorMessage: String?
 
@@ -21,7 +21,7 @@ public struct MyPOAPReducer: ReducerProtocol {
     case onTask
     case searchButtonTapped
     case requestMyPOAP
-    case scanResponse(TaskResult<[POAPClient.Scan]>)
+    case scanResponse(TaskResult<[Scan]>)
     case dismissButtonTapped
     case binding(BindingAction<State>)
   }
@@ -57,10 +57,11 @@ public struct MyPOAPReducer: ReducerProtocol {
         state.errorMessage = nil
         state.rows = []
 
-        return .task { [address = state.address] in
+        let request = ScanRequest(address: state.address)
+        return .task { 
           await .scanResponse(
             TaskResult {
-              try await self.poapClient.scan(address)
+              try await self.poapClient.scan(request)
             }
           )
         }
