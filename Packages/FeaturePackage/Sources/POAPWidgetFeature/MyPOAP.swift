@@ -58,7 +58,7 @@ public struct MyPOAPReducer: ReducerProtocol {
         state.rows = []
 
         let request = ScanRequest(address: state.address)
-        return .task { 
+        return .task {
           await .scanResponse(
             TaskResult {
               try await self.poapClient.scan(request)
