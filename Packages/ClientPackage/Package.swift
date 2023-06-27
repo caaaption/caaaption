@@ -26,6 +26,7 @@ let package = Package(
     .package(path: "../GraphQLPackage"),
     .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "0.5.1"),
     .package(url: "https://github.com/pointfreeco/xctest-dynamic-overlay", from: "0.8.5"),
+    .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "10.8.0"),
   ],
   targets: [
     .target(name: "APIKit"),
