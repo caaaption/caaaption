@@ -1,0 +1,9 @@
+runs:
+  using: "Composite"
+  steps:
+    - name: Cache Swift Packages
+      uses: actions/cache@v1
+      with:
+        path: SourcePackages
+        key: ${{ runner.os }}-spm-${{ hashFiles('caaaption.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+        restore-keys: ${{ runner.os }}-spm-

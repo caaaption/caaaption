@@ -21,6 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: make bootstrap
+      - uses: ./.github/actions/spm-cache
       - run: make build-${{ matrix.env }}
 
   test:
@@ -28,4 +29,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: make bootstrap
+      - uses: ./.github/actions/spm-cache
       - run: make test
