@@ -12,20 +12,23 @@ build-staging:
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "App (Staging project)" \
-		-sdk iphonesimulator
+		-sdk iphonesimulator \
+		-clonedSourcePackagesDirPath SourcePackages
 
 build-production:
 	@xcodebuild build \
 		-workspace caaaption.xcworkspace \
 		-scheme "App (Production project)" \
-		-sdk iphonesimulator
+		-sdk iphonesimulator \
+		-clonedSourcePackagesDirPath SourcePackages
 
 test:
 	@xcodebuild test \
 		-workspace caaaption.xcworkspace \
 		-scheme "App (Staging project)" \
 		-testPlan App \
-		-destination platform="$(PLATFORM_IOS)"
+		-destination platform="$(PLATFORM_IOS)" \
+		-clonedSourcePackagesDirPath SourcePackages
 
 secrets:
 	@cp ./Packages/ClientPackage/Sources/POAPClient/Secrets.swift.example ./Packages/ClientPackage/Sources/POAPClient/Secrets.swift
