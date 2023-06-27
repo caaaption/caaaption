@@ -53,6 +53,7 @@ let package = Package(
       .product(name: "Dependencies", package: "swift-dependencies"),
     ]),
     .target(name: "POAPClient", dependencies: [
+      "APIKit",
       .product(name: "Dependencies", package: "swift-dependencies"),
     ]),
     .target(name: "WidgetClient", dependencies: [
