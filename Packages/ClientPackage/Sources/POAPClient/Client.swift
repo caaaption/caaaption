@@ -8,19 +8,21 @@ public struct POAPClient {
 public struct ScanRequest: Request {
   public typealias Response = [Scan]
   public typealias Error = String
-  
+
   let address: String
-  
+
   public init(address: String) {
     self.address = address
   }
-  
+
   public var baseURL: URL {
     URL(string: "https://api.poap.tech")!
   }
+
   public var path: String {
     "/actions/scan/\(address)"
   }
+
   public var method: HTTPMethod = .get
   public var headerFields = ["X-API-Key": POAP_API_KEY]
 }
