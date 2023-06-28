@@ -5,6 +5,11 @@ import PackageDescription
 
 let package = Package(
   name: "HelperPackage",
+  defaultLocalization: "en",
+  platforms: [
+    .iOS(.v16),
+    .macOS(.v13),
+  ],
   products: [
     .library(name: "AnalyticsReducer", targets: ["AnalyticsReducer"]),
     .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
