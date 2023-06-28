@@ -41,6 +41,7 @@ secrets:
 dgraph:
 	@swift build -c release --package-path ./BuildTools/DependenciesGraph --product dgraph
 	./BuildTools/DependenciesGraph/.build/release/dgraph --add-to-readme ./Packages/FeaturePackage
+	./BuildTools/DependenciesGraph/.build/release/dgraph --add-to-readme ./Packages/HelperPackage
 	./BuildTools/DependenciesGraph/.build/release/dgraph --add-to-readme ./Packages/WidgetPackage
 	./BuildTools/DependenciesGraph/.build/release/dgraph --add-to-readme ./Packages/ClientPackage
 	./BuildTools/DependenciesGraph/.build/release/dgraph --add-to-readme ./Packages/GraphQLPackage
