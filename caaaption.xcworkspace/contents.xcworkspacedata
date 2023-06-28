@@ -14,6 +14,9 @@
       location = "group:Packages/FeaturePackage">
    </FileRef>
    <FileRef
+      location = "group:Packages/HelperPackage">
+   </FileRef>
+   <FileRef
       location = "group:Packages/WidgetPackage">
    </FileRef>
    <FileRef
