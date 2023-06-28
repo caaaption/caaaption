@@ -9,6 +9,8 @@ graph TD;
     WidgetSearchFeature-->GasPriceWidgetFeature;
     AccountFeature-->LinkFeature;
     AccountFeature-->ContributorFeature;
-    WidgetTabFeature-->WidgetSearchFeature;
+    WidgetTabFeature-->LinkFeature;
     WidgetTabFeature-->AccountFeature;
+    WidgetTabFeature-->ContributorFeature;
+    WidgetTabFeature-->WidgetSearchFeature;
 ```
