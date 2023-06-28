@@ -30,7 +30,7 @@ public struct WidgetSearchReducer: ReducerProtocol {
   @Dependency(\.openURL) var openURL
 
   public var body: some ReducerProtocol<State, Action> {
-    AnalyticsReducer { state, action in
+    AnalyticsReducer { _, action in
       switch action {
       case .destination:
         return .none
