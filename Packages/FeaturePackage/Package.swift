@@ -86,8 +86,10 @@ var package = Package(
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "WidgetTabFeature", dependencies: [
-      "WidgetSearchFeature",
+      "LinkFeature",
       "AccountFeature",
+      "ContributorFeature",
+      "WidgetSearchFeature",
     ]),
     .target(name: "LinkFeature", dependencies: [
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
