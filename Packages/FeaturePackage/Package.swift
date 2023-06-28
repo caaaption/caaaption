@@ -11,12 +11,13 @@ var package = Package(
     .macOS(.v13),
   ],
   dependencies: [
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
-    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.2.2"),
-    .package(url: "https://github.com/onevcat/Kingfisher", from: "7.8.1"),
+    .package(path: "../HelperPackage"),
     .package(path: "../WidgetPackage"),
     .package(path: "../ClientPackage"),
     .package(path: "../GraphQLPackage"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
+    .package(url: "https://github.com/apollographql/apollo-ios", from: "1.2.2"),
+    .package(url: "https://github.com/onevcat/Kingfisher", from: "7.8.1"),
   ]
 )
 
@@ -40,41 +41,41 @@ package.targets.append(contentsOf: [
     "OnboardFeature",
   ]),
   .target(name: "WidgetSearchFeature", dependencies: [
-    "AnalyticsReducer",
-    "BalanceWidgetFeature",
     "VoteWidgetFeature",
     "POAPWidgetFeature",
+    "BalanceWidgetFeature",
     "GasPriceWidgetFeature",
+    .product(name: "AnalyticsReducer", package: "HelperPackage"),
   ]),
   .target(name: "AccountFeature", dependencies: [
     "LinkFeature",
     "ContributorFeature",
   ]),
   .target(name: "ContributorFeature", dependencies: [
-    "SwiftUIHelpers",
-    "PlaceholderAsyncImage",
     .product(name: "GitHubClient", package: "ClientPackage"),
+    .product(name: "SwiftUIHelpers", package: "HelperPackage"),
+    .product(name: "PlaceholderAsyncImage", package: "HelperPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "BalanceWidgetFeature", dependencies: [
-    "SwiftUIHelpers",
+    .product(name: "SwiftUIHelpers", package: "HelperPackage"),
     .product(name: "WidgetClient", package: "ClientPackage"),
     .product(name: "BalanceWidget", package: "WidgetPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "VoteWidgetFeature", dependencies: [
-    "SwiftUIHelpers",
+    .product(name: "SwiftUIHelpers", package: "HelperPackage"),
     .product(name: "VoteWidget", package: "WidgetPackage"),
     .product(name: "WidgetClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "OnboardFeature", dependencies: [
-    "SwiftUIHelpers",
+    .product(name: "SwiftUIHelpers", package: "HelperPackage"),
     .product(name: "AuthClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "POAPWidgetFeature", dependencies: [
-    "SwiftUIHelpers",
+    .product(name: "SwiftUIHelpers", package: "HelperPackage"),
     .product(name: "Kingfisher", package: "Kingfisher"),
     .product(name: "POAPWidget", package: "WidgetPackage"),
     .product(name: "POAPClient", package: "ClientPackage"),
@@ -82,7 +83,7 @@ package.targets.append(contentsOf: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
   .target(name: "GasPriceWidgetFeature", dependencies: [
-    "SwiftUIHelpers",
+    .product(name: "SwiftUIHelpers", package: "HelperPackage"),
     .product(name: "GasPriceWidget", package: "WidgetPackage"),
     .product(name: "WidgetClient", package: "ClientPackage"),
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -94,25 +95,4 @@ package.targets.append(contentsOf: [
   .target(name: "LinkFeature", dependencies: [
     .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
   ]),
-])
-
-// Helpers
-
-package.products.append(contentsOf: [
-  .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
-  .library(name: "AnalyticsReducer", targets: ["AnalyticsReducer"]),
-])
-package.targets.append(contentsOf: [
-  .target(name: "SwiftUIHelpers"),
-  .target(name: "AnalyticsReducer", dependencies: [
-    .product(name: "AnalyticsClient", package: "ClientPackage"),
-  ]),
-])
-
-// Utilities
-package.products.append(contentsOf: [
-  .library(name: "PlaceholderAsyncImage", targets: ["PlaceholderAsyncImage"]),
-])
-package.targets.append(contentsOf: [
-  .target(name: "PlaceholderAsyncImage"),
 ])
