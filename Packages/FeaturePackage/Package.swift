@@ -99,9 +99,13 @@ package.targets.append(contentsOf: [
 
 package.products.append(contentsOf: [
   .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
+  .library(name: "AnalyticsReducer", targets: ["AnalyticsReducer"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "SwiftUIHelpers"),
+  .target(name: "AnalyticsReducer", dependencies: [
+    .product(name: "AnalyticsClient", package: "ClientPackage"),
+  ]),
 ])
 
 // Utilities
