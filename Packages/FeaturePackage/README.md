@@ -4,6 +4,7 @@
 graph TD;
     AppFeature-->WidgetTabFeature;
     AppFeature-->OnboardFeature;
+    WidgetSearchFeature-->AnalyticsReducer;
     WidgetSearchFeature-->BalanceWidgetFeature;
     WidgetSearchFeature-->VoteWidgetFeature;
     WidgetSearchFeature-->POAPWidgetFeature;
