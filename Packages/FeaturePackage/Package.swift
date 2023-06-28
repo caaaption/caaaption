@@ -22,6 +22,7 @@ var package = Package(
     .library(name: "GasPriceWidgetFeature", targets: ["GasPriceWidgetFeature"]),
     .library(name: "WidgetTabFeature", targets: ["WidgetTabFeature"]),
     .library(name: "LinkFeature", targets: ["LinkFeature"]),
+    .library(name: "LicenseFeature", targets: ["LicenseFeature"]),
   ],
   dependencies: [
     .package(path: "../HelperPackage"),
@@ -31,6 +32,7 @@ var package = Package(
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
     .package(url: "https://github.com/apollographql/apollo-ios", from: "1.2.2"),
     .package(url: "https://github.com/onevcat/Kingfisher", from: "7.8.1"),
+    .package(url: "https://github.com/cybozu/LicenseList", from: "0.2.1"),
   ],
   targets: [
     .target(name: "AppFeature", dependencies: [
@@ -88,8 +90,13 @@ var package = Package(
     .target(name: "WidgetTabFeature", dependencies: [
       "WidgetSearchFeature",
       "AccountFeature",
+      "LicenseFeature",
     ]),
     .target(name: "LinkFeature", dependencies: [
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "LicenseFeature", dependencies: [
+      .product(name: "LicenseList", package: "LicenseList"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
   ]

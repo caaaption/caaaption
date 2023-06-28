@@ -15,6 +15,7 @@
 		B783E12B2A120081002E782F /* WidgetExtensionBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E12A2A120081002E782F /* WidgetExtensionBundle.swift */; };
 		B783E12F2A120082002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E12E2A120082002E782F /* Assets.xcassets */; };
 		B783E1332A120082002E782F /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B783E1242A120081002E782F /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B7938C3E2A4BC0B600B15B06 /* LicenseList in Frameworks */ = {isa = PBXBuildFile; productRef = B7938C3D2A4BC0B600B15B06 /* LicenseList */; };
 		B7BDAACB2A40C2BB00A2953C /* WidgetModule in Frameworks */ = {isa = PBXBuildFile; productRef = B7BDAACA2A40C2BB00A2953C /* WidgetModule */; };
 		B7DAE4972A40BB650078772F /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4962A40BB650078772F /* AppFeature */; };
 		B7DAE4992A40BB740078772F /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4982A40BB740078772F /* QuickNodeClient */; };
@@ -72,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7938C3E2A4BC0B600B15B06 /* LicenseList in Frameworks */,
 				B7DAE4A12A40BBA90078772F /* UserDefaultsClient in Frameworks */,
 				B7DAE4A32A40BBB30078772F /* QuickNodeClient in Frameworks */,
 				B7DAE4972A40BB650078772F /* AppFeature in Frameworks */,
@@ -171,6 +173,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B7938C402A4BC0BE00B15B06 /* PBXTargetDependency */,
 				B783E1322A120082002E782F /* PBXTargetDependency */,
 			);
 			name = App;
@@ -179,6 +182,7 @@
 				B7DAE4A02A40BBA90078772F /* UserDefaultsClient */,
 				B7DAE4A22A40BBB30078772F /* QuickNodeClient */,
 				B7DAE4A42A40BBB80078772F /* WidgetClient */,
+				B7938C3D2A4BC0B600B15B06 /* LicenseList */,
 			);
 			productName = iOS;
 			productReference = B783E0E12A11FFBE002E782F /* App.app */;
@@ -235,6 +239,9 @@
 				Base,
 			);
 			mainGroup = B783E0C32A11FF87002E782F;
+			packageReferences = (
+				B7938C3C2A4BC0B500B15B06 /* XCRemoteSwiftPackageReference "LicenseList" */,
+			);
 			productRefGroup = B783E0CD2A11FF87002E782F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -289,6 +296,10 @@
 			isa = PBXTargetDependency;
 			target = B783E1232A120081002E782F /* WidgetExtension */;
 			targetProxy = B783E1312A120082002E782F /* PBXContainerItemProxy */;
+		};
+		B7938C402A4BC0BE00B15B06 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = B7938C3F2A4BC0BE00B15B06 /* PrepareLicenseList */;
 		};
 /* End PBXTargetDependency section */
 
@@ -576,7 +587,28 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		B7938C3C2A4BC0B500B15B06 /* XCRemoteSwiftPackageReference "LicenseList" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cybozu/LicenseList";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		B7938C3D2A4BC0B600B15B06 /* LicenseList */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B7938C3C2A4BC0B500B15B06 /* XCRemoteSwiftPackageReference "LicenseList" */;
+			productName = LicenseList;
+		};
+		B7938C3F2A4BC0BE00B15B06 /* PrepareLicenseList */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B7938C3C2A4BC0B500B15B06 /* XCRemoteSwiftPackageReference "LicenseList" */;
+			productName = "plugin:PrepareLicenseList";
+		};
 		B7BDAACA2A40C2BB00A2953C /* WidgetModule */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WidgetModule;

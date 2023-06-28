@@ -4,6 +4,7 @@ import ContributorFeature
 import LinkFeature
 import SwiftUI
 import WidgetSearchFeature
+import LicenseFeature
 
 public struct WidgetTabReducer: ReducerProtocol {
   public init() {}
@@ -20,6 +21,7 @@ public struct WidgetTabReducer: ReducerProtocol {
     case destination(PresentationAction<Destination.Action>)
     case contributorButtonTapped
     case linkButtonTapped
+    case licenseButtonTapped
   }
 
   public var body: some ReducerProtocol<State, Action> {
@@ -41,6 +43,10 @@ public struct WidgetTabReducer: ReducerProtocol {
       case .linkButtonTapped:
         state.destination = .link()
         return .none
+        
+      case .licenseButtonTapped:
+        state.destination = .license()
+        return .none
       }
     }
     .ifLet(\.$destination, action: /Action.destination) {
@@ -52,11 +58,13 @@ public struct WidgetTabReducer: ReducerProtocol {
     public enum State: Equatable {
       case contributor(ContributorReducer.State = .init())
       case link(LinkReducer.State = .init())
+      case license(LicenseReducer.State = .init())
     }
 
     public enum Action: Equatable {
       case contributor(ContributorReducer.Action)
       case link(LinkReducer.Action)
+      case license(LicenseReducer.Action)
     }
 
     public var body: some ReducerProtocol<State, Action> {
@@ -65,6 +73,9 @@ public struct WidgetTabReducer: ReducerProtocol {
       }
       Scope(state: /State.link, action: /Action.link) {
         LinkReducer()
+      }
+      Scope(state: /State.license, action: /Action.license) {
+        LicenseReducer()
       }
     }
   }
@@ -98,6 +109,11 @@ public struct WidgetTabView: View {
             } label: {
               Label("Links", systemImage: "link")
             }
+            Button {
+              viewStore.send(.licenseButtonTapped)
+            } label: {
+              Label("License", systemImage: "shippingbox")
+            }
           } label: {
             Image(systemName: "gearshape.fill")
           }
@@ -119,6 +135,12 @@ public struct WidgetTabView: View {
               /WidgetTabReducer.Destination.State.link,
               action: WidgetTabReducer.Destination.Action.link,
               then: LinkView.init(store:)
+            )
+          case .license:
+            CaseLet(
+              /WidgetTabReducer.Destination.State.license,
+              action: WidgetTabReducer.Destination.Action.license,
+              then: LicenseView.init(store:)
             )
           }
         }
