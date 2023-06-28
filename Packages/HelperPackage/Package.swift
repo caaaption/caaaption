@@ -17,10 +17,12 @@ let package = Package(
   ],
   dependencies: [
     .package(path: "../ClientPackage"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
   ],
   targets: [
     .target(name: "AnalyticsReducer", dependencies: [
       .product(name: "AnalyticsClient", package: "ClientPackage"),
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
     .target(name: "SwiftUIHelpers"),
     .target(name: "PlaceholderAsyncImage"),
