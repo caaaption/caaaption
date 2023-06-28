@@ -10,6 +10,7 @@ let package = Package(
     .macOS(.v13),
   ],
   products: [
+    .library(name: "AnalyticsClient", targets: ["AnalyticsClient"]),
     .library(name: "APIKit", targets: ["APIKit"]),
     .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
     .library(name: "SnapshotClient", targets: ["SnapshotClient"]),
@@ -31,6 +32,9 @@ let package = Package(
     .package(url: "https://github.com/onevcat/Kingfisher", from: "7.8.1"),
   ],
   targets: [
+    .target(name: "AnalyticsClient", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
+    ]),
     .target(name: "APIKit"),
     .testTarget(name: "APIKitTests", dependencies: [
       "APIKit",

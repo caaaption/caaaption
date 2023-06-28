@@ -40,6 +40,7 @@ package.targets.append(contentsOf: [
     "OnboardFeature",
   ]),
   .target(name: "WidgetSearchFeature", dependencies: [
+    "AnalyticsReducer",
     "BalanceWidgetFeature",
     "VoteWidgetFeature",
     "POAPWidgetFeature",
@@ -99,9 +100,13 @@ package.targets.append(contentsOf: [
 
 package.products.append(contentsOf: [
   .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
+  .library(name: "AnalyticsReducer", targets: ["AnalyticsReducer"]),
 ])
 package.targets.append(contentsOf: [
   .target(name: "SwiftUIHelpers"),
+  .target(name: "AnalyticsReducer", dependencies: [
+    .product(name: "AnalyticsClient", package: "ClientPackage"),
+  ]),
 ])
 
 // Utilities
