@@ -1,3 +1,4 @@
+import AnalyticsReducer
 import BalanceWidget
 import BalanceWidgetFeature
 import ComposableArchitecture
@@ -29,6 +30,24 @@ public struct WidgetSearchReducer: ReducerProtocol {
   @Dependency(\.openURL) var openURL
 
   public var body: some ReducerProtocol<State, Action> {
+    AnalyticsReducer { state, action in
+      switch action {
+      case .destination:
+        return .none
+      case .helpButtonTapped:
+        return .event(name: "HelpButtonTapped")
+      case .founderButtonTapped:
+        return .event(name: "FounderButtonTapped")
+      case .leadDevButtonTapped:
+        return .event(name: "LeadDevButtonTapped")
+      case .balanceButtonTapped:
+        return .event(name: "BalanceButtonTapped")
+      case .voteButtonTapped:
+        return .event(name: "VoteButtonTapped")
+      case .poapButtonTapped:
+        return .event(name: "POAPButtonTapped")
+      }
+    }
     Reduce { state, action in
       switch action {
       case .destination:

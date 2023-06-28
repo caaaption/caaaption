@@ -40,6 +40,7 @@ package.targets.append(contentsOf: [
     "OnboardFeature",
   ]),
   .target(name: "WidgetSearchFeature", dependencies: [
+    "AnalyticsReducer",
     "BalanceWidgetFeature",
     "VoteWidgetFeature",
     "POAPWidgetFeature",
