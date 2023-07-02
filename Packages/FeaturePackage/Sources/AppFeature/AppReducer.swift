@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import SwiftUI
 import WidgetTabFeature
+import ServerConfigClient
 
 public struct AppReducer: ReducerProtocol {
   public init() {}
@@ -23,6 +24,7 @@ public struct AppReducer: ReducerProtocol {
   }
 
   @Dependency(\.openURL) var openURL
+  @Dependency(\.serverConfig.config) var serverConfig
 
   public var body: some ReducerProtocol<State, Action> {
     Scope(state: \.appDelegate, action: /Action.appDelegate) {
@@ -54,8 +56,8 @@ public struct AppReducer: ReducerProtocol {
         
       case let .quickAction(shortcutItem):
         let urls: [String: URL] = [
-          "talk-to-founder": URL(string: "https://twitter.com/0xsatoya")!,
-          "talk-to-lead-dev": URL(string: "https://twitter.com/tomokisun")!,
+          "talk-to-founder": serverConfig().founderURL,
+          "talk-to-lead-dev": serverConfig().leadDevURL
         ]
 
         guard let url = urls[shortcutItem.type] else {

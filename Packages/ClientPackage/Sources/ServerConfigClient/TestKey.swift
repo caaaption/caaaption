@@ -1,5 +1,6 @@
 import Dependencies
 import XCTestDynamicOverlay
+import ServerConfig
 
 public extension DependencyValues {
   var serverConfig: ServerConfigClient {
