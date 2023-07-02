@@ -8,7 +8,9 @@ public struct AppReducer: ReducerProtocol {
   public struct State: Equatable {
     public init() {}
 
-    public var widget = WidgetTabReducer.State()
+    var appDelegate = AppDelegateReducer.State()
+    var sceneDelegate = SceneDelegateReducer.State()
+    var widget = WidgetTabReducer.State()
   }
 
   public enum Action: Equatable {
@@ -16,23 +18,43 @@ public struct AppReducer: ReducerProtocol {
     case sceneDelegate(SceneDelegateReducer.Action)
     case widget(WidgetTabReducer.Action)
 
+    case quickAction(UIApplicationShortcutItem)
     case onOpenURL(URL)
   }
 
   @Dependency(\.openURL) var openURL
 
   public var body: some ReducerProtocol<State, Action> {
+    Scope(state: \.appDelegate, action: /Action.appDelegate) {
+      AppDelegateReducer()
+    }
+    Scope(state: \.sceneDelegate, action: /Action.sceneDelegate) {
+      SceneDelegateReducer()
+    }
     Scope(state: \.widget, action: /Action.widget) {
       WidgetTabReducer()
     }
     Reduce { _, action in
       switch action {
+      case let .appDelegate(.configurationForConnecting(.some(shortcutItem))):
+        return .run { send in
+          await send(.quickAction(shortcutItem))
+        }
+
       case .appDelegate:
         return .none
 
       case let .sceneDelegate(.shortcutItem(shortcutItem)):
+        return .run { send in
+          await send(.quickAction(shortcutItem))
+        }
+
+      case .sceneDelegate:
+        return .none
+        
+      case let .quickAction(shortcutItem):
         let urls: [String: URL] = [
-          "talk-to-ceo": URL(string: "https://twitter.com/0xsatoya")!,
+          "talk-to-founder": URL(string: "https://twitter.com/0xsatoya")!,
           "talk-to-lead-dev": URL(string: "https://twitter.com/tomokisun")!,
         ]
 
@@ -43,9 +65,6 @@ public struct AppReducer: ReducerProtocol {
         return .run { _ in
           await self.openURL(url)
         }
-
-      case .sceneDelegate:
-        return .none
 
       case .widget:
         return .none

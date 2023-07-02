@@ -7,12 +7,12 @@ public struct AppDelegateReducer: ReducerProtocol {
     case didFinishLaunching
     case didRegisterForRemoteNotifications(TaskResult<Data>)
     case configurationForConnecting(UIApplicationShortcutItem?)
-    case quickAction(QuickActionReducer.Action)
   }
 
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
     switch action {
     case .didFinishLaunching:
+      print("didFinishLaunching")
       return .none
 
     case .didRegisterForRemoteNotifications(.failure):
@@ -23,15 +23,7 @@ public struct AppDelegateReducer: ReducerProtocol {
       print("didRegisterForRemoteNotifications : \(token)")
       return .none
 
-    case let .configurationForConnecting(.some(shortcutItem)):
-      return .run { send in
-        await send(.quickAction(.quickAction(shortcutItem)))
-      }
-
     case .configurationForConnecting:
-      return .none
-
-    case .quickAction:
       return .none
     }
   }
