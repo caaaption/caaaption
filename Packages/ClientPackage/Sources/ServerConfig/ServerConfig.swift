@@ -18,11 +18,11 @@ public extension ServerConfig {
   var appStoreReviewURL: URL {
     URL(string: "https://itunes.apple.com/us/app/apple-store/id\(appId)?mt=8&action=write-review")!
   }
-  
+
   var founderURL: URL {
     URL(string: "https://twitter.com/0xsatoya")!
   }
-  
+
   var leadDevURL: URL {
     URL(string: "https://twitter.com/tomokisun")!
   }
