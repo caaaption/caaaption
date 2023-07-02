@@ -49,17 +49,17 @@ public struct ConnectWithWalletView: View {
                 )
               )
             } label: {
-              WallettAppButton(appName: "Connect via Desktop")
+              WalletAppButton(appName: "Connect via Desktop")
             }
-            WallettAppButton(appName: "1inch Wallet")
-            WallettAppButton(appName: "Argent")
-            WallettAppButton(appName: "MetaMask")
-            WallettAppButton(appName: "Rainbow")
-            WallettAppButton(appName: "Safe")
-            WallettAppButton(appName: "Spot")
-            WallettAppButton(appName: "Uniswap Wallet")
-            WallettAppButton(appName: "Coinbase")
-            WallettAppButton(appName: "Ledger Live")
+            WalletAppButton(appName: "1inch Wallet")
+            WalletAppButton(appName: "Argent")
+            WalletAppButton(appName: "MetaMask")
+            WalletAppButton(appName: "Rainbow")
+            WalletAppButton(appName: "Safe")
+            WalletAppButton(appName: "Spot")
+            WalletAppButton(appName: "Uniswap Wallet")
+            WalletAppButton(appName: "Coinbase")
+            WalletAppButton(appName: "Ledger Live")
           }
           .padding(.horizontal, 20)
         }
@@ -68,7 +68,7 @@ public struct ConnectWithWalletView: View {
   }
 }
 
-struct WallettAppButton: View {
+struct WalletAppButton: View {
   let appName: String
 
   var body: some View {
