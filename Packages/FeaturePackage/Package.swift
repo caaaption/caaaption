@@ -36,6 +36,7 @@ var package = Package(
     .target(name: "AppFeature", dependencies: [
       "WidgetTabFeature",
       "OnboardFeature",
+      .product(name: "ServerConfigClient", package: "ClientPackage"),
     ]),
     .target(name: "WidgetSearchFeature", dependencies: [
       "VoteWidgetFeature",
