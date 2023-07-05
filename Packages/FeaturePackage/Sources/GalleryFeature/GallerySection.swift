@@ -5,7 +5,7 @@ struct GallerySection<Content: View>: View {
   let description: LocalizedStringKey
   let action: () -> Void
   let content: () -> Content
-  
+
   init(
     title: LocalizedStringKey,
     description: LocalizedStringKey,
@@ -17,7 +17,7 @@ struct GallerySection<Content: View>: View {
     self.action = action
     self.content = content
   }
-  
+
   var body: some View {
     VStack(spacing: 16) {
       HStack(alignment: .top) {
@@ -29,11 +29,11 @@ struct GallerySection<Content: View>: View {
             .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        
+
         Button("See All", action: action)
       }
       .padding(.horizontal, 16)
-      
+
       ScrollView(.horizontal, showsIndicators: false) {
         LazyHStack {
           content()
@@ -59,4 +59,3 @@ struct GallerySection<Content: View>: View {
     }
   }
 #endif
-
