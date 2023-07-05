@@ -45,6 +45,12 @@ var package = Package(
       "GasPriceWidgetFeature",
       .product(name: "AnalyticsReducer", package: "HelperPackage"),
     ]),
+    .target(name: "WidgetListFeature", dependencies: [
+      "VoteWidgetFeature",
+      "POAPWidgetFeature",
+      "BalanceWidgetFeature",
+      "GasPriceWidgetFeature",
+    ]),
     .target(name: "AccountFeature", dependencies: [
       "LinkFeature",
       "ContributorFeature",
