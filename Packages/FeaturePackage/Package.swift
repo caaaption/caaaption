@@ -22,6 +22,7 @@ var package = Package(
     .library(name: "GasPriceWidgetFeature", targets: ["GasPriceWidgetFeature"]),
     .library(name: "WidgetTabFeature", targets: ["WidgetTabFeature"]),
     .library(name: "LinkFeature", targets: ["LinkFeature"]),
+    .library(name: "GalleryFeature", targets: ["GalleryFeature"]),
   ],
   dependencies: [
     .package(path: "../HelperPackage"),
@@ -99,6 +100,9 @@ var package = Package(
       "WidgetSearchFeature",
     ]),
     .target(name: "LinkFeature", dependencies: [
+      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+    ]),
+    .target(name: "GalleryFeature", dependencies: [
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
     ]),
   ]
