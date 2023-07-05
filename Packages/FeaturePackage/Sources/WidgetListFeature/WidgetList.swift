@@ -15,8 +15,8 @@ public struct WidgetListReducer: ReducerProtocol {
   public var body: some ReducerProtocol<State, Action> {
     Reduce { _, action in
       switch action {
-        case .onTask:
-          return .none
+      case .onTask:
+        return .none
       }
     }
   }
@@ -28,11 +28,11 @@ public struct WidgetListView: View {
   public init(store: StoreOf<WidgetListReducer>) {
     self.store = store
   }
-  
+
   static let colors: [Color] = [.red, .blue, .purple, .yellow, .black, .indigo, .cyan, .brown, .mint, .orange]
 
   public var body: some View {
-    WithViewStore(store, observe: { $0 }) { viewStore in
+    WithViewStore(store, observe: { $0 }) { _ in
       LazyVGrid(
         columns: Array(repeating: GridItem(), count: 2),
         spacing: 12
