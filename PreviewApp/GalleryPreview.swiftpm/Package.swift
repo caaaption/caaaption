@@ -10,13 +10,13 @@ import AppleProductTypes
 let package = Package(
     name: "GalleryPreview",
     platforms: [
-        .iOS("15.2")
+        .iOS("16.0")
     ],
     products: [
         .iOSApplication(
             name: "GalleryPreview",
-            targets: ["AppModule"],
-            bundleIdentifier: "com.caaaptio.GalleryPreview",
+            targets: ["GalleryPreviewModule"],
+            bundleIdentifier: "com.caaaption.GalleryPreview",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .placeholder(icon: .leaf),
@@ -33,9 +33,12 @@ let package = Package(
             ]
         )
     ],
+    dependencies: [
+        .package(name: "caaaption", path: "../../Packages/FeaturePackage")  
+    ],
     targets: [
         .executableTarget(
-            name: "AppModule",
+            name: "GalleryPreviewModule",
             path: "."
         )
     ]
