@@ -98,7 +98,7 @@
 		B783E0C32A11FF87002E782F = {
 			isa = PBXGroup;
 			children = (
-				B783E0E22A11FFBE002E782F /* iOS */,
+				B783E0E22A11FFBE002E782F /* Multiplatform */,
 				B783E1292A120081002E782F /* WidgetExtension */,
 				B783E0CD2A11FF87002E782F /* Products */,
 				B783E1052A120032002E782F /* Frameworks */,
@@ -114,7 +114,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B783E0E22A11FFBE002E782F /* iOS */ = {
+		B783E0E22A11FFBE002E782F /* Multiplatform */ = {
 			isa = PBXGroup;
 			children = (
 				B783E1032A12000A002E782F /* App.swift */,
@@ -124,7 +124,7 @@
 				B7938C2E2A4A2BF500B15B06 /* GoogleService-Info.plist */,
 				B783E0E92A11FFBE002E782F /* Preview Content */,
 			);
-			path = iOS;
+			path = Multiplatform;
 			sourceTree = "<group>";
 		};
 		B783E0E92A11FFBE002E782F /* Preview Content */ = {
@@ -416,14 +416,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = iOS/Production/App.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Multiplatform/Production/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Multiplatform/Preview Content\"";
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = iOS/Info.plist;
+				INFOPLIST_FILE = Multiplatform/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = caaaption;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -454,14 +454,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = iOS/Production/App.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Multiplatform/Production/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"iOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Multiplatform/Preview Content\"";
 				DEVELOPMENT_TEAM = AV9FQ3YF56;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = iOS/Info.plist;
+				INFOPLIST_FILE = Multiplatform/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = caaaption;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

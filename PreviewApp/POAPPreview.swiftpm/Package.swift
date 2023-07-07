@@ -34,18 +34,12 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "caaaption", path: "../../Packages/FeaturePackage"),
+        .package(name: "caaaption", path: "../../Packages/FeaturePackage")
     ],
     targets: [
         .executableTarget(
             name: "POAPPreviewModule",
-            dependencies: [
-                .productItem(
-                    name: "POAPWidgetFeature",
-                    package: "caaaption"
-                ),
-            ],
             path: "."
-        ),
+        )
     ]
 )
