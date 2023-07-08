@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		B74107FD2A58AA760088FEBA /* GalleryPreview.swiftpm */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GalleryPreview.swiftpm; sourceTree = "<group>"; };
 		B7BFE58A2A27C79700D1CE6F /* OnboardPreview.swiftpm */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OnboardPreview.swiftpm; sourceTree = "<group>"; };
 		B7FDB9902A2C1A88005942B7 /* POAPPreview.swiftpm */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = POAPPreview.swiftpm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -15,6 +16,7 @@
 		B7BFE5702A27C78100D1CE6F = {
 			isa = PBXGroup;
 			children = (
+				B74107FD2A58AA760088FEBA /* GalleryPreview.swiftpm */,
 				B7BFE58A2A27C79700D1CE6F /* OnboardPreview.swiftpm */,
 				B7FDB9902A2C1A88005942B7 /* POAPPreview.swiftpm */,
 				B7BFE57A2A27C78100D1CE6F /* Products */,

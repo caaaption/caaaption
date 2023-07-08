@@ -8,18 +8,18 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "OnboardPreview",
+    name: "GalleryPreview",
     platforms: [
         .iOS("16.0")
     ],
     products: [
         .iOSApplication(
-            name: "OnboardPreview",
-            targets: ["OnboardPreviewModule"],
-            bundleIdentifier: "com.caaaption.OnboardPreview",
+            name: "GalleryPreview",
+            targets: ["GalleryPreviewModule"],
+            bundleIdentifier: "com.caaaption.GalleryPreview",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .sandwich),
+            appIcon: .placeholder(icon: .leaf),
             accentColor: .presetColor(.blue),
             supportedDeviceFamilies: [
                 .pad,
@@ -34,11 +34,11 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "caaaption", path: "../../Packages/FeaturePackage")
+        .package(name: "caaaption", path: "../../Packages/FeaturePackage")  
     ],
     targets: [
         .executableTarget(
-            name: "OnboardPreviewModule",
+            name: "GalleryPreviewModule",
             path: "."
         )
     ]
