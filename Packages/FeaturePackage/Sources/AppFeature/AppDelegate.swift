@@ -1,6 +1,8 @@
 import ComposableArchitecture
 import FirebaseCoreClient
 import UIKit
+import Build
+import AnalyticsClient
 
 public struct AppDelegateReducer: ReducerProtocol {
   public struct State: Equatable {}
@@ -11,13 +13,19 @@ public struct AppDelegateReducer: ReducerProtocol {
   }
 
   @Dependency(\.firebaseCore) var firebaseCore
+  @Dependency(\.build.bundleIdentifier) var bundleIdentifier
+  @Dependency(\.analytics.setAnalyticsCollectionEnabled) var setAnalyticsCollectionEnabled
 
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
     switch action {
     case .didFinishLaunching:
       print("didFinishLaunching")
+      let isStaging = bundleIdentifier() == "com.caaaption-staging"
       return .run { _ in
         self.firebaseCore.configure()
+        self.setAnalyticsCollectionEnabled(isStaging)
+      } catch: { error, _ in
+        print(error)
       }
 
     case .didRegisterForRemoteNotifications(.failure):
