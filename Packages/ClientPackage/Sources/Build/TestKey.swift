@@ -2,8 +2,8 @@ import Dependencies
 import Foundation
 import XCTestDynamicOverlay
 
-extension DependencyValues {
-  public var build: Build {
+public extension DependencyValues {
+  var build: Build {
     get { self[Build.self] }
     set { self[Build.self] = newValue }
   }
