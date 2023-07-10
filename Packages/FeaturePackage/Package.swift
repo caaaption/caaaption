@@ -38,6 +38,7 @@ var package = Package(
       "WidgetTabFeature",
       "OnboardFeature",
       .product(name: "ServerConfigClient", package: "ClientPackage"),
+      .product(name: "FirebaseCoreClient", package: "ClientPackage"),
     ]),
     .target(name: "WidgetSearchFeature", dependencies: [
       "VoteWidgetFeature",
