@@ -23,6 +23,7 @@ let package = Package(
     .library(name: "ServerConfig", targets: ["ServerConfig"]),
     .library(name: "ServerConfigClient", targets: ["ServerConfigClient"]),
     .library(name: "KingfisherClient", targets: ["KingfisherClient"]),
+    .library(name: "FirebaseCoreClient", targets: ["FirebaseCoreClient"]),
   ],
   dependencies: [
     .package(path: "../GraphQLPackage"),
