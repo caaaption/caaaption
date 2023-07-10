@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B741084F2A5C8EC00088FEBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7938C342A4A2C1200B15B06 /* GoogleService-Info.plist */; };
+		B74108502A5C8EC30088FEBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7938C322A4A2C0B00B15B06 /* GoogleService-Info.plist */; };
 		B783E0FA2A11FFD0002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0F92A11FFD0002E782F /* Assets.xcassets */; };
 		B783E0FD2A11FFD0002E782F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E0FC2A11FFD0002E782F /* Preview Assets.xcassets */; };
 		B783E1022A120003002E782F /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B783E1012A120003002E782F /* App.swift */; };
@@ -254,6 +256,7 @@
 			files = (
 				B783E0FD2A11FFD0002E782F /* Preview Assets.xcassets in Resources */,
 				B783E0FA2A11FFD0002E782F /* Assets.xcassets in Resources */,
+				B74108502A5C8EC30088FEBA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B783E1482A1200A2002E782F /* Assets.xcassets in Resources */,
+				B741084F2A5C8EC00088FEBA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

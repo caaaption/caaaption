@@ -4,7 +4,7 @@ open:
 clean:
 	rm -rf **/*/.build
 
-bootstrap: secrets
+bootstrap: secrets secrets-firebase
 
 PLATFORM_IOS = iOS Simulator,name=iPhone 14 Pro,OS=16.2
 
@@ -30,13 +30,18 @@ test:
 		-destination platform="$(PLATFORM_IOS)" \
 		-clonedSourcePackagesDirPath SourcePackages
 
+.PHONY: secret
 secrets:
 	@cp ./Packages/ClientPackage/Sources/POAPClient/Secrets.swift.example ./Packages/ClientPackage/Sources/POAPClient/Secrets.swift
 	@echo "import Foundation\n\nlet baseURL = URL(string: \"https://chaotic-quiet-meme.discover.quiknode.pro/86804d1e5443408f5fe8f2c85d421bf018dbe433\")!" > ./Packages/ClientPackage/Sources/QuickNodeClient/Secrets.swift
-	@echo $FILE_FIREBASE_STAGING | base64 -D > App/Multiplatform/Staging/GoogleService-Info.plist
-	@echo $FILE_FIREBASE_STAGING | base64 -D > App/WidgetExtension/Staging/GoogleService-Info.plist
-	@echo $FILE_FIREBASE_PRODUCTION | base64 -D > App/Multiplatform/Production/GoogleService-Info.plist
-	@echo $FILE_FIREBASE_PRODUCTION | base64 -D > App/WidgetExtension/Production/GoogleService-Info.plist
+
+.PHONY: secrets-firebase
+secrets-firebase:
+	echo $(FILE_FIREBASE_STAGING) | base64 -D > App/Multiplatform/Staging/GoogleService-Info.plist
+	echo $(FILE_FIREBASE_STAGING) | base64 -D > App/Multiplatform/Staging/GoogleService-Info.plist
+	echo $(FILE_FIREBASE_STAGING) | base64 -D > App/WidgetExtension/Staging/GoogleService-Info.plist
+	echo $(FILE_FIREBASE_PRODUCTION) | base64 -D > App/Multiplatform/Production/GoogleService-Info.plist
+	echo $(FILE_FIREBASE_PRODUCTION) | base64 -D > App/WidgetExtension/Production/GoogleService-Info.plist
 
 dgraph:
 	@swift build -c release --package-path ./BuildTools/DependenciesGraph --product dgraph
