@@ -1,9 +1,6 @@
 import AppFeature
 import ComposableArchitecture
-import QuickNodeClient
 import SwiftUI
-import UserDefaultsClient
-import WidgetClient
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func windowScene(
@@ -20,11 +17,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
   static let shared = AppDelegate()
   let store = Store(
     initialState: AppReducer.State(),
-    reducer: AppReducer().transformDependency(\.self) {
-      $0.quickNodeClient = .liveValue
-      $0.userDefaults = .liveValue
-      $0.widgetClient = .liveValue
-    }._printChanges()
+    reducer: AppReducer()._printChanges()
   )
 
   var viewStore: ViewStore<Void, AppReducer.Action> {
