@@ -12,6 +12,7 @@ let package = Package(
   products: [
     .library(name: "AnalyticsClient", targets: ["AnalyticsClient"]),
     .library(name: "APIKit", targets: ["APIKit"]),
+    .library(name: "Build", targets: ["Build"]),
     .library(name: "UIApplicationClient", targets: ["UIApplicationClient"]),
     .library(name: "SnapshotClient", targets: ["SnapshotClient"]),
     .library(name: "GitHubClient", targets: ["GitHubClient"]),
@@ -39,6 +40,9 @@ let package = Package(
     .target(name: "APIKit"),
     .testTarget(name: "APIKitTests", dependencies: [
       "APIKit",
+    ]),
+    .target(name: "Build", dependencies: [
+      .product(name: "Dependencies", package: "swift-dependencies"),
     ]),
     .target(name: "UIApplicationClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
