@@ -18,13 +18,7 @@
 		B783E1482A1200A2002E782F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B783E1472A1200A2002E782F /* Assets.xcassets */; };
 		B783E14D2A1200A2002E782F /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B783E13C2A1200A1002E782F /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B7DAE4872A40BAF30078772F /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4862A40BAF30078772F /* AppFeature */; };
-		B7DAE4892A40BB060078772F /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4882A40BB060078772F /* QuickNodeClient */; };
-		B7DAE48B2A40BB0A0078772F /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE48A2A40BB0A0078772F /* UserDefaultsClient */; };
-		B7DAE48D2A40BB110078772F /* WidgetClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE48C2A40BB110078772F /* WidgetClient */; };
 		B7DAE48F2A40BB290078772F /* WidgetModule in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE48E2A40BB290078772F /* WidgetModule */; };
-		B7DAE4912A40BB3E0078772F /* QuickNodeClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4902A40BB3E0078772F /* QuickNodeClient */; };
-		B7DAE4932A40BB440078772F /* UserDefaultsClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4922A40BB440078772F /* UserDefaultsClient */; };
-		B7DAE4952A40BB480078772F /* SnapshotClient in Frameworks */ = {isa = PBXBuildFile; productRef = B7DAE4942A40BB480078772F /* SnapshotClient */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,10 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7DAE48B2A40BB0A0078772F /* UserDefaultsClient in Frameworks */,
-				B7DAE4892A40BB060078772F /* QuickNodeClient in Frameworks */,
 				B7DAE4872A40BAF30078772F /* AppFeature in Frameworks */,
-				B7DAE48D2A40BB110078772F /* WidgetClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,11 +78,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B783E1412A1200A1002E782F /* SwiftUI.framework in Frameworks */,
-				B7DAE4932A40BB440078772F /* UserDefaultsClient in Frameworks */,
-				B7DAE4912A40BB3E0078772F /* QuickNodeClient in Frameworks */,
 				B7DAE48F2A40BB290078772F /* WidgetModule in Frameworks */,
 				B783E13F2A1200A1002E782F /* WidgetKit.framework in Frameworks */,
-				B7DAE4952A40BB480078772F /* SnapshotClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,9 +168,6 @@
 			name = App;
 			packageProductDependencies = (
 				B7DAE4862A40BAF30078772F /* AppFeature */,
-				B7DAE4882A40BB060078772F /* QuickNodeClient */,
-				B7DAE48A2A40BB0A0078772F /* UserDefaultsClient */,
-				B7DAE48C2A40BB110078772F /* WidgetClient */,
 			);
 			productName = iOS;
 			productReference = B783E0F32A11FFD0002E782F /* App.app */;
@@ -203,9 +188,6 @@
 			name = WidgetExtension;
 			packageProductDependencies = (
 				B7DAE48E2A40BB290078772F /* WidgetModule */,
-				B7DAE4902A40BB3E0078772F /* QuickNodeClient */,
-				B7DAE4922A40BB440078772F /* UserDefaultsClient */,
-				B7DAE4942A40BB480078772F /* SnapshotClient */,
 			);
 			productName = WidgetExtensionExtension;
 			productReference = B783E13C2A1200A1002E782F /* WidgetExtension.appex */;
@@ -587,33 +569,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
 		};
-		B7DAE4882A40BB060078772F /* QuickNodeClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = QuickNodeClient;
-		};
-		B7DAE48A2A40BB0A0078772F /* UserDefaultsClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = UserDefaultsClient;
-		};
-		B7DAE48C2A40BB110078772F /* WidgetClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = WidgetClient;
-		};
 		B7DAE48E2A40BB290078772F /* WidgetModule */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WidgetModule;
-		};
-		B7DAE4902A40BB3E0078772F /* QuickNodeClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = QuickNodeClient;
-		};
-		B7DAE4922A40BB440078772F /* UserDefaultsClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = UserDefaultsClient;
-		};
-		B7DAE4942A40BB480078772F /* SnapshotClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SnapshotClient;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
