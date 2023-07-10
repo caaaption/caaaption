@@ -1,6 +1,6 @@
 import ComposableArchitecture
-import UIKit
 import FirebaseCoreClient
+import UIKit
 
 public struct AppDelegateReducer: ReducerProtocol {
   public struct State: Equatable {}
@@ -9,7 +9,7 @@ public struct AppDelegateReducer: ReducerProtocol {
     case didRegisterForRemoteNotifications(TaskResult<Data>)
     case configurationForConnecting(UIApplicationShortcutItem?)
   }
-  
+
   @Dependency(\.firebaseCore) var firebaseCore
 
   public func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
