@@ -78,8 +78,8 @@ let package = Package(
       .product(name: "Kingfisher", package: "Kingfisher"),
     ]),
     .target(name: "FirebaseCoreClient", dependencies: [
-          .product(name: "Dependencies", package: "swift-dependencies"),
-          .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
-        ]),
+      .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
+    ]),
   ]
 )
