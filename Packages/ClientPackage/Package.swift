@@ -23,6 +23,7 @@ let package = Package(
     .library(name: "ServerConfig", targets: ["ServerConfig"]),
     .library(name: "ServerConfigClient", targets: ["ServerConfigClient"]),
     .library(name: "KingfisherClient", targets: ["KingfisherClient"]),
+    .library(name: "FirebaseCoreClient", targets: ["FirebaseCoreClient"]),
   ],
   dependencies: [
     .package(path: "../GraphQLPackage"),
@@ -76,5 +77,9 @@ let package = Package(
     .target(name: "KingfisherClient", dependencies: [
       .product(name: "Kingfisher", package: "Kingfisher"),
     ]),
+    .target(name: "FirebaseCoreClient", dependencies: [
+          .product(name: "Dependencies", package: "swift-dependencies"),
+          .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
+        ]),
   ]
 )
