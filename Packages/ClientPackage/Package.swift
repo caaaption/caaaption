@@ -34,6 +34,7 @@ let package = Package(
   targets: [
     .target(name: "AnalyticsClient", dependencies: [
       .product(name: "Dependencies", package: "swift-dependencies"),
+      .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
     ]),
     .target(name: "APIKit"),
     .testTarget(name: "APIKitTests", dependencies: [
