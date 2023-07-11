@@ -166,6 +166,7 @@ struct WidgetViewPreviews: PreviewProvider {
     }
   }
 }
+
 extension UIImage {
   func resized(toWidth width: CGFloat, isOpaque: Bool = true) -> UIImage? {
     let canvas = CGSize(width: width, height: CGFloat(ceil(width / size.width * size.height)))
