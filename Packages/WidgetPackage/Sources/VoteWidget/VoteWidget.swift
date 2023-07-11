@@ -166,22 +166,20 @@ public enum VoteWidget: WidgetProtocol {
   }
 }
 
-#if DEBUG
-  import WidgetHelpers
+import WidgetHelpers
 
-  struct WidgetViewPreviews: PreviewProvider {
-    static var previews: some View {
-      WidgetPreview([.systemSmall]) {
-        VoteWidget.WidgetView(
-          entry: VoteWidget.Entry(
-            date: Date(),
-            title: "System Upgrade: Establishing A Software Company",
-            score: 0.8599,
-            choice: "Yes - Approve this Plan",
-            link: nil
-          )
+struct WidgetViewPreviews: PreviewProvider {
+  static var previews: some View {
+    WidgetPreview([.systemSmall]) {
+      VoteWidget.WidgetView(
+        entry: VoteWidget.Entry(
+          date: Date(),
+          title: "System Upgrade: Establishing A Software Company",
+          score: 0.8599,
+          choice: "Yes - Approve this Plan",
+          link: nil
         )
-      }
+      )
     }
   }
-#endif
+}

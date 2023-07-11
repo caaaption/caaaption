@@ -48,15 +48,13 @@ public struct WidgetListView: View {
   }
 }
 
-#if DEBUG
-  struct WidgetListViewPreviews: PreviewProvider {
-    static var previews: some View {
-      WidgetListView(
-        store: .init(
-          initialState: WidgetListReducer.State(),
-          reducer: WidgetListReducer()
-        )
+struct WidgetListViewPreviews: PreviewProvider {
+  static var previews: some View {
+    WidgetListView(
+      store: .init(
+        initialState: WidgetListReducer.State(),
+        reducer: WidgetListReducer()
       )
-    }
+    )
   }
-#endif
+}

@@ -100,18 +100,16 @@ public enum MirrorWidget: WidgetProtocol {
   }
 }
 
-#if DEBUG
-  import WidgetHelpers
+import WidgetHelpers
 
-  struct WidgetViewPreviews: PreviewProvider {
-    static var previews: some View {
-      WidgetPreview([.systemSmall]) {
-        MirrorWidget.WidgetView(
-          entry: MirrorWidget.Entry(
-            date: Date()
-          )
+struct WidgetViewPreviews: PreviewProvider {
+  static var previews: some View {
+    WidgetPreview([.systemSmall]) {
+      MirrorWidget.WidgetView(
+        entry: MirrorWidget.Entry(
+          date: Date()
         )
-      }
+      )
     }
   }
-#endif
+}

@@ -90,18 +90,16 @@ public struct GasPriceWidget: WidgetProtocol {
   }
 }
 
-#if DEBUG
-  import WidgetHelpers
+import WidgetHelpers
 
-  struct WidgetViewPreviews: PreviewProvider {
-    static var previews: some View {
-      WidgetPreview([.systemSmall]) {
-        GasPriceWidget.WidgetView(
-          entry: GasPriceWidget.Entry(
-            date: Date()
-          )
+struct WidgetViewPreviews: PreviewProvider {
+  static var previews: some View {
+    WidgetPreview([.systemSmall]) {
+      GasPriceWidget.WidgetView(
+        entry: GasPriceWidget.Entry(
+          date: Date()
         )
-      }
+      )
     }
   }
-#endif
+}

@@ -41,15 +41,13 @@ public struct ___VARIABLE_productName:identifier___View: View {
   }
 }
 
-#if DEBUG
-  struct ___VARIABLE_productName:identifier___ViewPreviews: PreviewProvider {
-    static var previews: some View {
-      ___VARIABLE_productName:identifier___View(
-        store: .init(
-          initialState: ___VARIABLE_productName:identifier___Reducer.State(),
-          reducer: ___VARIABLE_productName:identifier___Reducer()
-        )
+struct ___VARIABLE_productName:identifier___ViewPreviews: PreviewProvider {
+  static var previews: some View {
+    ___VARIABLE_productName:identifier___View(
+      store: .init(
+        initialState: ___VARIABLE_productName:identifier___Reducer.State(),
+        reducer: ___VARIABLE_productName:identifier___Reducer()
       )
-    }
+    )
   }
-#endif
+}

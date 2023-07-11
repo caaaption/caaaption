@@ -175,15 +175,13 @@ public struct MyPOAPView: View {
   }
 }
 
-#if DEBUG
-  struct MyPOAPViewPreviews: PreviewProvider {
-    static var previews: some View {
-      MyPOAPView(
-        store: .init(
-          initialState: MyPOAPReducer.State(),
-          reducer: MyPOAPReducer()
-        )
+struct MyPOAPViewPreviews: PreviewProvider {
+  static var previews: some View {
+    MyPOAPView(
+      store: .init(
+        initialState: MyPOAPReducer.State(),
+        reducer: MyPOAPReducer()
       )
-    }
+    )
   }
-#endif
+}

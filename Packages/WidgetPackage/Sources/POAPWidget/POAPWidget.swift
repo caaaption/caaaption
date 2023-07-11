@@ -146,29 +146,26 @@ public struct POAPWidget: WidgetProtocol {
   }
 }
 
-#if DEBUG
-  import WidgetHelpers
+import WidgetHelpers
 
-  struct WidgetViewPreviews: PreviewProvider {
-    static var previews: some View {
-      WidgetPreview([.systemSmall]) {
-        POAPWidget.WidgetView(
-          entry: POAPWidget.Entry(
-            date: Date(),
-            data: [
-              "https://assets.poap.xyz/i-met-kazushifukamieth-in-2023-2023-logo-1684503849953.png",
-              "https://assets.poap.xyz/31cb94a2-0e1f-4fd3-8722-dbd48e95e2f8.png",
-              "https://assets.poap.xyz/b86e7001-2d8c-4bd5-8497-43e6497bb07e.png",
-              "https://assets.poap.xyz/ethglobal-tokyo-private-after-party-fwbxone-2023-logo-1681541518682.png",
-            ].compactMap(URL.init(string:)).compactMap { try? Data(contentsOf: $0) },
-            address: "tomokisun.eth"
-          )
+struct WidgetViewPreviews: PreviewProvider {
+  static var previews: some View {
+    WidgetPreview([.systemSmall]) {
+      POAPWidget.WidgetView(
+        entry: POAPWidget.Entry(
+          date: Date(),
+          data: [
+            "https://assets.poap.xyz/i-met-kazushifukamieth-in-2023-2023-logo-1684503849953.png",
+            "https://assets.poap.xyz/31cb94a2-0e1f-4fd3-8722-dbd48e95e2f8.png",
+            "https://assets.poap.xyz/b86e7001-2d8c-4bd5-8497-43e6497bb07e.png",
+            "https://assets.poap.xyz/ethglobal-tokyo-private-after-party-fwbxone-2023-logo-1681541518682.png",
+          ].compactMap(URL.init(string:)).compactMap { try? Data(contentsOf: $0) },
+          address: "tomokisun.eth"
         )
-      }
+      )
     }
   }
-#endif
-
+}
 extension UIImage {
   func resized(toWidth width: CGFloat, isOpaque: Bool = true) -> UIImage? {
     let canvas = CGSize(width: width, height: CGFloat(ceil(width / size.width * size.height)))

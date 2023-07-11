@@ -44,18 +44,16 @@ struct GallerySection<Content: View>: View {
   }
 }
 
-#if DEBUG
-  struct GallerySectionPreviews: PreviewProvider {
-    static var previews: some View {
-      GallerySection(
-        title: "Get Stuff Done",
-        description: "Shortcuts to help you focus",
-        action: {}
-      ) {
-        Text("Content")
-      }
-      .frame(width: 375)
-      .previewLayout(.sizeThatFits)
+struct GallerySectionPreviews: PreviewProvider {
+  static var previews: some View {
+    GallerySection(
+      title: "Get Stuff Done",
+      description: "Shortcuts to help you focus",
+      action: {}
+    ) {
+      Text("Content")
     }
+    .frame(width: 375)
+    .previewLayout(.sizeThatFits)
   }
-#endif
+}

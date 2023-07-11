@@ -75,21 +75,15 @@ public struct AccountView: View {
   }
 }
 
-#if DEBUG
-  import SwiftUIHelpers
-
-  struct AccountViewPreviews: PreviewProvider {
-    static var previews: some View {
-      Preview {
-        NavigationStack {
-          AccountView(
-            store: .init(
-              initialState: AccountReducer.State(),
-              reducer: AccountReducer()
-            )
-          )
-        }
-      }
+struct AccountViewPreviews: PreviewProvider {
+  static var previews: some View {
+    NavigationStack {
+      AccountView(
+        store: .init(
+          initialState: AccountReducer.State(),
+          reducer: AccountReducer()
+        )
+      )
     }
   }
-#endif
+}

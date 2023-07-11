@@ -80,17 +80,15 @@ public struct GalleryView: View {
   }
 }
 
-#if DEBUG
-  struct GalleryViewPreviews: PreviewProvider {
-    static var previews: some View {
-      NavigationStack {
-        GalleryView(
-          store: .init(
-            initialState: GalleryReducer.State(),
-            reducer: GalleryReducer()
-          )
+struct GalleryViewPreviews: PreviewProvider {
+  static var previews: some View {
+    NavigationStack {
+      GalleryView(
+        store: .init(
+          initialState: GalleryReducer.State(),
+          reducer: GalleryReducer()
         )
-      }
+      )
     }
   }
-#endif
+}

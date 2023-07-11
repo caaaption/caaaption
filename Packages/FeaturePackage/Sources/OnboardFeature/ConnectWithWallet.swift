@@ -93,15 +93,13 @@ struct WalletAppButton: View {
   }
 }
 
-#if DEBUG
-  struct ConnectWithWalletViewPreviews: PreviewProvider {
-    static var previews: some View {
-      ConnectWithWalletView(
-        store: .init(
-          initialState: ConnectWithWalletReducer.State(),
-          reducer: ConnectWithWalletReducer()
-        )
+struct ConnectWithWalletViewPreviews: PreviewProvider {
+  static var previews: some View {
+    ConnectWithWalletView(
+      store: .init(
+        initialState: ConnectWithWalletReducer.State(),
+        reducer: ConnectWithWalletReducer()
       )
-    }
+    )
   }
-#endif
+}

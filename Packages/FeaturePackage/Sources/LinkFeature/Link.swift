@@ -59,15 +59,13 @@ public struct LinkView: View {
   }
 }
 
-#if DEBUG
-  struct LinkViewPreviews: PreviewProvider {
-    static var previews: some View {
-      LinkView(
-        store: .init(
-          initialState: LinkReducer.State(),
-          reducer: LinkReducer()
-        )
+struct LinkViewPreviews: PreviewProvider {
+  static var previews: some View {
+    LinkView(
+      store: .init(
+        initialState: LinkReducer.State(),
+        reducer: LinkReducer()
       )
-    }
+    )
   }
-#endif
+}
