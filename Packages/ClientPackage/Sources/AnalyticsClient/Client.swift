@@ -1,5 +1,6 @@
 public struct AnalyticsClient {
   public var send: @Sendable (AnalyticsData) -> Void
+  public var logEvent: (String, _ parameters: [String: Any]?) -> Void
   public var setAnalyticsCollectionEnabled: @Sendable (Bool) -> Void
 }
 
