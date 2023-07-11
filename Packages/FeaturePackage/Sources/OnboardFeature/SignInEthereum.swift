@@ -91,15 +91,13 @@ public struct SignInEthereumView: View {
   }
 }
 
-#if DEBUG
-  struct SignInEthereumViewPreviews: PreviewProvider {
-    static var previews: some View {
-      SignInEthereumView(
-        store: .init(
-          initialState: SignInEthereumReducer.State(),
-          reducer: SignInEthereumReducer()
-        )
+struct SignInEthereumViewPreviews: PreviewProvider {
+  static var previews: some View {
+    SignInEthereumView(
+      store: .init(
+        initialState: SignInEthereumReducer.State(),
+        reducer: SignInEthereumReducer()
       )
-    }
+    )
   }
-#endif
+}

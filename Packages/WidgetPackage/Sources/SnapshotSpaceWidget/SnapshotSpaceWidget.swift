@@ -138,19 +138,17 @@ public enum SnapshotSpaceWidget: WidgetProtocol {
   }
 }
 
-#if DEBUG
-  import WidgetHelpers
+import WidgetHelpers
 
-  struct WidgetViewPreviews: PreviewProvider {
-    static var previews: some View {
-      WidgetPreview([.systemMedium]) {
-        SnapshotSpaceWidget.WidgetView(
-          entry: SnapshotSpaceWidget.Entry(
-            date: Date(),
-            spaces: []
-          )
+struct WidgetViewPreviews: PreviewProvider {
+  static var previews: some View {
+    WidgetPreview([.systemMedium]) {
+      SnapshotSpaceWidget.WidgetView(
+        entry: SnapshotSpaceWidget.Entry(
+          date: Date(),
+          spaces: []
         )
-      }
+      )
     }
   }
-#endif
+}

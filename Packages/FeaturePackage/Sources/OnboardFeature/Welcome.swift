@@ -59,15 +59,13 @@ public struct WelcomeView: View {
   }
 }
 
-#if DEBUG
-  struct WelcomeViewPreviews: PreviewProvider {
-    static var previews: some View {
-      WelcomeView(
-        store: .init(
-          initialState: WelcomeReducer.State(),
-          reducer: WelcomeReducer()
-        )
+struct WelcomeViewPreviews: PreviewProvider {
+  static var previews: some View {
+    WelcomeView(
+      store: .init(
+        initialState: WelcomeReducer.State(),
+        reducer: WelcomeReducer()
       )
-    }
+    )
   }
-#endif
+}

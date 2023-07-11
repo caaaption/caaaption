@@ -98,15 +98,13 @@ public struct OnboardView: View {
   }
 }
 
-#if DEBUG
-  struct OnboardViewPreviews: PreviewProvider {
-    static var previews: some View {
-      OnboardView(
-        store: .init(
-          initialState: OnboardReducer.State(),
-          reducer: OnboardReducer()
-        )
+struct OnboardViewPreviews: PreviewProvider {
+  static var previews: some View {
+    OnboardView(
+      store: .init(
+        initialState: OnboardReducer.State(),
+        reducer: OnboardReducer()
       )
-    }
+    )
   }
-#endif
+}

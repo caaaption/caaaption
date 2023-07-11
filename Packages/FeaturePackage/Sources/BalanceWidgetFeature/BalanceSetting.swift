@@ -149,17 +149,15 @@ public struct BalanceSettingView: View {
   }
 }
 
-#if DEBUG
-  struct BalanceSettingViewPreviews: PreviewProvider {
-    static var previews: some View {
-      NavigationStack {
-        BalanceSettingView(
-          store: .init(
-            initialState: BalanceSettingReducer.State(),
-            reducer: BalanceSettingReducer()
-          )
+struct BalanceSettingViewPreviews: PreviewProvider {
+  static var previews: some View {
+    NavigationStack {
+      BalanceSettingView(
+        store: .init(
+          initialState: BalanceSettingReducer.State(),
+          reducer: BalanceSettingReducer()
         )
-      }
+      )
     }
   }
-#endif
+}

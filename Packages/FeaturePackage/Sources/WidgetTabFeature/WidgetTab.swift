@@ -127,21 +127,15 @@ public struct WidgetTabView: View {
   }
 }
 
-#if DEBUG
-  import SwiftUIHelpers
-
-  struct WidgetTabViewPreviews: PreviewProvider {
-    static var previews: some View {
-      Preview {
-        NavigationStack {
-          WidgetTabView(
-            store: .init(
-              initialState: WidgetTabReducer.State(),
-              reducer: WidgetTabReducer()
-            )
-          )
-        }
-      }
+struct WidgetTabViewPreviews: PreviewProvider {
+  static var previews: some View {
+    NavigationStack {
+      WidgetTabView(
+        store: .init(
+          initialState: WidgetTabReducer.State(),
+          reducer: WidgetTabReducer()
+        )
+      )
     }
   }
-#endif
+}

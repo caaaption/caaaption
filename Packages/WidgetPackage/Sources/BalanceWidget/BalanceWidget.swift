@@ -137,20 +137,18 @@ public struct BalanceWidget: WidgetProtocol {
   }
 }
 
-#if DEBUG
-  import WidgetHelpers
+import WidgetHelpers
 
-  struct WidgetViewPreviews: PreviewProvider {
-    static var previews: some View {
-      WidgetPreview([.systemSmall]) {
-        BalanceWidget.WidgetView(
-          entry: BalanceWidget.Entry(
-            date: Date(),
-            address: "0x4F724516242829DC5Bc6119f666b18102437De53",
-            balance: 0.01
-          )
+struct WidgetViewPreviews: PreviewProvider {
+  static var previews: some View {
+    WidgetPreview([.systemSmall]) {
+      BalanceWidget.WidgetView(
+        entry: BalanceWidget.Entry(
+          date: Date(),
+          address: "0x4F724516242829DC5Bc6119f666b18102437De53",
+          balance: 0.01
         )
-      }
+      )
     }
   }
-#endif
+}

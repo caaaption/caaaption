@@ -41,15 +41,13 @@ public struct GasPriceView: View {
   }
 }
 
-#if DEBUG
-  struct GasPriceViewPreviews: PreviewProvider {
-    static var previews: some View {
-      GasPriceView(
-        store: .init(
-          initialState: GasPriceReducer.State(),
-          reducer: GasPriceReducer()
-        )
+struct GasPriceViewPreviews: PreviewProvider {
+  static var previews: some View {
+    GasPriceView(
+      store: .init(
+        initialState: GasPriceReducer.State(),
+        reducer: GasPriceReducer()
       )
-    }
+    )
   }
-#endif
+}
