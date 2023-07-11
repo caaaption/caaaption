@@ -1,8 +1,8 @@
+import AnalyticsClient
+import Build
 import ComposableArchitecture
 import FirebaseCoreClient
 import UIKit
-import Build
-import AnalyticsClient
 
 public struct AppDelegateReducer: ReducerProtocol {
   public struct State: Equatable {}
