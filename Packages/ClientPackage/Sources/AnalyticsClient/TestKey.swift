@@ -10,8 +10,12 @@ public extension DependencyValues {
 
 extension AnalyticsClient: TestDependencyKey {
   public static let previewValue = Self.noop
+
   public static let testValue = Self(
     send: unimplemented("\(Self.self).send"),
+    logEvent: unimplemented("\(Self.self).logEvent"),
+    setUserId: unimplemented("\(Self.self).setUserId"),
+    setUserProperty: unimplemented("\(Self.self).setUserProperty"),
     setAnalyticsCollectionEnabled: unimplemented("\(Self.self).setAnalyticsCollectionEnabled")
   )
 }
@@ -19,14 +23,23 @@ extension AnalyticsClient: TestDependencyKey {
 public extension AnalyticsClient {
   static let noop = Self(
     send: { _ in },
+    logEvent: { _, _ in },
+    setUserId: { _ in },
+    setUserProperty: { _ in },
     setAnalyticsCollectionEnabled: { _ in }
   )
   static let consoleLogger = Self(
     send: { analytics in
       print("[Analytics] ✅ \(analytics)")
     },
-    setAnalyticsCollectionEnabled: { value in
-      print("setAnalyticsCollectionEnabled: \(value)")
-    }
+    logEvent: { name, parameters in
+      print("""
+      Analytics: \(name)
+      \(parameters ?? [:])
+      """)
+    },
+    setUserId: { print("\(Self.self).setUserId: \($0)") },
+    setUserProperty: { print("\(Self.self).setUserProperty: \($0)") },
+    setAnalyticsCollectionEnabled: { print("\(Self.self).setAnalyticsCollectionEnabled: \($0)") }
   )
 }
