@@ -17,4 +17,5 @@ graph TD;
     WidgetTabFeature-->AccountFeature;
     WidgetTabFeature-->ContributorFeature;
     WidgetTabFeature-->WidgetSearchFeature;
+    AppFeatureTests-->AppFeature;
 ```
