@@ -19,7 +19,7 @@ public struct AppReducer: ReducerProtocol {
     case sceneDelegate(SceneDelegateReducer.Action)
     case widget(WidgetTabReducer.Action)
 
-    case quickAction(UIApplicationShortcutItem)
+    case quickAction(String)
     case onOpenURL(URL)
   }
 
@@ -39,28 +39,30 @@ public struct AppReducer: ReducerProtocol {
     Reduce { _, action in
       switch action {
       case let .appDelegate(.configurationForConnecting(.some(shortcutItem))):
+        let type = shortcutItem.type
         return .run { send in
-          await send(.quickAction(shortcutItem))
+          await send(.quickAction(type))
         }
 
       case .appDelegate:
         return .none
 
       case let .sceneDelegate(.shortcutItem(shortcutItem)):
+        let type = shortcutItem.type
         return .run { send in
-          await send(.quickAction(shortcutItem))
+          await send(.quickAction(type))
         }
 
       case .sceneDelegate:
         return .none
 
-      case let .quickAction(shortcutItem):
+      case let .quickAction(type):
         let urls: [String: URL] = [
           "talk-to-founder": serverConfig().founderURL,
           "talk-to-lead-dev": serverConfig().leadDevURL,
         ]
 
-        guard let url = urls[shortcutItem.type] else {
+        guard let url = urls[type] else {
           return .none
         }
 
