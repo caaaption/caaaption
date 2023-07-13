@@ -38,6 +38,7 @@ var package = Package(
       "WidgetTabFeature",
       "OnboardFeature",
       .product(name: "Build", package: "ClientPackage"),
+      .product(name: "AnalyticsClient", package: "ClientPackage"),
       .product(name: "ServerConfigClient", package: "ClientPackage"),
       .product(name: "FirebaseCoreClient", package: "ClientPackage"),
     ]),
@@ -46,7 +47,6 @@ var package = Package(
       "POAPWidgetFeature",
       "BalanceWidgetFeature",
       "GasPriceWidgetFeature",
-      .product(name: "AnalyticsReducer", package: "HelperPackage"),
     ]),
     .target(name: "WidgetListFeature", dependencies: [
       "VoteWidgetFeature",
