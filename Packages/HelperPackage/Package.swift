@@ -11,7 +11,6 @@ let package = Package(
     .macOS(.v13),
   ],
   products: [
-    .library(name: "AnalyticsReducer", targets: ["AnalyticsReducer"]),
     .library(name: "SwiftUIHelpers", targets: ["SwiftUIHelpers"]),
     .library(name: "PlaceholderAsyncImage", targets: ["PlaceholderAsyncImage"]),
   ],
@@ -20,10 +19,6 @@ let package = Package(
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "0.54.0"),
   ],
   targets: [
-    .target(name: "AnalyticsReducer", dependencies: [
-      .product(name: "AnalyticsClient", package: "ClientPackage"),
-      .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-    ]),
     .target(name: "SwiftUIHelpers"),
     .target(name: "PlaceholderAsyncImage"),
   ]
