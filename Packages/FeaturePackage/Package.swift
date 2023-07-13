@@ -38,6 +38,7 @@ var package = Package(
       "WidgetTabFeature",
       "OnboardFeature",
       .product(name: "Build", package: "ClientPackage"),
+      .product(name: "AnalyticsClient", package: "ClientPackage"),
       .product(name: "ServerConfigClient", package: "ClientPackage"),
       .product(name: "FirebaseCoreClient", package: "ClientPackage"),
     ]),
