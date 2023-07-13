@@ -18,6 +18,13 @@
         "identifier" : "APIKitTests",
         "name" : "APIKitTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AppFeatureTests",
+        "name" : "AppFeatureTests"
+      }
     }
   ],
   "version" : 1

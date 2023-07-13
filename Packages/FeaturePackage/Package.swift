@@ -109,3 +109,9 @@ var package = Package(
     ]),
   ]
 )
+
+package.targets.append(contentsOf: [
+  .testTarget(name: "AppFeatureTests", dependencies: [
+    "AppFeature"
+  ]),
+])
