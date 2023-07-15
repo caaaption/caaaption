@@ -2,11 +2,14 @@ import Foundation
 
 public struct ServerConfig: Codable, Equatable {
   public let appId: String
+  public let minimumSupportedAppVersion: String
 
   public init(
-    appId: String = "6449177523"
+    appId: String = "6449177523",
+    minimumSupportedAppVersion: String = "2023.6.16"
   ) {
     self.appId = appId
+    self.minimumSupportedAppVersion = minimumSupportedAppVersion
   }
 }
 
